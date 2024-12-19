@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Software lifecycles.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p><strong>1. Enginyeria de programari</strong></p>
+<p>Per tal de desenvolupar programari de manera adequada, hem de seguir alguns passos o un enfocament determinat per a aquest desenvolupament. L'enginyeria de programari és la branca de la informàtica que ens ajuda a seguir aquests enfocaments i passos correctament.</p>
+<p><strong>1.1. Etapes en el desenvolupament de programari</strong></p>
+<p>En (gairebé) tots els processos d'enginyeria de programari, podem seguir aquests passos:</p>
+<ul>
+<li>
+<p><strong>Anàlisi de requisits:</strong> Aquesta etapa inclou la comunicació amb el client per aclarir les seves necessitats, i una fase d'anàlisi per esbossar el comportament principal de l'aplicació. Es pot dividir en dues fases:</p>
+<ul>
+<li><strong>Especificació de requisits:</strong> La comunicació amb el client, en la qual organitzarem algunes entrevistes o altres maneres d’obtenir informació. Hem d'aclarir les necessitats que cal complir, i un cop s'han recopilat els requisits, escrivim un document anomenat especificació de requisits, que ha de ser tan complet com sigui possible.</li>
+<li><strong>Anàlisi:</strong> A partir de l'especificació de requisits creada en l'etapa anterior, ara hem de crear un nou document on utilitzarem alguns diagrames útils per representar les funcionalitats principals de l'aplicació i les seves connexions o dependències.</li>
+</ul>
+</li>
+<li>
+<p><strong>Disseny:</strong> A partir dels documents d'anàlisi establerts abans, ara podem determinar com funcionarà el programari. Aquí utilitzarem altres diagrames que ens ajudaran a implementar el programari.</p>
+</li>
+<li>
+<p><strong>Implementació:</strong> Aquesta etapa ha de començar des de l'etapa de disseny anterior, utilitzant un llenguatge de programació específic (o més d'un).</p>
+</li>
+<li>
+<p><strong>Proves:</strong> Un cop el producte ha estat implementat, hem de provar-lo per comprovar si compleix tots els requisits i no hi ha cap error. Aquestes proves han de ser revisades per algú que no estigui implicat en el procés d'implementació.</p>
+</li>
+<li>
+<p><strong>Manteniment:</strong> Aquesta última etapa consisteix a millorar el rendiment del producte de programari, afegint-hi noves extensions o corregint alguns errors.</p>
+</li>
+</ul>
+<p>Per resumir aquestes etapes, podríem dir que l'enginyeria de programari proporciona un enfocament que ens ajuda a entendre el problema a resoldre (anàlisi de requisits), dissenyar una possible solució, implementar-la, provar-la i després obtenir una millor qualitat o rendiment (manteniment).</p>
+<p>Tanmateix, aquests passos a vegades poden ser un obstacle, ja que molts desenvolupadors pensen que l'enginyeria de programari és massa estructurada i no els permet desenvolupar programari ràpidament. Però hem de veure l'enginyeria de programari com una cosa adaptativa, que proporciona diferents models i metodologies que es poden adaptar al nostre procés de desenvolupament, com veurem més endavant.</p>
+<p><strong>2. Cicles de vida del programari</strong></p>
+<p>Un cicle de vida és una llista d’etapes per les quals ha de passar un sistema (en aquest cas, un projecte de programari) des del seu naixement fins que deixa d'utilitzar-se. En cada cicle de vida establim tant les etapes com els requisits per passar d'una etapa a la següent, incloent-hi les entrades i eixides esperades per a cada etapa.</p>
+<p>Els productes generats després de cada etapa es denominen lliurables, i formen part de l'entrada de l'etapa següent o són una avaluació del projecte en un moment determinat.</p>
+<p>Alguns cicles de vida són repetitius, és a dir, podem passar per la mateixa etapa més d'una vegada, depenent de l'estat del producte. Aquest procés també es coneix com a retroalimentació.</p>
+<p>Anem a veure alguns dels cicles de vida més típics en el desenvolupament de programari, així com els seus avantatges i desavantatges. En tots ells trobarem les etapes vistes anteriorment (anàlisi de requisits, disseny, implementació...), o qualsevol variació d'aquestes.</p>
+<p><strong>2.1. Model en cascada o de cascada</strong></p>
+<p>Aquest és el model més antic i el més difós. Va ser creat per W. Royce en els anys 70, i ordena les etapes del desenvolupament de programari de manera rigorosa, de forma que el començament d’una etapa ha d'esperar al final de l’etapa anterior.
+<img src="image.png" alt="alt text"></p>
+<p>Es denomina model en cascada perquè les etapes estan disposades una davall de l’altra, i el procés flueix des de les etapes superiors cap a les inferiors, com si foren una cascada.</p>
+<p><strong>Avantatges:</strong></p>
+<ul>
+<li>Adequat per a projectes xicotets i ben coneguts, on tots els requisits estan perfectament establits des del principi.</li>
+<li>Ben estructurat, les etapes no es barregen.</li>
+<li>Fàcil d'utilitzar, gràcies a la seua rigidesa.</li>
+</ul>
+<p><strong>Inconvenients:</strong></p>
+<ul>
+<li>No podem aplicar-lo a la majoria de projectes reals, ja que els requisits poques vegades són coneguts des del principi.</li>
+<li>No podem veure cap resultat fins al final del procés, per la qual cosa els clients poden sentir-se preocupats pel resultat final.</li>
+<li>No és habitual que una etapa estiga perfectament acabada abans de començar la següent.</li>
+<li>Els errors no es detecten fins a l'etapa de proves, al final del procés.</li>
+</ul>
+<p><strong>Variacions:</strong></p>
+<p>Hi ha algunes variacions d’aquest model, com el model Sashimi, en què les etapes es solapen, com fa el peix japonés. En aquest model, hi ha un solapament temporal entre dues etapes seqüencials; d’aquesta manera, comencem l’etapa de disseny mentre acabem d’establir els requisits (i podem canviar-los a mesura que avancem amb el disseny), i comencem a implementar el sistema mentre acabem amb el disseny (així podem millorar el disseny per alguns problemes detectats durant la implementació).</p>
+<p><strong>2.2. Model V</strong></p>
+<p>Un dels principals problemes del model tradicional en cascada és que els errors no es detecten fins que arribem a les etapes finals del procés. Amb el model V, les proves comencen tan prompte com siga possible i són realitzades en paral·lel per un altre equip de treball. D’aquesta manera, les proves s'integren en cada etapa del cicle de vida.
+<img src="image-1.png" alt="alt text"></p>
+<p>La branca esquerra de la V representa l’anàlisi de requisits, el disseny i la implementació, i la branca dreta integra les proves de cada etapa. Ens desplacem per la branca esquerra fins arribar al fons, i després validem les proves de la branca dreta, des de les més específiques (proves unitàries per a comprovar alguns mòduls concrets del producte) fins a les més generals (proves d’integració i proves del sistema). Cada vegada que detectem un problema, tornem a l’etapa associada de la branca esquerra.</p>
+<p><strong>Avantatges:</strong></p>
+<ul>
+<li>Fàcil d'utilitzar</li>
+<li>Hi ha lliurables per a cada etapa</li>
+<li>Major probabilitat d'èxit gràcies als plans de proves associats a cada etapa del procés</li>
+<li>Útil per a projectes xicotets amb requisits fàcils d'entendre</li>
+</ul>
+<p><strong>Inconvenients:</strong></p>
+<ul>
+<li>També és rígid</li>
+<li>L'usuari no veu cap resultat fins a etapes posteriors, perquè no es desenvolupa cap prototip intermedi</li>
+<li>De vegades és complicat passar de la branca dreta a l'esquerra per solucionar els problemes</li>
+</ul>
+<p><strong>2.3. Model iteratiu</strong></p>
+<p>Els models vistos fins ara només són adequats per a projectes amb requisits senzills i ben especificats, però això no és molt habitual en els projectes de programari reals. Per tal de millorar-ho, el model iteratiu repeteix el model en cascada i genera una versió intermèdia o prototip després de cada iteració. Aquest prototip pot ser revisat pel client, els problemes es poden detectar abans, i així podem millorar el sistema.
+<img src="image-2.png" alt="alt text"></p>
+<p><strong>Avantatges:</strong></p>
+<ul>
+<li>No cal especificar tots els requisits al principi.</li>
+<li>Els riscos es gestionen millor, perquè lliurem prototips intermedis després de cada iteració.</li>
+</ul>
+<p><strong>Inconvenients:</strong></p>
+<ul>
+<li>Si no necessitem tindre tots els requisits al principi, poden aparéixer més tard inesperadament i afectar significativament el disseny o l’arquitectura del sistema.</li>
+</ul>
+<p><strong>Variacions:</strong></p>
+<p>Hi ha algunes variacions interessants d’aquest model, amb altres noms i característiques particulars:</p>
+<ul>
+<li>
+<p><strong>Model incremental:</strong> cada prototip té només unes poques millores respecte a l’anterior. Açò fa que els prototips siguen més fàcils de provar (només cal provar aquests xicotets canvis). No obstant això, necessitem molta experiència per tal de construir aquests prototips de manera proporcional.</p>
+</li>
+<li>
+<p><strong>Model basat en prototips:</strong> es basa en el desenvolupament de prototips de l'aplicació. Al principi, només recollim alguns requisits ràpidament, fem un disseny simple i obtenim un prototip bàsic, de manera que el client pot comprovar ràpidament l'aplicació i donar-nos la seua opinió. El principal avantatge d’aquest model és que el client està implicat en el procés des del començament. Però pot ser molt costós, ja que podem desenvolupar molts prototips inútils. A més, el client pot sentir-se decebut si comprova algunes versions del producte que no funcionen com esperava, i el desenvolupador pot sentir-se temptat a accelerar el procés per incloure tot el que el client vol, eludint tots els patrons de qualitat i manteniment.</p>
+</li>
+</ul>
+<p><strong>2.4. Model espiral</strong></p>
+<p>Aquest model va ser creat per Boehm en 1988, i intenta combinar els models en cascada i iteratiu. Les etapes estan disposades en una espiral dividida en quatre seccions, de manera que cada secció fa una tasca, i cada gir de l'espiral passa per totes les seccions i tasques, generant un prototip després de cada gir complet.</p>
+<p>Aquest model gestiona els riscos del desenvolupament de programari. Comencem des del centre de l’espiral, i en cada bucle analitzem totes les alternatives de desenvolupament, identifiquem els riscos més assumibles i després realitzem un cicle d'espiral. Si el client aporta nous requisits o millores, tornem a avaluar els riscos i realitzem un altre cicle, fins que el producte siga finalment acceptat.</p>
+<p><img src="image-3.png" alt="alt text"></p>
+<ul>
+<li>En l’etapa d'objectius establim el producte final a aconseguir (requisits, anàlisi, etc.).</li>
+<li>En l’etapa d'avaluació de riscos identifiquem els possibles riscos del projecte i triem les opcions per reduir-los tant com siga possible.</li>
+<li>En l’etapa d'implementació i proves dissenyem, implementem i provem el producte, segons les opcions triades en l’etapa anterior.</li>
+<li>En l’etapa de planificació comprovem el producte amb el client, i després decidim si necessitem un altre cicle d’espiral per solucionar alguns problemes o afegir millores.</li>
+</ul>
+<p><strong>Avantatges:</strong></p>
+<ul>
+<li>Adequat per a projectes grans i complicats.</li>
+<li>Els riscos es minimitzen.</li>
+<li>La implementació i el manteniment estan integrats.</li>
+<li>Desenvolupem prototips des de les etapes inicials, perquè el client puga aportar la seua opinió durant el procés.</li>
+</ul>
+<p><strong>Inconvenients:</strong></p>
+<ul>
+<li>Necessitem molta experiència per a avaluar els riscos correctament.</li>
+<li>Aquest model genera molts productes addicionals (informes, prototips…).</li>
+<li>Pot ser molt costós.</li>
+<li>No és adequat per a projectes xicotets.</li>
+</ul>
+
+</body>
+</html>

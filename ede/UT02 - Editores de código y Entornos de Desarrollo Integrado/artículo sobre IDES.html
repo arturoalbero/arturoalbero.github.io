@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>artículo sobre IDES.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="entornos-de-desarrollo-integrados-ides-y-otros-editores">Entornos de Desarrollo Integrados (IDEs) y otros editores</h1>
+<h2 id="tipos-de-editores-de-c%C3%B3digo">Tipos de Editores de Código</h2>
+<p>Los editores de código se dividen en dos categorías principales: <strong>editores de texto</strong> y <strong>IDEs</strong>. Los editores de texto son más livianos y sencillos, pero no integran de forma nativa todas las herramientas necesarias para la ejecución de código. Los IDEs, en cambio, integran en un solo programa tanto el editor de texto, como las herramientas de compilación y depuración de programas. Sin embargo, son más pesados y menos versátiles precisamente debido a esto. A continuación, vamos a repasar una serie de editores e IDEs:</p>
+<h3 id="editores-de-texto">Editores de Texto</h3>
+<ol>
+<li>
+<p><strong>Notepad++</strong></p>
+<ul>
+<li><strong>Características</strong>: Ligero, soporte para múltiples lenguajes, resaltado de sintaxis, y una interfaz simple.</li>
+<li><strong>Limitaciones</strong>: Funcionalidades básicas; carece de herramientas avanzadas como depuración.</li>
+<li><strong>Licencia</strong>: Gratuito y de código abierto.</li>
+</ul>
+</li>
+<li>
+<p><strong>Visual Studio Code</strong></p>
+<ul>
+<li><strong>Características</strong>: Extensible mediante plugins, integración con Git, terminal integrado y soporte para múltiples lenguajes. Con las extensiones adecuadas, se comporta casi como si fuera un IDE. Tanto es así que en Mac OSX el IDE Visual Studio for Mac ha sido descontinuado en favor de este editor, con la extensión C# Dev Kit.</li>
+<li><strong>Limitaciones</strong>: Requiere configuración adicional para funciones avanzadas.</li>
+<li><strong>Licencia</strong>: Gratuito.</li>
+</ul>
+</li>
+<li>
+<p><strong>Sublime Text</strong></p>
+<ul>
+<li><strong>Características</strong>: Rápido, interfaz minimalista, soporte para múltiples lenguajes.</li>
+<li><strong>Limitaciones</strong>: Versión de pago después de un periodo de evaluación; algunas características son limitadas.</li>
+<li><strong>Licencia</strong>: Gratuito en versión de evaluación; pago para uso continuado.</li>
+</ul>
+</li>
+</ol>
+<h3 id="ides">IDEs</h3>
+<ol>
+<li>
+<p><strong>IntelliJ IDEA</strong></p>
+<ul>
+<li><strong>Características</strong>: IDE potente para Java, con soporte para Kotlin, Groovy y otros lenguajes. Ofrece integración con sistemas de control de versiones, herramientas de refactorización, y una interfaz intuitiva.</li>
+<li><strong>Limitaciones</strong>: Requiere hardware medianamente potente.</li>
+<li><strong>Licencia</strong>: Community Edition es gratuito y de código abierto; Ultimate Edition es de pago, con licencia educativa disponible.</li>
+</ul>
+</li>
+<li>
+<p><strong>Eclipse</strong></p>
+<ul>
+<li><strong>Características</strong>: IDE versátil principalmente para Java, con soporte para plugins que permiten el desarrollo en otros lenguajes. Ofrece herramientas de depuración y una gran comunidad.</li>
+<li><strong>Limitaciones</strong>: La interfaz no es anticuada y puede no ser todo lo eficiente que uno desearía.</li>
+<li><strong>Licencia</strong>: Gratuito y de código abierto.</li>
+</ul>
+</li>
+<li>
+<p><strong>NetBeans</strong></p>
+<ul>
+<li><strong>Características</strong>: IDE oficial para Java SE, pero también admite PHP y C/C++. Es fácil de usar y configurar.</li>
+<li><strong>Limitaciones</strong>: Menos extensible que otros IDEs; a veces más lento en comparación con IntelliJ.</li>
+<li><strong>Licencia</strong>: Gratuito y de código abierto.</li>
+</ul>
+</li>
+<li>
+<p><strong>Visual Studio</strong></p>
+<ul>
+<li><strong>Características</strong>: IDE completo para C#, .NET y desarrollo web, herramientas de depuración avanzadas, integración con Azure. Muy usado también para C++.</li>
+<li><strong>Limitaciones</strong>: Solo disponible en Windows;</li>
+<li><strong>Licencia</strong>: Community Edition es gratuito; Professional y Enterprise son de pago, con licencias educativas disponibles.</li>
+</ul>
+</li>
+<li>
+<p><strong>Godot</strong> (Editor de Juegos)</p>
+<ul>
+<li><strong>Características</strong>: Herramientas para desarrollo de juegos 2D y 3D, scripting en GDScript, interfaz amigable.</li>
+<li><strong>Limitaciones</strong>: Menos soporte para lenguajes convencionales; no es un IDE generalista aunque se pueden realizar aplicaciones con él.</li>
+<li><strong>Licencia</strong>: Gratuito y de código abierto.</li>
+</ul>
+</li>
+<li>
+<p><strong>Unreal Engine</strong> (Editor de Juegos)</p>
+<ul>
+<li><strong>Características</strong>: Motor para desarrollo de juegos 3D, herramientas visuales de creación de contenido y programación con Blueprints. Sirve también para crear contenido audiovisual en 3D y ha sido usado en series como <em>The Mandalorian</em>.</li>
+<li><strong>Limitaciones</strong>: Requiere hardware potente; curva de aprendizaje pronunciada.</li>
+<li><strong>Licencia</strong>: Gratuito, con royalties aplicables a los ingresos por juegos. Se pueden comprar licencias alternativas.</li>
+</ul>
+</li>
+</ol>
+<h2 id="herramientas-que-componen-un-ide">Herramientas que Componen un IDE</h2>
+<p>Los IDEs están compuestos por varias herramientas que facilitan el desarrollo de software. A continuación se presentan ejemplos de herramientas comunes:</p>
+<ol>
+<li>
+<p><strong>Editor de Código</strong>: Donde se escribe el código fuente. Ejemplos incluyen el editor de IntelliJ y el editor de Visual Studio.</p>
+</li>
+<li>
+<p><strong>Compilador/Intérprete</strong>: Convierte el código fuente en un formato ejecutable. Por ejemplo, el compilador de Java en IntelliJ o el compilador de C# en Visual Studio.</p>
+</li>
+<li>
+<p><strong>Herramientas de Depuración</strong>: Permiten encontrar y corregir errores en el código. Tanto IntelliJ como Visual Studio cuentan con potentes herramientas de depuración integradas.</p>
+</li>
+<li>
+<p><strong>Gestión de Proyectos</strong>: Facilita la organización de archivos y recursos. Los IDEs permiten gestionar múltiples proyectos desde una única interfaz.</p>
+</li>
+</ol>
+<h2 id="caracter%C3%ADsticas-comunes-en-los-ides">Características Comunes en los IDEs</h2>
+<h3 id="intellisense">IntelliSense</h3>
+<ul>
+<li><strong>Descripción</strong>: Autocompletado de código y sugerencias contextuales.</li>
+<li><strong>Ejemplo</strong>: En <strong>Visual Studio Code</strong>, al escribir una función en JavaScript, el IDE sugiere automáticamente los parámetros y funciones disponibles. En <strong>IntelliJ</strong>, la funcionalidad es similar para Java y otros lenguajes, mejorando la productividad del desarrollador.</li>
+<li>En Visual Studio Code, Intellisense se instala por separado para cada lenguaje de programación.</li>
+</ul>
+<h3 id="multicursor">Multicursor</h3>
+<ul>
+<li><strong>Descripción</strong>: Permite editar múltiples líneas de código simultáneamente.</li>
+<li><strong>Ejemplo</strong>: En <strong>Visual Studio Code</strong>, puedes colocar cursores en diferentes líneas y editar a la vez, lo que acelera cambios repetitivos. IntelliJ también ofrece esta funcionalidad, facilitando la edición de múltiples instancias de una variable o función.</li>
+</ul>
+<h3 id="ejecuci%C3%B3n-paso-a-paso">Ejecución Paso a Paso</h3>
+<ul>
+<li><strong>Descripción</strong>: Herramientas de depuración que permiten seguir el flujo del programa línea por línea.</li>
+<li><strong>Ejemplo</strong>: En <strong>IntelliJ</strong>, puedes establecer puntos de ruptura y seguir la ejecución de tu código para identificar errores. <strong>Visual Studio</strong> ofrece una funcionalidad similar, permitiendo a los desarrolladores depurar aplicaciones complejas.</li>
+</ul>
+<h2 id="ides-especializados-por-lenguaje">IDEs Especializados por Lenguaje</h2>
+<p>Los IDEs y editores se especializan en diferentes lenguajes de programación. A continuación, se presentan algunos ejemplos destacados:</p>
+<ol>
+<li>
+<p><strong>Java</strong>:</p>
+<ul>
+<li><strong>IntelliJ IDEA</strong>: Community Edition es gratuito; Ultimate Edition de pago con versión educativa.</li>
+<li><strong>Eclipse</strong>: Gratuito y de código abierto.</li>
+</ul>
+</li>
+<li>
+<p><strong>C++</strong>:</p>
+<ul>
+<li><strong>Visual Studio</strong>: Community Edition es gratuito; versiones Professional y Enterprise son de pago con licencias educativas.</li>
+<li><strong>Code::Blocks</strong>: Gratuito y de código abierto.</li>
+</ul>
+</li>
+<li>
+<p><strong>C#</strong>:</p>
+<ul>
+<li><strong>Visual Studio</strong>: Community Edition es gratuito; versiones de pago con licencias educativas.</li>
+<li><strong>Visual Studio Code + C# Dev Kit</strong>: Gratuito; ideal para desarrollo de aplicaciones C# multiplataforma.</li>
+</ul>
+</li>
+<li>
+<p><strong>Python</strong>:</p>
+<ul>
+<li><strong>PyCharm</strong>: Community Edition es gratuito; Professional Edition de pago con licencia educativa.</li>
+<li><strong>Visual Studio Code</strong>: Gratuito; soporte para Python mediante extensiones.</li>
+</ul>
+</li>
+<li>
+<p><strong>JavaScript</strong>:</p>
+<ul>
+<li><strong>Visual Studio Code</strong>: Gratuito; muy popular para desarrollo web.</li>
+<li><strong>WebStorm</strong>: De pago, con licencia educativa disponible.</li>
+</ul>
+</li>
+<li>
+<p><strong>SQL</strong>:</p>
+<ul>
+<li><strong>DataGrip</strong>: De pago, con licencia educativa.</li>
+<li><strong>DBeaver</strong>: Gratuito y de código abierto.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="licencias-educativas-de-jetbrains">Licencias Educativas de JetBrains</h2>
+<p>Para obtener la <strong>licencia gratuita para estudiantes de JetBrains</strong>, sigue estos pasos:</p>
+<ol>
+<li>Visita el <a href="https://www.jetbrains.com/student/">sitio web de JetBrains</a>.</li>
+<li>Selecciona el producto que deseas utilizar (IntelliJ, PyCharm, etc.).</li>
+<li>Regístrate con tu cuenta de correo electrónico institucional (por ejemplo, <strong>@alu.edu.gva.es</strong>).</li>
+<li>Completa el formulario de solicitud y sigue las instrucciones para activar tu licencia.</li>
+</ol>
+<p>Puedes usar tu identidad digital (@alu.edu.gva.es) para crear una cuenta en JetBrains y aplicar para solicitar la licencia educativa. Dicha licencia es renovable mientras dure tu educación.
+Ten en cuenta que tu identidad digital no será accesible cuando acabes tu etapa en el instituto, pero puedes transferir o añadir más correos electrónicos a tu cuenta para poder seguir accediendo a Jetbrains.
+Cuando acaba tu periodo educativo, dispones de un descuento del 40% para comprar una licencia anual, tanto del pack completo de IDEs de Jetbrains como los IDEs en específico que más emplees. Esta licencia ya no tiene las limitaciones de las licencias educativas y la puedes usar para tu día a día.
+Con la licencia anual, Jetbrains ofrece una <a href="https://sales.jetbrains.com/hc/es/articles/207240845--Qu%C3%A9-es-una-licencia-de-reserva-perpetua">licencia de reserva perpetua</a>. Esta licencia te permite usar para toda la vida la versión del IDE más actual en el momento de la compra.</p>
+<hr>
+<h2 id="servicios-educativos-de-otras-plataformas">Servicios Educativos de Otras Plataformas</h2>
+<p>Además de JetBrains, los estudiantes pueden acceder a otros servicios gratuitos o con licencia educativa:</p>
+<ul>
+<li><strong>Microsoft Azure</strong>: Acceso gratuito a servicios en la nube, ideal para aprender sobre desarrollo y administración de sistemas.</li>
+<li><strong>GitHub</strong>: Licencias educativas que ofrecen herramientas premium de desarrollo colaborativo.</li>
+<li><strong>AWS Educate</strong>: Acceso a recursos y herramientas de Amazon Web Services para aprender sobre computación en la nube.</li>
+<li><strong>Google Cloud Services</strong>: Ofrece créditos gratuitos para estudiantes que deseen experimentar con servicios de Google.</li>
+</ul>
+<hr>
+<h2 id="resumen-esquem%C3%A1tico">Resumen Esquemático</h2>
+<h3 id="ides-gratuitos">IDEs Gratuitos</h3>
+<ul>
+<li><strong>Notepad++</strong></li>
+<li><strong>Visual Studio Code</strong></li>
+<li><strong>Eclipse</strong></li>
+<li><strong>NetBeans</strong></li>
+<li><strong>Godot</strong></li>
+<li><strong>Unity (Personal Edition)</strong></li>
+<li><strong>GameMaker (versión gratuita)</strong></li>
+<li><strong>DataGrip (prueba gratuita)</strong></li>
+</ul>
+<h3 id="ides-de-pago">IDEs de Pago</h3>
+<ul>
+<li><strong>IntelliJ IDEA Ultimate</strong></li>
+<li><strong>Visual Studio Professional y Enterprise</strong></li>
+<li><strong>PyCharm Professional</strong></li>
+<li><strong>WebStorm</strong></li>
+<li><strong>DataGrip (sin licencia educativa)</strong></li>
+</ul>
+<h3 id="ides-con-licencias-educativas-gratuitas">IDEs con Licencias Educativas Gratuitas</h3>
+<ul>
+<li><strong>IDEs de Jetbrains con su programa educativo</strong></li>
+<li><strong>Visual Studio (Professional y Enterprise)</strong></li>
+</ul>
+
+</body>
+</html>

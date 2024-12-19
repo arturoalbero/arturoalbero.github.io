@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lenguajes de programación val.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h3 id="llenguatges-de-programaci%C3%B3-c-c-c-java-i-python">Llenguatges de Programació: C, C++, C#, Java i Python</h3>
+<p>C, C++, C#, Java i Python son llenguatges de programació d'alt nivell i, per tant, de tercera generació. Per a probar els elements dels llenguatges C, C++, C#, Java i Python utilitzarem un entorn de desenvolupament en línia, <a href="https://www.mycompiler.io/es">MyCompiler.io</a>. L'entorn ens permet escriure, compilar i interpretar el nostre codi sense necessitat d'instalar res.</p>
+<h4 id="elements-b%C3%A0sics-dun-llenguatge-de-programaci%C3%B3">Elements Bàsics d'un Llenguatge de Programació</h4>
+<p>Per a començar, en C i C++ cal escriure les instruccions en una funció main, mentres que en C# i en Java han de estar dins d'una clase i un mètod main, que ha de ser pública (per a que tot el mon puga accedir) i estàtica (veurem aquest concepte mès endavant). Python, al ser un llenguatge de scripting, no necessita aquesta encapsulació. Si entreu en MyCompiler.io i probeu el codi de prova de cada llenguatge, comprobareu aquestes encapsulacions.</p>
+<p>A mès de les encapsulacions, tambè heu d'incloure les llibreries a emprar. En C i C++ s'utilitza <code>#include</code>, en java <code>import</code> i en c# <code>using</code>. A continuació, uns exemples en C i C#. Podeus comprobar la resta en myCompiler:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hello world!\n"</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-keyword">using</span> System;
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">MyCompiler</span> {
+    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span> {
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)</span> {
+            Console.WriteLine(<span class="hljs-string">"Hello world!"</span>);
+        }
+    }
+}
+</div></code></pre>
+<h5 id="variables">Variables</h5>
+<p>Una <strong>variable</strong> és un espai en la memòria d'un programa on podem emmagatzemar i manipular dades. Cada llenguatge de programació gestiona les variables de manera diferent quant a la declaració i el tipus de dades que emmagatzemen. Aquests tipus de dades poden ser enters, decimals, caràcters, cadenes, entre altres.</p>
+<p>Per exemple, en C o C++ necessitem declarar el tipus de la variable abans d'usar-la:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> numero = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">char</span> lletra = <span class="hljs-string">'A'</span>;
+</div></code></pre>
+<p>En llenguatges com Python, no cal declarar el tipus, ja que el llenguatge assigna el tipus automàticament:</p>
+<pre class="hljs"><code><div>numero = <span class="hljs-number">5</span>
+lletra = <span class="hljs-string">'A'</span>
+</div></code></pre>
+<h5 id="tipus-de-dades-i-tipatge">Tipus de Dades i Tipatge</h5>
+<p>Els llenguatges de programació també difereixen en la manera en què gestionen els tipus de dades. Això ens porta a dos conceptes importants:</p>
+<ul>
+<li>
+<p><strong>Tipatge estàtic vs. tipatge dinàmic</strong>: En llenguatges com C, C++ i Java, el tipus d'una variable ha de ser declarat explícitament, la qual cosa es denomina <strong>tipatge estàtic</strong>. En canvi, en Python, el tipus d'una variable s'assigna en temps d'execució, la qual cosa es diu <strong>tipatge dinàmic</strong>.</p>
+</li>
+<li>
+<p><strong>Tipatge fort vs. tipatge feble</strong>: Un llenguatge amb <strong>tipatge fort</strong> (com Java o Python) restringeix més les operacions entre tipus diferents, mentre que un llenguatge amb <strong>tipatge feble</strong> (com C) pot permetre certes conversions automàtiques entre tipus.</p>
+</li>
+</ul>
+<h5 id="operadors">Operadors</h5>
+<p>Els <strong>operadors</strong> permeten realitzar operacions sobre les variables, com sumar, restar, comparar o assignar valors. Els operadors bàsics inclouen:</p>
+<ul>
+<li><strong>Aritmètics</strong>: Suma (<code>+</code>), resta (<code>-</code>), multiplicació (<code>*</code>), divisió (<code>/</code>)</li>
+<li><strong>D'assignació</strong>: Igualtat (<code>=</code>), suma i assignació (<code>+=</code>), etc.</li>
+<li><strong>Relacionals</strong>: Major que (<code>&gt;</code>), menor que (<code>&lt;</code>), igual a (<code>==</code>), etc.</li>
+<li><strong>Lògics</strong>: I (<code>&amp;&amp;</code> o <code>and</code>), O (<code>||</code> o <code>or</code>), negació (<code>!</code> o <code>not</code>)</li>
+</ul>
+<p>Exemple d'ús d'operadors en C++:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">int</span> b = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">int</span> suma = a + b; <span class="hljs-comment">// Operador aritmètic</span>
+<span class="hljs-keyword">bool</span> resultat = (a == b); <span class="hljs-comment">// Operador relacional</span>
+</div></code></pre>
+<h5 id="entrada-i-eixida-per-consola">Entrada i Eixida per Consola</h5>
+<p>L'<strong>entrada i eixida de dades</strong> és un aspecte fonamental en qualsevol llenguatge de programació. Ens permet interactuar amb l'usuari o amb altres sistemes mitjançant l'ús de la consola.</p>
+<ul>
+<li><strong>Eixida per consola</strong>: Imprimir dades en la consola és comú en tots els llenguatges. En C o C++, usem <code>printf</code> o <code>cout</code> respectivament, mentre que en Java usem <code>System.out.println</code>, i en Python usem <code>print</code>.</li>
+</ul>
+<p>Exemples d'eixida en diferents llenguatges:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// En C</span>
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Hola Món\n"</span>);
+
+<span class="hljs-comment">// En C++</span>
+<span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"Hola Món"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+
+<span class="hljs-comment">// En Python</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"Hola Món"</span>)
+</div></code></pre>
+<ul>
+<li><strong>Entrada per consola</strong>: Per a rebre dades de l'usuari, podem utilitzar funcions com <code>scanf</code> en C, <code>cin</code> en C++ o <code>input</code> en Python.</li>
+</ul>
+<p>Exemple d'entrada:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// En C</span>
+<span class="hljs-keyword">int</span> edat;
+<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;edat);
+
+<span class="hljs-comment">// En Python</span>
+edat = input(<span class="hljs-string">"Introdueix la teua edat: "</span>)
+</div></code></pre>
+<h4 id="compiladors-int%C3%A8rprets-i-m%C3%A0quines-virtuals">Compiladors, Intèrprets i Màquines Virtuals</h4>
+<p>Els llenguatges de programació es poden classificar segons com executen el seu codi:</p>
+<ul>
+<li>
+<p><strong>Compiladors</strong>: Transformen el codi font en <strong>codi objecte</strong> (binari o executable) abans d'executar-lo. Exemples de llenguatges compilats inclouen C i C++. Ací, el compilador tradueix tot el codi abans d'executar-lo.</p>
+</li>
+<li>
+<p><strong>Intèrprets</strong>: Els llenguatges interpretats executen el codi línia per línia sense compilar-lo prèviament. Python és un exemple de llenguatge interpretat.</p>
+</li>
+<li>
+<p><strong>Màquines virtuals</strong>: En llenguatges com Java i C#, el codi es compila en un <strong>codi intermedi</strong> anomenat <strong>bytecode</strong>, que és executat per una màquina virtual (JVM en Java, CLR en C#). Això permet que el codi siga més portàtil entre diferents sistemes operatius.</p>
+</li>
+</ul>
+<h4 id="exemples-dexecuci%C3%B3-en-mycompilerio">Exemples d'Execució en MyCompiler.io</h4>
+<p>Utilitzarem <a href="https://www.mycompiler.io/es">MyCompiler.io</a> per escriure i provar els exemples en els diferents llenguatges. Aquest entorn permet escriure codi i executar-lo en diferents llenguatges sense necessitat d'instal·lar un entorn de desenvolupament local. El compilador o intèrpret associat a cada llenguatge s'encarregarà d'executar el codi en la web.</p>
+<h4 id="exercicis-proposats">Exercicis Proposats</h4>
+<p>A continuació, et proposem alguns exercicis bàsics que hauràs d'implementar en els llenguatges que estem treballant (C, C++, C#, Java i Python). Aquests exercicis et permetran familiaritzar-te amb la sintaxi bàsica, les variables, els operadors i les entrades i eixides per consola:</p>
+<ol>
+<li>
+<p><strong>Imprimir un missatge en consola</strong>: Escriu un programa que imprima &quot;Hola, Món&quot; en consola.</p>
+</li>
+<li>
+<p><strong>Suma de dos números</strong>: Escriu un programa que sol·licite a l'usuari dos números enters, els sume i imprima el resultat.</p>
+</li>
+<li>
+<p><strong>Àrea d'un rectangle</strong>: Escriu un programa que sol·licite a l'usuari l'ample i l'altura d'un rectangle i n'imprima l'àrea.</p>
+</li>
+<li>
+<p><strong>Conversió de temperatura</strong>: Escriu un programa que convertisca una temperatura de graus Celsius a Fahrenheit.</p>
+</li>
+<li>
+<p><strong>Càlcul d'edat</strong>: Escriu un programa que sol·licite a l'usuari el seu any de naixement i calcule la seua edat actual.</p>
+</li>
+</ol>
+<p>Recorda realitzar cadascun d'aquests exercicis en els llenguatges que estem utilitzant (C, C++, C#, Java i Python), i observa com canvien la sintaxi i les eines utilitzades en cada un.</p>
+<h3 id="evoluci%C3%B3-i-comparaci%C3%B3-dels-llenguatges-de-programaci%C3%B3-c-c-java-c-i-python">Evolució i Comparació dels Llenguatges de Programació: C, C++, Java, C# i Python</h3>
+<p>La història dels llenguatges de programació és un reflex de com la tecnologia ha anat evolucionant per adaptar-se a noves necessitats, millorar el rendiment i la productivitat dels programadors, i respondre als reptes tecnològics del moment. A continuació, oferim una anàlisi detallada de l’evolució de cinc llenguatges fonamentals: <strong>C, C++, Java, C# i Python</strong>, amb un esquema visual que ajudarà a comprendre millor els moments clau de la seua evolució.</p>
+<hr>
+<h4 id="c-1972"><strong>C (1972)</strong></h4>
+<ul>
+<li><strong>Creació</strong>: Desenvolupat per <strong>Dennis Ritchie</strong> als Laboratoris Bell en <strong>1972</strong>.</li>
+<li><strong>Objectiu inicial</strong>: Proporcionar un llenguatge amb el qual poder escriure sistemes operatius. <strong>Unix</strong> es va reescriure en C poc després, convertint-lo en un dels llenguatges més utilitzats en el desenvolupament de sistemes.</li>
+<li><strong>Característiques clau</strong>: Eficiència, control de memòria i permet algunes operacions pròximes al maquinari. Per aixó, alguns diuen que és un llenguatge de &quot;mig nivell&quot;.</li>
+<li><strong>Evolució</strong>:
+<ul>
+<li><strong>ANSI C (1989)</strong>: Es va normalitzar com a <strong>C89</strong> o <strong>ANSI C</strong>, establint un estàndard que millorava la portabilitat.</li>
+<li><strong>C99 (1999)</strong>: Introdueix millores com tipus de dades més flexibles (per exemple, <code>long long int</code>), inicialització d'arrays, i una millor compatibilitat amb l'entorn matemàtic.</li>
+<li><strong>C11 (2011)</strong>: Afegix funcions com la multitasca nativa (threads) i millores en la gestió de memòria.</li>
+</ul>
+</li>
+</ul>
+<h4 id="c-1983"><strong>C++ (1983)</strong></h4>
+<ul>
+<li><strong>Creació</strong>: Desenvolupat per <strong>Bjarne Stroustrup</strong> en <strong>1983</strong> com una extensió de C.</li>
+<li><strong>Objectiu inicial</strong>: Afegir la <strong>programació orientada a objectes (OOP)</strong> a C, permetent un millor disseny de programes grans.</li>
+<li><strong>Característiques clau</strong>: Compatibilitat amb C, programació orientada a objectes, major abstracció amb <strong>classes</strong> i <strong>mètodes</strong>.</li>
+<li><strong>Evolució</strong>:
+<ul>
+<li><strong>C++98 (1998)</strong>: Primer estàndard oficial, que va establir les bases del llenguatge modern.</li>
+<li><strong>C++11 (2011)</strong>: Va afegir característiques avançades com les <strong>expressions lambda</strong>, <strong>move semantics</strong>, inicialització uniforme, i el tipus <code>auto</code> per a inferència automàtica de tipus. Això va millorar el rendiment i va reduir errors de programació.</li>
+<li><strong>C++17 (2017)</strong>: Afegix noves capacitats com <strong>std::optional</strong> (gestió de valors nuls) i millores de rendiment en funcions i templates.</li>
+<li><strong>C++20 (2020)</strong>: Introdueix característiques molt potents com <strong>coroutines</strong> (per a millor gestió de tasques asíncrones) i <strong>concepts</strong>, que milloren la claredat i l'eficiència en l'ús de <strong>templates</strong>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="java-1995"><strong>Java (1995)</strong></h4>
+<ul>
+<li><strong>Creació</strong>: Creat per <strong>James Gosling</strong> i l'equip de <strong>Sun Microsystems</strong> en <strong>1995</strong>.</li>
+<li><strong>Objectiu inicial</strong>: Ser un llenguatge multiplataforma, segur i senzill per a aplicacions de xarxa.</li>
+<li><strong>Característiques clau</strong>: Multiplataforma gràcies a la <strong>Java Virtual Machine (JVM)</strong>, orientació a objectes, gestió automàtica de la memòria mitjançant <strong>garbage collection</strong>.</li>
+<li><strong>Evolució</strong>:
+<ul>
+<li><strong>Java 2 (1998)</strong>: Introducció de l'API <strong>Swing</strong> per a interfícies gràfiques i millores en l'optimització del bytecode.</li>
+<li><strong>Java 5 (2004)</strong>: Apareixen les <strong>generics</strong>, que permeten escriure classes i mètodes més flexibles i segurs en termes de tipus, a més de <strong>anotacions</strong> i <strong>autoboxing/unboxing</strong>.</li>
+<li><strong>Java 8 (2014)</strong>: Incorpora <strong>streams</strong> i <strong>expressions lambda</strong>, facilitant la programació funcional i millorant l’eficiència en el maneig de col·leccions de dades.</li>
+<li><strong>Java 14 (2020)</strong>: Introdueix els <strong>records</strong>, una manera més simple de declarar classes de dades immutables, útils en contextos com microserveis o aplicacions modernes.</li>
+<li><strong>Java 17 (2021)</strong>: Actualització a <strong>long-term support (LTS)</strong>, que inclou millores en el rendiment i seguretat, amb funcionalitats com <strong>sealed classes</strong>, per controlar l’herència en les jerarquies de classes.</li>
+</ul>
+</li>
+</ul>
+<h4 id="c-2000"><strong>C# (2000)</strong></h4>
+<ul>
+<li><strong>Creació</strong>: Desenvolupat per <strong>Microsoft</strong> en <strong>2000</strong> com a part del framework .NET, liderat per <strong>Anders Hejlsberg</strong>.</li>
+<li><strong>Objectiu inicial</strong>: Ser un llenguatge modern, orientat a objectes i amb forta integració amb les aplicacions de Windows i el sistema .NET.</li>
+<li><strong>Característiques clau</strong>: Simplicitat, orientació a objectes, compatibilitat amb el framework .NET.</li>
+<li><strong>Evolució</strong>:
+<ul>
+<li><strong>C# 2.0 (2005)</strong>: Introducció de <strong>generics</strong>, semblant a Java, per permetre la programació amb tipus genèrics, fent el llenguatge més flexible.</li>
+<li><strong>C# 3.0 (2007)</strong>: Introducció de <strong>LINQ (Language Integrated Query)</strong>, una eina potent per treballar amb col·leccions i dades estructurades dins del llenguatge.</li>
+<li><strong>C# 7.0 (2017)</strong>: Apareixen característiques com <strong>tuples</strong> millorades i <strong>local functions</strong>, facilitant la programació funcional.</li>
+<li><strong>C# 9.0 (2020)</strong>: Incorpora <strong>records</strong> i <strong>pattern matching</strong> millorat, igual que Java, per a simplificar el disseny de dades i els patrons.</li>
+</ul>
+</li>
+</ul>
+<h4 id="python-1991"><strong>Python (1991)</strong></h4>
+<ul>
+<li><strong>Creació</strong>: Creat per <strong>Guido van Rossum</strong> en <strong>1991</strong>.</li>
+<li><strong>Objectiu inicial</strong>: Ser un llenguatge senzill, llegible i potent per a la programació general, amb una sintaxi clara.</li>
+<li><strong>Característiques clau</strong>: Facilitat d'ús, dinamisme, orientació a objectes i funcional, gran comunitat i ecosistema de biblioteques.</li>
+<li><strong>Evolució</strong>:
+<ul>
+<li><strong>Python 2.0 (2000)</strong>: Introducció del <strong>garbage collection</strong> i millores en la compatibilitat amb Unicode.</li>
+<li><strong>Python 3.0 (2008)</strong>: Una revisió major per millorar la consistència i llegibilitat del llenguatge, però amb canvis incompatibles amb Python 2.</li>
+<li><strong>Python 3.5 (2015)</strong>: Introducció de la <strong>sintaxi d'asincronisme</strong> amb <code>async</code> i <code>await</code>, millorant el maneig d'operacions asíncrones i xarxes.</li>
+<li><strong>Python 3.9 (2020)</strong>: Afegix <strong>operadors de fusió de diccionaris</strong> i millores en el <strong>tipat estàtic</strong> mitjançant la biblioteca <code>typing</code>, ajudant a mantenir el codi més segur i robust.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Podeu consultar la popularitat dels llenguatges de programació en diferents pàgines. Una d'elles es <a href="https://www.tiobe.com/tiobe-index/">the TIOBE index</a>. Es poden observar dades curioses, com per exemple l'evolució de la popularitat del llenguatge Python, actualment el més popular, que encara que és més antic que JAVA, va despegar molt més tard.</p>
+
+</body>
+</html>
