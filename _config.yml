@@ -1,1 +1,3 @@
-gems: [jekyll-mermaid]
+plugins:
+  - jekyll-mermaid
+  - jekyll-diagrams
