@@ -2,6 +2,6 @@
 
 ## Entornos de Desarrollo
 
-[Carpeta](./ede/)
+[Carpeta](ede/)
 
 Estamos haciendo pruebas todavía
