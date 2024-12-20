@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Integració de Git i Github en Visual Studio Code, IntelliJ i Pycharm. Convertir VSCode en un editor de Markdown amb el poder de les extensions. | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Integració de Git i Github en Visual Studio Code, IntelliJ i Pycharm. Convertir VSCode en un editor de Markdown amb el poder de les extensions." />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT03/04_Editor_markdown_vscode.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT03/04_Editor_markdown_vscode.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Integració de Git i Github en Visual Studio Code, IntelliJ i Pycharm. Convertir VSCode en un editor de Markdown amb el poder de les extensions." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Integració de Git i Github en Visual Studio Code, IntelliJ i Pycharm. Convertir VSCode en un editor de Markdown amb el poder de les extensions.","url":"http://localhost:4000/ede/UT03/04_Editor_markdown_vscode.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="integració-de-git-i-github-en-visual-studio-code-intellij-i-pycharm-convertir-vscode-en-un-editor-de-markdown-amb-el-poder-de-les-extensions">Integració de Git i Github en Visual Studio Code, IntelliJ i Pycharm. Convertir VSCode en un editor de Markdown amb el poder de les extensions.</h1>
+
+<h2 id="1-què-és-markdown-i-com-sutilitza">1. Què és Markdown i com s’utilitza?</h2>
+
+<p>Markdown és un llenguatge de marcatge lleuger que permet formatar text de manera senzilla i intuïtiva. És molt utilitzat per escriure documentació, blogs o qualsevol altre tipus de text que després es converteix en HTML, ja que facilita molt la seva llegibilitat. Un document Markdown és essencialment text pla que es pot llegir fàcilment i que després es pot exportar a altres formats com HTML o PDF.</p>
+
+<h3 id="sintaxi-bàsica-de-markdown">Sintaxi bàsica de Markdown</h3>
+
+<ol>
+  <li><strong>Títols i subtítols</strong><br />
+Els títols en Markdown es creen utilitzant el símbol de coixinet <code class="language-plaintext highlighter-rouge">#</code>. Com més coixinets es col·loquen, més baix és el nivell del títol:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge"># Títol 1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">## Títol 2</code></li>
+      <li><code class="language-plaintext highlighter-rouge">### Títol 3</code></li>
+    </ul>
+  </li>
+  <li><strong>Text en negreta</strong><br />
+El text es pot fer negreta envoltant-lo amb dos asteriscs <code class="language-plaintext highlighter-rouge">**</code> o dos guions baixos <code class="language-plaintext highlighter-rouge">__</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">**Aquest text és en negreta**</code></li>
+      <li><code class="language-plaintext highlighter-rouge">__Aquest text també és en negreta__</code></li>
+    </ul>
+  </li>
+  <li><strong>Text en cursiva</strong><br />
+Per posar el text en cursiva, s’utilitzen un sol asterisc <code class="language-plaintext highlighter-rouge">*</code> o un sol guió baix <code class="language-plaintext highlighter-rouge">_</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">*Text en cursiva*</code></li>
+      <li><code class="language-plaintext highlighter-rouge">_Text en cursiva_</code></li>
+    </ul>
+  </li>
+  <li><strong>Llistes</strong><br />
+Per crear una llista no ordenada (punts), s’utilitza un asterisc <code class="language-plaintext highlighter-rouge">*</code>, un signe més <code class="language-plaintext highlighter-rouge">+</code>, o un guió <code class="language-plaintext highlighter-rouge">-</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">* Element 1</code></li>
+      <li><code class="language-plaintext highlighter-rouge">- Element 2</code></li>
+    </ul>
+
+    <p>Per a llistes numerades:</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">1. Primer element</code></li>
+      <li><code class="language-plaintext highlighter-rouge">2. Segon element</code></li>
+    </ul>
+  </li>
+  <li><strong>Enllaços</strong><br />
+Els enllaços es creen utilitzant la sintaxi <code class="language-plaintext highlighter-rouge">[text](url)</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">[Google](https://www.google.com)</code></li>
+    </ul>
+  </li>
+  <li><strong>Imatges</strong><br />
+Les imatges es poden inserir de manera similar als enllaços, afegint un signe d’exclamació al començament <code class="language-plaintext highlighter-rouge">![alt text](url)</code>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">![Logo](https://url-de-la-imatge.com/logo.png)</code></li>
+    </ul>
+  </li>
+  <li><strong>Codi</strong><br />
+Si vols mostrar un fragment de codi dins d’una línia de text, pots utilitzar les cometes invertides <code class="language-plaintext highlighter-rouge">`</code>. Per a blocs de codi, es poden usar tres cometes invertides ```:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">inline code: \</code>echo “Hola”``</li>
+      <li>Blocs de codi:</li>
+      <li>
+        <p>Pots especificar inclús el llenguatge de programació per a que resalte la sintaxis si vols (no funcionarà en tots els entorns).</p>
+
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"Això és un bloc de codi"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Cites</strong><br />
+Es poden afegir cites utilitzant <code class="language-plaintext highlighter-rouge">&gt;</code> al començament de la línia:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&gt; Això és una cita</code></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="2-utilitzar-markdown-a-visual-studio-code">2. Utilitzar Markdown a Visual Studio Code</h2>
+
+<h3 id="installació-de-visual-studio-code">Instal·lació de Visual Studio Code</h3>
+
+<p>Primer de tot i si no ho has fet encara, cal instal·lar VSCode, que es pot descarregar des de la seua <a href="https://code.visualstudio.com/">pàgina oficial</a>. Un cop instal·lat, ja estarem llestos per personalitzar-lo i utilitzar-lo per editar Markdown.</p>
+
+<h4 id="extensions-necessàries">Extensions necessàries</h4>
+
+<p>Per tal de millorar l’experiència treballant amb Markdown a VSCode, cal instal·lar algunes extensions molt útils:</p>
+
+<ol>
+  <li><strong>Markdown All in One</strong><br />
+Aquesta extensió proporciona eines útils per editar Markdown, com ara vista prèvia, tancament automàtic de llistes, i altres dreceres de teclat.
+    <ul>
+      <li>Per instal·lar-la, ves a l’extensió dins de VSCode i busca “Markdown All in One”.</li>
+    </ul>
+  </li>
+  <li><strong>Markdownlint</strong><br />
+Afegeix un linter que verifica si el teu Markdown segueix bones pràctiques, ajudant-te a corregir errors comuns.
+    <ul>
+      <li>Cerca “Markdownlint” a l’extensió.</li>
+    </ul>
+  </li>
+  <li><strong>Markdown PDF</strong><br />
+Aquesta extensió permet convertir fitxers <code class="language-plaintext highlighter-rouge">.md</code> a PDF, HTML o altres formats.
+    <ul>
+      <li>Cerca “Markdown PDF” i instal·la-la per poder exportar els teus documents.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="comandes-útils-dins-de-vscode">Comandes útils dins de VSCode</h4>
+
+<ol>
+  <li>
+    <p><strong>Vista prèvia de Markdown</strong><br />
+Per veure una vista prèvia del fitxer Markdown que estàs editant, pots obrir el fitxer <code class="language-plaintext highlighter-rouge">.md</code> i fer clic a <code class="language-plaintext highlighter-rouge">Ctrl+Shift+V</code> (Windows/Linux) o <code class="language-plaintext highlighter-rouge">Cmd+Shift+V</code> (Mac). També pots fer clic amb el botó dret sobre el fitxer i seleccionar “Open Preview”.</p>
+  </li>
+  <li>
+    <p><strong>Exportar a HTML o PDF</strong><br />
+Un cop tens el document editat, pots exportar-lo a HTML o PDF utilitzant l’extensió Markdown PDF:</p>
+    <ul>
+      <li>Per exportar-ho, obre la paleta de comandes (<code class="language-plaintext highlighter-rouge">Ctrl+Shift+P</code> o <code class="language-plaintext highlighter-rouge">Cmd+Shift+P</code>) i escriu “Markdown PDF: Export”. Selecciona el format desitjat.</li>
+      <li>També pots escriure <code class="language-plaintext highlighter-rouge">&gt;</code> en la barra de búsqueda. Té el mateix efecte i pot ser més fàcil de recordar.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="integrar-git-i-github-en-vscode">Integrar Git i GitHub en VSCode</h3>
+
+<p>Una de les eines més potents de VSCode és la integració amb Git, que et permet gestionar repositoris locals i remots (com GitHub) directament des de l’editor.</p>
+
+<h4 id="crear-un-repositori-git">Crear un repositori Git</h4>
+
+<p>Per començar a treballar amb Git, primer necessites crear un repositori:</p>
+
+<ol>
+  <li>
+    <p><strong>Inicialitzar un repositori</strong><br />
+Obre la carpeta del teu projecte a VSCode i fes clic al panell de control de Git (icona de branques). Allà trobaràs l’opció “Initialize Repository”. Això crearà un repositori Git a la teua carpeta de treball.</p>
+  </li>
+  <li>
+    <p><strong>Afegir fitxers al repositori</strong><br />
+Un cop creat, tots els fitxers no seguits apareixeran a la secció “Changes”. Per afegir-los al teu commit, selecciona els fitxers i fes clic a la icona “+”.</p>
+  </li>
+  <li>
+    <p><strong>Fer un commit</strong><br />
+Després d’afegir fitxers, pots crear un commit, que és un punt de restauració dins del teu projecte. Escriu un missatge descriptiu al camp de text i fes clic a la icona de confirmació.</p>
+  </li>
+</ol>
+
+<h4 id="clonar-un-repositori-de-github">Clonar un repositori de GitHub</h4>
+
+<p>Si ja tens un repositori a GitHub i vols treballar-hi a VSCode, segueix aquests passos:</p>
+
+<ol>
+  <li>
+    <p><strong>Clonar el repositori</strong><br />
+Ves a <code class="language-plaintext highlighter-rouge">Ctrl+Shift+P</code> o <code class="language-plaintext highlighter-rouge">Cmd+Shift+P</code> i escriu “Git: Clone”. Introdueix l’URL del repositori GitHub i selecciona la carpeta on vols guardar-lo.</p>
+  </li>
+  <li>
+    <p><strong>Fer canvis i fer un commit</strong><br />
+Un cop clonat el repositori, pots fer canvis als fitxers com de costum. Després afegeix els fitxers canviats a Git, crea un commit i finalment envia-ho a GitHub.</p>
+  </li>
+</ol>
+
+<h4 id="push-i-pull">Push i pull</h4>
+
+<ol>
+  <li>
+    <p><strong>Fer push</strong><br />
+Per enviar els canvis al teu repositori remot (GitHub), fes clic a la icona de sincronització (a dalt a la barra de Git) o escriu “Git: Push” a la paleta de comandes.</p>
+  </li>
+  <li>
+    <p><strong>Fer pull</strong><br />
+Si altres col·laboradors han fet canvis al repositori remot, pots baixar aquests canvis fent un <code class="language-plaintext highlighter-rouge">pull</code>. Escriu “Git: Pull” a la paleta de comandes o fes clic a la icona de sincronització.</p>
+  </li>
+</ol>
+
+<h4 id="altres-comandes-útils-de-git">Altres comandes útils de Git</h4>
+
+<ul>
+  <li><strong>Git: Checkout to…</strong> permet canviar de branca.</li>
+  <li><strong>Git: Merge Branch…</strong> permet fusionar branques.</li>
+  <li><strong>Git: Create Branch…</strong> crea una nova branca per treballar.</li>
+</ul>
+
+<h2 id="3-integrar-intellij-idea-i-pycharm-amb-git-i-github">3. Integrar IntelliJ IDEA i PyCharm amb Git i GitHub</h2>
+
+<p>IntelliJ IDEA i PyCharm són dos entorns de desenvolupament integrats (IDE) molt potents de JetBrains, que suporten diversos llenguatges de programació. Tant si treballes en projectes Java (IntelliJ) com Python (PyCharm), pots integrar Git i GitHub de manera fàcil per gestionar el control de versions del teu codi.</p>
+
+<h3 id="configuració-inicial-de-git">Configuració inicial de Git</h3>
+
+<p>Abans de començar, assegura’t que tens Git instal·lat al teu sistema. Si no el tens, pots descarregar-lo des de <a href="https://git-scm.com/">la pàgina oficial de Git</a>.</p>
+
+<h4 id="configurar-git-a-intellij-idea-o-pycharm">Configurar Git a IntelliJ IDEA o PyCharm</h4>
+
+<ol>
+  <li>
+    <p><strong>Obrir les preferències de l’IDE</strong><br />
+Ves a <code class="language-plaintext highlighter-rouge">File</code> &gt; <code class="language-plaintext highlighter-rouge">Settings</code> (o <code class="language-plaintext highlighter-rouge">Preferences</code> en macOS) i després cerca <code class="language-plaintext highlighter-rouge">Version Control</code> &gt; <code class="language-plaintext highlighter-rouge">Git</code>.</p>
+  </li>
+  <li><strong>Comprovar la ruta de Git</strong><br />
+L’IDE intentarà detectar automàticament la ubicació del binari de Git al teu sistema. Si no ho fa correctament, especifica la ruta manualment. La ruta típica per a Git és:
+    <ul>
+      <li>Windows: <code class="language-plaintext highlighter-rouge">C:\Program Files\Git\bin\git.exe</code></li>
+      <li>macOS i Linux: <code class="language-plaintext highlighter-rouge">/usr/bin/git</code> o <code class="language-plaintext highlighter-rouge">/usr/local/bin/git</code></li>
+    </ul>
+  </li>
+  <li><strong>Comprovar la configuració</strong><br />
+Fes clic al botó <code class="language-plaintext highlighter-rouge">Test</code> per verificar que Git està configurat correctament i funcionant. Si tot està bé, veuràs el missatge “Git executable is found”.</li>
+</ol>
+
+<h3 id="crear-un-repositori-git-en-intellij-idea-o-pycharm">Crear un repositori Git en IntelliJ IDEA o PyCharm</h3>
+
+<h4 id="inicialitzar-un-repositori-git">Inicialitzar un repositori Git</h4>
+
+<ol>
+  <li>
+    <p><strong>Obrir un projecte o crear-ne un de nou</strong><br />
+Obre el projecte existent o crea’n un de nou a IntelliJ o PyCharm.</p>
+  </li>
+  <li>
+    <p><strong>Inicialitzar un repositori Git</strong><br />
+Ves a <code class="language-plaintext highlighter-rouge">VCS</code> (Version Control System) al menú superior i selecciona <code class="language-plaintext highlighter-rouge">Enable Version Control Integration</code>. Apareixerà una finestra emergent on has de seleccionar <code class="language-plaintext highlighter-rouge">Git</code> com a sistema de control de versions.</p>
+  </li>
+  <li>
+    <p><strong>Afegir fitxers al repositori</strong><br />
+Un cop inicialitzat el repositori, podràs veure els fitxers no seguits al panell de “Version Control”. Per afegir-los al seguiment de Git, selecciona’ls, fes clic amb el botó dret i selecciona <code class="language-plaintext highlighter-rouge">Git</code> &gt; <code class="language-plaintext highlighter-rouge">Add</code>.</p>
+  </li>
+  <li>
+    <p><strong>Fer un commit</strong><br />
+Després d’afegir els fitxers, podràs fer un commit, que és un punt de restauració del projecte. Ves a <code class="language-plaintext highlighter-rouge">VCS</code> &gt; <code class="language-plaintext highlighter-rouge">Commit</code> o fes clic a la icona de commit a la barra de control de versions. Escriu un missatge descriptiu i confirma el commit.</p>
+  </li>
+</ol>
+
+<h3 id="connectar-amb-github">Connectar amb GitHub</h3>
+
+<p>Per treballar amb GitHub, primer has de connectar el teu compte a l’IDE.</p>
+
+<h4 id="configurar-el-compte-de-github">Configurar el compte de GitHub</h4>
+
+<ol>
+  <li>
+    <p><strong>Accedir a GitHub des de l’IDE</strong><br />
+Ves a <code class="language-plaintext highlighter-rouge">File</code> &gt; <code class="language-plaintext highlighter-rouge">Settings</code> (o <code class="language-plaintext highlighter-rouge">Preferences</code> en macOS) i busca <code class="language-plaintext highlighter-rouge">Version Control</code> &gt; <code class="language-plaintext highlighter-rouge">GitHub</code>.</p>
+  </li>
+  <li>
+    <p><strong>Iniciar sessió a GitHub</strong><br />
+Fes clic a <code class="language-plaintext highlighter-rouge">Add Account</code>. Això obrirà una finestra on podràs iniciar sessió amb el teu compte de GitHub. Si ho prefereixes, també pots utilitzar un <strong>token d’accés personal</strong> (PAT) que pots generar al teu compte de GitHub.</p>
+  </li>
+</ol>
+
+<h3 id="crear-un-repositori-github-des-dintellij-idea-o-pycharm">Crear un repositori GitHub des d’IntelliJ IDEA o PyCharm</h3>
+
+<ol>
+  <li>
+    <p><strong>Crear el repositori remot</strong><br />
+Un cop tens Git integrat al teu projecte, pots pujar el teu projecte a GitHub directament des de l’IDE. Ves a <code class="language-plaintext highlighter-rouge">VCS</code> &gt; <code class="language-plaintext highlighter-rouge">Import into Version Control</code> &gt; <code class="language-plaintext highlighter-rouge">Share Project on GitHub</code>.</p>
+  </li>
+  <li>
+    <p><strong>Afegir una descripció</strong><br />
+Especifica el nom del repositori i la seva descripció (opcional). L’IDE crearà automàticament el repositori remot a GitHub i farà un <code class="language-plaintext highlighter-rouge">push</code> dels fitxers al repositori.</p>
+  </li>
+</ol>
+
+<h3 id="clonar-un-repositori-github-a-intellij-idea-o-pycharm">Clonar un repositori GitHub a IntelliJ IDEA o PyCharm</h3>
+
+<p>Si ja tens un repositori a GitHub i vols clonar-lo per treballar-hi localment:</p>
+
+<ol>
+  <li>
+    <p><strong>Clonar el repositori</strong><br />
+Ves a <code class="language-plaintext highlighter-rouge">File</code> &gt; <code class="language-plaintext highlighter-rouge">New</code> &gt; <code class="language-plaintext highlighter-rouge">Project from Version Control</code>. Selecciona <code class="language-plaintext highlighter-rouge">Git</code> i introdueix l’URL del repositori GitHub que vols clonar.</p>
+  </li>
+  <li>
+    <p><strong>Seleccionar la ubicació</strong><br />
+Indica on vols guardar el projecte clonat al teu ordinador. Fes clic a <code class="language-plaintext highlighter-rouge">Clone</code> i l’IDE descarregarà el repositori a la ubicació seleccionada.</p>
+  </li>
+</ol>
+
+<h3 id="push-i-pull-en-github">Push i pull en GitHub</h3>
+
+<ol>
+  <li>
+    <p><strong>Fer push dels canvis a GitHub</strong><br />
+Un cop has fet canvis i creat commits, pots enviar aquests canvis al teu repositori remot a GitHub fent clic a la icona <code class="language-plaintext highlighter-rouge">Push</code> a la barra de control de versions o anant a <code class="language-plaintext highlighter-rouge">VCS</code> &gt; <code class="language-plaintext highlighter-rouge">Git</code> &gt; <code class="language-plaintext highlighter-rouge">Push</code>. Això enviarà els teus commits al repositori remot.</p>
+  </li>
+  <li>
+    <p><strong>Fer pull dels canvis</strong><br />
+Si algú més ha fet canvis al repositori remot, pots fer un <code class="language-plaintext highlighter-rouge">pull</code> per actualitzar el teu repositori local. Ves a <code class="language-plaintext highlighter-rouge">VCS</code> &gt; <code class="language-plaintext highlighter-rouge">Git</code> &gt; <code class="language-plaintext highlighter-rouge">Pull</code> per descarregar els canvis.</p>
+  </li>
+</ol>
+
+<h3 id="altres-funcionalitats-de-git-dins-dintellij-idea-i-pycharm">Altres funcionalitats de Git dins d’IntelliJ IDEA i PyCharm</h3>
+
+<ul>
+  <li>
+    <p><strong>Branques (branches)</strong>: Pots crear noves branques per treballar en funcionalitats o correccions específiques sense afectar la branca principal (normalment <code class="language-plaintext highlighter-rouge">main</code> o <code class="language-plaintext highlighter-rouge">master</code>). Ves a <code class="language-plaintext highlighter-rouge">VCS</code> &gt; <code class="language-plaintext highlighter-rouge">Git</code> &gt; <code class="language-plaintext highlighter-rouge">Branches</code> &gt; <code class="language-plaintext highlighter-rouge">New Branch</code> per crear-ne una de nova.</p>
+  </li>
+  <li>
+    <p><strong>Merge</strong>: Quan acabes de treballar en una branca, pots fusionar-la amb la branca principal. Selecciona la branca amb la qual vols treballar a <code class="language-plaintext highlighter-rouge">VCS</code> &gt; <code class="language-plaintext highlighter-rouge">Git</code> &gt; <code class="language-plaintext highlighter-rouge">Branches</code> i després selecciona <code class="language-plaintext highlighter-rouge">Merge</code> per fusionar les branques.</p>
+  </li>
+  <li>
+    <p><strong>Resolució de conflictes</strong>: Si hi ha conflictes entre diferents canvis (per exemple, si tu i un altre col·laborador heu fet canvis al mateix fitxer), l’IDE et mostrarà una interfície per resoldre els conflictes de manera visual.</p>
+  </li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

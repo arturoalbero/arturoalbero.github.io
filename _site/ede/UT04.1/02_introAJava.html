@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>arturoalbero.github.io | Web para probar</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="arturoalbero.github.io" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT04.1/02_introAJava.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT04.1/02_introAJava.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="arturoalbero.github.io" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"arturoalbero.github.io","url":"http://localhost:4000/ede/UT04.1/02_introAJava.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+} 
+p{
+    text-indent: 1rem;
+    text-align: justify;
+}
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bold;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<ul>
+  <li><a href="#cas-programación-en-java-desde-c">(CAS) Programación en Java desde C#</a>
+    <ul>
+      <li><a href="#java-y-c">Java y C#</a>
+        <ul>
+          <li><a href="#similitudes"><strong>Similitudes</strong></a></li>
+          <li><a href="#diferencias"><strong>Diferencias</strong></a></li>
+        </ul>
+      </li>
+      <li><a href="#2-estructuras-de-control">2. Estructuras de control</a>
+        <ul>
+          <li><a href="#if-else"><strong><code class="language-plaintext highlighter-rouge">if-else</code></strong></a>
+            <ul>
+              <li><a href="#switch"><strong><code class="language-plaintext highlighter-rouge">switch</code></strong></a></li>
+              <li><a href="#switch-mejorado-c"><strong><code class="language-plaintext highlighter-rouge">switch</code> mejorado (C#)</strong></a></li>
+              <li><a href="#for"><strong><code class="language-plaintext highlighter-rouge">for</code></strong></a></li>
+              <li><a href="#foreach-o-for-mejorado"><strong><code class="language-plaintext highlighter-rouge">foreach</code> (o <code class="language-plaintext highlighter-rouge">for</code> mejorado)</strong></a></li>
+              <li><a href="#while"><strong><code class="language-plaintext highlighter-rouge">while</code></strong></a></li>
+              <li><a href="#do-while"><strong><code class="language-plaintext highlighter-rouge">do-while</code></strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#3-ejemplo-de-clases-simples">3. Ejemplo de clases simples</a></li>
+          <li><a href="#4-ejemplo-de-herencia">4. Ejemplo de herencia</a></li>
+          <li><a href="#5-ejemplo-de-clases-abstractas-y-herencia">5. Ejemplo de clases abstractas y herencia</a></li>
+          <li><a href="#6-ejemplo-de-interfaces-e-implementación">6. Ejemplo de interfaces e implementación</a></li>
+          <li><a href="#actividades">Actividades</a>
+            <ul>
+              <li><a href="#1-estructuras-de-control">1. <strong>Estructuras de control</strong></a>
+                <ul>
+                  <li><a href="#condicionales-ifelse-switch"><strong>Condicionales (if/else, switch)</strong></a></li>
+                  <li><a href="#bucles-for-while-do-while"><strong>Bucles (for, while, do-while)</strong></a></li>
+                </ul>
+              </li>
+              <li><a href="#2-funciones">2. <strong>Funciones</strong></a></li>
+              <li><a href="#3-funciones-recursivas">3. <strong>Funciones recursivas</strong></a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#tabla-de-equivalencias-entre-c-y-java">Tabla de equivalencias entre C# y Java</a></li>
+    </ul>
+  </li>
+  <li><a href="#val-programació-en-java-des-de-c">(VAL) Programació en Java des de C#</a>
+    <ul>
+      <li><a href="#java-i-c">Java i C#</a>
+        <ul>
+          <li><a href="#similituds"><strong>Similituds</strong></a></li>
+          <li><a href="#diferències"><strong>Diferències</strong></a></li>
+        </ul>
+      </li>
+      <li><a href="#2-estructures-de-control">2. Estructures de control</a>
+        <ul>
+          <li><a href="#if-else-1"><strong><code class="language-plaintext highlighter-rouge">if-else</code></strong></a>
+            <ul>
+              <li><a href="#switch-1"><strong><code class="language-plaintext highlighter-rouge">switch</code></strong></a></li>
+              <li><a href="#switch-millorat-c"><strong><code class="language-plaintext highlighter-rouge">switch</code> millorat (C#)</strong></a></li>
+              <li><a href="#for-1"><strong><code class="language-plaintext highlighter-rouge">for</code></strong></a></li>
+              <li><a href="#foreach-o-for-millorat"><strong><code class="language-plaintext highlighter-rouge">foreach</code> (o <code class="language-plaintext highlighter-rouge">for</code> millorat)</strong></a></li>
+              <li><a href="#while-1"><strong><code class="language-plaintext highlighter-rouge">while</code></strong></a></li>
+              <li><a href="#do-while-1"><strong><code class="language-plaintext highlighter-rouge">do-while</code></strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#3-exemple-de-classes-simples">3. Exemple de classes simples</a></li>
+          <li><a href="#4-exemple-dherència">4. Exemple d’herència</a></li>
+          <li><a href="#5-exemple-de">5. Exemple de</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="cas-programación-en-java-desde-c">(CAS) Programación en Java desde C#</h1>
+
+<h2 id="java-y-c">Java y C#</h2>
+
+<p>Java y C# son dos lenguajes de programación orientados a objetos con muchas similitudes, pero también con algunas diferencias clave, tanto a nivel técnico como filosófico. Antes de comenzar a aprender Java, vamos a repasar algunos puntos clave para facilitar nuestra adaptación:</p>
+
+<h3 id="similitudes"><strong>Similitudes</strong></h3>
+
+<ol>
+  <li>
+    <p><strong>Sintaxis</strong>: La sintaxis básica de ambos lenguajes es muy parecida, ya que C# fue diseñado influenciado por Java. Esto hace que moverse entre uno y otro sea relativamente sencillo. Ambos usan <code class="language-plaintext highlighter-rouge">{}</code> para definir bloques de código y <code class="language-plaintext highlighter-rouge">;</code> para terminar sentencias.</p>
+  </li>
+  <li>
+    <p><strong>Orientación a objetos</strong>: Ambos son lenguajes puramente orientados a objetos, con clases, herencia, polimorfismo, encapsulamiento, etc.</p>
+  </li>
+  <li>
+    <p><strong>Recolección de basura (Garbage Collection)</strong>: Tanto Java como C# cuentan con sistemas automáticos de recolección de basura que se encargan de la gestión de la memoria, lo que simplifica el desarrollo y evita fugas de memoria.</p>
+  </li>
+  <li>
+    <p><strong>Entornos virtuales</strong>: Java corre sobre la <strong>Java Virtual Machine (JVM)</strong>, mientras que C# corre sobre el <strong>Common Language Runtime (CLR)</strong>. Ambos se ejecutan sobre máquinas virtuales, lo que proporciona independencia del hardware subyacente y facilita la portabilidad.</p>
+  </li>
+  <li>
+    <p><strong>Librerías y frameworks</strong>: Ambos lenguajes tienen bibliotecas y frameworks amplios que cubren desde aplicaciones web hasta aplicaciones de escritorio y móviles (Spring para Java, ASP.NET para C#).</p>
+  </li>
+</ol>
+
+<h3 id="diferencias"><strong>Diferencias</strong></h3>
+
+<ol>
+  <li><strong>Plataformas</strong>:
+    <ul>
+      <li><strong>Java</strong>: Es multiplataforma por naturaleza. Su lema es “escribe una vez, corre en cualquier lugar”, ya que cualquier sistema con una JVM puede ejecutar código Java.</li>
+      <li><strong>C#</strong>: Originalmente estaba más ligado a <strong>Windows</strong> y al ecosistema de Microsoft, aunque hoy en día con .NET Core y .NET 5/6 es más multiplataforma.</li>
+    </ul>
+  </li>
+  <li><strong>Propiedad y Comunidad</strong>:
+    <ul>
+      <li><strong>Java</strong>: Es propiedad de Oracle y tiene una comunidad muy grande, con muchas contribuciones de código abierto.</li>
+      <li><strong>C#</strong>: Es desarrollado y mantenido por Microsoft. Aunque originalmente era más cerrado, .NET Core ha abierto más el ecosistema y la comunidad.</li>
+    </ul>
+  </li>
+  <li><strong>Ecosistema de desarrollo</strong>:
+    <ul>
+      <li><strong>Java</strong>: Su ecosistema tiende a ser más modular, utilizando herramientas como <strong>Maven</strong> o <strong>Gradle</strong> para la gestión de dependencias. IDEs populares incluyen <strong>IntelliJ IDEA</strong> y <strong>Eclipse</strong>.</li>
+      <li><strong>C#</strong>: Tiene una integración más fuerte en el ecosistema de <strong>Visual Studio</strong>, lo que permite una experiencia de desarrollo muy pulida y productiva dentro de este IDE. <strong>NuGet</strong> es su principal herramienta de gestión de paquetes.</li>
+    </ul>
+  </li>
+  <li><strong>Tipos de datos y punteros</strong>:
+    <ul>
+      <li><strong>Java</strong>: No permite el uso directo de punteros ni acceso a la memoria fuera de sus reglas de seguridad.</li>
+      <li><strong>C#</strong>: Aunque generalmente no se usan, permite el uso de punteros bajo el contexto de código “unsafe” (inseguro), algo que Java no tiene.</li>
+      <li>C# permite usar valores por referencia en los parámetros de las funciones, mientras que en Java dependerá exclusivamente del tipo de datos.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="2-estructuras-de-control">2. Estructuras de control</h2>
+
+<p>Vamos a repasar cómo son las estructuras de control en C# y cuál es su equivalente en Java.</p>
+
+<h3 id="if-else"><strong><code class="language-plaintext highlighter-rouge">if-else</code></strong></h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="p">&gt;</span> <span class="m">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Mayor a 5"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Menor o igual a 5"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Mayor a 5"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Menor o igual a 5"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="switch"><strong><code class="language-plaintext highlighter-rouge">switch</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">day</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+<span class="k">switch</span> <span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="m">1</span><span class="p">:</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Lunes"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="m">2</span><span class="p">:</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Martes"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Otro día"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Lunes"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Martes"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Otro día"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="switch-mejorado-c"><strong><code class="language-plaintext highlighter-rouge">switch</code> mejorado (C#)</strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span> <span class="n">dayName</span> <span class="p">=</span> <span class="n">day</span> <span class="k">switch</span>
+<span class="p">{</span>
+    <span class="m">1</span> <span class="p">=&gt;</span> <span class="s">"Lunes"</span><span class="p">,</span>
+    <span class="m">2</span> <span class="p">=&gt;</span> <span class="s">"Martes"</span><span class="p">,</span>
+    <span class="n">_</span> <span class="p">=&gt;</span> <span class="s">"Otro día"</span>
+<span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">dayName</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Java (con Java 14 o superior)</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">dayName</span> <span class="o">=</span> <span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="s">"Lunes"</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="s">"Martes"</span><span class="o">;</span>
+    <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Otro día"</span><span class="o">;</span>
+<span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dayName</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="for"><strong><code class="language-plaintext highlighter-rouge">for</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="foreach-o-for-mejorado"><strong><code class="language-plaintext highlighter-rouge">foreach</code> (o <code class="language-plaintext highlighter-rouge">for</code> mejorado)</strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="p">[]</span> <span class="n">numbers</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span> <span class="p">};</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">num</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="while"><strong><code class="language-plaintext highlighter-rouge">while</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">i</span><span class="p">++;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="do-while"><strong><code class="language-plaintext highlighter-rouge">do-while</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">i</span><span class="p">++;</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">do</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Como se puede observar, es casi siempre igual salvo en las formas “mejoradas” de hacer algunas cosas. También es notable el uso de <code class="language-plaintext highlighter-rouge">System.out</code> en java, en lugar de <code class="language-plaintext highlighter-rouge">Console</code>.</p>
+
+<hr />
+
+<h3 id="3-ejemplo-de-clases-simples">3. Ejemplo de clases simples</h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Persona</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nombre</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Edad</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">Persona</span><span class="p">(</span><span class="kt">string</span> <span class="n">nombre</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edad</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Nombre</span> <span class="p">=</span> <span class="n">nombre</span><span class="p">;</span>
+        <span class="n">Edad</span> <span class="p">=</span> <span class="n">edad</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Saludar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"Hola, mi nombre es </span><span class="p">{</span><span class="n">Nombre</span><span class="p">}</span><span class="s"> y tengo </span><span class="p">{</span><span class="n">Edad</span><span class="p">}</span><span class="s"> años."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Persona</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">edad</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Persona</span><span class="o">(</span><span class="nc">String</span> <span class="n">nombre</span><span class="o">,</span> <span class="kt">int</span> <span class="n">edad</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nombre</span> <span class="o">=</span> <span class="n">nombre</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">edad</span> <span class="o">=</span> <span class="n">edad</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saludar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hola, mi nombre es "</span> <span class="o">+</span> <span class="n">nombre</span> <span class="o">+</span> <span class="s">" y tengo "</span> <span class="o">+</span> <span class="n">edad</span> <span class="o">+</span> <span class="s">" años."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Getters y setters en Java</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNombre</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNombre</span><span class="o">(</span><span class="nc">String</span> <span class="n">nombre</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nombre</span> <span class="o">=</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getEdad</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">edad</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEdad</span><span class="o">(</span><span class="kt">int</span> <span class="n">edad</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">edad</span> <span class="o">=</span> <span class="n">edad</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Detalles a tener en cuenta son la forma de trabajar con getters y setters y también que en Java los métodos y los atributos comienzan en minúscula, mientras que en C# los métodos comienzan en mayúscula. Con IntelliJ, podemos generar los constructores, getters y setters de forma automática, así como otros métodos (click derecho, generar métodos).</p>
+
+<hr />
+
+<h3 id="4-ejemplo-de-herencia">4. Ejemplo de herencia</h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Animal</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">HacerSonido</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Sonido genérico"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Perro</span> <span class="p">:</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Ladrar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Guau!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">hacerSonido</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sonido genérico"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Perro</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ladrar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Guau!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>En el caso de la herencia, la diferencia es clara. C# maneja la herencia como lo hace C++, mientras que Java utiliza palabras clave específicas para especificar el tipo de herencia.</p>
+
+<hr />
+
+<h3 id="5-ejemplo-de-clases-abstractas-y-herencia">5. Ejemplo de clases abstractas y herencia</h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Forma</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">abstract</span> <span class="k">void</span> <span class="nf">Dibujar</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Circulo</span> <span class="p">:</span> <span class="n">Forma</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Dibujar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Dibujando un círculo"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Forma</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">dibujar</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Circulo</span> <span class="kd">extends</span> <span class="nc">Forma</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dibujar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Dibujando un círculo"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="6-ejemplo-de-interfaces-e-implementación">6. Ejemplo de interfaces e implementación</h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">interface</span> <span class="nc">IVolador</span> <span class="p">{</span>
+    <span class="k">void</span> <span class="nf">Volar</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Pajaro</span> <span class="p">:</span> <span class="n">IVolador</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Volar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"El pájaro está volando"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Volador</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">volar</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pajaro</span> <span class="kd">implements</span> <span class="nc">Volador</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">volar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"El pájaro está volando"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Como se ve, C# trata la implementación de interfaces como un tipo de herencia más, mientras que Java usa una palabra clave diferente. En ambos lenguajes, una clase solo puede heredar de otra clase, pero puede implementar tantas interfaces como necesite.</p>
+
+<h3 id="actividades">Actividades</h3>
+
+<p>A continuación, 18 ejercicios para aprender a programar en Java. Puedes consultar <a href="https://nachoiborraies.github.io/java/">estos apuntes (apartados 1, 2, 3 y 4)</a> o <a href="https://docs.oracle.com/en/java/">la documentación oficial de Java</a> si lo necesitas.</p>
+
+<h4 id="1-estructuras-de-control">1. <strong>Estructuras de control</strong></h4>
+
+<h5 id="condicionales-ifelse-switch"><strong>Condicionales (if/else, switch)</strong></h5>
+
+<ol>
+  <li>
+    <p><strong>Mayor de dos números:</strong>
+Escribe un programa que reciba dos números por teclado e imprima cuál de ellos es el mayor. Si son iguales, debe indicarlo.</p>
+  </li>
+  <li>
+    <p><strong>Par o impar:</strong>
+Crea un programa que pida un número entero y determine si es par o impar.</p>
+  </li>
+  <li><strong>Calificación:</strong>
+Escribe un programa que reciba una calificación numérica (0-100) e imprima la correspondiente letra según el sistema educativo:
+    <ul>
+      <li>A (90-100)</li>
+      <li>B (80-89)</li>
+      <li>C (70-79)</li>
+      <li>D (60-69)</li>
+      <li>F (0-59)</li>
+    </ul>
+  </li>
+  <li><strong>Días de la semana:</strong>
+Escribe un programa que reciba un número del 1 al 7 e imprima el día de la semana correspondiente (por ejemplo, 1 es Lunes, 2 es Martes, etc.). Usa una estructura <code class="language-plaintext highlighter-rouge">switch</code>.</li>
+</ol>
+
+<h5 id="bucles-for-while-do-while"><strong>Bucles (for, while, do-while)</strong></h5>
+
+<ol>
+  <li>
+    <p><strong>Suma de los primeros N números:</strong>
+Escribe un programa que pida un número entero N y calcule la suma de los números desde 1 hasta N.</p>
+  </li>
+  <li>
+    <p><strong>Tablas de multiplicar:</strong>
+Crea un programa que pida un número entero entre 1 y 10 y muestre su tabla de multiplicar completa.</p>
+  </li>
+  <li>
+    <p><strong>Números primos:</strong>
+Escribe un programa que pida un número N y muestre los números primos entre 1 y N.</p>
+  </li>
+  <li>
+    <p><strong>Número de dígitos:</strong>
+Escribe un programa que reciba un número entero y determine cuántos dígitos tiene. Usa un bucle <code class="language-plaintext highlighter-rouge">while</code>.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="2-funciones">2. <strong>Funciones</strong></h4>
+
+<ol>
+  <li>
+    <p><strong>Función para determinar si un número es primo:</strong>
+Crea una función llamada <code class="language-plaintext highlighter-rouge">esPrimo</code> que reciba un número entero y retorne <code class="language-plaintext highlighter-rouge">true</code> si el número es primo y <code class="language-plaintext highlighter-rouge">false</code> en caso contrario. Usa esta función en el programa principal para imprimir si un número ingresado es primo o no.</p>
+  </li>
+  <li>
+    <p><strong>Función para calcular el factorial:</strong>
+Escribe una función llamada <code class="language-plaintext highlighter-rouge">factorial</code> que reciba un número entero y retorne su factorial (n!). Usa un bucle para implementarla.</p>
+  </li>
+  <li>
+    <p><strong>Función que determine si un número es palíndromo:</strong>
+Crea una función llamada <code class="language-plaintext highlighter-rouge">esPalindromo</code> que reciba un número entero y retorne <code class="language-plaintext highlighter-rouge">true</code> si el número es un palíndromo (se lee igual de izquierda a derecha y de derecha a izquierda).</p>
+  </li>
+  <li>
+    <p><strong>Máximo común divisor:</strong>
+Escribe una función llamada <code class="language-plaintext highlighter-rouge">mcd</code> que reciba dos números y retorne su máximo común divisor utilizando el algoritmo de Euclides.</p>
+  </li>
+  <li>
+    <p><strong>Suma de dígitos:</strong>
+Crea una función llamada <code class="language-plaintext highlighter-rouge">sumaDigitos</code> que reciba un número entero y retorne la suma de sus dígitos.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="3-funciones-recursivas">3. <strong>Funciones recursivas</strong></h4>
+
+<ol>
+  <li>
+    <p><strong>Factorial recursivo:</strong>
+Reescribe la función <code class="language-plaintext highlighter-rouge">factorial</code> del ejercicio anterior utilizando recursividad.</p>
+  </li>
+  <li>
+    <p><strong>Fibonacci recursivo:</strong>
+Escribe una función recursiva llamada <code class="language-plaintext highlighter-rouge">fibonacci</code> que reciba un número entero N y retorne el N-ésimo número de la secuencia de Fibonacci.</p>
+  </li>
+  <li>
+    <p><strong>Suma de números hasta N recursivo:</strong>
+Crea una función recursiva llamada <code class="language-plaintext highlighter-rouge">sumaRecursiva</code> que reciba un número N y retorne la suma de los números desde 1 hasta N.</p>
+  </li>
+  <li>
+    <p><strong>Potencia recursiva:</strong>
+Escribe una función recursiva llamada <code class="language-plaintext highlighter-rouge">potencia</code> que reciba dos enteros, <code class="language-plaintext highlighter-rouge">base</code> y <code class="language-plaintext highlighter-rouge">exponente</code>, y retorne el valor de base^exponente sin utilizar operadores de potenciación.</p>
+  </li>
+  <li>
+    <p><strong>Inversión de una cadena:</strong>
+Crea una función recursiva llamada <code class="language-plaintext highlighter-rouge">invertirCadena</code> que reciba una cadena de texto y la devuelva invertida (por ejemplo, “Hola” -&gt; “aloH”).</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="tabla-de-equivalencias-entre-c-y-java">Tabla de equivalencias entre C# y Java</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th>C#</th>
+      <th>Java</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Declaración de clase</td>
+      <td><code class="language-plaintext highlighter-rouge">class MyClass {}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">class MyClass {}</code></td>
+    </tr>
+    <tr>
+      <td>Declaración de método</td>
+      <td><code class="language-plaintext highlighter-rouge">public void MyMethod()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">public void myMethod()</code></td>
+    </tr>
+    <tr>
+      <td>Constructor</td>
+      <td><code class="language-plaintext highlighter-rouge">public MyClass() {}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">public MyClass() {}</code></td>
+    </tr>
+    <tr>
+      <td>Modificadores de acceso</td>
+      <td><code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">protected</code></td>
+      <td><code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">protected</code></td>
+    </tr>
+    <tr>
+      <td>Propiedades automáticas</td>
+      <td><code class="language-plaintext highlighter-rouge">public int MyProp { get; set; }</code></td>
+      <td>Se usa directamente con métodos getter y setter manuales</td>
+    </tr>
+    <tr>
+      <td>Declaración de array</td>
+      <td><code class="language-plaintext highlighter-rouge">int[] arr = new int[5];</code></td>
+      <td><code class="language-plaintext highlighter-rouge">int[] arr = new int[5];</code></td>
+    </tr>
+    <tr>
+      <td>Arreglos dinámicos (List)</td>
+      <td><code class="language-plaintext highlighter-rouge">List&lt;int&gt; list = new List&lt;int&gt;();</code></td>
+      <td><code class="language-plaintext highlighter-rouge">List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</code></td>
+    </tr>
+    <tr>
+      <td>Herencia</td>
+      <td><code class="language-plaintext highlighter-rouge">class MyClass : ParentClass {}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">class MyClass extends ParentClass {}</code></td>
+    </tr>
+    <tr>
+      <td>Interfaces</td>
+      <td><code class="language-plaintext highlighter-rouge">interface IMyInterface {}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">interface MyInterface {}</code></td>
+    </tr>
+    <tr>
+      <td>Implementación de interfaz</td>
+      <td><code class="language-plaintext highlighter-rouge">class MyClass : IMyInterface {}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">class MyClass implements MyInterface {}</code></td>
+    </tr>
+    <tr>
+      <td>Estructura <code class="language-plaintext highlighter-rouge">if-else</code></td>
+      <td>Igual en ambos lenguajes</td>
+      <td>Igual en ambos lenguajes</td>
+    </tr>
+    <tr>
+      <td>Estructura <code class="language-plaintext highlighter-rouge">switch</code></td>
+      <td><code class="language-plaintext highlighter-rouge">switch(exp) { case 1: ... }</code></td>
+      <td><code class="language-plaintext highlighter-rouge">switch(exp) { case 1: ... }</code></td>
+    </tr>
+    <tr>
+      <td>Ciclo <code class="language-plaintext highlighter-rouge">for</code></td>
+      <td><code class="language-plaintext highlighter-rouge">for (int i = 0; i &lt; 10; i++)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">for (int i = 0; i &lt; 10; i++)</code></td>
+    </tr>
+    <tr>
+      <td>Ciclo <code class="language-plaintext highlighter-rouge">foreach</code></td>
+      <td><code class="language-plaintext highlighter-rouge">foreach (var item in collection)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">for (Type item : collection)</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<div style="page-break-after: always;"></div>
+
+<h1 id="val-programació-en-java-des-de-c">(VAL) Programació en Java des de C#</h1>
+
+<h2 id="java-i-c">Java i C#</h2>
+
+<p>Java i C# són dos llenguatges de programació orientats a objectes amb moltes similituds, però també amb algunes diferències clau, tant a nivell tècnic com filosòfic. Abans de començar a aprendre Java, repassarem alguns punts clau per a facilitar la nostra adaptació:</p>
+
+<h3 id="similituds"><strong>Similituds</strong></h3>
+
+<ol>
+  <li>
+    <p><strong>Sintaxi</strong>: La sintaxi bàsica de tots dos llenguatges és molt semblant, ja que C# es va dissenyar influenciat per Java. Això fa que passar d’un a un altre siga relativament senzill. Tots dos utilitzen <code class="language-plaintext highlighter-rouge">{}</code> per a definir blocs de codi i <code class="language-plaintext highlighter-rouge">;</code> per a acabar les sentències.</p>
+  </li>
+  <li>
+    <p><strong>Orientació a objectes</strong>: Tots dos són llenguatges purament orientats a objectes, amb classes, herència, polimorfisme, encapsulació, etc.</p>
+  </li>
+  <li>
+    <p><strong>Recollida d’escombraries (Garbage Collection)</strong>: Tant Java com C# compten amb sistemes automàtics de recollida d’escombraries que s’encarreguen de la gestió de la memòria, simplificant el desenvolupament i evitant fugues de memòria.</p>
+  </li>
+  <li>
+    <p><strong>Entorns virtuals</strong>: Java s’executa sobre la <strong>Java Virtual Machine (JVM)</strong>, mentre que C# s’executa sobre el <strong>Common Language Runtime (CLR)</strong>. Tots dos s’executen sobre màquines virtuals, la qual cosa proporciona independència de maquinari i facilita la portabilitat.</p>
+  </li>
+  <li>
+    <p><strong>Llibreries i frameworks</strong>: Tots dos llenguatges tenen biblioteques i frameworks amplis que cobreixen des d’aplicacions web fins a aplicacions d’escriptori i mòbils (Spring per a Java, ASP.NET per a C#).</p>
+  </li>
+</ol>
+
+<h3 id="diferències"><strong>Diferències</strong></h3>
+
+<ol>
+  <li><strong>Plataformes</strong>:
+    <ul>
+      <li><strong>Java</strong>: És multiplataforma per naturalesa. El seu lema és “escriu una vegada, executa en qualsevol lloc”, ja que qualsevol sistema amb una JVM pot executar codi Java.</li>
+      <li><strong>C#</strong>: Originalment estava més lligat a <strong>Windows</strong> i a l’ecosistema de Microsoft, encara que avui dia, amb .NET Core i .NET 5/6, és més multiplataforma.</li>
+    </ul>
+  </li>
+  <li><strong>Propietat i Comunitat</strong>:
+    <ul>
+      <li><strong>Java</strong>: És propietat d’Oracle i té una comunitat molt gran, amb moltes contribucions de codi obert.</li>
+      <li><strong>C#</strong>: És desenvolupat i mantingut per Microsoft. Encara que originalment era més tancat, .NET Core ha obert més l’ecosistema i la comunitat.</li>
+    </ul>
+  </li>
+  <li><strong>Ecosistema de desenvolupament</strong>:
+    <ul>
+      <li><strong>Java</strong>: El seu ecosistema tendeix a ser més modular, utilitzant eines com <strong>Maven</strong> o <strong>Gradle</strong> per a la gestió de dependències. IDEs populars inclouen <strong>IntelliJ IDEA</strong> i <strong>Eclipse</strong>.</li>
+      <li><strong>C#</strong>: Té una integració més forta amb l’ecosistema de <strong>Visual Studio</strong>, que permet una experiència de desenvolupament molt polida i productiva dins d’aquest IDE. <strong>NuGet</strong> és la seua principal eina de gestió de paquets.</li>
+    </ul>
+  </li>
+  <li><strong>Tipus de dades i punters</strong>:
+    <ul>
+      <li><strong>Java</strong>: No permet l’ús directe de punters ni l’accés a la memòria fora de les seues regles de seguretat.</li>
+      <li><strong>C#</strong>: Encara que generalment no s’utilitzen, permet l’ús de punters en el context de codi “unsafe” (insegur), cosa que Java no permet.</li>
+      <li>C# permet utilitzar valors per referència en els paràmetres de les funcions, mentre que en Java dependrà exclusivament del tipus de dades.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="2-estructures-de-control">2. Estructures de control</h2>
+
+<p>Vegem com són les estructures de control en C# i quin és el seu equivalent en Java.</p>
+
+<h3 id="if-else-1"><strong><code class="language-plaintext highlighter-rouge">if-else</code></strong></h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="p">&gt;</span> <span class="m">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Major a 5"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Menor o igual a 5"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Major a 5"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Menor o igual a 5"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="switch-1"><strong><code class="language-plaintext highlighter-rouge">switch</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">day</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span>
+<span class="k">switch</span> <span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="m">1</span><span class="p">:</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Dilluns"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="m">2</span><span class="p">:</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Dimarts"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">default</span><span class="p">:</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Un altre dia"</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">day</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Dilluns"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Dimarts"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+    <span class="k">default</span><span class="o">:</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Un altre dia"</span><span class="o">);</span>
+        <span class="k">break</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="switch-millorat-c"><strong><code class="language-plaintext highlighter-rouge">switch</code> millorat (C#)</strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span> <span class="n">dayName</span> <span class="p">=</span> <span class="n">day</span> <span class="k">switch</span>
+<span class="p">{</span>
+    <span class="m">1</span> <span class="p">=&gt;</span> <span class="s">"Dilluns"</span><span class="p">,</span>
+    <span class="m">2</span> <span class="p">=&gt;</span> <span class="s">"Dimarts"</span><span class="p">,</span>
+    <span class="n">_</span> <span class="p">=&gt;</span> <span class="s">"Un altre dia"</span>
+<span class="p">};</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">dayName</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Java (amb Java 14 o superior)</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">dayName</span> <span class="o">=</span> <span class="k">switch</span> <span class="o">(</span><span class="n">day</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">case</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="s">"Dilluns"</span><span class="o">;</span>
+    <span class="k">case</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="s">"Dimarts"</span><span class="o">;</span>
+    <span class="k">default</span> <span class="o">-&gt;</span> <span class="s">"Un altre dia"</span><span class="o">;</span>
+<span class="o">};</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">dayName</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="for-1"><strong><code class="language-plaintext highlighter-rouge">for</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="foreach-o-for-millorat"><strong><code class="language-plaintext highlighter-rouge">foreach</code> (o <code class="language-plaintext highlighter-rouge">for</code> millorat)</strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="p">[]</span> <span class="n">numbers</span> <span class="p">=</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span> <span class="p">};</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">num</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span> <span class="o">};</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">:</span> <span class="n">numbers</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="while-1"><strong><code class="language-plaintext highlighter-rouge">while</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">i</span><span class="p">++;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="do-while-1"><strong><code class="language-plaintext highlighter-rouge">do-while</code></strong></h4>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">i</span><span class="p">++;</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="p">&lt;</span> <span class="m">5</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<span class="k">do</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+    <span class="n">i</span><span class="o">++;</span>
+<span class="o">}</span> <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Com es pot observar, quasi sempre és igual llevat de les formes “millorades” de fer algunes coses. També és notable l’ús de <code class="language-plaintext highlighter-rouge">System.out</code> en Java, en lloc de <code class="language-plaintext highlighter-rouge">Console</code>.</p>
+
+<hr />
+
+<h3 id="3-exemple-de-classes-simples">3. Exemple de classes simples</h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Persona</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nom</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Edat</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">Persona</span><span class="p">(</span><span class="kt">string</span> <span class="n">nom</span><span class="p">,</span> <span class="kt">int</span> <span class="n">edat</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Nom</span> <span class="p">=</span> <span class="n">nom</span><span class="p">;</span>
+        <span class="n">Edat</span> <span class="p">=</span> <span class="n">edat</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Saludar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"Hola, el meu nom és </span><span class="p">{</span><span class="n">Nom</span><span class="p">}</span><span class="s"> i tinc </span><span class="p">{</span><span class="n">Edat</span><span class="p">}</span><span class="s"> anys."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Persona</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nom</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">edat</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Persona</span><span class="o">(</span><span class="nc">String</span> <span class="n">nom</span><span class="o">,</span> <span class="kt">int</span> <span class="n">edat</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nom</span> <span class="o">=</span> <span class="n">nom</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">edat</span> <span class="o">=</span> <span class="n">edat</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saludar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hola, el meu nom és "</span> <span class="o">+</span> <span class="n">nom</span> <span class="o">+</span> <span class="s">" i tinc "</span> <span class="o">+</span> <span class="n">edat</span> <span class="o">+</span> <span class="s">" anys."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Getters i setters en Java</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNom</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">nom</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNom</span><span class="o">(</span><span class="nc">String</span> <span class="n">nom</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nom</span> <span class="o">=</span> <span class="n">nom</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getEdat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">edat</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEdat</span><span class="o">(</span><span class="kt">int</span> <span class="n">edat</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">edat</span> <span class="o">=</span> <span class="n">edat</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="4-exemple-dherència">4. Exemple d’herència</h3>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Animal</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">FerSo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"So genèric"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Gos</span> <span class="p">:</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Bordar</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Bup bup!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ferSo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"So genèric"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Gos</span> <span class="kd">extends</span> <span class="nc">Animal</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bordar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Bup bup!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="5-exemple-de">5. Exemple de</h3>
+
+<p>manipulació de llistes i altres col·leccions</p>
+
+<p><strong>C#</strong>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">numeros</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span> <span class="p">};</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">numero</span> <span class="k">in</span> <span class="n">numeros</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">numero</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Java</strong>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">numeros</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">));</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">numero</span> <span class="o">:</span> <span class="n">numeros</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">numero</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>Amb aquests exemples, pots començar a programar en Java amb una transició suau des del coneixement de C#. Les estructures són pràcticament les mateixes, i els conceptes de programació orientada a objectes continuen sent igual d’aplicables.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>arturoalbero.github.io | Web para probar</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="arturoalbero.github.io" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT04.1/01_gestoresDeProyectos.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT04.1/01_gestoresDeProyectos.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="arturoalbero.github.io" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"arturoalbero.github.io","url":"http://localhost:4000/ede/UT04.1/01_gestoresDeProyectos.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+} 
+p{
+    text-indent: 1rem;
+    text-align: justify;
+}
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bold;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<ul>
+  <li><a href="#cas-proyectos-en-java-gestores-de-proyectos-maven-y-gradle">(CAS) Proyectos en Java. Gestores de proyectos. Maven y Gradle</a>
+    <ul>
+      <li><a href="#1-gestor-de-dependencias-de-intellij">1. <strong>Gestor de dependencias de IntelliJ</strong></a>
+        <ul>
+          <li><a href="#ventajas-del-gestor-de-intellij">Ventajas del gestor de IntelliJ</a></li>
+          <li><a href="#desventajas-del-gestor-de-intellij">Desventajas del gestor de IntelliJ</a></li>
+          <li><a href="#cuándo-usaremos-el-gestor-de-intellij">¿Cuándo usaremos el gestor de IntelliJ?</a></li>
+          <li><a href="#actividad-1">Actividad 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-maven">2. <strong>Maven</strong></a>
+        <ul>
+          <li><a href="#ventajas-de-maven">Ventajas de Maven</a></li>
+          <li><a href="#desventajas-de-maven">Desventajas de Maven</a></li>
+          <li><a href="#cuándo-usaremos-maven">¿Cuándo usaremos Maven?</a></li>
+          <li><a href="#configuración-de-un-proyecto-con-maven">Configuración de un proyecto con Maven</a></li>
+          <li><a href="#actividad-2">Actividad 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-gradle">3. <strong>Gradle</strong></a>
+        <ul>
+          <li><a href="#ventajas-de-gradle">Ventajas de Gradle</a></li>
+          <li><a href="#desventajasde-gradle">Desventajasde Gradle</a></li>
+          <li><a href="#cuándo-usamos-gradle">¿Cuándo usamos Gradle?</a></li>
+          <li><a href="#configuración-de-un-proyecto-con-gradle">Configuración de un proyecto con Gradle</a></li>
+          <li><a href="#actividad-3">Actividad 3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#val-projectes-en-java-gestors-de-projectes-maven-i-gradle">(VAL) Projectes en Java. Gestors de projectes. Maven i Gradle</a>
+    <ul>
+      <li><a href="#1-gestor-de-dependències-dintellij">1. <strong>Gestor de dependències d’IntelliJ</strong></a>
+        <ul>
+          <li><a href="#avantatges-del-gestor-dintellij">Avantatges del gestor d’IntelliJ</a></li>
+          <li><a href="#desavantatges-del-gestor-dintellij">Desavantatges del gestor d’IntelliJ</a></li>
+          <li><a href="#quan-usarem-el-gestor-dintellij">Quan usarem el gestor d’IntelliJ?</a></li>
+          <li><a href="#activitat-1">Activitat 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-maven-1">2. <strong>Maven</strong></a>
+        <ul>
+          <li><a href="#avantatges-de-maven">Avantatges de Maven</a></li>
+          <li><a href="#desavantatges-de-maven">Desavantatges de Maven</a></li>
+          <li><a href="#quan-usarem-maven">Quan usarem Maven?</a></li>
+          <li><a href="#configuració-dun-projecte-amb-maven">Configuració d’un projecte amb Maven</a></li>
+          <li><a href="#activitat-2">Activitat 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-gradle-1">3. <strong>Gradle</strong></a>
+        <ul>
+          <li><a href="#avantatges-de-gradle">Avantatges de Gradle</a></li>
+          <li><a href="#desavantatges-de-gradle">Desavantatges de Gradle</a></li>
+          <li><a href="#quan-usem-gradle">Quan usem Gradle?</a></li>
+          <li><a href="#configuració-dun-projecte-amb-gradle">Configuració d’un projecte amb Gradle</a></li>
+          <li><a href="#activitat-3">Activitat 3</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="cas-proyectos-en-java-gestores-de-proyectos-maven-y-gradle">(CAS) Proyectos en Java. Gestores de proyectos. Maven y Gradle</h1>
+
+<p>En IntelliJ tienes varias opciones para gestionar las dependencias de tus proyectos Java, como el gestor de dependencias propio de IntelliJ, <strong>Maven</strong> o <strong>Gradle</strong>. Aquí te doy una visión rápida de cada uno, con recomendaciones sobre cuál podría ser la mejor opción según tu caso.</p>
+
+<h2 id="1-gestor-de-dependencias-de-intellij">1. <strong>Gestor de dependencias de IntelliJ</strong></h2>
+
+<p>El gestor de dependencias integrado en IntelliJ se encarga de gestionar bibliotecas manualmente a través de configuraciones locales en el proyecto. Aunque puede ser útil para proyectos pequeños o sencillos, tiene limitaciones importantes:</p>
+
+<h3 id="ventajas-del-gestor-de-intellij">Ventajas del gestor de IntelliJ</h3>
+
+<ul>
+  <li>Fácil de usar para proyectos muy pequeños o para aquellos que no requieren muchas dependencias externas.</li>
+  <li>Permite agregar librerías manualmente (en formato <code class="language-plaintext highlighter-rouge">.jar</code>) sin necesidad de un gestor externo.</li>
+</ul>
+
+<h3 id="desventajas-del-gestor-de-intellij">Desventajas del gestor de IntelliJ</h3>
+
+<ul>
+  <li><strong>No es escalable</strong>: Si el proyecto crece y tiene muchas dependencias, manejar esto manualmente puede ser muy complicado y propenso a errores.</li>
+  <li><strong>No maneja automáticamente las dependencias transitorias</strong>: Si tu biblioteca necesita otras bibliotecas, tendrás que gestionarlas tú manualmente.</li>
+  <li><strong>No es compatible con automatización o integración continua</strong>: No se integra fácilmente con herramientas de automatización de construcción como Jenkins o CI/CD.</li>
+  <li><strong>Menor soporte para plugins o configuraciones avanzadas</strong>.</li>
+</ul>
+
+<h3 id="cuándo-usaremos-el-gestor-de-intellij">¿Cuándo usaremos el gestor de IntelliJ?</h3>
+
+<p>Usar el gestor de dependencias propio de IntelliJ solo es recomendable para proyectos <strong>muy pequeños</strong> o <strong>prototipos</strong> que no requieran integración continua, automatización, o un sistema de construcción más avanzado.</p>
+
+<h3 id="actividad-1">Actividad 1</h3>
+
+<p>Crea un proyecto en Java usando el gestor de dependencias propio de IntelliJ y un programa que, al ejecutarlo, escriba por consola “Hola Mundo”.</p>
+
+<hr />
+<div style="page-break-after: always;"></div>
+
+<h2 id="2-maven">2. <strong>Maven</strong></h2>
+
+<p><strong>Maven</strong> es un gestor de proyectos y dependencias ampliamente utilizado en proyectos Java. Define la estructura del proyecto y gestiona las dependencias a través de un archivo XML llamado <code class="language-plaintext highlighter-rouge">pom.xml</code>.</p>
+
+<h3 id="ventajas-de-maven">Ventajas de Maven</h3>
+
+<ul>
+  <li><strong>Estandarización</strong>: Tiene una estructura estándar de proyectos Java, lo que facilita la colaboración entre equipos.</li>
+  <li><strong>Automatización de dependencias</strong>: Puedes agregar dependencias fácilmente, y Maven descargará automáticamente las bibliotecas necesarias y sus dependencias transitorias desde repositorios centralizados.</li>
+  <li><strong>Integración continua</strong>: Está bien soportado en herramientas de integración continua (CI) como Jenkins, GitLab CI, GitHub Actions, etc.</li>
+  <li><strong>Popularidad y soporte</strong>: Hay una enorme comunidad y mucha documentación disponible.</li>
+</ul>
+
+<h3 id="desventajas-de-maven">Desventajas de Maven</h3>
+
+<ul>
+  <li><strong>XML</strong>: Algunos desarrolladores consideran que editar archivos <code class="language-plaintext highlighter-rouge">pom.xml</code> es tedioso y difícil de leer cuando el archivo crece.</li>
+  <li><strong>Rendimiento</strong>: Comparado con Gradle, Maven puede ser un poco más lento, especialmente en proyectos grandes.</li>
+</ul>
+
+<h3 id="cuándo-usaremos-maven">¿Cuándo usaremos Maven?</h3>
+
+<p><strong>Maven</strong> es una excelente opción si trabajas en <strong>proyectos medianos o grandes</strong> o si tu equipo ya está familiarizado con él. También es ideal para proyectos con equipos distribuidos, ya que su estructura estándar y amplio uso en la industria lo hacen fácil de adoptar.</p>
+
+<h3 id="configuración-de-un-proyecto-con-maven">Configuración de un proyecto con Maven</h3>
+
+<ol>
+  <li><strong>Crear un proyecto con Maven</strong>:
+    <ul>
+      <li>Al crear un nuevo proyecto en IntelliJ, selecciona <strong>Maven</strong> como opción de proyecto.</li>
+      <li>IntelliJ generará automáticamente un archivo <code class="language-plaintext highlighter-rouge">pom.xml</code> donde podrás agregar tus dependencias.</li>
+    </ul>
+  </li>
+  <li><strong>Agregar dependencias en Maven</strong>:
+    <ul>
+      <li>Abre el archivo <code class="language-plaintext highlighter-rouge">pom.xml</code> y añade las dependencias dentro de la sección <code class="language-plaintext highlighter-rouge">&lt;dependencies&gt;</code>:</li>
+    </ul>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>4.13.1<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Ejecutar Maven</strong>:
+    <ul>
+      <li>Puedes ejecutar comandos de Maven directamente en IntelliJ desde el panel de Maven (en la barra lateral derecha).</li>
+      <li>Comandos comunes incluyen <code class="language-plaintext highlighter-rouge">clean</code>, <code class="language-plaintext highlighter-rouge">install</code>, y <code class="language-plaintext highlighter-rouge">package</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="actividad-2">Actividad 2</h3>
+
+<p>Crea un proyecto en Java usando Maven y un programa que, al ejecutarlo, escriba por consola “Hola Mundo, vivo en Maven”.</p>
+
+<hr />
+<div style="page-break-after: always;"></div>
+
+<h2 id="3-gradle">3. <strong>Gradle</strong></h2>
+
+<p><strong>Gradle</strong> es un gestor de construcción más moderno y flexible que Maven. En lugar de usar XML, Gradle utiliza archivos de configuración en <strong>Groovy</strong> o <strong>Kotlin</strong> para definir dependencias y tareas, lo que lo hace más legible y potente.</p>
+
+<h3 id="ventajas-de-gradle">Ventajas de Gradle</h3>
+
+<ul>
+  <li><strong>Flexibilidad</strong>: Gradle es más flexible que Maven, permitiendo configuraciones avanzadas sin tantas restricciones.</li>
+  <li><strong>Rendimiento</strong>: Gradle es generalmente más rápido que Maven debido a su sistema de ejecución incremental y su caché local.</li>
+  <li><strong>Soporte para múltiples lenguajes</strong>: Aunque es muy popular en proyectos Java, Gradle también es común en proyectos Android, Kotlin, y otros lenguajes como Scala o Groovy.</li>
+  <li><strong>DSL legible</strong>: Al usar un DSL en Groovy o Kotlin, los archivos de configuración (<code class="language-plaintext highlighter-rouge">build.gradle</code>) son más compactos y fáciles de leer que los archivos XML de Maven.</li>
+</ul>
+
+<h3 id="desventajasde-gradle">Desventajasde Gradle</h3>
+
+<ul>
+  <li><strong>Curva de aprendizaje</strong>: Aunque más potente, puede ser más difícil de aprender al principio si vienes de Maven, sobre todo si necesitas personalizar tareas específicas.</li>
+  <li><strong>Menos estándar</strong>: Aunque cada vez es más común, no todos los proyectos Java adoptan Gradle. Por lo tanto, puede no ser la mejor opción si tu equipo ya está familiarizado con Maven.</li>
+</ul>
+
+<h3 id="cuándo-usamos-gradle">¿Cuándo usamos Gradle?</h3>
+
+<p><strong>Gradle</strong> es ideal para <strong>proyectos grandes</strong>, especialmente si necesitas flexibilidad o si trabajas en proyectos <strong>multilenguaje</strong> o <strong>Android</strong>. También es una excelente opción si te importa el rendimiento y la eficiencia en la construcción.</p>
+
+<h3 id="configuración-de-un-proyecto-con-gradle">Configuración de un proyecto con Gradle</h3>
+
+<ol>
+  <li>
+    <p><strong>Crear un proyecto con Gradle</strong>:</p>
+
+    <ul>
+      <li>Al crear un nuevo proyecto, selecciona <strong>Gradle</strong> como el sistema de construcción.</li>
+      <li>Se generará un archivo <code class="language-plaintext highlighter-rouge">build.gradle</code> que puedes usar para gestionar las dependencias.</li>
+    </ul>
+  </li>
+  <li><strong>Agregar dependencias en Gradle</strong>:
+    <ul>
+      <li>Abre el archivo <code class="language-plaintext highlighter-rouge">build.gradle</code> y agrega las dependencias en la sección <code class="language-plaintext highlighter-rouge">dependencies</code>:</li>
+    </ul>
+
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">testImplementation</span> <span class="s1">'junit:junit:4.13.1'</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Ejecutar Gradle</strong>:
+    <ul>
+      <li>Al igual que con Maven, puedes ejecutar tareas de Gradle directamente desde IntelliJ usando el panel de Gradle. Tareas comunes incluyen <code class="language-plaintext highlighter-rouge">build</code>, <code class="language-plaintext highlighter-rouge">test</code>, y <code class="language-plaintext highlighter-rouge">clean</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="actividad-3">Actividad 3</h3>
+
+<p>Crea un proyecto en Java usando Gradle y un programa que, al ejecutarlo, escriba por consola “Hola Mundo, vivo en Gradle”.</p>
+
+<hr />
+
+<p>Durante el curso emplearemos Maven, por su mayor implantación en la actualidad.</p>
+
+<hr />
+<div style="page-break-after: always;"></div>
+
+<h1 id="val-projectes-en-java-gestors-de-projectes-maven-i-gradle">(VAL) Projectes en Java. Gestors de projectes. Maven i Gradle</h1>
+
+<p>En IntelliJ tens diverses opcions per gestionar les dependències dels teus projectes Java, com el gestor de dependències propi d’IntelliJ, <strong>Maven</strong> o <strong>Gradle</strong>. A continuació, et done una visió ràpida de cada un, amb recomanacions sobre quina podria ser la millor opció segons el teu cas.</p>
+
+<h2 id="1-gestor-de-dependències-dintellij">1. <strong>Gestor de dependències d’IntelliJ</strong></h2>
+
+<p>El gestor de dependències integrat en IntelliJ s’encarrega de gestionar biblioteques manualment a través de configuracions locals en el projecte. Encara que pot ser útil per a projectes xicotets o senzills, té limitacions importants:</p>
+
+<h3 id="avantatges-del-gestor-dintellij">Avantatges del gestor d’IntelliJ</h3>
+
+<ul>
+  <li>Fàcil d’usar per a projectes molt xicotets o per a aquells que no necessiten moltes dependències externes.</li>
+  <li>Permet afegir biblioteques manualment (en format <code class="language-plaintext highlighter-rouge">.jar</code>) sense necessitat d’un gestor extern.</li>
+</ul>
+
+<h3 id="desavantatges-del-gestor-dintellij">Desavantatges del gestor d’IntelliJ</h3>
+
+<ul>
+  <li><strong>No és escalable</strong>: Si el projecte creix i té moltes dependències, gestionar-ho manualment pot ser molt complicat i propens a errors.</li>
+  <li><strong>No maneja automàticament les dependències transitòries</strong>: Si la teua biblioteca necessita altres biblioteques, hauràs de gestionar-les tu mateix manualment.</li>
+  <li><strong>No és compatible amb automatització o integració contínua</strong>: No s’integra fàcilment amb eines d’automatització de construcció com Jenkins o CI/CD.</li>
+  <li><strong>Menor suport per a plugins o configuracions avançades</strong>.</li>
+</ul>
+
+<h3 id="quan-usarem-el-gestor-dintellij">Quan usarem el gestor d’IntelliJ?</h3>
+
+<p>Usar el gestor de dependències propi d’IntelliJ és recomanable només per a projectes <strong>molt xicotets</strong> o <strong>prototips</strong> que no requereixen integració contínua, automatització, o un sistema de construcció més avançat.</p>
+
+<h3 id="activitat-1">Activitat 1</h3>
+
+<p>Crea un projecte en Java usant el gestor de dependències propi d’IntelliJ i un programa que, en executar-lo, escriga per consola “Hola Món”.</p>
+
+<hr />
+<div style="page-break-after: always;"></div>
+
+<h2 id="2-maven-1">2. <strong>Maven</strong></h2>
+
+<p><strong>Maven</strong> és un gestor de projectes i dependències àmpliament utilitzat en projectes Java. Defineix l’estructura del projecte i gestiona les dependències a través d’un arxiu XML anomenat <code class="language-plaintext highlighter-rouge">pom.xml</code>.</p>
+
+<h3 id="avantatges-de-maven">Avantatges de Maven</h3>
+
+<ul>
+  <li><strong>Estandardització</strong>: Té una estructura estàndard de projectes Java, la qual cosa facilita la col·laboració entre equips.</li>
+  <li><strong>Automatització de dependències</strong>: Pots afegir dependències fàcilment, i Maven descarregarà automàticament les biblioteques necessàries i les seues dependències transitòries des de repositoris centralitzats.</li>
+  <li><strong>Integració contínua</strong>: Té bon suport en eines d’integració contínua (CI) com Jenkins, GitLab CI, GitHub Actions, etc.</li>
+  <li><strong>Popularitat i suport</strong>: Té una enorme comunitat i molta documentació disponible.</li>
+</ul>
+
+<h3 id="desavantatges-de-maven">Desavantatges de Maven</h3>
+
+<ul>
+  <li><strong>XML</strong>: Alguns desenvolupadors consideren que editar arxius <code class="language-plaintext highlighter-rouge">pom.xml</code> és tediós i difícil de llegir quan l’arxiu creix.</li>
+  <li><strong>Rendiment</strong>: Comparat amb Gradle, Maven pot ser un poc més lent, especialment en projectes grans.</li>
+</ul>
+
+<h3 id="quan-usarem-maven">Quan usarem Maven?</h3>
+
+<p><strong>Maven</strong> és una excel·lent opció si treballes en <strong>projectes mitjans o grans</strong> o si el teu equip ja està familiaritzat amb ell. També és ideal per a projectes amb equips distribuïts, ja que la seua estructura estàndard i ampli ús en la indústria el fan fàcil d’adoptar.</p>
+
+<h3 id="configuració-dun-projecte-amb-maven">Configuració d’un projecte amb Maven</h3>
+
+<ol>
+  <li><strong>Crear un projecte amb Maven</strong>:
+    <ul>
+      <li>En crear un nou projecte en IntelliJ, selecciona <strong>Maven</strong> com a opció de projecte.</li>
+      <li>IntelliJ generarà automàticament un arxiu <code class="language-plaintext highlighter-rouge">pom.xml</code> on podràs afegir les teues dependències.</li>
+    </ul>
+  </li>
+  <li><strong>Afegir dependències en Maven</strong>:
+    <ul>
+      <li>Obri l’arxiu <code class="language-plaintext highlighter-rouge">pom.xml</code> i afegeix les dependències dins de la secció <code class="language-plaintext highlighter-rouge">&lt;dependencies&gt;</code>:</li>
+    </ul>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>4.13.1<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Executar Maven</strong>:
+    <ul>
+      <li>Pots executar comandaments de Maven directament en IntelliJ des del panell de Maven (en la barra lateral dreta).</li>
+      <li>Comandaments comuns inclouen <code class="language-plaintext highlighter-rouge">clean</code>, <code class="language-plaintext highlighter-rouge">install</code>, i <code class="language-plaintext highlighter-rouge">package</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="activitat-2">Activitat 2</h3>
+
+<p>Crea un projecte en Java usant Maven i un programa que, en executar-lo, escriga per consola “Hola Món, visc en Maven”.</p>
+
+<hr />
+<div style="page-break-after: always;"></div>
+
+<h2 id="3-gradle-1">3. <strong>Gradle</strong></h2>
+
+<p><strong>Gradle</strong> és un gestor de construcció més modern i flexible que Maven. En lloc d’usar XML, Gradle utilitza arxius de configuració en <strong>Groovy</strong> o <strong>Kotlin</strong> per definir dependències i tasques, la qual cosa el fa més llegible i potent.</p>
+
+<h3 id="avantatges-de-gradle">Avantatges de Gradle</h3>
+
+<ul>
+  <li><strong>Flexibilitat</strong>: Gradle és més flexible que Maven, permetent configuracions avançades sense tantes restriccions.</li>
+  <li><strong>Rendiment</strong>: Gradle és generalment més ràpid que Maven gràcies al seu sistema d’execució incremental i la seua memòria cau local.</li>
+  <li><strong>Suport per a múltiples llenguatges</strong>: Encara que és molt popular en projectes Java, Gradle també és comú en projectes Android, Kotlin, i altres llenguatges com Scala o Groovy.</li>
+  <li><strong>DSL llegible</strong>: En usar un DSL en Groovy o Kotlin, els arxius de configuració (<code class="language-plaintext highlighter-rouge">build.gradle</code>) són més compactes i fàcils de llegir que els arxius XML de Maven.</li>
+</ul>
+
+<h3 id="desavantatges-de-gradle">Desavantatges de Gradle</h3>
+
+<ul>
+  <li><strong>Corba d’aprenentatge</strong>: Encara que més potent, pot ser més difícil d’aprendre al principi si véns de Maven, especialment si necessites personalitzar tasques específiques.</li>
+  <li><strong>Menys estàndard</strong>: Encara que cada vegada és més comú, no tots els projectes Java adopten Gradle. Per tant, pot no ser la millor opció si el teu equip ja està familiaritzat amb Maven.</li>
+</ul>
+
+<h3 id="quan-usem-gradle">Quan usem Gradle?</h3>
+
+<p><strong>Gradle</strong> és ideal per a <strong>projectes grans</strong>, especialment si necessites flexibilitat o si treballes en projectes <strong>multillenguatge</strong> o <strong>Android</strong>. També és una excel·lent opció si t’importa el rendiment i l’eficiència en la construcció.</p>
+
+<h3 id="configuració-dun-projecte-amb-gradle">Configuració d’un projecte amb Gradle</h3>
+
+<ol>
+  <li><strong>Crear un projecte amb Gradle</strong>:
+    <ul>
+      <li>En crear un nou projecte, selecciona <strong>Gradle</strong> com el sistema de construcció.</li>
+      <li>Es generarà un arxiu <code class="language-plaintext highlighter-rouge">build.gradle</code> que pots usar per gestionar les dependències.</li>
+    </ul>
+  </li>
+  <li><strong>Afegir dependències en Gradle</strong>:
+    <ul>
+      <li>Obri l’arxiu <code class="language-plaintext highlighter-rouge">build.gradle</code> i afegeix les dependències en la secció <code class="language-plaintext highlighter-rouge">dependencies</code>:</li>
+    </ul>
+
+    <div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dependencies</span> <span class="o">{</span>
+    <span class="n">testImplementation</span> <span class="s1">'junit:junit:4.13.1'</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Executar Gradle</strong>:
+    <ul>
+      <li>Igual que amb Maven, pots executar tasques de Gradle directament des d’IntelliJ usant el panell de Gradle. Tasques comunes inclouen <code class="language-plaintext highlighter-rouge">build</code>, <code class="language-plaintext highlighter-rouge">test</code>, i <code class="language-plaintext highlighter-rouge">clean</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="activitat-3">Activitat 3</h3>
+
+<p>Crea un projecte en Java usant Gradle i un programa que, en executar-lo, escriga per consola “Hola Món, visc en Gradle”.</p>
+
+<hr />
+
+<p>Durant el curs emprerem Maven, per la seua major implantació en l’actualitat.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

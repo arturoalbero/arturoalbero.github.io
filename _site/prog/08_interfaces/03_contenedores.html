@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Contenedores, Layouts y mejoras visuales en Swing | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Contenedores, Layouts y mejoras visuales en Swing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/08_interfaces/03_contenedores.html" />
+<meta property="og:url" content="http://localhost:4000/prog/08_interfaces/03_contenedores.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Contenedores, Layouts y mejoras visuales en Swing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Contenedores, Layouts y mejoras visuales en Swing","url":"http://localhost:4000/prog/08_interfaces/03_contenedores.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="contenedores-layouts-y-mejoras-visuales-en-swing">Contenedores, Layouts y mejoras visuales en Swing</h1>
+
+<ul>
+  <li><a href="#contenedores-layouts-y-mejoras-visuales-en-swing">Contenedores, Layouts y mejoras visuales en Swing</a>
+    <ul>
+      <li><a href="#1-contenedores">1. Contenedores</a>
+        <ul>
+          <li><a href="#11-jframe-ventana-principal"><strong>1.1 JFrame (Ventana principal)</strong></a></li>
+          <li><a href="#12-jpanel-panel-genérico"><strong>1.2 JPanel (Panel genérico)</strong></a></li>
+          <li><a href="#13-jdialog-cuadro-de-diálogo"><strong>1.3 JDialog (Cuadro de diálogo)</strong></a></li>
+          <li><a href="#14-jlayeredpane-panel-con-capas"><strong>1.4 JLayeredPane (Panel con capas)</strong></a></li>
+          <li><a href="#15-jscrollpane-panel-con-desplazamiento"><strong>1.5 JScrollPane (Panel con desplazamiento)</strong></a></li>
+          <li><a href="#16-jtabbedpane-panel-con-pestañas"><strong>1.6 JTabbedPane (Panel con pestañas)</strong></a>
+            <ul>
+              <li><a href="#17-jsplitpane-panel-dividido"><strong>1.7 JSplitPane (Panel dividido)</strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#18-jtoolbar-barra-de-herramientas"><strong>1.8 JToolBar (Barra de herramientas)</strong></a></li>
+        </ul>
+      </li>
+      <li><a href="#2-layout-managers"><strong>2. Layout Managers</strong></a>
+        <ul>
+          <li><a href="#21-flowlayout"><strong>2.1 FlowLayout</strong></a></li>
+          <li><a href="#22-borderlayout"><strong>2.2 BorderLayout</strong></a></li>
+          <li><a href="#23-gridlayout"><strong>2.3 GridLayout</strong></a></li>
+          <li><a href="#24-boxlayout"><strong>2.4 BoxLayout</strong></a></li>
+          <li><a href="#25-ejemplo-uso-de-gridbaglayout"><strong>2.5 Ejemplo: Uso de GridBagLayout</strong></a></li>
+        </ul>
+      </li>
+      <li><a href="#3-ventanas-secundarias-jdialog"><strong>3. Ventanas Secundarias (<code class="language-plaintext highlighter-rouge">JDialog</code>)</strong></a></li>
+      <li><a href="#4-look-and-feel-en-swing"><strong>4. Look and Feel en Swing</strong></a>
+        <ul>
+          <li><a href="#41-cambiar-el-look-and-feel"><strong>4.1 Cambiar el Look and Feel</strong></a>
+            <ul>
+              <li><a href="#ejemplo-básico-para-cambiar-el-lf">Ejemplo básico para cambiar el L\&amp;F</a></li>
+            </ul>
+          </li>
+          <li><a href="#42-establecer-el-look-and-feel-del-sistema"><strong>4.2 Establecer el Look and Feel del Sistema</strong></a></li>
+          <li><a href="#43-aplicar-cambios-personalizados-con-uimanager"><strong>4.3 Aplicar Cambios Personalizados con <code class="language-plaintext highlighter-rouge">UIManager</code></strong></a></li>
+        </ul>
+      </li>
+      <li><a href="#5-mejoras-visuales-y-diseño-avanzado"><strong>5. Mejoras Visuales y Diseño Avanzado</strong></a>
+        <ul>
+          <li><a href="#51-establecer-iconos-personalizados"><strong>5.1 Establecer Iconos Personalizados</strong></a></li>
+          <li><a href="#52-transiciones-y-animaciones-básicas"><strong>5.2 Transiciones y Animaciones Básicas</strong></a></li>
+          <li><a href="#53-ejercicio-1">5.3 Ejercicio 1</a></li>
+          <li><a href="#54-ejercicio-2">5.4 Ejercicio 2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-contenedores">1. Contenedores</h2>
+
+<p>6 horas</p>
+
+<p>En <strong>Swing</strong>, los <strong>contenedores</strong> son componentes fundamentales que permiten organizar y agrupar otros componentes de la interfaz gráfica (botones, etiquetas, campos de texto, etc.). A continuación, te presento los principales contenedores de Swing y sus características más importantes:</p>
+
+<h3 id="11-jframe-ventana-principal"><strong>1.1 JFrame (Ventana principal)</strong></h3>
+
+<ul>
+  <li>Es la ventana principal de una aplicación Swing.</li>
+  <li>Puede contener componentes gráficos como botones, etiquetas, campos de texto, paneles, etc.</li>
+  <li>Tiene decoraciones como un título, un botón de cerrar, maximizar y minimizar.</li>
+  <li>Proporciona el método <code class="language-plaintext highlighter-rouge">setDefaultCloseOperation()</code> para determinar el comportamiento al cerrar la ventana.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Ventana Principal"</span><span class="o">);</span>
+<span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+<span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+<span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="12-jpanel-panel-genérico"><strong>1.2 JPanel (Panel genérico)</strong></h3>
+
+<ul>
+  <li>Es un contenedor flexible que organiza componentes gráficos.</li>
+  <li>Sirve como base para agrupar componentes dentro de un diseño (<code class="language-plaintext highlighter-rouge">LayoutManager</code>).</li>
+  <li>No tiene bordes ni decoraciones por defecto, pero se pueden añadir.</li>
+  <li>Se utiliza dentro de otros contenedores como <code class="language-plaintext highlighter-rouge">JFrame</code>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+<span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 1"</span><span class="o">));</span>
+<span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Etiqueta 1"</span><span class="o">));</span>
+
+<span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span> <span class="c1">// Agregar el panel al JFrame</span>
+</code></pre></div></div>
+
+<h3 id="13-jdialog-cuadro-de-diálogo"><strong>1.3 JDialog (Cuadro de diálogo)</strong></h3>
+
+<ul>
+  <li>Es una ventana secundaria que generalmente se utiliza para mostrar mensajes, obtener datos del usuario o realizar confirmaciones.</li>
+  <li>Puede ser modal (bloquea la interacción con otras ventanas hasta que se cierre) o no modal.</li>
+  <li>Ideal para cuadros de alerta, formularios pequeños, o configuraciones.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JDialog</span> <span class="n">dialog</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JDialog</span><span class="o">(</span><span class="n">frame</span><span class="o">,</span> <span class="s">"Cuadro de Diálogo"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span> <span class="c1">// Modal</span>
+<span class="n">dialog</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span>
+<span class="n">dialog</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Este es un cuadro de diálogo"</span><span class="o">));</span>
+<span class="n">dialog</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="14-jlayeredpane-panel-con-capas"><strong>1.4 JLayeredPane (Panel con capas)</strong></h3>
+
+<ul>
+  <li>Es un contenedor que permite organizar componentes en <strong>capas</strong>, donde unos pueden superponerse sobre otros.</li>
+  <li>Cada componente tiene una posición en una capa específica, determinada por un índice.</li>
+  <li>Muy útil para implementar ventanas emergentes, ventanas auxiliares internas, o efectos visuales avanzados.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JLayeredPane</span> <span class="n">layeredPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLayeredPane</span><span class="o">();</span>
+<span class="nc">JButton</span> <span class="n">button1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Capa 1"</span><span class="o">);</span>
+<span class="n">button1</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+<span class="nc">JButton</span> <span class="n">button2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Capa 2"</span><span class="o">);</span>
+<span class="n">button2</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">70</span><span class="o">,</span> <span class="mi">70</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+
+<span class="c1">// Añadir componentes a distintas capas</span>
+<span class="n">layeredPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">button1</span><span class="o">,</span> <span class="nc">JLayeredPane</span><span class="o">.</span><span class="na">DEFAULT_LAYER</span><span class="o">);</span>
+<span class="n">layeredPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">button2</span><span class="o">,</span> <span class="nc">JLayeredPane</span><span class="o">.</span><span class="na">PALETTE_LAYER</span><span class="o">);</span>
+
+<span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">layeredPane</span><span class="o">);</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="15-jscrollpane-panel-con-desplazamiento"><strong>1.5 JScrollPane (Panel con desplazamiento)</strong></h3>
+
+<ul>
+  <li>Proporciona barras de desplazamiento horizontal y/o vertical para componentes que pueden exceder el espacio visible.</li>
+  <li>Se utiliza frecuentemente con <code class="language-plaintext highlighter-rouge">JTextArea</code>, <code class="language-plaintext highlighter-rouge">JTable</code>, <code class="language-plaintext highlighter-rouge">JList</code> o imágenes grandes.</li>
+  <li>Puede ser decorado con bordes personalizados.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JTextArea</span> <span class="n">textArea</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextArea</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+<span class="nc">JScrollPane</span> <span class="n">scrollPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">textArea</span><span class="o">);</span> <span class="c1">// Vincular JTextArea con JScrollPane</span>
+
+<span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">scrollPane</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="16-jtabbedpane-panel-con-pestañas"><strong>1.6 JTabbedPane (Panel con pestañas)</strong></h3>
+
+<ul>
+  <li>Permite organizar componentes en diferentes pestañas, proporcionando una navegación más clara.</li>
+  <li>Muy útil para dividir contenido relacionado en categorías.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JTabbedPane</span> <span class="n">tabbedPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTabbedPane</span><span class="o">();</span>
+<span class="n">tabbedPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Pestaña 1"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Contenido de la Pestaña 1"</span><span class="o">));</span>
+<span class="n">tabbedPane</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Pestaña 2"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Contenido de la Pestaña 2"</span><span class="o">));</span>
+
+<span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tabbedPane</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="17-jsplitpane-panel-dividido"><strong>1.7 JSplitPane (Panel dividido)</strong></h4>
+
+<ul>
+  <li>Permite dividir el espacio entre dos componentes, con una barra ajustable entre ellos.</li>
+  <li>Puede dividirse horizontal o verticalmente.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JPanel</span> <span class="n">panel1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+<span class="nc">JPanel</span> <span class="n">panel2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+<span class="nc">JSplitPane</span> <span class="n">splitPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSplitPane</span><span class="o">(</span><span class="nc">JSplitPane</span><span class="o">.</span><span class="na">HORIZONTAL_SPLIT</span><span class="o">,</span> <span class="n">panel1</span><span class="o">,</span> <span class="n">panel2</span><span class="o">);</span>
+
+<span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">splitPane</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="18-jtoolbar-barra-de-herramientas"><strong>1.8 JToolBar (Barra de herramientas)</strong></h3>
+
+<ul>
+  <li>Contenedor especializado para colocar botones o herramientas en forma de barra horizontal o vertical.</li>
+  <li>Se puede arrastrar y reposicionar (docking).</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JToolBar</span> <span class="n">toolBar</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JToolBar</span><span class="o">();</span>
+<span class="n">toolBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Herramienta 1"</span><span class="o">));</span>
+<span class="n">toolBar</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Herramienta 2"</span><span class="o">));</span>
+
+<span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">toolBar</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">NORTH</span><span class="o">);</span> <span class="c1">// Añadir la barra en la parte superior</span>
+</code></pre></div></div>
+
+<p>En los ejemplos de los temas anteriores hemos usado contenedores, pero ahora vamos a aprender cómo mejorarlas usando Layouts.</p>
+
+<h2 id="2-layout-managers"><strong>2. Layout Managers</strong></h2>
+
+<p>Un <strong>Layout Manager</strong> se encarga de organizar automáticamente los componentes dentro de un contenedor. Los principales Layouts son:</p>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">FlowLayout</code></strong>:
+    <ul>
+      <li>Alinea los componentes horizontalmente (de izquierda a derecha) y luego pasa a la siguiente línea.</li>
+      <li>Ideal para interfaces pequeñas y simples.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">BorderLayout</code></strong>:
+    <ul>
+      <li>Divide el espacio en cinco regiones: <code class="language-plaintext highlighter-rouge">NORTH</code>, <code class="language-plaintext highlighter-rouge">SOUTH</code>, <code class="language-plaintext highlighter-rouge">EAST</code>, <code class="language-plaintext highlighter-rouge">WEST</code>, <code class="language-plaintext highlighter-rouge">CENTER</code>.</li>
+      <li>Muy útil para interfaces estructuradas (como menús y contenido principal).</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">GridLayout</code></strong>:
+    <ul>
+      <li>Organiza los componentes en una cuadrícula con un número fijo de filas y columnas.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">BoxLayout</code></strong>:
+    <ul>
+      <li>Alinea componentes en una sola fila o columna, con soporte para espacios entre ellos.</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">GridBagLayout</code></strong>:
+    <ul>
+      <li>El más flexible. Permite una distribución personalizada de componentes (ideal para diseños complejos).</li>
+    </ul>
+  </li>
+</ol>
+
+<p>A continuación, vamos a profundizar en cada uno de ellos:</p>
+
+<h3 id="21-flowlayout"><strong>2.1 FlowLayout</strong></h3>
+
+<p>Creamos un panel donde se organizan botones horizontalmente, alineados al centro:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EjemploFlowLayout</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">EjemploFlowLayout</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"FlowLayout Demo"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+
+        <span class="c1">// Usamos FlowLayout en el JFrame</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">(</span><span class="nc">FlowLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+
+        <span class="c1">// Añadimos algunos botones</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 1"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 2"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 3"</span><span class="o">));</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 4"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">EjemploFlowLayout</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EjemploFlowLayout</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="22-borderlayout"><strong>2.2 BorderLayout</strong></h3>
+
+<p>Distribuimos los componentes en las regiones principales (NORTE, SUR, ESTE, OESTE, CENTRO):</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EjemploBorderLayout</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">EjemploBorderLayout</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"BorderLayout Demo"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+
+        <span class="c1">// Usamos BorderLayout en el JFrame</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BorderLayout</span><span class="o">());</span>
+
+        <span class="c1">// Añadimos componentes a las regiones</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Norte"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">NORTH</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Sur"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">SOUTH</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Este"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">EAST</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Oeste"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">WEST</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Centro"</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">EjemploBorderLayout</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EjemploBorderLayout</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="23-gridlayout"><strong>2.3 GridLayout</strong></h3>
+
+<p>Organizamos componentes en una cuadrícula de filas y columnas:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EjemploGridLayout</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">EjemploGridLayout</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"GridLayout Demo"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+
+        <span class="c1">// Usamos GridLayout con 2 filas y 3 columnas</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridLayout</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">10</span><span class="o">));</span>
+
+        <span class="c1">// Añadimos algunos botones</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón "</span> <span class="o">+</span> <span class="n">i</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">EjemploGridLayout</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EjemploGridLayout</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="24-boxlayout"><strong>2.4 BoxLayout</strong></h3>
+
+<p>Alineamos componentes en una columna (verticalmente):</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EjemploBoxLayout</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">EjemploBoxLayout</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"BoxLayout Demo"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+
+        <span class="c1">// Creamos un panel con BoxLayout (orientación vertical)</span>
+        <span class="nc">JPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BoxLayout</span><span class="o">(</span><span class="n">panel</span><span class="o">,</span> <span class="nc">BoxLayout</span><span class="o">.</span><span class="na">Y_AXIS</span><span class="o">));</span>
+
+        <span class="c1">// Añadimos algunos botones con espacio entre ellos</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Box</span><span class="o">.</span><span class="na">createVerticalStrut</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span> <span class="c1">// Espacio inicial</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 1"</span><span class="o">));</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Box</span><span class="o">.</span><span class="na">createVerticalStrut</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span> <span class="c1">// Espacio entre componentes</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 2"</span><span class="o">));</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="nc">Box</span><span class="o">.</span><span class="na">createVerticalStrut</span><span class="o">(</span><span class="mi">10</span><span class="o">));</span>
+        <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 3"</span><span class="o">));</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">EjemploBoxLayout</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EjemploBoxLayout</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="25-ejemplo-uso-de-gridbaglayout"><strong>2.5 Ejemplo: Uso de GridBagLayout</strong></h3>
+
+<p>Para organizar componentes con un diseño más flexible:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EjemploGridBagLayout</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">EjemploGridBagLayout</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"GridBagLayout Demo"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+
+        <span class="n">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">GridBagLayout</span><span class="o">());</span>
+        <span class="nc">GridBagConstraints</span> <span class="n">gbc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GridBagConstraints</span><span class="o">();</span>
+
+        <span class="c1">// Botón 1: Ocupa toda la primera fila</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridy</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridwidth</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">fill</span> <span class="o">=</span> <span class="nc">GridBagConstraints</span><span class="o">.</span><span class="na">HORIZONTAL</span><span class="o">;</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 1"</span><span class="o">),</span> <span class="n">gbc</span><span class="o">);</span>
+
+        <span class="c1">// Botón 2: En la segunda fila, primera columna</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridy</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridwidth</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 2"</span><span class="o">),</span> <span class="n">gbc</span><span class="o">);</span>
+
+        <span class="c1">// Botón 3: En la segunda fila, segunda columna</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridy</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 3"</span><span class="o">),</span> <span class="n">gbc</span><span class="o">);</span>
+
+        <span class="c1">// Botón 4: Ocupa toda la tercera fila</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridy</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">gridwidth</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="n">gbc</span><span class="o">.</span><span class="na">fill</span> <span class="o">=</span> <span class="nc">GridBagConstraints</span><span class="o">.</span><span class="na">HORIZONTAL</span><span class="o">;</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 4"</span><span class="o">),</span> <span class="n">gbc</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">EjemploGridBagLayout</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EjemploGridBagLayout</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="3-ventanas-secundarias-jdialog"><strong>3. Ventanas Secundarias (<code class="language-plaintext highlighter-rouge">JDialog</code>)</strong></h2>
+
+<p>Un <strong>JDialog</strong> es una ventana secundaria que puede bloquear la interacción con la ventana principal (modal) o permitirla (no modal).</p>
+
+<p>A continuación, un ejemplo de una ventana modal simple:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VentanaModal</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">VentanaModal</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"Ventana Principal"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+
+        <span class="c1">// Botón para abrir la ventana modal</span>
+        <span class="nc">JButton</span> <span class="n">abrirDialogo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Abrir Diálogo"</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">abrirDialogo</span><span class="o">);</span>
+
+        <span class="c1">// Acción para abrir el diálogo</span>
+        <span class="n">abrirDialogo</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="c1">// Crear un JDialog modal</span>
+            <span class="nc">JDialog</span> <span class="n">dialogo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JDialog</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"Diálogo Modal"</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+            <span class="n">dialogo</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span>
+            <span class="n">dialogo</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">FlowLayout</span><span class="o">());</span>
+            <span class="n">dialogo</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Este es un diálogo modal."</span><span class="o">));</span>
+            <span class="nc">JButton</span> <span class="n">cerrarButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Cerrar"</span><span class="o">);</span>
+            <span class="n">cerrarButton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">evt</span> <span class="o">-&gt;</span> <span class="n">dialogo</span><span class="o">.</span><span class="na">dispose</span><span class="o">());</span>
+            <span class="n">dialogo</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cerrarButton</span><span class="o">);</span>
+            <span class="n">dialogo</span><span class="o">.</span><span class="na">setLocationRelativeTo</span><span class="o">(</span><span class="k">this</span><span class="o">);</span> <span class="c1">// Centrarlo respecto a la ventana principal</span>
+            <span class="n">dialogo</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">VentanaModal</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">VentanaModal</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Si quisiéramos que la ventana secundaria no fuera modal, solo necesitaríamos configurar el JDialog como <strong>no modal</strong> cambiando el tercer parámetro en el constructor.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JDialog</span> <span class="n">dialogo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JDialog</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"Diálogo No Modal"</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>¡Vamos a ampliar tu contenido incluyendo cómo personalizar el aspecto visual (Look and Feel) y la configuración avanzada de Swing mediante el uso de <code class="language-plaintext highlighter-rouge">UIManager</code>!</p>
+
+<hr />
+
+<h2 id="4-look-and-feel-en-swing"><strong>4. Look and Feel en Swing</strong></h2>
+
+<p>El <strong>Look and Feel (L&amp;F)</strong> determina la apariencia visual y el comportamiento de los componentes de Swing. Swing ofrece un diseño predeterminado, pero puedes personalizarlo para que se asemeje a otros entornos (Windows, macOS, etc.) o incluso implementar un diseño único.</p>
+
+<h3 id="41-cambiar-el-look-and-feel"><strong>4.1 Cambiar el Look and Feel</strong></h3>
+
+<p>La clase <code class="language-plaintext highlighter-rouge">UIManager</code> de Swing permite cambiar el L&amp;F de una aplicación. Los L&amp;F más comunes son:</p>
+
+<ul>
+  <li><strong>Metal</strong> (predeterminado de Java).</li>
+  <li><strong>Nimbus</strong> (moderno y atractivo).</li>
+  <li><strong>Windows</strong> (similar al estilo de Windows).</li>
+  <li><strong>Motif</strong> (estilo clásico UNIX).</li>
+  <li><strong>Sistema</strong> (adopta el L&amp;F del sistema operativo actual).</li>
+</ul>
+
+<h4 id="ejemplo-básico-para-cambiar-el-lf">Ejemplo básico para cambiar el L&amp;F</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CambiarLookAndFeel</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">// Establece el Look and Feel de Nimbus</span>
+            <span class="nc">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="s">"javax.swing.plaf.nimbus.NimbusLookAndFeel"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"No se pudo cargar el Look and Feel: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="c1">// Crear una ventana para probar</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Ejemplo Look and Feel"</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BoxLayout</span><span class="o">(</span><span class="n">frame</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">(),</span> <span class="nc">BoxLayout</span><span class="o">.</span><span class="na">Y_AXIS</span><span class="o">));</span>
+
+            <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 1"</span><span class="o">));</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón 2"</span><span class="o">));</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JCheckBox</span><span class="o">(</span><span class="s">"Opción 1"</span><span class="o">));</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="42-establecer-el-look-and-feel-del-sistema"><strong>4.2 Establecer el Look and Feel del Sistema</strong></h3>
+
+<p>Para que tu aplicación tenga el L&amp;F del sistema operativo actual:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="nc">UIManager</span><span class="o">.</span><span class="na">getSystemLookAndFeelClassName</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>Esto hace que la aplicación se sienta más integrada con el sistema.</p>
+
+<h3 id="43-aplicar-cambios-personalizados-con-uimanager"><strong>4.3 Aplicar Cambios Personalizados con <code class="language-plaintext highlighter-rouge">UIManager</code></strong></h3>
+
+<p>Además de usar L&amp;F predefinidos, puedes personalizar colores, fuentes y bordes para que coincidan con tu diseño. Por ejemplo:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonalizarLookAndFeel</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="nc">UIManager</span><span class="o">.</span><span class="na">getSystemLookAndFeelClassName</span><span class="o">());</span>
+
+            <span class="c1">// Personalización del estilo</span>
+            <span class="nc">UIManager</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Button.background"</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">LIGHT_GRAY</span><span class="o">);</span>
+            <span class="nc">UIManager</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Button.foreground"</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">DARK_GRAY</span><span class="o">);</span>
+            <span class="nc">UIManager</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Label.font"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Font</span><span class="o">(</span><span class="s">"Arial"</span><span class="o">,</span> <span class="nc">Font</span><span class="o">.</span><span class="na">BOLD</span><span class="o">,</span> <span class="mi">14</span><span class="o">));</span>
+            <span class="nc">UIManager</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"Panel.background"</span><span class="o">,</span> <span class="nc">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="c1">// Crear una ventana para probar</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Personalizar Look and Feel"</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+
+            <span class="nc">JPanel</span> <span class="n">panel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+            <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Texto Personalizado"</span><span class="o">));</span>
+            <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón Personalizado"</span><span class="o">));</span>
+
+            <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">panel</span><span class="o">);</span>
+            <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-mejoras-visuales-y-diseño-avanzado"><strong>5. Mejoras Visuales y Diseño Avanzado</strong></h2>
+
+<h3 id="51-establecer-iconos-personalizados"><strong>5.1 Establecer Iconos Personalizados</strong></h3>
+
+<p>Puedes añadir iconos a botones, etiquetas o incluso al icono de la ventana (<code class="language-plaintext highlighter-rouge">JFrame</code>). Ejemplo:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IconosSwing</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Iconos en Swing"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BoxLayout</span><span class="o">(</span><span class="n">frame</span><span class="o">.</span><span class="na">getContentPane</span><span class="o">(),</span> <span class="nc">BoxLayout</span><span class="o">.</span><span class="na">Y_AXIS</span><span class="o">));</span>
+
+        <span class="c1">// Icono en una etiqueta</span>
+        <span class="nc">JLabel</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Etiqueta con Icono"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="s">"icono.png"</span><span class="o">),</span> <span class="nc">JLabel</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+
+        <span class="c1">// Botón con icono</span>
+        <span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Botón con Icono"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ImageIcon</span><span class="o">(</span><span class="s">"icono.png"</span><span class="o">));</span>
+
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">button</span><span class="o">);</span>
+
+        <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="52-transiciones-y-animaciones-básicas"><strong>5.2 Transiciones y Animaciones Básicas</strong></h3>
+
+<p>Aunque Swing no tiene soporte nativo para animaciones, puedes simular transiciones con un <code class="language-plaintext highlighter-rouge">Timer</code>. Ejemplo:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnimacionBasica</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Animación Básica"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+
+        <span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Mover"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">button</span><span class="o">);</span>
+
+        <span class="nc">Timer</span> <span class="n">timer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Timer</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">frame</span><span class="o">.</span><span class="na">getWidth</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">button</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">button</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="n">timer</span><span class="o">.</span><span class="na">start</span><span class="o">());</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="53-ejercicio-1">5.3 Ejercicio 1</h3>
+
+<p>Crea una aplicación con una tabla con las columnas <code class="language-plaintext highlighter-rouge">nombre</code>, <code class="language-plaintext highlighter-rouge">sexo</code> y <code class="language-plaintext highlighter-rouge">edad</code>. Añade un botón añadir, un botón editar y un botón borrar para eliminar la selección. Los botones editar y borrar sólo deben estar activos cuando haya un elemento seleccionado de la tabla.</p>
+
+<p>Cuando se pulse el botón añadir o editar, se tiene que abrir una ventana modal con un botón Aceptar y un formulario en el cual se pidan los datos para el nombre, sexo (con RadioButton o ComboBox) y edad.</p>
+
+<p>Se tiene que verificar que haya un nombre escrito y un sexo seleccionado, así como que la edad sea un número entre 0 y 200. En caso de que falle alguna comprobación al pulsar el botón Aceptar, debería aparecer al lado de cada campo “Todo OK” en verde si está correcto y “Error: “ más la descripción del error, en rojo, si es incorrecto (Utiliza etiquetas para esto último).</p>
+
+<p>La diferencia entre Añadir y Editar es que el formulario en Añadir está vacío y al darle aceptar se añade un elemento nuevo, mientras que en Editar el formulario aparece con los datos del elemento seleccionado y, al darle aceptar, este se borra y se sustituye por el nuevo (siempre que haya pasado la comprobación).</p>
+
+<h3 id="54-ejercicio-2">5.4 Ejercicio 2</h3>
+
+<p>Añade un RadioButton que nos permita cambiar el L &amp; F de la aplicación anterior. Por defecto estará seleccionado el L &amp; F del sistema operativo, pero añade 2 opciones más (o las que quieras).</p>
+
+<p>Añade un icono personalizado para los botones de Añadir, Editar y Borrar.</p>
+
+<p>Finalmente, crea una pseudo animación que haga que, cuando se abra una ventana modal, esta empiece con un tamaño (0,0) y tarde 1 segundo (o menos) en alcanzar su tamaño apropiado.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 03: Especificación de Requisitos del Sistema (SRS) y Diagramas UML de Casos de Uso | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 03: Especificación de Requisitos del Sistema (SRS) y Diagramas UML de Casos de Uso" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT05/03_casosDeUso.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT05/03_casosDeUso.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 03: Especificación de Requisitos del Sistema (SRS) y Diagramas UML de Casos de Uso" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 03: Especificación de Requisitos del Sistema (SRS) y Diagramas UML de Casos de Uso","url":"http://localhost:4000/ede/UT05/03_casosDeUso.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="sesión-03-especificación-de-requisitos-del-sistema-srs-y-diagramas-uml-de-casos-de-uso">Sesión 03: Especificación de Requisitos del Sistema (SRS) y Diagramas UML de Casos de Uso</h1>
+
+<ul>
+  <li><a href="#sesión-03-especificación-de-requisitos-del-sistema-srs-y-diagramas-uml-de-casos-de-uso">Sesión 03: Especificación de Requisitos del Sistema (SRS) y Diagramas UML de Casos de Uso</a>
+    <ul>
+      <li><a href="#1-especificación-de-requisitos-del-sistema-srs">1. Especificación de Requisitos del Sistema (SRS)</a>
+        <ul>
+          <li><a href="#11-las-partes-de-un-srs">1.1 Las partes de un SRS</a></li>
+          <li><a href="#11-ejercicio-1">1.1 Ejercicio 1</a></li>
+          <li><a href="#12-ejercicio-2">1.2 Ejercicio 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-diagramas-uml-de-casos-de-uso">2. Diagramas UML de Casos de Uso</a>
+        <ul>
+          <li><a href="#21-pasos-para-crear-un-diagrama-de-casos-de-uso">2.1 Pasos para crear un diagrama de casos de uso</a></li>
+          <li><a href="#22-ejercicio-3">2.2 Ejercicio 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-relaciones-avanzadas">3 Relaciones avanzadas</a>
+        <ul>
+          <li><a href="#31-relaciones-extend-y-include">3.1 Relaciones <code class="language-plaintext highlighter-rouge">&lt;&lt;extend&gt;&gt;</code> y <code class="language-plaintext highlighter-rouge">&lt;&lt;include&gt;&gt;</code></a></li>
+          <li><a href="#32-ejercicio-4">3.2 Ejercicio 4</a></li>
+          <li><a href="#33-generalización">3.3 Generalización</a></li>
+          <li><a href="#34-ejercicio-4">3.4 Ejercicio 4</a></li>
+        </ul>
+      </li>
+      <li><a href="#4-cuando-usar-dfd-diagramas-de-caso-de-uso-o-diagramas-de-actividades">4. Cuando usar DFD, diagramas de caso de uso o diagramas de actividades</a>
+        <ul>
+          <li><a href="#41-ejercicio-5">4.1 Ejercicio 5</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-especificación-de-requisitos-del-sistema-srs">1. Especificación de Requisitos del Sistema (SRS)</h2>
+
+<p>La <strong>Especificación de Requisitos del Sistema (SRS)</strong> es un documento que define <strong>qué hará el sistema</strong> y <strong>cómo interactuará con su entorno</strong>, sin entrar en detalles técnicos de implementación. Su propósito es establecer una visión compartida entre los stakeholders (clientes, desarrolladores, testers, etc.). Un SRS es esencial en el desarrollo de software debido a los siguientes puntos:</p>
+
+<ol>
+  <li><strong>Proporciona claridad:</strong> Ayuda a evitar malentendidos durante el desarrollo.</li>
+  <li><strong>Facilita el diseño y las pruebas:</strong> Los desarrolladores y testers lo usan como base para su trabajo.</li>
+  <li><strong>Control de alcance:</strong> Ayuda a gestionar cambios en los requisitos.</li>
+</ol>
+
+<p>Un buen SRS cumplir con las siguientes características:</p>
+
+<ul>
+  <li><strong>Compleción:</strong> Cubre todos los requisitos del sistema.</li>
+  <li><strong>Consistencia:</strong> Evita contradicciones internas.</li>
+  <li><strong>Estructuración:</strong> Fácil de entender y navegar.</li>
+</ul>
+
+<h3 id="11-las-partes-de-un-srs">1.1 Las partes de un SRS</h3>
+
+<p><strong>1. Introducción</strong>:</p>
+
+<ul>
+  <li><strong>Propósito del documento:</strong> Explica el objetivo del sistema y del SRS.</li>
+  <li><strong>Alcance del sistema:</strong> Describe el sistema en términos generales.
+    <ul>
+      <li>Ejemplo: “Este sistema permitirá gestionar la reserva de pistas deportivas, automatizando la asignación de horarios y pagos.”</li>
+    </ul>
+  </li>
+  <li><strong>Definiciones:</strong> Lista de términos clave y acrónimos utilizados.</li>
+</ul>
+
+<p><strong>2. Descripción general</strong>:</p>
+
+<ul>
+  <li><strong>Perspectiva del producto</strong>:
+    <ul>
+      <li>Explica cómo encaja el sistema en un entorno mayor.</li>
+      <li>Ejemplo: “El sistema estará conectado con un sistema de pagos externo para procesar tarjetas de crédito.”</li>
+    </ul>
+  </li>
+  <li><strong>Restricciones:</strong> Factores que limitan el diseño o desarrollo.
+    <ul>
+      <li>Ejemplo: “Debe ser accesible desde dispositivos móviles y navegadores.”</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>3. Requisitos de sistema</strong>:</p>
+
+<ul>
+  <li>Define las conexiones con otros sistemas (bases de datos, APIs, etc.).
+    <ul>
+      <li>Ejemplo: “Se integrará con la API de Stripe para los pagos.”</li>
+    </ul>
+  </li>
+  <li>Los diagramas DFD que vimos en la unidad anterior son útiles para especificar cómo se conecta nuestro sistema con las entidades externas:</li>
+</ul>
+
+<pre><code class="language-mermaid">flowchart TB
+  pagos[API Stripe]
+  cli[Cliente]
+  sgp((Sistema de gestión de pistas deportivas))
+  bdp[[Bases de datos de reservas de pistas]]
+
+  sgp -- Habilita el pago del cliente --&gt; pagos
+  pagos -- Notifica el pago correcto --&gt; sgp
+  cli -- Solicita la reserva de una pista, pago incluido --&gt; sgp
+  sgp -- Confirma la reserva de una pista --&gt; cli
+  bdp -- Confirma la disponibilidad de una pista --&gt; sgp
+  sgp -- Solicita la disponibilidad de una pista --&gt; bdp
+  sgp -- Actualiza los datos de pistas --&gt; bdp
+</code></pre>
+
+<p><strong>4. Requisitos funcionales</strong>:</p>
+
+<ul>
+  <li>Estos describen <strong>lo que hará el sistema</strong> desde el punto de vista del usuario. Se trata de acciones concisas que luego tendrán gran importancia en el diseño del producto:
+    <ul>
+      <li>Ejemplo:
+        <ol>
+          <li>“El sistema permitirá a los usuarios reservar una pista.”</li>
+          <li>“El sistema permitirá al administrador modificar una reserva.”</li>
+          <li>“El sistema enviará un correo electrónico de confirmación tras completar la reserva.”</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>5. Requisitos no funcionales</strong>:</p>
+
+<ul>
+  <li>Incluyen aspectos que no son críticos para el funcionamiento del producto, como rendimiento, seguridad y usabilidad.</li>
+  <li>Ejemplo:
+    <ul>
+      <li>Rendimiento: “El sistema deberá procesar una reserva en menos de 2 segundos.”</li>
+      <li>Seguridad: “La información de pago deberá estar encriptada usando AES-256.”</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="11-ejercicio-1">1.1 Ejercicio 1</h3>
+
+<p>Completa los siguientes ejercicios:</p>
+
+<ol>
+  <li><strong>Redacta el propósito y el alcance</strong> del SRS para un sistema de control de acceso a un aeropuerto.</li>
+  <li>Define tres requisitos funcionales y dos no funcionales para un sistema de alquiler de vehículos.</li>
+  <li>En el caso anterior, redacta algunos requisitos de sistema y luego diseña un DFD para representarlos.</li>
+</ol>
+
+<h3 id="12-ejercicio-2">1.2 Ejercicio 2</h3>
+
+<p>Queremos desarrollar una aplicación para gestionar los turnos de un hospital. Los usuarios son el personal del hospital y todos ellos deben ser capaces de ver sus turnos asignados. Los empleados normales deben poder solicitar una permuta con otros empleados, aceptar una propuesta de permuta y también solicitar sus vacaciones. El administrador puede confirmar las permutas y las vacaciones. El administrador también puede modificar los turnos de los empleados. Este sistema se debe conectar con el gestor interno de correos electrónicos del hospital para notificar cambios y verificaciones al personal. El sistema debe ser rápido, seguro y accesible desde dispositivos móviles.</p>
+
+<h2 id="2-diagramas-uml-de-casos-de-uso">2. Diagramas UML de Casos de Uso</h2>
+
+<p>Un diagrama de casos de uso especifica cómo funciona un sistema. Más concretamente, qué puede hacer cada usuario que interactúe con el sistema. Para ello, se requieren cuatro elementos principales: Los casos de uso, los actores, las relaciones y el sistema.</p>
+
+<p>El <strong>sistema</strong> es el programa que vamos a desarrollar, y engloba todos los casos de uso. Se representa con un recuadro con una etiqueta.
+Un <strong>actor</strong> es un usuario o un sistema externo que interactúa con el sistema.
+Un <strong>caso de uso</strong> describe cómo un actor interactúa con el sistema para lograr un objetivo. Es una forma de <strong>especificar requisitos funcionales</strong> de manera visual y comprensible.
+Por último, una <strong>relación</strong> es una conexión que se establece dentre un actor y un caso de uso. También se pueden establecer relaciones especiales entre casos de uso.</p>
+
+<p>En general, un diagrama de casos de uso describe qué hace nuestro sistema y quién hace las acciones del mismo, pero no cómo las hace.</p>
+
+<h3 id="21-pasos-para-crear-un-diagrama-de-casos-de-uso">2.1 Pasos para crear un diagrama de casos de uso</h3>
+
+<p>Para crear un diagrama de casos de uso, nos basamos en los requisitos funcionales del SRS. De ellos, determinamos los siguientes aspectos:</p>
+
+<p><strong>1. Actores</strong>:</p>
+
+<ul>
+  <li>Determinamos quién interactuará con el sistema.</li>
+  <li>Ejemplo: En un sistema de reservas de pistas deportivas:
+    <ul>
+      <li><strong>Cliente:</strong> Hace reservas.</li>
+      <li><strong>Administrador:</strong> Gestiona horarios.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>2. Casos de uso</strong>:</p>
+
+<ul>
+  <li>Pensamos en las acciones principales que los actores quieren realizar.</li>
+  <li>Ejemplo:
+    <ul>
+      <li>“Reservar pista.”</li>
+      <li>“Cancelar reserva.”</li>
+      <li>“Gestionar horarios.”</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Con esta información, podemos finalmente crear su representación visual en forma de diagrama de casos de uso:</p>
+
+<pre><code class="language-plantuml">@startuml
+actor Cliente
+actor Administrador
+package "Gestor de instalaciones deportivas"{
+    usecase "Reservar pista" as RP
+    usecase "Cancelar reserva" as CR
+    usecase "Gestionar horarios" as GH
+}
+Cliente --&gt; RP
+Cliente --&gt; CR
+Administrador --&gt; GH
+@enduml
+</code></pre>
+
+<h3 id="22-ejercicio-3">2.2 Ejercicio 3</h3>
+
+<p>Crea un diagrama de casos de uso a partir del enunciado del ejercicio 2.</p>
+
+<h2 id="3-relaciones-avanzadas">3 Relaciones avanzadas</h2>
+
+<h3 id="31-relaciones-extend-y-include">3.1 Relaciones <code class="language-plaintext highlighter-rouge">&lt;&lt;extend&gt;&gt;</code> y <code class="language-plaintext highlighter-rouge">&lt;&lt;include&gt;&gt;</code></h3>
+
+<p>Además de las relaciones básicas, los diagramas de casos de uso cuentan con relaciones avanzadas que se dan entre diferentes casos de uso. Nos sirven para dividir un comportamiento del sistema en distintos casos de uso, lo que ayuda a la modularidad y planificación del desarrollo.</p>
+
+<p>La relación de tipo <code class="language-plaintext highlighter-rouge">&lt;&lt;extend&gt;&gt;</code> sirve para añadir una funcionalidad <strong>opcional</strong> que se puede lanzar después de un caso de uso. Por ejemplo, después del caso de uso <code class="language-plaintext highlighter-rouge">reservar pista</code> podríamos añadir una extensión que fuera <code class="language-plaintext highlighter-rouge">añadir extras</code> (como el alquiler de un balón). Este caso de uso podría darse o no, dependiendo de las elecciones del usuario.</p>
+
+<p>La relación de tipo <code class="language-plaintext highlighter-rouge">&lt;&lt;include&gt;&gt;</code> sirve para añadir una funcionalidad <strong>obligatoria</strong> que se lanzará siempre después de un caso de uso. Por ejemplo, después del caso de uso <code class="language-plaintext highlighter-rouge">reservar pista</code> podríamos añadir una extensión que fuera <code class="language-plaintext highlighter-rouge">validar pago</code>. Esta validación se tendría que dar siempre después de cada reserva para que esta se realizara con éxito.</p>
+
+<p>Las relaciones <code class="language-plaintext highlighter-rouge">&lt;&lt;extend&gt;&gt;</code> y <code class="language-plaintext highlighter-rouge">&lt;&lt;include&gt;&gt;</code> se representan así:</p>
+
+<pre><code class="language-plantuml">@startuml
+actor Cliente
+package "Gestor de instalaciones deportivas"{
+    usecase "Reservar pista" as RP
+    usecase "Cancelar reserva" as CR
+    usecase "Validar pago" as VP
+    usecase "Añadir extras" as AE
+}
+Cliente --&gt; RP
+Cliente --&gt; CR
+RP &lt;.. VP : &lt;&lt;include&gt;&gt;
+RP ..&gt; AE : &lt;&lt;extend&gt;&gt;
+@enduml
+</code></pre>
+
+<h3 id="32-ejercicio-4">3.2 Ejercicio 4</h3>
+
+<ol>
+  <li>Crea un diagrama de casos de uso para un sistema de gestión de reservas de un aeropuerto, incluyendo relaciones «include» y «extend».</li>
+  <li>Interpreta el siguiente diagrama (se proporcionará uno en clase).</li>
+</ol>
+
+<h3 id="33-generalización">3.3 Generalización</h3>
+
+<p>Aparte de las relaciones <code class="language-plaintext highlighter-rouge">extend</code> y <code class="language-plaintext highlighter-rouge">include</code> contamos con relaciones de generalización entre actores, que funcionan de manera similar a lo ya visto en los diagramas de clases. Si unimos un actor <strong>A</strong> a un actor <strong>B</strong> mediante una flecha de generalización que apunta de A a B, lo que estamos diciendo es que el actor A es una especificación del actor B, es decir, cuenta con todos los casos de uso del actor B más los suyos propios.</p>
+
+<p>Continuando con el ejemplo de las pistas deportivas, vamos a añadir un subtipo de cliente, el cliente VIP que, además de los casos de uso del cliente, también puede reservar la piscina.</p>
+
+<pre><code class="language-plantuml">@startuml
+actor Cliente
+actor "Cliente VIP" as ClienteVip
+package "Gestor de instalaciones deportivas" as Gestor{
+    usecase "Reservar la piscina" as RPis
+    usecase "Reservar pista" as RP
+    usecase "Cancelar reserva" as CR
+    usecase "Validar pago" as VP
+    usecase "Añadir extras" as AE
+}
+Cliente --&gt; RP
+Cliente --&gt; CR
+ClienteVip --&gt; RPis
+ClienteVip --|&gt; Cliente
+RP &lt;..  VP : &lt;&lt;include&gt;&gt;
+RP ..&gt;  AE : &lt;&lt;extend&gt;&gt;
+@enduml
+</code></pre>
+
+<h3 id="34-ejercicio-4">3.4 Ejercicio 4</h3>
+
+<p>Volviendo al ejercicio 2, completa el diagrama añadiendo al menos una generalización.</p>
+
+<h2 id="4-cuando-usar-dfd-diagramas-de-caso-de-uso-o-diagramas-de-actividades">4. Cuando usar DFD, diagramas de caso de uso o diagramas de actividades</h2>
+
+<p>Uno de los problemas comunes a la hora de diseñar programas es confundir la aplicación de los distintos diagramas. Cada diagrama sirve para representar una pequeña cantidad de información, no representa el total del sistema. Cada uno de los que hemos trabajado tiene una función concreta: El diagrama de actividad sirve para representar <strong>cómo funciona</strong> un proceso, el DFD para ver <strong>cómo se comunica</strong> nuestro sistema con entidades externas y el diagrama de casos de uso para especificar <strong>qué puede hacer cada actor</strong> del sistema. Por otro lado, los diagramas de clases y los diagramas entidad relación sirven para definir los datos y las relaciones entre ellos, con un enfoque más acercado a la programación o al diseño de bases de datos respectivamente.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Tipo de diagrama</strong></th>
+      <th><strong>¿Cuándo usarlo?</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>DFD</strong></td>
+      <td>Cuando se desea modelar el flujo de datos entre procesos y entidades externas.</td>
+    </tr>
+    <tr>
+      <td><strong>Diagrama de Casos de Uso</strong></td>
+      <td>Cuando se requiere modelar funcionalidades desde la perspectiva de los usuarios.</td>
+    </tr>
+    <tr>
+      <td><strong>Diagrama de Actividad</strong></td>
+      <td>Cuando se necesita describir el flujo interno de un proceso complejo. Un proceso puede ser un caso de uso de un diagrama de casos de uso.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A la hora de diseñar un sistema, es común definirlo empleando varios diagramas según lo que se quiera describir. Generalmente, empezaremos con el SRS y desde ahí diseñaremos el resto de diagramas necesarios (DFD, Diagrama de casos de uso, diagramas de clases, diagramas de actividad, etc.).</p>
+
+<p>Por ejemplo, podemos añadir los siguientes diagramas a nuestro programa de gestión de la reserva de pistas:</p>
+
+<ol>
+  <li>Diagrama de clases:</li>
+</ol>
+
+<pre><code class="language-plantuml">@startuml
+class Cliente{}
+class ClienteVip{}
+abstract class Instalacion{}
+class PistaDeportiva{}
+class Piscina{}
+class Reserva{}
+class Horario{
+    - fecha
+    - franjaHoraria
+}
+
+PistaDeportiva--|&gt;Instalacion
+Piscina--|&gt;Instalacion
+
+ClienteVip--|&gt;Cliente
+
+Cliente "1" o-- "0..*" Reserva
+Reserva "1" o-- "1" Instalacion
+Reserva "1" o-- "1" Horario
+
+Cliente -- Reserva : Realiza &gt;
+
+@enduml
+</code></pre>
+
+<p>En este caso, añadimos una clase general <code class="language-plaintext highlighter-rouge">Instalacion</code> para agrupar las piscinas y las pistas deportivas, ya que de ambas se pueden hacer reservas. Para gestionar las reservas, añadimos una clase extra que contenga la instalación que se reserva y un horario (que consiste en una fecha y una franja horaria).</p>
+
+<ol>
+  <li>Diagrama de actividad “Reserva Pista”:</li>
+</ol>
+
+<pre><code class="language-plantuml">@startuml
+
+start
+repeat
+    repeat
+        :Introduce pista a reservar;
+        if (pista existe?) then (si)
+            repeat
+                :Introduce horario;
+                if (horario libre?) then (si)
+                    :Confirmar el pago();
+                    :reIntentar = falso;
+                    if (¿Desea añadir extras?) then (sí)
+                      :Añadir extras();
+                    endif
+                else (no)
+                    :Informar: El horario no está disponible, ¿desea otro horario?;
+                    :reIntentar = ¿desea volverlo a intentar?;
+                endif
+            repeat while (reIntentar) is (verdadero);
+        else (no)
+            :Informar: La pista no existe, ¿Desea volverlo a intentar?;
+            :reIntentar = ¿desea volverlo a intentar?;
+        endif
+    repeat while(continuar) is (verdadero);
+    :"¿Desea reservar otra pista?";
+    :reservarOtraPista = ¿Desea reservar otra pista?;
+repeat while(reservarOtraPista) is (verdadero);
+end
+@enduml
+</code></pre>
+
+<p>Este diagrama representa el proceso de reservar una pista. Para reservar una pista, primero se elige una pista y después se confirma si existe o no. El siguiente paso es introducir el horario. Si el horario está disponible, se procede a la confirmación del pago, que es otro proceso, y a la posibilidad de añadir extras que también es otro proceso. Si no está libre, se presenta la opción de volver a intentar encontrar un horario, Al final, se ofrece la opción de reservar otra pista. Esta opción cubre tanto si la pista no existía como si no se ha encontrado un horario satisfactorio, además de la posibilidad de que el usuario reserve más de una pista.</p>
+
+<h3 id="41-ejercicio-5">4.1 Ejercicio 5</h3>
+
+<p>Dados los siguientes enunciados, realiza un documento de diseño que cuente con los siguientes puntos:</p>
+
+<ol>
+  <li>Documento SRS con su DFD de nivel 0 que indique las relaciones con sistemas externos.</li>
+  <li>Diagrama de casos de uso basado en el SRS previamente diseñado.</li>
+  <li>Diagrama de clases UML para diseñar las relaciones entre los datos que manejará la aplicación.</li>
+  <li>Diagrama de actividad de algún caso de uso relativamente complejo o importante.</li>
+</ol>
+
+<p><strong>Sistema de Gestión de Vuelos de un Aeropuerto</strong>:</p>
+
+<blockquote>
+  <p>Queremos desarrollar una aplicación para gestionar las operaciones de un aeropuerto. Los usuarios son tanto los operadores del aeropuerto como los empleados de las aerolíneas. Los operadores del aeropuerto deben poder asignar pistas de aterrizaje y despegue, modificar las asignaciones según las condiciones climáticas o retrasos, y enviar notificaciones a las aerolíneas sobre los cambios realizados. Los empleados de las aerolíneas pueden consultar los horarios de las pistas asignadas, solicitar cambios en las asignaciones y reportar incidencias técnicas relacionadas con los vuelos. Todos los usuarios pueden ver su historial de acceso a la aplicación. El sistema debe integrarse con los sistemas meteorológicos para alertar automáticamente de posibles retrasos y debe ser accesible en tiempo real desde dispositivos móviles o tablets para el personal en campo.</p>
+</blockquote>
+
+<p><strong>Sistema de Gestión de Inventario para un Almacén</strong>:</p>
+
+<blockquote>
+  <p>Queremos desarrollar una aplicación para gestionar el inventario de un almacén. Los usuarios son los empleados del almacén y los administradores. Los empleados deben ser capaces de registrar la entrada y salida de productos, consultar el estado actual del inventario y reportar incidencias como productos dañados o caducados. Algunos empleados (revisores) además pueden realizar inspecciones para comprobar que no haya errores. Los administradores pueden agregar nuevos productos al sistema, modificar los niveles mínimos de inventario, y generar reportes de inventario en tiempo real. El sistema debe estar conectado con el sistema de pedidos de la empresa para generar alertas automáticas cuando un producto esté por debajo de su nivel mínimo. Además, debe ser rápido, seguro y accesible desde dispositivos móviles para facilitar su uso dentro del almacén.</p>
+</blockquote>
+
+<p><strong>Sistema de Gestión de Reservas para una Biblioteca Escolar</strong>:</p>
+
+<blockquote>
+  <p>Queremos desarrollar una aplicación para gestionar el préstamo y reserva de libros en una biblioteca escolar. Los usuarios son los estudiantes, los profesores y los bibliotecarios. Los estudiantes y profesores deben poder buscar libros en el catálogo, realizar reservas y consultar el estado de sus préstamos. Entre los profesores, algunos tienen la designación de jefes de departamento y pueden marcar libros del catálogo como importantes para el departamento. Los bibliotecarios pueden agregar nuevos libros al catálogo, registrar los préstamos realizados y generar notificaciones automáticas para recordar a los usuarios la devolución de los libros. El sistema debe ser accesible desde cualquier dispositivo con conexión a internet y debe permitir gestionar multas por retrasos en la devolución de libros.</p>
+</blockquote>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

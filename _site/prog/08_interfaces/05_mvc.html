@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Modelo Vista Controlador (MVC) con Swing | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Modelo Vista Controlador (MVC) con Swing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/08_interfaces/05_mvc.html" />
+<meta property="og:url" content="http://localhost:4000/prog/08_interfaces/05_mvc.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Modelo Vista Controlador (MVC) con Swing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Modelo Vista Controlador (MVC) con Swing","url":"http://localhost:4000/prog/08_interfaces/05_mvc.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="modelo-vista-controlador-mvc-con-swing"><strong>Modelo Vista Controlador (MVC) con Swing</strong></h1>
+
+<ul>
+  <li><a href="#modelo-vista-controlador-mvc-con-swing"><strong>Modelo Vista Controlador (MVC) con Swing</strong></a>
+    <ul>
+      <li><a href="#1-mvc-componentes-y-aplicación-en-swing">1. MVC. Componentes y aplicación en Swing</a></li>
+      <li><a href="#2-un-ejemplo-práctico-gestión-de-turnos-en-un-hospital"><strong>2. Un ejemplo práctico: Gestión de Turnos en un Hospital</strong></a>
+        <ul>
+          <li><a href="#21-el-paquete-modelo">2.1 <strong>El paquete <code class="language-plaintext highlighter-rouge">modelo</code></strong></a>
+            <ul>
+              <li><a href="#clase-empleado">Clase <code class="language-plaintext highlighter-rouge">Empleado</code></a></li>
+              <li><a href="#subclases-de-empleado-cada-una-con-su-archivo-correspondiente">Subclases de <code class="language-plaintext highlighter-rouge">Empleado</code> (cada una con su archivo correspondiente)</a></li>
+              <li><a href="#clase-turno">Clase <code class="language-plaintext highlighter-rouge">Turno</code></a></li>
+              <li><a href="#clase-hospital">Clase <code class="language-plaintext highlighter-rouge">Hospital</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#-22-el-paquete-vista">** 2.2 El paquete <code class="language-plaintext highlighter-rouge">vista</code>**</a>
+            <ul>
+              <li><a href="#clase-hospitalview">Clase <code class="language-plaintext highlighter-rouge">HospitalView</code></a></li>
+              <li><a href="#clase-turnostablemodel">Clase <code class="language-plaintext highlighter-rouge">TurnosTableModel</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#23-paquete-controlador"><strong>2.3 Paquete <code class="language-plaintext highlighter-rouge">controlador</code></strong></a>
+            <ul>
+              <li><a href="#clase-hospitalcontroller">Clase <code class="language-plaintext highlighter-rouge">HospitalController</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#24-la-clase-main"><strong>2.4 La clase <code class="language-plaintext highlighter-rouge">Main</code></strong></a></li>
+          <li><a href="#25-ejercicio-1">2.5 Ejercicio 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-creación-de-un-jar-a-partir-de-nuestro-proyecto">3. Creación de un JAR a partir de nuestro proyecto</a>
+        <ul>
+          <li><a href="#31-ejercicio-2">3.1 Ejercicio 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#4-práctica-evaluable-el-diseñador-de-menús">4. Práctica evaluable: El diseñador de menús</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-mvc-componentes-y-aplicación-en-swing">1. MVC. Componentes y aplicación en Swing</h2>
+
+<p>12 horas</p>
+
+<p>El patrón <strong>Modelo-Vista-Controlador (MVC)</strong> es un patrón de arquitectura de software ampliamente empleado para crear aplicaciones modulares, escalables y fáciles de mantener. En Swing, este patrón nos permite separar claramente la lógica de negocio (modelo), la interfaz gráfica (vista) y la gestión de eventos (controlador). Vamos a explicar sus componentes paso a paso:</p>
+
+<ol>
+  <li><strong>Modelo</strong>:
+    <ul>
+      <li>Representa la lógica y los datos del negocio.</li>
+      <li>Contiene clases para manejar información, realizar cálculos y gestionar las reglas del sistema.</li>
+      <li>No tiene referencias a Swing.</li>
+    </ul>
+  </li>
+  <li><strong>Vista</strong>:
+    <ul>
+      <li>Encargada de la presentación (interfaz gráfica).</li>
+      <li>Incluye todos los elementos de Swing como <code class="language-plaintext highlighter-rouge">JFrame</code>, <code class="language-plaintext highlighter-rouge">JButton</code>, <code class="language-plaintext highlighter-rouge">JTable</code>, etc.</li>
+      <li>No contiene lógica de negocio.</li>
+    </ul>
+  </li>
+  <li><strong>Controlador</strong>:
+    <ul>
+      <li>Gestiona la interacción entre el modelo y la vista.</li>
+      <li>Escucha eventos de la vista y actualiza el modelo o viceversa.</li>
+      <li>Implementa <code class="language-plaintext highlighter-rouge">ActionListener</code>, <code class="language-plaintext highlighter-rouge">MouseListener</code>, u otros escuchadores de eventos.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>En general, cuando diseñemos una aplicación en Java usando Swing y el patrón de arquitectura MVC, deberemos seguir los siguientes pasos:</p>
+
+<ol>
+  <li>Diseñar el <strong>Modelo</strong>: Crear las clases que representan las entidades de negocio.</li>
+  <li>Diseñar la <strong>Vista</strong>: Construir la interfaz gráfica en clases separadas.</li>
+  <li>Crear el <strong>Controlador</strong>: Coordinar la interacción entre modelo y vista.</li>
+</ol>
+
+<h2 id="2-un-ejemplo-práctico-gestión-de-turnos-en-un-hospital"><strong>2. Un ejemplo práctico: Gestión de Turnos en un Hospital</strong></h2>
+
+<p>Para profundizar en el uso del MVC, vamos a lanzarnos de cabeza al desarrollo de un programa completo que lo utilice. Para ello, primero crearemos tres paquetes distintos. Uno para el modelo, otro para la vista y otro para el controlador. En el modelo pondremos nuestras clases que no dependan de Swing, en la vista aquellas clases que sirvan para montar la interfaz gráfica de nuestra aplicación y en el controlador los eventos que gestionan la interacción entre nuestro modelo y nuestra vista.</p>
+
+<p>En este proyecto, queremos gestionar turnos para empleados (médicos, enfermeros, administrativos). Los datos serán cargados dinámicamente en una interfaz Swing que incluye:</p>
+
+<ol>
+  <li><strong>Un JComboBox para seleccionar el tipo de empleado.</strong></li>
+  <li><strong>Una JTable para visualizar y editar turnos.</strong></li>
+  <li><strong>Botones para agregar o eliminar turnos.</strong></li>
+</ol>
+
+<h3 id="21-el-paquete-modelo">2.1 <strong>El paquete <code class="language-plaintext highlighter-rouge">modelo</code></strong></h3>
+
+<h4 id="clase-empleado">Clase <code class="language-plaintext highlighter-rouge">Empleado</code></h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Empleado</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Empleado</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nombre</span> <span class="o">=</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNombre</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="subclases-de-empleado-cada-una-con-su-archivo-correspondiente">Subclases de <code class="language-plaintext highlighter-rouge">Empleado</code> (cada una con su archivo correspondiente)</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Medico</span> <span class="kd">extends</span> <span class="nc">Empleado</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Medico</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">nombre</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Enfermero</span> <span class="kd">extends</span> <span class="nc">Empleado</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Enfermero</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">nombre</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Administrativo</span> <span class="kd">extends</span> <span class="nc">Empleado</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Administrativo</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">,</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">nombre</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="clase-turno">Clase <code class="language-plaintext highlighter-rouge">Turno</code></h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Turno</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Empleado</span> <span class="n">empleado</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">inicio</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">fin</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Turno</span><span class="o">(</span><span class="nc">Empleado</span> <span class="n">empleado</span><span class="o">,</span> <span class="nc">LocalDateTime</span> <span class="n">inicio</span><span class="o">,</span> <span class="nc">LocalDateTime</span> <span class="n">fin</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">empleado</span> <span class="o">=</span> <span class="n">empleado</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">inicio</span> <span class="o">=</span> <span class="n">inicio</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">fin</span> <span class="o">=</span> <span class="n">fin</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Empleado</span> <span class="nf">getEmpleado</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">empleado</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">LocalDateTime</span> <span class="nf">getInicio</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">inicio</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">LocalDateTime</span> <span class="nf">getFin</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">fin</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Turno: "</span> <span class="o">+</span> <span class="n">inicio</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">fin</span> <span class="o">+</span> <span class="s">" ("</span> <span class="o">+</span> <span class="n">empleado</span><span class="o">.</span><span class="na">getNombre</span><span class="o">()</span> <span class="o">+</span> <span class="s">")"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="clase-hospital">Clase <code class="language-plaintext highlighter-rouge">Hospital</code></h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hospital</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Empleado</span><span class="o">&gt;</span> <span class="n">empleados</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Turno</span><span class="o">&gt;</span> <span class="n">turnos</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Hospital</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">empleados</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">turnos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">agregarEmpleado</span><span class="o">(</span><span class="nc">Empleado</span> <span class="n">empleado</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">empleados</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">empleado</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Empleado</span><span class="o">&gt;</span> <span class="nf">getEmpleados</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">empleados</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">agregarTurno</span><span class="o">(</span><span class="nc">Turno</span> <span class="n">turno</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">turnos</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">turno</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Turno</span><span class="o">&gt;</span> <span class="nf">getTurnos</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">turnos</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="-22-el-paquete-vista">** 2.2 El paquete <code class="language-plaintext highlighter-rouge">vista</code>**</h3>
+
+<h4 id="clase-hospitalview">Clase <code class="language-plaintext highlighter-rouge">HospitalView</code></h4>
+
+<p>En esta clase definimos la apariencia que va a tener la ventana de la aplicación que representa el hospital. Para hacer la tabla más funcional, vamos a crear aparte una clase derivada de <code class="language-plaintext highlighter-rouge">AbstractTableModel</code> que llamaremos <code class="language-plaintext highlighter-rouge">TurnosTableModel</code>. Esto nos permitirá personalizar su comportamiento y adecuarlo a las necesidades de la aplicación.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HospitalView</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">Empleado</span><span class="o">&gt;</span> <span class="n">comboEmpleados</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">JTable</span> <span class="n">tablaTurnos</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">JButton</span> <span class="n">btnAgregarTurno</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">JButton</span> <span class="n">btnEliminarTurno</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HospitalView</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"Gestión de Turnos - Hospital"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">600</span><span class="o">,</span> <span class="mi">400</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BorderLayout</span><span class="o">());</span>
+
+        <span class="c1">// Panel superior con JComboBox</span>
+        <span class="nc">JPanel</span> <span class="n">panelSuperior</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+        <span class="n">panelSuperior</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Empleado:"</span><span class="o">));</span>
+        <span class="n">comboEmpleados</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">&lt;&gt;();</span>
+        <span class="n">panelSuperior</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">comboEmpleados</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">panelSuperior</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">NORTH</span><span class="o">);</span>
+
+        <span class="c1">// Tabla para los turnos</span>
+        <span class="n">tablaTurnos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTable</span><span class="o">(</span><span class="k">new</span> <span class="nc">TurnosTableModel</span><span class="o">());</span>
+        <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">tablaTurnos</span><span class="o">),</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+
+        <span class="c1">// Panel inferior con botones</span>
+        <span class="nc">JPanel</span> <span class="n">panelInferior</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JPanel</span><span class="o">();</span>
+        <span class="n">btnAgregarTurno</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Agregar Turno"</span><span class="o">);</span>
+        <span class="n">btnEliminarTurno</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Eliminar Turno"</span><span class="o">);</span>
+        <span class="n">panelInferior</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnAgregarTurno</span><span class="o">);</span>
+        <span class="n">panelInferior</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">btnEliminarTurno</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">panelInferior</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">SOUTH</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">Empleado</span><span class="o">&gt;</span> <span class="nf">getComboEmpleados</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">comboEmpleados</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">JTable</span> <span class="nf">getTablaTurnos</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">tablaTurnos</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnAgregarTurno</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">btnAgregarTurno</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">JButton</span> <span class="nf">getBtnEliminarTurno</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">btnEliminarTurno</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="clase-turnostablemodel">Clase <code class="language-plaintext highlighter-rouge">TurnosTableModel</code></h4>
+
+<p>Esta clase es una extensión de la clase <code class="language-plaintext highlighter-rouge">AbstractTableModel</code>, creada para personalizar el comportamiento de la tabla y adecuarlo a los requisitos de la aplicación.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.table.AbstractTableModel</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.format.DateTimeFormatter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TurnosTableModel</span> <span class="kd">extends</span> <span class="nc">AbstractTableModel</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Turno</span><span class="o">&gt;</span> <span class="n">turnos</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="kd">private</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">columnas</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Empleado"</span><span class="o">,</span> <span class="s">"Inicio"</span><span class="o">,</span> <span class="s">"Fin"</span><span class="o">};</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getRowCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">turnos</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getColumnCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">columnas</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Object</span> <span class="nf">getValueAt</span><span class="o">(</span><span class="kt">int</span> <span class="n">rowIndex</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Turno</span> <span class="n">turno</span> <span class="o">=</span> <span class="n">turnos</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">);</span>
+        <span class="nc">DateTimeFormatter</span> <span class="n">formatter</span> <span class="o">=</span> <span class="nc">DateTimeFormatter</span><span class="o">.</span><span class="na">ofPattern</span><span class="o">(</span><span class="s">"yyyy-MM-dd HH:mm"</span><span class="o">);</span>
+
+        <span class="k">switch</span> <span class="o">(</span><span class="n">columnIndex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+                <span class="k">return</span> <span class="n">turno</span><span class="o">.</span><span class="na">getEmpleado</span><span class="o">().</span><span class="na">getNombre</span><span class="o">();</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+                <span class="k">return</span> <span class="n">turno</span><span class="o">.</span><span class="na">getInicio</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="n">formatter</span><span class="o">);</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+                <span class="k">return</span> <span class="n">turno</span><span class="o">.</span><span class="na">getFin</span><span class="o">().</span><span class="na">format</span><span class="o">(</span><span class="n">formatter</span><span class="o">);</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getColumnName</span><span class="o">(</span><span class="kt">int</span> <span class="n">column</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">columnas</span><span class="o">[</span><span class="n">column</span><span class="o">];</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">agregarTurno</span><span class="o">(</span><span class="nc">Turno</span> <span class="n">turno</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">turnos</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">turno</span><span class="o">);</span>
+        <span class="n">fireTableRowsInserted</span><span class="o">(</span><span class="n">turnos</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">turnos</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eliminarTurno</span><span class="o">(</span><span class="kt">int</span> <span class="n">rowIndex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">turnos</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">);</span>
+        <span class="n">fireTableRowsDeleted</span><span class="o">(</span><span class="n">rowIndex</span><span class="o">,</span> <span class="n">rowIndex</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="23-paquete-controlador"><strong>2.3 Paquete <code class="language-plaintext highlighter-rouge">controlador</code></strong></h3>
+
+<h4 id="clase-hospitalcontroller">Clase <code class="language-plaintext highlighter-rouge">HospitalController</code></h4>
+
+<p>El controlador de nuestra aplicación tiene la función de conectar el modelo con la vista. Para ello, tiene dos métodos principales:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">inicializarVista</code> es el método de inicialización, que nos da el estado inicial de la aplicación.</li>
+  <li><code class="language-plaintext highlighter-rouge">agregarEventos</code> es el método en el que se define el comportamiento de los diferentes botones y elementos de la vista. En una versión menos separado habríamos cargado el comportamiento al crear la vista, pero haciéndolo así podemos separar el código con Swing del código sin él, manteniendo la mezcla solamente en el controlador. A la hora del mantenimiento, es más sencillo.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HospitalController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Hospital</span> <span class="n">model</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">HospitalView</span> <span class="n">view</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">HospitalController</span><span class="o">(</span><span class="nc">Hospital</span> <span class="n">model</span><span class="o">,</span> <span class="nc">HospitalView</span> <span class="n">view</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">view</span> <span class="o">=</span> <span class="n">view</span><span class="o">;</span>
+
+        <span class="n">inicializarVista</span><span class="o">();</span>
+        <span class="n">agregarEventos</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">inicializarVista</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Cargar empleados en el JComboBox</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Empleado</span> <span class="n">empleado</span> <span class="o">:</span> <span class="n">model</span><span class="o">.</span><span class="na">getEmpleados</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">view</span><span class="o">.</span><span class="na">getComboEmpleados</span><span class="o">().</span><span class="na">addItem</span><span class="o">(</span><span class="n">empleado</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">agregarEventos</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">view</span><span class="o">.</span><span class="na">getBtnAgregarTurno</span><span class="o">().</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">Empleado</span> <span class="n">empleado</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Empleado</span><span class="o">)</span> <span class="n">view</span><span class="o">.</span><span class="na">getComboEmpleados</span><span class="o">().</span><span class="na">getSelectedItem</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">empleado</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">LocalDateTime</span> <span class="n">inicio</span> <span class="o">=</span> <span class="nc">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+                <span class="nc">LocalDateTime</span> <span class="n">fin</span> <span class="o">=</span> <span class="n">inicio</span><span class="o">.</span><span class="na">plusHours</span><span class="o">(</span><span class="mi">8</span><span class="o">);</span>
+                <span class="nc">Turno</span> <span class="n">turno</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Turno</span><span class="o">(</span><span class="n">empleado</span><span class="o">,</span> <span class="n">inicio</span><span class="o">,</span> <span class="n">fin</span><span class="o">);</span>
+                <span class="n">model</span><span class="o">.</span><span class="na">agregarTurno</span><span class="o">(</span><span class="n">turno</span><span class="o">);</span>
+
+                <span class="nc">TurnosTableModel</span> <span class="n">tableModel</span> <span class="o">=</span> <span class="o">(</span><span class="nc">TurnosTableModel</span><span class="o">)</span> <span class="n">view</span><span class="o">.</span><span class="na">getTablaTurnos</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
+                <span class="n">tableModel</span><span class="o">.</span><span class="na">agregarTurno</span><span class="o">(</span><span class="n">turno</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">view</span><span class="o">.</span><span class="na">getBtnEliminarTurno</span><span class="o">().</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">filaSeleccionada</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="na">getTablaTurnos</span><span class="o">().</span><span class="na">getSelectedRow</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">filaSeleccionada</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">TurnosTableModel</span> <span class="n">tableModel</span> <span class="o">=</span> <span class="o">(</span><span class="nc">TurnosTableModel</span><span class="o">)</span> <span class="n">view</span><span class="o">.</span><span class="na">getTablaTurnos</span><span class="o">().</span><span class="na">getModel</span><span class="o">();</span>
+                <span class="n">tableModel</span><span class="o">.</span><span class="na">eliminarTurno</span><span class="o">(</span><span class="n">filaSeleccionada</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="24-la-clase-main"><strong>2.4 La clase <code class="language-plaintext highlighter-rouge">Main</code></strong></h3>
+
+<p>Para que la aplicación funcione, debemos definir un método <code class="language-plaintext highlighter-rouge">main</code> que lance la aplicación. Aparte, usamos ese mismo método para cargar unos datos de prueba.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">Hospital</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Hospital</span><span class="o">();</span>
+            <span class="n">model</span><span class="o">.</span><span class="na">agregarEmpleado</span><span class="o">(</span><span class="k">new</span> <span class="nc">Medico</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span> <span class="s">"Dr. López"</span><span class="o">));</span>
+            <span class="n">model</span><span class="o">.</span><span class="na">agregarEmpleado</span><span class="o">(</span><span class="k">new</span> <span class="nc">Enfermero</span><span class="o">(</span><span class="s">"2"</span><span class="o">,</span> <span class="s">"Enf. Pérez"</span><span class="o">));</span>
+            <span class="n">model</span><span class="o">.</span><span class="na">agregarEmpleado</span><span class="o">(</span><span class="k">new</span> <span class="nc">Administrativo</span><span class="o">(</span><span class="s">"3"</span><span class="o">,</span> <span class="s">"Sra. García"</span><span class="o">));</span>
+
+            <span class="nc">HospitalView</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HospitalView</span><span class="o">();</span>
+            <span class="k">new</span> <span class="nf">HospitalController</span><span class="o">(</span><span class="n">model</span><span class="o">,</span> <span class="n">view</span><span class="o">);</span>
+
+            <span class="n">view</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="25-ejercicio-1">2.5 Ejercicio 1</h3>
+
+<p>Como mejora de la aplicación, podríamos cargar los datos desde dos ficheros .csv, ‘empleados.csv’ y <code class="language-plaintext highlighter-rouge">turnos.csv</code>. Asimismo, podríamos añadir una funcionalidad para agregar o eliminar empleados, así como la capacidad de guardar los datos en sendos archivos .csv. Las consultas a estos recursos deberían hacerse a través de derivados de <code class="language-plaintext highlighter-rouge">SwingWorker</code> para garantizar que no se bloquee la interfaz.</p>
+
+<p>Más adelante en el curso, podríamos sustituir (o complementar) los archivos .csv por una base datos.</p>
+
+<h2 id="3-creación-de-un-jar-a-partir-de-nuestro-proyecto">3. Creación de un JAR a partir de nuestro proyecto</h2>
+
+<p>Para distribuir nuestros programas, necesitamos crear ejecutables. En el casa de Java, los ejecutables son conocidos como Java Archives, o simplemente JAR. Un JAR es un archivo que se compone de nuestro código y todo lo necesario para que este funcione. Generalmente incorporan de manera automática el JDK, pero si usamos dependencias externas debemos incluirlas en la creación del JAR.</p>
+
+<p>Esto último implica que, mientras que la distribución de una aplicación que use solamente dependencias del JDK (como por ejemplo, Swing) es automática y sencilla, si usa dependencias externas añade una serie de pasos que lo hacen más complicado:</p>
+
+<ul>
+  <li>Descargar las dependencias desde su repositorio oficial.</li>
+  <li>Incluir las dependencias en el ejecutable en el momento de su creación.</li>
+</ul>
+
+<p>Por este mismo motivo hemos escogido Swing para diseñar interfaces gráficas en este curso introductorio, a pesar de que JavaFX es más moderno y potente. JavaFX tiene dos problemas principales: Es más complejo y no está incluido en el JDK desde la versión 11.</p>
+
+<p>Tu trabajo consiste en, empleando las herramientas de IntelliJ, crear un archivo .JAR de tu aplicación de menús y distribuirla.</p>
+
+<p>Para crear un archivo JAR (Java Archive) en IntelliJ IDEA, sigue estos pasos:</p>
+
+<ul>
+  <li>Ir a la ventana “Proyecto”: En la barra de menú principal, haz clic en “Archivo” (o presiona Ctrl + Alt + Shift + S en Windows/Linux o Cmd + Opt + Shift + S en macOS) y selecciona “Estructura del proyecto” (Project Structure).</li>
+  <li>Sección “Artefactos”: En la ventana “Estructura del proyecto”, haz clic en la pestaña “Artefactos” (Artifacts).</li>
+  <li>Crear un nuevo artefacto: Haz clic en el botón “+” (Add) y selecciona “JAR” (From modules with dependencies…).</li>
+  <li>Configurar el JAR: En la ventana “Crear JAR”, selecciona la clase principal de tu proyecto (Main Class) y configura las opciones según tus necesidades. Puedes especificar la ruta de acceso para el archivo MANIFEST.MF (Directory for META-INF/MANIFEST.MF) y agregar archivos a la biblioteca (Add).</li>
+  <li>Generar el JAR: Haz clic en “Build” (Generar) y selecciona “Build Artifacts” (Generar artefactos). El JAR se creará en la carpeta “out” o la ruta que hayas especificado.</li>
+</ul>
+
+<p>También puedes crear un JAR desde el menú contextual de tu proyecto:</p>
+
+<ul>
+  <li>Sección “Proyecto”: En la ventana principal de IntelliJ IDEA, selecciona tu proyecto en la lista de proyectos.</li>
+  <li>Menú contextual: Haz clic con el botón derecho en el proyecto y selecciona “Build” &gt; “Build Artifacts” &gt; “JAR” (From modules with dependencies…).</li>
+  <li>Configurar y generar: Sigue los pasos 3 y 4 de la sección anterior.</li>
+</ul>
+
+<h3 id="31-ejercicio-2">3.1 Ejercicio 2</h3>
+
+<p>Crea un JAR del gestor de turnos del hospital y distribúyelo en varios ordenadores para comprobar que funciona de manera adecuada.</p>
+
+<h2 id="4-práctica-evaluable-el-diseñador-de-menús">4. Práctica evaluable: El diseñador de menús</h2>
+
+<p>Queremos hacer una aplicación para gestionar un menú. Un menú se compone de diferentes platos, que son bebida, entrada, primer plato, segundo plato y postre. Cada uno de estos platos se compone de una o más recetas.</p>
+
+<p>Una receta consiste en la preparación de una comida usando uno o varios alimentos. Las recetas tienen un nombre que las identifica.</p>
+
+<p>A su vez, los alimentos tienen un nombre y una tabla nutricional, que vamos a resumir en kilocalorías, carbohidratos, grasas, proteínas, sal, Azúcares (que siempre debe ser un número igual o menor que el de carbohidratos) y grasas saturadas (que siempre debe ser un número igual o menor que el de grasas).</p>
+
+<p>Cuando consultamos una receta, se nos dice la suma de los valores de la tabla nutricional de todos los alimentos que la componen.</p>
+
+<p>En nuestra aplicación podemos crear menús que tendrán un nombre y los platos definidos. Un menú necesita al menos un plato, pero no tiene por qué incluirlos todos. Para crear un menú, seleccionamos entre los platos disponibles para rellenarlos. Después lo podemos guardar en un archivo .csv que tendrá el nombre del menú (modificado para ser compatible con el estándar ASCII).</p>
+
+<p>También podemos crear los platos de forma análoga, añadiéndoles un nombre y seleccionando entre los alimentos disponibles. Los guardamos en otro archivo .csv.</p>
+
+<p>Por último, también podemos crear los alimentos, completando el nombre y su tabla nutricional. Todos los elementos deben ser rellenados con valores válidos.</p>
+
+<p>Nuestra aplicación tiene que tener un formulario para introducir cada elemento. El formulario tiene que ser validado y avisar al usuario cuando haya algún dato introducido de forma incorrecta.</p>
+
+<p>Además, nuestra aplicación tiene que poder cargar y guardar datos en los ficheros correspondientes.</p>
+
+<p>Para cada menú, receta o alimento debemos poder abrir una ventana modal en la que se muestre la tabla nutricional. Debemos diseñar un gráfico de barras en el que se vea la proporción de carbohidratos, grasas y proteínas. Además, de forma opcional la cantidad de azúcares se debe superponer a la de carbohidratos y la de grasas saturadas a la de grasas (podemos elegir si visualizarla o no con un botón o una casilla de selección).</p>
+
+<p>En el caso de los menús, debemos poder ver los platos que lo componen. En el caso de los platos, podemos ver las recetas que lo componen. En el caso de las recetas, podemos ver los alimentos que lo componen.</p>
+
+<p>Divide la creación de la aplicación en tres pasos:</p>
+
+<ul>
+  <li><strong>Primero</strong>: Haz una versión de la aplicación en la que puedas crear y consultar los alimentos.</li>
+  <li><strong>Segundo</strong>: Haz una versión de la aplicación en la que puedas crear recetas a partir de alimentos, y también consultarlas.</li>
+  <li><strong>Tercero</strong>: Haz una versión de la aplicación en la que puedas crear platos a partir de recetas, y también consultarlas.</li>
+  <li><strong>Cuarto</strong>: Haz una versión de la aplicación en la que puedas crear menús a partir de recetas, y también consultarlos.</li>
+  <li><strong>Quinto</strong>: Haz que los datos se puedan introducir desde fichero. Haz también que, de forma opcional, se puedan guardar en ficheros (deja los nombres fijos).</li>
+  <li><strong>Sexto</strong>: Mejora la interfaz para que sea totalmente funcional.</li>
+  <li><strong>Séptimo</strong>: Implementa las validaciones en los formularios.</li>
+  <li><strong>Octavo</strong>: Crea un archivo JAR para distribuir el proyecto.</li>
+</ul>
+
+<p>Intenta reciclar, en la medida de lo posible, las vistas.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

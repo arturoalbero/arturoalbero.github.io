@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 02: Del diagrama al programa en Java | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 02: Del diagrama al programa en Java" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/04_poo/02_diagrama_a_java_poo.html" />
+<meta property="og:url" content="http://localhost:4000/prog/04_poo/02_diagrama_a_java_poo.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 02: Del diagrama al programa en Java" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 02: Del diagrama al programa en Java","url":"http://localhost:4000/prog/04_poo/02_diagrama_a_java_poo.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      
+<h1 id="sesión-02-del-diagrama-al-programa-en-java">Sesión 02: Del diagrama al programa en Java</h1>
+
+<ul>
+  <li><a href="#sesión-02-del-diagrama-al-programa-en-java">Sesión 02: Del diagrama al programa en Java</a>
+    <ul>
+      <li><a href="#1-definición-de-clases-en-java">1. Definición de clases en Java</a>
+        <ul>
+          <li><a href="#actividad-5-clases-a-partir-de-diagramas">Actividad 5: Clases a partir de diagramas</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-constructores-getters-y-setters-creación-automatizada-con-intellij">2. Constructores, getters y setters. Creación automatizada con IntelliJ</a>
+        <ul>
+          <li><a href="#actividad-6-constructores-setters-y-getters">Actividad 6: Constructores, Setters y Getters</a></li>
+        </ul>
+      </li>
+      <li><a href="#5-empaquetado-de-clases-importaciones">5. Empaquetado de clases. Importaciones</a>
+        <ul>
+          <li><a href="#actividad-7-empaquetado-de-clases">Actividad 7: Empaquetado de clases</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-definición-de-clases-en-java">1. Definición de clases en Java</h2>
+
+<p>En Java, como en cualquier otro lenguaje de programación, podemos trasladar cualquier diagrama UML de clases a programación. Veamos unos ejemplos:</p>
+
+<pre><code class="language-plantuml">@startuml
+class Martillo{
+    # longitud: number
+    # marca: string
+    + martillar() : void
+}
+class MartilloElectrico{
+    - batería: number
+    + tiempoRestante() : number
+}
+class Trabajador{
+    - nombre : string
+    + trabajar() : void
+}
+Trabajador o-- MartilloElectrico
+MartilloElectrico --|&gt; Martillo
+@enduml
+</code></pre>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Martillo</span><span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">float</span> <span class="n">longitud</span><span class="o">;</span>
+    <span class="kd">protected</span> <span class="nc">String</span> <span class="n">marca</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">martillar</span><span class="o">(){</span>
+        <span class="c1">//hace lo que hacen los martillos</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">MartilloElectrico</span> <span class="kd">extends</span> <span class="nc">Martillo</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">bateria</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">tiempoRestante</span><span class="o">(){</span>
+        <span class="kt">int</span> <span class="n">tiempo</span><span class="o">;</span>
+        <span class="c1">//hace un cálculo y devuelve el tiempo restante</span>
+        <span class="k">return</span> <span class="n">tiempo</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">Trabajador</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">MartilloElectrico</span> <span class="n">martilloElectrico</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">Trabajar</span><span class="o">(){</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Como vemos, las relaciones de herencia se expresan de manera explícita a través de la palabra reservada <code class="language-plaintext highlighter-rouge">extends</code>, mientras que las relaciones de componente se representan como atributos dentro de las clases donde son contenidos los componentes.</p>
+
+<p>A la hora de programar en Java, cada archivo se corresponde con una clase pública con el mismo nombre. Por convención, las clases se escriben con la primera letra en mayúscula y usando CamelCase (cada nueva palabra empieza en mayúscula), mientras que las variables se escriben con la primera letra en minúscula, pero usando CamelCase también.</p>
+
+<p>Además de la clase pública, cada archivo puede tener una o más clases, aunque no es práctica común.</p>
+
+<p>En Java, si no se especifica ningún tipo de visibilidad, la visibilidad por defecto es de Paquete, que es pública para los miembros del mismo paquete y privada para todos los demás. Se trata de un tipo de visibilidad muy práctica que trabajaremos más adelante.</p>
+
+<h3 id="actividad-5-clases-a-partir-de-diagramas">Actividad 5: Clases a partir de diagramas</h3>
+
+<p>Crea un proyecto nuevo en IntelliJ. Añade un archivo, Libro.java, y crea en él la clase Libro, cuyo diagrama creaste en la actividad 1.</p>
+
+<p>Después, crea un diagrama en uml para representar una estantería de libros. Crea el archivo Estanteria.java (no uses tildes) y codifica la clase.</p>
+
+<p>Haz un programa <code class="language-plaintext highlighter-rouge">main</code> de la siguiente forma:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="nc">Libro</span> <span class="n">libro</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Libro</span><span class="o">();</span>
+        <span class="nc">Estanteria</span> <span class="n">estanteria</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Estanteria</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="2-constructores-getters-y-setters-creación-automatizada-con-intellij">2. Constructores, getters y setters. Creación automatizada con IntelliJ</h2>
+
+<p>Para crear una instancia de un objeto, necesitamos usar un constructor. Un constructor es un método especial que tiene el mismo nombre que la clase y que se llama cada vez que creamos un objeto con la sintaxis <code class="language-plaintext highlighter-rouge">objeto = new ClaseObjeto();</code>. Todas las clases tienen un constructor por defecto, pero podemos sobreescribirlo para que se comporte de forma personalizada, ya sea añadiéndole parámetros o cambiando su comportamiento interno. Para acceder a los atributos y métodos de un objeto, usamos la palabra reservada <code class="language-plaintext highlighter-rouge">this</code>.
+Podemos acceder y modificar los atributos privados o protegidos de una clase a través de métodos, que llamamos <em>getters</em> y <em>setters</em>. Su uso está estandarizado y podemos hacer uso de la generación automática de código de IntelliJ para que, una vez definidos los atributos, nos cree el código para los getters y setters, así como el constructor.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Persona</span><span class="o">{</span>
+    <span class="nc">String</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Persona</span><span class="o">(</span><span class="nc">String</span> <span class="n">nombre</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nombre</span> <span class="o">=</span> <span class="n">nombre</span><span class="o">;</span> <span class="c1">//'this.nombre' representa el atributo nombre, mientras que 'nombre' representa el parámetro.</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNombre</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">nombre</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNombre</span><span class="o">(</span><span class="nc">String</span> <span class="n">nombre</span><span class="o">){</span>
+
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span> <span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="nc">Persona</span> <span class="n">persona</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Persona</span><span class="o">(</span><span class="s">"Arturo"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="actividad-6-constructores-setters-y-getters">Actividad 6: Constructores, Setters y Getters</h3>
+
+<p>Usa la generación de código de IntelliJ para crear los constructores, los getters y los setters de las clases creadas en el ejercicio anterior.</p>
+
+<p>Modifica el main para que funcione de la siguiente manera:
+Tenemos una estantería que contiene 5 libros. Introduce los datos de cada libro de forma manual. Después, muestra por consola los nombres de los libros contenidos en dicha estantería.</p>
+
+<h2 id="5-empaquetado-de-clases-importaciones">5. Empaquetado de clases. Importaciones</h2>
+
+<p>En Java y muchos otros lenguajes de programación, podemos dividir el código en paquetes. A efectos prácticos, un paquete es como una carpeta que contiene varios códigos fuente relacionados. La visibilidad de paquete permite a las clases del mismo trabajar con los métodos y atributos marcados de esa manera como si fueran públicos. Mientras tanto, las clases de fuera del paquete no podrán acceder a ellos, porque los verán como privados.</p>
+
+<p>Para que una clase externa al paquete puede trabajar con alguna clase del paquete, debe importarla. IntelliJ se encarga de hacer la importación de forma automática si usamos la autocompleción (recomendado).</p>
+
+<h3 id="actividad-7-empaquetado-de-clases">Actividad 7: Empaquetado de clases</h3>
+
+<p>Crea un paquete, <code class="language-plaintext highlighter-rouge">libreria</code>, y mueve a él las clases <code class="language-plaintext highlighter-rouge">Estanteria</code> y <code class="language-plaintext highlighter-rouge">Libro</code>. Acepta las opciones de refactorización que ofrece IntelliJ y fíjate en la cabecera de cada clase para ver cómo han quedado las importaciones. Después, crea una clase vacía, <code class="language-plaintext highlighter-rouge">Biblioteca</code>, dentro del paquete e impórtala de forma manual en el main. Comprueba que está bien instanciando un objeto de la clase biblioteca.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

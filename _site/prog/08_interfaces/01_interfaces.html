@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introducción práctica a Swing: Interfaces gráficas y concurrencia | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Introducción práctica a Swing: Interfaces gráficas y concurrencia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/08_interfaces/01_interfaces.html" />
+<meta property="og:url" content="http://localhost:4000/prog/08_interfaces/01_interfaces.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introducción práctica a Swing: Interfaces gráficas y concurrencia" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Introducción práctica a Swing: Interfaces gráficas y concurrencia","url":"http://localhost:4000/prog/08_interfaces/01_interfaces.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="introducción-práctica-a-swing-interfaces-gráficas-y-concurrencia">Introducción práctica a Swing: Interfaces gráficas y concurrencia</h1>
+
+<ul>
+  <li><a href="#introducción-práctica-a-swing-interfaces-gráficas-y-concurrencia">Introducción práctica a Swing: Interfaces gráficas y concurrencia</a>
+    <ul>
+      <li><a href="#1-qué-es-java-swing-y-para-qué-sirve">1. ¿Qué es Java Swing y para qué sirve?</a></li>
+      <li><a href="#2-ejemplo-de-introducción-estructura-básica-de-un-programa-en-java-usando-swing">2. Ejemplo de introducción. Estructura básica de un programa en Java usando Swing</a></li>
+      <li><a href="#3-el-porqué-de-invokelater-concurrencia">3. El porqué de invokeLater(). Concurrencia</a>
+        <ul>
+          <li><a href="#31-concurrencia-en-programación">3.1 Concurrencia en programación</a></li>
+          <li><a href="#32-el-uso-de-invokelater">3.2 El uso de invokeLater</a></li>
+          <li><a href="#34-qué-pasa-cuando-hay-varios-actionlistener">3.4 ¿Qué pasa cuando hay varios ActionListener?</a></li>
+        </ul>
+      </li>
+      <li><a href="#4-el-patrón-de-diseño-observador-observer-pattern">4. El patrón de diseño Observador (Observer Pattern)</a>
+        <ul>
+          <li><a href="#41-componentes-del-patrón-observador">4.1 Componentes del Patrón Observador**</a>
+            <ul>
+              <li><a href="#sujeto-observable"><strong>Sujeto (Observable)</strong></a></li>
+              <li><a href="#observador"><strong>Observador</strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#42-implementación-en-java-del-patrón-observador">4.2 Implementación en Java del patrón Observador</a>
+            <ul>
+              <li><a href="#interfaz-observador"><strong>Interfaz <code class="language-plaintext highlighter-rouge">Observador</code></strong></a></li>
+              <li><a href="#clase-sujeto"><strong>Clase <code class="language-plaintext highlighter-rouge">Sujeto</code></strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#43-implementación-con-swing-del-patrón-observador">4.3 <strong>Implementación con Swing del patrón Observador</strong></a></li>
+          <li><a href="#44-ventajas-y-desventajas-del-patrón-observador">4.4 Ventajas y Desventajas del Patrón Observador**</a></li>
+          <li><a href="#45-los-métodos-revalidate-y-repaint">4.5 Los métodos <code class="language-plaintext highlighter-rouge">revalidate()</code> y <code class="language-plaintext highlighter-rouge">repaint()</code></a></li>
+          <li><a href="#46-ejercicio-1">4.6 Ejercicio 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#5-mejoras-básicas-para-nuestra-aplicación">5. Mejoras básicas para nuestra aplicación</a>
+        <ul>
+          <li><a href="#51-ejercicio-2">5.1 Ejercicio 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#6-anexo-i-documentación-oficial">6. ANEXO I: Documentación oficial</a></li>
+      <li><a href="#7-anexo-ii-herramienta-integrada-de-intellij---the-ui-designer">7. ANEXO II: Herramienta integrada de IntelliJ - The UI Designer</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-qué-es-java-swing-y-para-qué-sirve">1. ¿Qué es Java Swing y para qué sirve?</h2>
+
+<p>4 horas</p>
+
+<p>Swing es una biblioteca integrada en Java para crear interfaces gráficas de usuario (GUI). Es parte del paquete <code class="language-plaintext highlighter-rouge">javax.swing</code> y extiende las capacidades de AWT (Abstract Window Toolkit). Actualmente, hay tres principales opciones en Java para crear GUIs:</p>
+
+<ul>
+  <li><strong>AWT (Abstract Window Toolkit)</strong>: Fue la primera librería gráfica de Java, pero tiene limitaciones importantes en cuanto a funcionalidad y diseño.</li>
+  <li><strong>Swing</strong>: Introducido como una mejora sobre AWT, ofrece componentes más modernos y personalizables. Es ideal para aplicaciones simples o medianamente complejas.</li>
+  <li><strong>JavaFX</strong>: La librería más reciente, diseñada para crear GUIs modernas y con soporte para efectos visuales avanzados. Es más adecuada para proyectos grandes o con requisitos gráficos complejos.</li>
+</ul>
+
+<p>Swing (y awt) está integrado en el JDK de java, lo que permite crear ejecutables de forma sencilla. En cambio, al usar JavaFX debemos descargar la dependencia y agregarla tanto al proyecto como al ejecutable que generemos, lo que hace más complejo su uso.</p>
+
+<p>Swing es, por lo tanto, una librería ideal para comenzar en el desarrollo de interfaces gráficas de usuario en Java, ya que nos permite trabajar los conceptos básicos sin demasiadas complicaciones, facilitando el aprendizaje posterior de JavaFX si lo necesitáramos.</p>
+
+<p>JavaFX es más indicada para proyectos modernos, pero su implementación es más compleja y su distribución requiere pasos adicionales, ya que no está incluido en el JDK desde la versión 11. Además, los conceptos básicos de Swing se repiten en JavaFX, pero Swing es en general mucho más sencillo de programar. En la actualidad, se emplea JavaFX en el ámbito profesional para aplicaciones complejas que aprovechen las opciones de renderización modernas, mientras que Swing se emplea para prototipos o aplicaciones antiguas (o legacy), aunque es una herramienta muy potente para aprender a crear interfaces gráficas.</p>
+
+<p>Por otro lado, es habitual que Java se emplee más para aplicaciones de <em>Backend</em> mientras que el frontal se diseñe en html, css y javascript, que son las habilidades principales del diseñador web. El framework electron (en el que están creados Visual Studio Code o Discord) se hizo muy popular en la década de 2010. No obstante, las aplicaciones gráficas de Java siguen siendo empleadas en la comunidad profesional y JavaFX recibió su última actualización (la 21) a mitad de 2024 (Este texto está escrito a finales de 2024).</p>
+
+<p>En este tema vamos a introducirnos en Swing a través de un ejemplo práctico y después vamos a analizar sus componentes, además de ver la teoría subyacente en Swing, que es el patrón de diseño observador, que se repite en muchos gestores de interfaces gráficas. Finalmente, hay una serie de ejercicios para asentar los conocimientos.</p>
+
+<h2 id="2-ejemplo-de-introducción-estructura-básica-de-un-programa-en-java-usando-swing">2. Ejemplo de introducción. Estructura básica de un programa en Java usando Swing</h2>
+
+<p>A continuación, mostramos un código en Java que construye una GUI simple usando Swing. En comentarios, repasamos para qué sirve cada cosa. Este va a ser el esquema básico desde el que vamos a construir nuestro conocimiento en Java Swing.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* 
+Las líneas a continuación son las librerías necesarias para que funcione
+Swing. Con intelliJ, si usamos la función intelliSense, se añadirán de forma automática
+al agregar algún componente que las use
+*/</span>
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span> 
+<span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span> 
+
+<span class="cm">/*
+Para nuestro primer ejemplo, vamos a crear una ventana simple que extienda la clase JFrame.
+JFrame representa las ventanas normales en Swing (a diferencia de JDialog, que representa a 
+las ventanas modales - aquellas que dependen de una ventana principal-).
+*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VentanaSimple</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+
+    <span class="c1">// En el constructor, vamos a determinar sus características</span>
+    <span class="kd">public</span> <span class="nf">VentanaSimple</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Lo primero es darle un título y un tamaño a la ventana</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"Ventana Simple"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="cm">/* 
+        A contiunación, especificamos qué pasa con el programa cuando cerramos la ventana
+        usando el enum que nos facilita la clase JFrame.
+        Determinamos también el tipo de layout que vamos a emplear para colocar los diferentes
+        componentes dentro de la ventana. En este caso, ninguno (null). 
+        El objeto JFrame va a actuar como contenedor. Por eso, le vamos a añadir componentes usando el método add().
+        */</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span> 
+        <span class="n">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Ahora podemos crear los componentes. El primer componente será una etiqueta. Las etiquetas sirven para almacenar texto y mostrarlo. 
+        En el constructor le pasamos como parámetro el texto que queremos mostrar. Después le damos una posición y un tamaño con setBounds(posición x, posición y, tamaño x -ancho-, tamaño y -alto-). 
+        Por último, utilizamos el método add de JFrame para añadir la etiqueta a la ventana simple.
+        */</span>
+        <span class="nc">JLabel</span> <span class="n">etiqueta</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Texto inicial"</span><span class="o">);</span>
+        <span class="n">etiqueta</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span> 
+        <span class="n">add</span><span class="o">(</span><span class="n">etiqueta</span><span class="o">);</span> 
+
+        <span class="cm">/*
+        El segundo componente que vamos a añadir es un botón. La primera parte es igual que con la etiqueta.
+        */</span>
+        <span class="nc">JButton</span> <span class="n">boton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Cambiar texto"</span><span class="o">);</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">boton</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Sin embargo, cuando creamos un botón queremos que realice acciones al ser clickado. Para ello, le vamos a añadir un actionListener. Dentro del Listener tenemos que crear o bien una función anónima con el operador new o bien, como aquí, una función lambda. La función lambda recibe como parámetro 'event' y cambia el texto de la etiqueta antes creada.
+        */</span> 
+        <span class="n">boton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">event</span><span class="o">-&gt;</span><span class="n">etiqueta</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"¡Texto cambiado!"</span><span class="o">));</span>
+        <span class="cm">/*
+        Esto es el equivalente con funciones anónimas:
+        */</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">etiqueta</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"¡Texto cambiado!"</span><span class="o">);</span> <span class="c1">// Cambiar el texto de la etiqueta</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        
+    <span class="o">}</span>
+
+    <span class="cm">/*
+    Para crear la ventana, necesitamos un Main.
+    */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="cm">/*
+        Podemos crear la ventana directamente o emplear la herramienta invokeLater que nos facilita SwingUtilities para ejecutar la ventana de forma concurrente y evitar así que haya problemas. De esta forma tendríamos nuestra primera ventana.
+        */</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">VentanaSimple</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">VentanaSimple</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Mostrar la ventana</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Al ejecutar el código, se verá una ventana con un texto inicial y un botón que, al hacer clic, cambia el texto de la etiqueta.</p>
+
+<h2 id="3-el-porqué-de-invokelater-concurrencia">3. El porqué de invokeLater(). Concurrencia</h2>
+
+<h3 id="31-concurrencia-en-programación">3.1 Concurrencia en programación</h3>
+
+<p>La concurrencia es un concepto avanzado de programación y consiste en la ejecución de varios programas en paralelo. En Java, tenemos dos formas de hacerlo:</p>
+
+<ul>
+  <li><strong>Procesos</strong>: Los procesos son independientes entre sí.</li>
+  <li><strong>Hilos</strong>: Los hilos son dependientes de un proceso principal que, si se cierra, cierra todos los hilos.</li>
+</ul>
+
+<p>Usamos la concurrencia para realizar operaciones que requieren cierto tiempo, pero que no son críticas y se pueden ejecutar en segundo plano:</p>
+
+<ul>
+  <li>Consultar una base de datos</li>
+  <li>Controlar una interfaz gráfica</li>
+  <li>Descargar un archivo</li>
+</ul>
+
+<p>Esto permite que la aplicación funcione incluso aunque esa acción no se haya completado.</p>
+
+<p>En el caso de las GUI, La ejecución concurrente es vital para evitar que se bloquee la interfaz con determinadas acciones. En Swing se utiliza el <code class="language-plaintext highlighter-rouge">Event Dispatch Thread</code> (conocido también como EDT por sus siglas) para gestionar los hilos que afectan a la interfaz.</p>
+
+<h3 id="32-el-uso-de-invokelater">3.2 El uso de invokeLater</h3>
+
+<p>El método invokeLater() recibe como parámetro una función sin argumentos, que vamos a crear usando una función lambda. Dentro de ella, creamos una ventana simple y la hacemos visible. Básicamente, lo que hace es decirle al EDT que cree una instancia de la ventana en cuanto esté disponible. Si no se usara, podría bloquearse el programa en algunos casos (aunque con un programa tan sencillo, sería improbable).</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Ejemplo sin invokeLater()</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">JFrame</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Error común"</span><span class="o">);</span>
+    <span class="n">ventana</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+    <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Esto puede causar problemas en GUIs más complejas</span>
+<span class="o">}</span>
+
+<span class="c1">// Solución usando invokeLater()</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+        <span class="nc">JFrame</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Uso correcto del EDT"</span><span class="o">);</span>
+        <span class="n">ventana</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">});</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Todas estas medidas se deben tomar debido a que Swing no es “thread-safe”, lo que significa que no garantiza que sea seguro acceder o modificar sus componentes desde hilos distintos del EDT. Por eso, debemos usar invokeLater() para asegurarnos de que las actualizaciones de la GUI se realicen en el hilo correcto.</p>
+
+<p>Por poner un ejemplo en lenguaje llano, cuando usamos invokeLater(), es como si dijéramos:</p>
+<blockquote>
+  <p>“¡Oye EDT! Aquí tienes una tarea para hacer cuando tengas tiempo libre. Pero no bloquees otras cosas importantes de la interfaz gráfica.”</p>
+</blockquote>
+
+<p>Este método asegura que nuestra ventana o cualquier acción gráfica se ejecute de manera segura dentro del EDT. Sin este mecanismo, podríamos provocar problemas al actualizar la GUI desde un hilo no autorizado, lo que resultaría en errores como:</p>
+
+<ul>
+  <li>Actualizaciones que no aparecen en pantalla.</li>
+  <li>Congelamientos inesperados.</li>
+  <li>Comportamientos erráticos.</li>
+</ul>
+
+<p>Trabajaremos la concurrencia de forma más detenida más adelante.</p>
+
+<h3 id="34-qué-pasa-cuando-hay-varios-actionlistener">3.4 ¿Qué pasa cuando hay varios ActionListener?</h3>
+
+<p>Cuando, como en el ejemplo del código, añadimos varios ActionListener, estos se acumulan en una pila. Como hemos visto en temas anteriores, la pila es una estructura LIFO (last in, first out), lo que quiere decir que el último listener que añadimos en la pila es el primero que se ejecuta. Esto significa que el último listener en ejecutar, que tendrá efecto sobre los anteriores, será el primero que hayamos añadido.</p>
+
+<p>Saber esto nos permite, más adelante, depurar programas con facilidad. Sin embargo, lo normal es que solo utilices un listener para cada acción y por el momento no deberías hacer otra cosa.</p>
+
+<h2 id="4-el-patrón-de-diseño-observador-observer-pattern">4. El patrón de diseño Observador (Observer Pattern)</h2>
+
+<p>A nivel interno, Swing emplea el patrón de diseño Observador. El <strong>patrón observador</strong> es un patrón de diseño de comportamiento que define una relación uno-a-muchos entre objetos. En este patrón, un objeto (denominado <em>sujeto</em> o <em>observable</em>) notifica automáticamente a una lista de dependientes (<em>observadores</em>) cuando su estado cambia. Este patrón es particularmente útil cuando se necesita mantener consistencia entre objetos relacionados sin acoplarlos fuertemente.</p>
+
+<p>El patrón observador es ampliamente utilizado en la programación orientada a eventos y es fundamental en la implementación del Modelo-Vista-Controlador (MVC), que trabajaremos más adelante.</p>
+
+<h3 id="41-componentes-del-patrón-observador">4.1 Componentes del Patrón Observador**</h3>
+
+<h4 id="sujeto-observable"><strong>Sujeto (Observable)</strong></h4>
+
+<ul>
+  <li>Es el objeto que está siendo observado.</li>
+  <li>Mantiene una lista de sus observadores (o suscriptores).</li>
+  <li>Proporciona métodos para añadir y eliminar observadores.</li>
+  <li>Cuando su estado cambia, notifica a todos los observadores registrados.</li>
+</ul>
+
+<h4 id="observador"><strong>Observador</strong></h4>
+
+<ul>
+  <li>Es el objeto que se registra para ser notificado de los cambios en el sujeto.</li>
+  <li>Debe implementar un método específico para recibir actualizaciones (por ejemplo, <code class="language-plaintext highlighter-rouge">update()</code>).</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+class Observable {
+    - observers: List&lt;Observer&gt;
+    + addObserver(observer: Observer): void
+    + removeObserver(observer: Observer): void
+    + notifyObservers(): void
+}
+
+class Observer {
+    + update(): void
+}
+
+Observable --&gt; Observer : notifies &gt;
+@enduml
+
+</code></pre>
+
+<h3 id="42-implementación-en-java-del-patrón-observador">4.2 Implementación en Java del patrón Observador</h3>
+
+<h4 id="interfaz-observador"><strong>Interfaz <code class="language-plaintext highlighter-rouge">Observador</code></strong></h4>
+
+<p>Definimos la interfaz que deben implementar todos los observadores:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Observador</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">String</span> <span class="n">mensaje</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="clase-sujeto"><strong>Clase <code class="language-plaintext highlighter-rouge">Sujeto</code></strong></h4>
+
+<p>El sujeto contiene la lógica para gestionar los observadores y notificarlos cuando cambia su estado:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sujeto</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Observador</span><span class="o">&gt;</span> <span class="n">observadores</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">agregarObservador</span><span class="o">(</span><span class="nc">Observador</span> <span class="n">observador</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">observadores</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">observador</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">eliminarObservador</span><span class="o">(</span><span class="nc">Observador</span> <span class="n">observador</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">observadores</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">observador</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notificarObservadores</span><span class="o">(</span><span class="nc">String</span> <span class="n">mensaje</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Observador</span> <span class="n">observador</span> <span class="o">:</span> <span class="n">observadores</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">observador</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">mensaje</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Creamos clases que implementen la interfaz <code class="language-plaintext highlighter-rouge">Observador</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ObservadorConcreto</span> <span class="kd">implements</span> <span class="nc">Observador</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nombre</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">ObservadorConcreto</span><span class="o">(</span><span class="nc">String</span> <span class="n">nombre</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nombre</span> <span class="o">=</span> <span class="n">nombre</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">String</span> <span class="n">mensaje</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Observador "</span> <span class="o">+</span> <span class="n">nombre</span> <span class="o">+</span> <span class="s">" recibió: "</span> <span class="o">+</span> <span class="n">mensaje</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Finalmente, comprobamos su uso en una función <code class="language-plaintext highlighter-rouge">main</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Crear sujeto</span>
+        <span class="nc">Sujeto</span> <span class="n">sujeto</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Sujeto</span><span class="o">();</span>
+
+        <span class="c1">// Crear observadores</span>
+        <span class="nc">Observador</span> <span class="n">obs1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObservadorConcreto</span><span class="o">(</span><span class="s">"A"</span><span class="o">);</span>
+        <span class="nc">Observador</span> <span class="n">obs2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ObservadorConcreto</span><span class="o">(</span><span class="s">"B"</span><span class="o">);</span>
+
+        <span class="c1">// Registrar observadores</span>
+        <span class="n">sujeto</span><span class="o">.</span><span class="na">agregarObservador</span><span class="o">(</span><span class="n">obs1</span><span class="o">);</span>
+        <span class="n">sujeto</span><span class="o">.</span><span class="na">agregarObservador</span><span class="o">(</span><span class="n">obs2</span><span class="o">);</span>
+
+        <span class="c1">// Notificar cambios</span>
+        <span class="n">sujeto</span><span class="o">.</span><span class="na">notificarObservadores</span><span class="o">(</span><span class="s">"Estado actualizado"</span><span class="o">);</span>
+        
+        <span class="c1">// Eliminar un observador</span>
+        <span class="n">sujeto</span><span class="o">.</span><span class="na">eliminarObservador</span><span class="o">(</span><span class="n">obs1</span><span class="o">);</span>
+
+        <span class="c1">// Notificar cambios nuevamente</span>
+        <span class="n">sujeto</span><span class="o">.</span><span class="na">notificarObservadores</span><span class="o">(</span><span class="s">"Nuevo estado disponible"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>La salida del programa sería la siguiente:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Observador A recibió: Estado actualizado
+Observador B recibió: Estado actualizado
+Observador B recibió: Nuevo estado disponible
+</code></pre></div></div>
+
+<h3 id="43-implementación-con-swing-del-patrón-observador">4.3 <strong>Implementación con Swing del patrón Observador</strong></h3>
+
+<p>Swing gestiona los eventos usando el patrón observador. Esto quiere decir que ya lo habíamos usado en el primer ejemplo sin ser conscientes de ello.</p>
+
+<p>Los componentes gráficos (como botones o cuadros de texto) actúan como <em>sujetos</em>, mientras que los <em>observadores</em> son objetos que implementan interfaces de escuchadores como <code class="language-plaintext highlighter-rouge">ActionListener</code> o <code class="language-plaintext highlighter-rouge">ChangeListener</code>.</p>
+
+<p>A continuación, un ejemplo simple para ilustrarlo:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EjemploSwing</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Patrón Observador en Swing"</span><span class="o">);</span>
+        <span class="nc">JButton</span> <span class="n">button</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Presióname"</span><span class="o">);</span>
+
+        <span class="c1">// Añadimos un observador al botón</span>
+        <span class="n">button</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"¡Botón presionado!"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">button</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>En este ejemplo:</p>
+
+<ul>
+  <li>El botón actúa como <em>sujeto</em>.</li>
+  <li>El <code class="language-plaintext highlighter-rouge">ActionListener</code> registrado es el <em>observador</em> que recibe notificaciones de los eventos del botón.</li>
+</ul>
+
+<h3 id="44-ventajas-y-desventajas-del-patrón-observador">4.4 Ventajas y Desventajas del Patrón Observador**</h3>
+
+<p><strong>Ventajas</strong>:</p>
+
+<ol>
+  <li><strong>Desacoplamiento</strong>: Los observadores están desacoplados del sujeto, lo que facilita la escalabilidad y el mantenimiento.</li>
+  <li><strong>Flexibilidad</strong>: Se pueden añadir o eliminar observadores en tiempo de ejecución.</li>
+  <li><strong>Reutilización</strong>: Es fácil reutilizar los observadores o el sujeto en otros contextos.</li>
+</ol>
+
+<p><strong>Desventajas</strong>:</p>
+
+<ol>
+  <li><strong>Rendimiento</strong>: Si hay demasiados observadores o notificaciones frecuentes, el rendimiento puede verse afectado.</li>
+  <li><strong>Complejidad</strong>: Puede ser más complejo de implementar en comparación con enfoques directos.</li>
+  <li><strong>Dependencias ocultas</strong>: La relación entre el sujeto y los observadores no es explícita en el código principal.</li>
+</ol>
+
+<p>El patrón de diseño observador se emplea no solo en Swing, sino también en JavaFX y una gran cantidad de gestores de interfaces gráficas orientados a eventos.</p>
+
+<h3 id="45-los-métodos-revalidate-y-repaint">4.5 Los métodos <code class="language-plaintext highlighter-rouge">revalidate()</code> y <code class="language-plaintext highlighter-rouge">repaint()</code></h3>
+
+<p>Cuando agregamos o modificamos componentes en una interfaz gráfica de Swing después de que esta ya haya sido construida y mostrada, es necesario actualizar la disposición y el renderizado de los componentes. Para ello, debemos llamar a los métodos <code class="language-plaintext highlighter-rouge">revalidate()</code> y <code class="language-plaintext highlighter-rouge">repaint()</code> al final del proceso.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">revalidate()</code></strong> actualiza la disposición del contenedor para reflejar los cambios realizados en sus componentes.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">repaint()</code></strong> asegura que los cambios visuales se redibujen correctamente en pantalla.</li>
+</ul>
+
+<p>Por ejemplo, si estás añadiendo nuevas etiquetas dinámicamente a un <code class="language-plaintext highlighter-rouge">JPanel</code>, es crucial que invoques estos métodos para que las líneas sean visibles:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">void</span> <span class="nf">addLabel</span><span class="o">(</span><span class="nc">String</span> <span class="n">text</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">,</span> <span class="kt">int</span> <span class="n">width</span><span class="o">,</span> <span class="kt">int</span> <span class="n">height</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// Crear una nueva etiqueta</span>
+    <span class="nc">JLabel</span> <span class="n">label</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="n">text</span><span class="o">);</span>
+    <span class="n">label</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="n">x</span><span class="o">,</span><span class="n">y</span><span class="o">,</span><span class="n">width</span><span class="o">,</span> <span class="n">height</span><span class="o">);</span>
+    
+    <span class="c1">// La añade al panel</span>
+    <span class="n">panel</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">label</span><span class="o">);</span>
+    
+    <span class="c1">// Actualizar el contenedor</span>
+    <span class="n">panel</span><span class="o">.</span><span class="na">revalidate</span><span class="o">();</span> <span class="c1">// Actualiza la disposición</span>
+    <span class="n">panel</span><span class="o">.</span><span class="na">repaint</span><span class="o">();</span>    <span class="c1">// Redibuja el panel</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Omitir estos métodos puede hacer que los cambios no se reflejen en la interfaz, dando la impresión de que el programa no está funcionando correctamente.</p>
+
+<h3 id="46-ejercicio-1">4.6 Ejercicio 1</h3>
+
+<p>Partiendo del ejemplo inicial, añade un botón arriba del todo y centrado que permita añadir una línea. Una línea consiste en una etiqueta y su correspondiente botón de cambia texto. La posición de la línea será inmediatamente debajo de la anterior, así hasta que se llene la ventana (sin modificar su tamaño) de líneas. En el momento en el que se alcanza el máximo de líneas, el botón para añadir líneas se tiene que volver invisible. Haz un método para añadir las líneas que se invoque cada vez que pulsamos el botón.</p>
+
+<h2 id="5-mejoras-básicas-para-nuestra-aplicación">5. Mejoras básicas para nuestra aplicación</h2>
+
+<p>Una de las cosas que podemos hacer para mejorar nuestra aplicación es cambiar el aspecto, usando funciones como <code class="language-plaintext highlighter-rouge">setBackground(Color c)</code> para cambiar el color de fondo, <code class="language-plaintext highlighter-rouge">setForeGround(Color c)</code> para cambiar el color de la letra y <code class="language-plaintext highlighter-rouge">setFont(Font f)</code> para cambiar la fuente. También podemos usar sus respectivos <code class="language-plaintext highlighter-rouge">getters</code>. Sin embargo, No siempre va a ser posible cambiar el aspecto de nuestro programa, ya que lo que podamos cambiar y cómo lo hagamos depende directamente del <code class="language-plaintext highlighter-rouge">LookAndFeel</code>. Podemos cambiar el <code class="language-plaintext highlighter-rouge">LookAndFeel</code> de nuestra aplicación con el siguiente código:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+    <span class="c1">// Establece el Look and Feel de Nimbus</span>
+    <span class="nc">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="s">"javax.swing.plaf.nimbus.NimbusLookAndFeel"</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"No se pudo cargar el Look and Feel: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Podemos listar todos los <code class="language-plaintext highlighter-rouge">LookAndFeel</code> disponibles en nuestro sistema con el siguiente código:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">UIManager</span><span class="o">.</span><span class="na">LookAndFeelInfo</span><span class="o">[]</span> <span class="n">looks</span> <span class="o">=</span> <span class="nc">UIManager</span><span class="o">.</span><span class="na">getInstalledLookAndFeels</span><span class="o">();</span>
+<span class="k">for</span> <span class="o">(</span><span class="nc">UIManager</span><span class="o">.</span><span class="na">LookAndFeelInfo</span> <span class="n">look</span> <span class="o">:</span> <span class="n">looks</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Name: "</span> <span class="o">+</span> <span class="n">look</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">", Class: "</span> <span class="o">+</span> <span class="n">look</span><span class="o">.</span><span class="na">getClassName</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Podemos añadir más usando los repositorios de maven, pero eso es algo que no cubriremos en este curso. A continuación, vamos a complementar el código del ejemplo anterior, añadiendo algunas mejoras básicas para ver cómo funcionan. Las partes que ya hemos trabajado no serán comentadas.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VentanaSimplePersonalizada</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">VentanaSimplePersonalizada</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"Ventana Personalizada"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+        <span class="cm">/*
+        Cambiamos a Nimbus para asegurarnos que se puedan cambiar los aspectos visuales más adelante.
+        */</span>
+        <span class="k">try</span> <span class="o">{</span>
+            
+            <span class="nc">UIManager</span><span class="o">.</span><span class="na">setLookAndFeel</span><span class="o">(</span><span class="s">"javax.swing.plaf.nimbus.NimbusLookAndFeel"</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"No se pudo cargar el Look and Feel: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span>
+
+        <span class="cm">/*
+        Podemos cambiar el color de fondo del contenedor de la siguiente forma:
+        Con getContentPane() obtenemos el contenedor y con la función setBackground() especificamos el fondo. En este caso, el fondo es un color creado con sus componentes RGB. En este caso, el color es azul claro.
+        */</span>
+        <span class="n">getContentPane</span><span class="o">().</span><span class="na">setBackground</span><span class="o">(</span><span class="k">new</span> <span class="nc">Color</span><span class="o">(</span><span class="mi">240</span><span class="o">,</span> <span class="mi">240</span><span class="o">,</span> <span class="mi">255</span><span class="o">));</span>
+
+        <span class="nc">JLabel</span> <span class="n">etiqueta</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Texto inicial"</span><span class="o">);</span>
+        <span class="n">etiqueta</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="cm">/*
+        Cuando creamos una etiqueta, podemos cambiar la fuente y el color de la letra con las funciones setFont y setForeground respectivamente. 
+        Algunos colores vienen especificados por defecto con un enum estático dentro de la clase Color, como en este caso DARK_GRAY
+        */</span>
+        <span class="n">etiqueta</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="k">new</span> <span class="nc">Font</span><span class="o">(</span><span class="s">"Arial"</span><span class="o">,</span> <span class="nc">Font</span><span class="o">.</span><span class="na">BOLD</span><span class="o">,</span> <span class="mi">14</span><span class="o">));</span>
+        <span class="n">etiqueta</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">DARK_GRAY</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">etiqueta</span><span class="o">);</span>
+
+        
+        <span class="nc">JButton</span> <span class="n">boton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Cambiar texto"</span><span class="o">);</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="k">new</span> <span class="nc">Color</span><span class="o">(</span><span class="mi">70</span><span class="o">,</span> <span class="mi">130</span><span class="o">,</span> <span class="mi">180</span><span class="o">));</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="k">new</span> <span class="nc">Font</span><span class="o">(</span><span class="s">"Verdana"</span><span class="o">,</span> <span class="nc">Font</span><span class="o">.</span><span class="na">PLAIN</span><span class="o">,</span> <span class="mi">12</span><span class="o">));</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">);</span>
+        <span class="cm">/*
+        A continuación, vamos a cambiar las propiedades del borde. Con setFocusPainted podemos activar el borde de foco (que se resalte cuando ponemos el ratón encima).
+        Con setBorder, podemos crear bordes personalizados. En este caso, el borde lo creamos con la factoría de bordes. Vamos a usar la función createLineBorder para crear un borde azul de tamaño 2 píxeles.
+        */</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">setFocusPainted</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span> <span class="c1">// Quitar el borde de foco</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">setBorder</span><span class="o">(</span><span class="nc">BorderFactory</span><span class="o">.</span><span class="na">createLineBorder</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span> <span class="c1">// Borde azul</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">boton</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Este listener, además de cambiar el texto cambiará el color de la letra
+        */</span>
+        <span class="n">boton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">etiqueta</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"¡Texto cambiado!"</span><span class="o">);</span>
+                <span class="n">etiqueta</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="k">new</span> <span class="nc">Color</span><span class="o">(</span><span class="mi">34</span><span class="o">,</span> <span class="mi">139</span><span class="o">,</span> <span class="mi">34</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">VentanaSimplePersonalizada</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">VentanaSimplePersonalizada</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="51-ejercicio-2">5.1 Ejercicio 2</h3>
+
+<p>Crea una ventana con un botón que sirva para cambiar el color de fondo de la ventana. El color se generará de forma aleatoria al pulsar el botón.</p>
+
+<p>Añade otro botón que sirva para guardar el color actual del fondo. Lo que debe hacer es que, al pulsar el botón, se cree otro botón que tenga como nombre los componentes RGB del color (por ejemplo <code class="language-plaintext highlighter-rouge">(23,32,230)</code>).</p>
+
+<p>El botón tiene como color de fondo el color al que hace referencia y como color del letra el color complementario. El color complementario se calcula haciendo que los componentes R, G o B de ambos colores sumen 255 cada uno. En el ejemplo anterior, el color complementario es <code class="language-plaintext highlighter-rouge">(232, 223, 25)</code>. Este nuevo botón, al ser pulsado, debe cambiar el fondo a ese color. Para que esto funcione probablemente tengas que cambiar el <code class="language-plaintext highlighter-rouge">LookAndFeel</code>. No te olvides del <code class="language-plaintext highlighter-rouge">revalidate()</code> y el <code class="language-plaintext highlighter-rouge">repaint()</code> tampoco.</p>
+
+<p>Cuando se alcance el número máximo de botones (determinado por el programador, podría ser por ejemplo 3), si pulsamos de nuevo al botón de guardar color, se eliminará el primer botón, el segundo pasará al primer puesto, el tercero al segundo y así sucesivamente. Finalmente, se añadirá el nuevo botón al final.</p>
+
+<h2 id="6-anexo-i-documentación-oficial">6. ANEXO I: Documentación oficial</h2>
+
+<ol>
+  <li>
+    <p><strong>Tutoriales de Oracle sobre Swing</strong>: Este recurso ofrece una introducción completa a Swing, incluyendo cómo crear interfaces gráficas, trabajar con componentes y manejar eventos. Puedes acceder aquí: <a href="https://docs.oracle.com/javase/tutorial/uiswing/">Tutorial sobre Swing</a>.</p>
+  </li>
+  <li>
+    <p><strong>Cómo usar los componentes de Swing</strong>: Ejemplos prácticos y guías específicas sobre el uso de elementos como botones, menús, cuadros de diálogo, barras de progreso, etc. Revisa esta sección para explorar ejemplos: <a href="https://docs.oracle.com/javase/tutorial/uiswing/components/index.html">Using Swing Components</a>.</p>
+  </li>
+  <li>
+    <p><strong>Página general de Java SE</strong>: Ofrece documentación técnica, guías, y notas de la versión sobre las API disponibles en el JDK. Es útil para referencias más avanzadas: <a href="https://dev.java/">Java SE Documentation</a>.</p>
+  </li>
+</ol>
+
+<h2 id="7-anexo-ii-herramienta-integrada-de-intellij---the-ui-designer">7. ANEXO II: Herramienta integrada de IntelliJ - The UI Designer</h2>
+
+<p>IntelliJ dispone de un editor de interfaces gráficas para Swing integrado en el propio IDE. Para crear la interfaz, crea un archivo donde se representa la vista en código Java y un formulario, con su propio código, en el cual podemos ir añadiendo componentes y modificando sus características. No lo vamos a emplear durante este curso introductorio, pero os puede servir de ayuda para diseñar interfaces más atractivas.
+<img src="editor_gui_intellij.png" alt="alt text" /></p>
+
+<p>Si deseas profundizar en el tema, <strong><a href="https://www.jetbrains.com/help/idea/design-gui-using-swing.html#preview_gui_form">puedes consultar este tutorial oficial de JetBrains</a></strong>.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

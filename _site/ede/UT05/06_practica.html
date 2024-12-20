@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>06 - Práctica Obligatoria: Sistema de control de equipajes de un aeropuerto | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="06 - Práctica Obligatoria: Sistema de control de equipajes de un aeropuerto" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT05/06_practica.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT05/06_practica.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="06 - Práctica Obligatoria: Sistema de control de equipajes de un aeropuerto" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"06 - Práctica Obligatoria: Sistema de control de equipajes de un aeropuerto","url":"http://localhost:4000/ede/UT05/06_practica.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      
+<h1 id="06---práctica-obligatoria-sistema-de-control-de-equipajes-de-un-aeropuerto">06 - Práctica Obligatoria: Sistema de control de equipajes de un aeropuerto</h1>
+
+<h2 id="especificación">Especificación</h2>
+
+<p>Se requiere diseñar un sistema para <strong>gestionar el control de equipaje</strong> en un aeropuerto. En el aeropuerto interactúan <strong>tres tipos de usuarios</strong>: <strong>guardias</strong>, <strong>personal del aeropuerto</strong> y <strong>pasajeros</strong>. Los datos de identificación de cada usuario son los siguientes:</p>
+
+<ul>
+  <li>Los <strong>guardias</strong> y el <strong>personal del aeropuerto</strong> se identifican por su <strong>nombre</strong> y <strong>DNI</strong>.</li>
+  <li>Los <strong>pasajeros</strong> se identifican por su <strong>nombre</strong>, <strong>DNI</strong> y el <strong>número de vuelo</strong> al que pertenecen.</li>
+</ul>
+
+<p>El sistema debe controlar el flujo de equipaje bajo las siguientes <strong>condiciones</strong>:</p>
+
+<ol>
+  <li>Todo <strong>equipaje</strong> pasa por <strong>áreas de control</strong>. Estas áreas pueden estar en alguno de los siguientes estados: <strong>operativas</strong>, <strong>bloqueadas</strong> o <strong>en mantenimiento</strong>.</li>
+  <li>Los <strong>guardias</strong> pueden acceder a todas las áreas de control, independientemente de su estado.</li>
+  <li>El <strong>personal del aeropuerto</strong> puede <strong>bloquear</strong> áreas de control (por mantenimiento, seguridad, etc.), y mientras estén bloqueadas, no se puede procesar ningún equipaje.</li>
+  <li>Los <strong>pasajeros</strong> solo pueden acceder a áreas de control <strong>operativas</strong> y <strong>asignadas a su vuelo</strong>.</li>
+  <li>Un equipaje solo puede ser procesado si el área de control está <strong>operativa</strong> y <strong>no bloqueada</strong>.</li>
+  <li>Algunas áreas de control son <strong>prioritarias</strong> y permiten el procesamiento de equipaje <strong>especial</strong>. Dichas áreas deben ser autorizadas por un <strong>guardia</strong> o <strong>personal del aeropuerto</strong>.</li>
+</ol>
+
+<p>Procesar un equipaje significa pasarlo por el control. En caso de que salte la alarma, el guardia debe revisar de forma manual el equipaje para detectar qué elemento hacía saltar el control y volver a poner el equipaje para pasarlo de nuevo, hasta que no salte la alarma o el pasajero desista. Por su parte, mientras se está procesando el equipaje, el pasajero debe pasar por el control de metales. Si salta la alarma, debe quitarse la ropa que hacía saltar la alarma, ponerla en el control como si fuera equipaje y volver a comenzar el proceso hasta que todo sea correcto o desista.</p>
+
+<h2 id="instrucciones">Instrucciones</h2>
+
+<p>Elabora un <strong>documento de diseño completo</strong> para la especificación anterior. El documento debe incluir lo siguiente:</p>
+
+<ol>
+  <li><strong>SRS</strong> (Especificación de Requerimientos del Software).</li>
+  <li><strong>Diagrama de Casos de Uso</strong>.</li>
+  <li><strong>Diagrama de Clases UML</strong>.</li>
+  <li><strong>Diagramas de Estado</strong> necesarios para representar el comportamiento del sistema.</li>
+  <li><strong>Diagramas de Secuencia</strong> que ilustren las interacciones principales entre los actores y el sistema.</li>
+  <li><strong>Diagrama de actividad</strong> para el procesamiento del equipaje y del pasajero.</li>
+</ol>
+
+<p>Elabora un proyecto Java en IntelliJ con las siguientes características:</p>
+
+<ol>
+  <li>Definición de las clases necesarias</li>
+  <li>Preparación de los prototipos de los métodos (sin implementar)</li>
+  <li>Documentación javadoc de todo el proyecto</li>
+  <li>Diseño de test para los métodos públicos (aunque no estén implementados)</li>
+  <li>(Opcional) Implementación de los métodos</li>
+  <li>(Opcional) Implementación del patrón de diseño Singleton</li>
+</ol>
+
+<h2 id="entrega">Entrega</h2>
+
+<p>Se debe entregar un archivo comprimido con el siguiente formato: <code class="language-plaintext highlighter-rouge">[Nombre del alumno]_PracticaSegundoTrimestre.zip</code>.</p>
+
+<p>Dentro del archivo, se deben incluir los siguientes tres archivos:</p>
+
+<ul>
+  <li>El documento de diseño, en formato pdf.
+    <ul>
+      <li>Los diagramas pueden estar hechos a mano y adjuntos como foto. También se pueden emplear las herramientas <code class="language-plaintext highlighter-rouge">mermaid.js</code> y/o <code class="language-plaintext highlighter-rouge">plantuml</code> o cualquier otra que consideres oportuna.</li>
+    </ul>
+  </li>
+  <li>La documentación javadoc generada como página web comprimido en un archivo <code class="language-plaintext highlighter-rouge">documentacion.zip</code>.</li>
+  <li>El proyecto IntelliJ comprimido en un archivo <code class="language-plaintext highlighter-rouge">proyecto.zip</code>.</li>
+</ul>
+
+<p>Una entrega que no se ajuste al formato no será corregida.</p>
+
+<h2 id="rúbrica">Rúbrica</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Apartado</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SRS</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Diagrama de casos de uso</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Diagrama de clases</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Diagramas de estados</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Diagrama de secuencia</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Diagrama de actividad</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Empaquetado y definición de las clases en Java</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Diseño de los métodos</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Documentación javadoc</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>Diseño e implementación de los test</td>
+      <td>1 punto</td>
+    </tr>
+    <tr>
+      <td>(Opcional) Implementación</td>
+      <td>0,5 puntos</td>
+    </tr>
+    <tr>
+      <td>(Opcional) Singleton</td>
+      <td>0,5 puntos</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

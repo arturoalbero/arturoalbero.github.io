@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Instalació i ús de comandes en Git | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Instalació i ús de comandes en Git" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT03/03_Instalaci%C3%B3n_de_git.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT03/03_Instalaci%C3%B3n_de_git.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Instalació i ús de comandes en Git" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Instalació i ús de comandes en Git","url":"http://localhost:4000/ede/UT03/03_Instalaci%C3%B3n_de_git.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="instalació-i-ús-de-comandes-en-git"><strong>Instalació i ús de comandes en Git</strong></h1>
+
+<p>Com hem vist abans, Git és un sistema de control de versions distribuït (DVCS) creat per l’equip de Linux. Actualment, s’utilitza en molts servidors de control de versions, com GitHub, BitBucket o GitLab, per emmagatzemar projectes de manera remota. Però, si volem interactuar amb aquests projectes o repositoris remots des de la nostra màquina local, hem d’instal·lar Git localment i utilitzar les diferents comandes que proporciona. En aquest document aprendrem com instal·lar Git i com utilitzar algunes de les comandes bàsiques.</p>
+
+<h2 id="instalació-de-git-en-la-teua-màquina">Instalació de Git en la teua màquina</h2>
+
+<p><strong>1. Instal·lació i configuració de Git</strong><br />
+La instal·lació de Git depén del sistema operatiu en què volem instal·lar-lo.</p>
+
+<p>Per a sistemes Linux, només hem d’executar la comanda especificada per instal·lar Git. Per exemple, en sistemes Ubuntu hem d’executar aquesta comanda:<br />
+<code class="language-plaintext highlighter-rouge">sudo apt-get install git</code></p>
+
+<p>Per a Windows i Mac, hem d’anar a la pàgina web de Git i descarregar la versió adequada. En el cas de Mac, també es pot instal·lar Git a través de la instal·lació d’XCode.</p>
+
+<p><strong>1.1. Configuració de Git</strong><br />
+Abans d’utilitzar les comandes Git, hauríem de configurar algunes variables predeterminades en el nostre sistema, per tal de connectar-nos fàcilment als servidors i emmagatzemar les nostres credencials per a connexions posteriors. Utilitzarem la comanda <code class="language-plaintext highlighter-rouge">git config</code> per a emmagatzemar aquestes variables, i les podem guardar a tres nivells diferents:</p>
+
+<ul>
+  <li><strong>Sistema</strong>: utilitzant el paràmetre <code class="language-plaintext highlighter-rouge">--system</code>, la configuració s’aplica a tots els usuaris del sistema.</li>
+  <li><strong>Usuari</strong>: utilitzant el paràmetre <code class="language-plaintext highlighter-rouge">--global</code>, la configuració s’aplica només a l’usuari actual del sistema. Aquesta és l’opció que utilitzarem en aquesta secció.</li>
+  <li><strong>Repositori</strong>: cada repositori tindrà els seus propis paràmetres de configuració de Git.</li>
+</ul>
+
+<p>Primer de tot, definim el nostre nom complet amb aquesta comanda (substitueix “John Doe” pel teu nom real):<br />
+<code class="language-plaintext highlighter-rouge">git config --global user.name "John Doe"</code></p>
+
+<p>A continuació, especifiquem el correu electrònic amb el qual vam crear el compte de GitHub:<br />
+<code class="language-plaintext highlighter-rouge">git config --global user.email yourEmail@server.com</code></p>
+
+<p>Després, podem especificar l’editor predeterminat de Git. Aquest pas no és necessari, però si Git necessita obrir un fitxer de text per mostrar informació, aquest serà l’editor que utilitzarem. Per exemple, podem utilitzar el Bloc de notes en Windows d’aquesta manera:<br />
+<code class="language-plaintext highlighter-rouge">git config --global core.editor notepad</code></p>
+
+<p>Finalment, hem d’especificar com Git emmagatzemarà les nostres credencials, de manera que no hagem d’introduir-les cada vegada que ens connectem als repositoris. L’ajudant que utilitzem per a guardar les credencials depén del sistema operatiu en què estem utilitzant Git, però la comanda general és aquesta:<br />
+<code class="language-plaintext highlighter-rouge">git config --global credential.helper &lt;helper&gt;</code></p>
+
+<p>on <code class="language-plaintext highlighter-rouge">&lt;helper&gt;</code> depén del sistema operatiu:</p>
+
+<ul>
+  <li>Per a Windows utilitzem <code class="language-plaintext highlighter-rouge">wincred</code></li>
+  <li>Per a Linux utilitzem <code class="language-plaintext highlighter-rouge">cache</code></li>
+  <li>Per a Mac OSX utilitzem <code class="language-plaintext highlighter-rouge">osxkeychain</code></li>
+</ul>
+
+<p>Així que, si volem configurar l’ajudant de credencials en Windows, per exemple, escrivim una cosa així:<br />
+<code class="language-plaintext highlighter-rouge">git config --global credential.helper wincred</code></p>
+
+<p>D’aquesta manera, ja estem preparats per utilitzar Git, fins i tot des de diferents entorns de desenvolupament, com veurem en altres seccions. Podem comprovar la configuració actual utilitzant la comanda <code class="language-plaintext highlighter-rouge">git config --list</code>. També podem comprovar la versió de Git que tenim instal·lada actualment amb la comanda <code class="language-plaintext highlighter-rouge">git version</code>.</p>
+
+<p><strong>2. Comandes locals bàsiques útils</strong><br />
+Vegem ara algunes comandes que podem utilitzar per a treballar amb projectes locals (sense connectar-nos a cap repositori o servidor remot). Aquestes comandes són útils tant per a projectes locals com per a projectes remots que hàgem descarregat prèviament, si volem treballar localment amb ells durant un temps.</p>
+
+<p><strong>2.1. Crear un repositori local</strong><br />
+Si volem inicialitzar o crear un nou repositori local, primer hem de crear la carpeta on es guardarà aquest projecte. Després, podem inicialitzar-la com a repositori Git amb aquesta comanda (des de dins de la carpeta del projecte):<br />
+<code class="language-plaintext highlighter-rouge">git init</code></p>
+
+<p>Això inicialitzarà aquesta carpeta com a carpeta Git, creant una subcarpeta oculta anomenada <code class="language-plaintext highlighter-rouge">.git</code>, on s’emmagatzemarà la base de dades del repositori. No ens hem de preocupar per aquesta subcarpeta.</p>
+
+<p>Cada fitxer dins d’aquest repositori estarà en un dels tres estats mencionats en seccions anteriors (committed, staged o modified), i podem canviar l’estat de cada fitxer escrivint algunes de les comandes que veurem ara. També podem comprovar l’estat del repositori en qualsevol moment amb la comanda <code class="language-plaintext highlighter-rouge">git status</code> (l’hem d’executar des de la carpeta arrel del repositori). Ens informarà si tot està compromés, o si hi ha algun fitxer amb canvis sense guardar.</p>
+
+<p><strong>Exercici 1:</strong></p>
+<ol>
+  <li>Instala git en el teu ordinador, en la màquina virtual facilitada en classe o en una màquina virtual. En aquest últim cas, pots descarregar una imatge de Linux com per exemple <a href="https://lubuntu.me/">Lubuntu</a> i utilitzar <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> (o qualsevol altre). Per a poder utilitzar una màquina virtual en el teu ordinador, <strong>has de permetre-ho en la configuració de la BIOS</strong> (permetre virtualització).</li>
+  <li>Configura git amb el teu compte creat en l’apartat anterior.</li>
+  <li>Crea una carpeta anomenada <strong>GitExercises</strong> en el teu sistema. Emmagatzemarem alguns repositoris dins d’ella. Per començar, crea dins d’aquesta carpeta una subcarpeta nova anomenada <strong>MyFirstLocalRepo</strong>, entra dins d’aquesta carpeta i executa la comanda <code class="language-plaintext highlighter-rouge">git init</code> per inicialitzar aquesta carpeta com a repositori Git.</li>
+</ol>
+
+<p><strong>2.2. Afegir o editar fitxers en el repositori</strong><br />
+Si afegim algun fitxer nou a la carpeta del repositori (per exemple, un fitxer anomenat <code class="language-plaintext highlighter-rouge">file.txt</code>) i executem la comanda <code class="language-plaintext highlighter-rouge">git status</code>, Git mostrarà que hi ha alguns fitxers que han de ser afegits al repositori.
+<strong>Aquests fitxers es troben en estat “modificat”.</strong> Si utilitzem la comanda <code class="language-plaintext highlighter-rouge">git add</code>, el(s) fitxer(s) es marcaran com a “preparats” (staged). Si només volem afegir un únic fitxer, especificarem aquest nou fitxer com a paràmetre:<br />
+<code class="language-plaintext highlighter-rouge">git add file.txt</code></p>
+
+<p>No obstant això, poden haver-hi molts canvis en el nostre repositori. Si volem afegir-los tots alhora, utilitzem <code class="language-plaintext highlighter-rouge">.</code> com a paràmetre:<br />
+<code class="language-plaintext highlighter-rouge">git add .</code></p>
+
+<p>Després de cada nou canvi que fem en el repositori (ja siga afegint, editant o eliminant fitxers), hem de repetir aquesta comanda per preparar els canvis. Una vegada els canvis estiguen preparats, aquest és el resultat de la comanda <code class="language-plaintext highlighter-rouge">git status</code>:</p>
+
+<p>Com pots veure en la imatge anterior, podem utilitzar la comanda <code class="language-plaintext highlighter-rouge">git rm</code> per desmarcar aquest fitxer, si volem:<br />
+<code class="language-plaintext highlighter-rouge">git rm --cached file.txt</code></p>
+
+<p><strong>2.3. Desar o commetre canvis</strong><br />
+Després d’afegir o preparar els canvis, hem de fer un últim pas per actualitzar la base de dades del repositori. Aquesta operació és el “commit”, i la podem fer mitjançant la comanda <code class="language-plaintext highlighter-rouge">git commit</code>. Podem executar-la després d’una o diverses operacions de <code class="language-plaintext highlighter-rouge">git add</code> que hagen preparat un o més fitxers.</p>
+
+<p>Aquesta és l’estructura general de la comanda <code class="language-plaintext highlighter-rouge">git commit</code>:<br />
+<code class="language-plaintext highlighter-rouge">git commit -m "El meu primer commit"</code></p>
+
+<p>El paràmetre <code class="language-plaintext highlighter-rouge">-m</code> ens permet especificar un missatge de commit. Aquest missatge és obligatori per a desar el commit, de manera que, si volem recuperar-lo més endavant, podem identificar aquest missatge en la llista de commits. Després de commetre els canvis, si executem <code class="language-plaintext highlighter-rouge">git status</code>, hauríem de veure que no hi ha res per commetre:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>On branch master
+nothing to commit, working tree clean
+</code></pre></div></div>
+
+<p>Alternativament, també podem utilitzar el paràmetre <code class="language-plaintext highlighter-rouge">-a</code> per afegir o preparar automàticament els canvis abans de commetre’ls. Aquesta comanda combina un <code class="language-plaintext highlighter-rouge">git add .</code> i una comanda <code class="language-plaintext highlighter-rouge">git commit</code>:<br />
+<code class="language-plaintext highlighter-rouge">git commit -a -m "El teu missatge de commit"</code></p>
+
+<p><strong>Mostrar l’historial de commits</strong></p>
+
+<p>Si volem veure l’historial de commits del nostre repositori, podem escriure aquesta comanda:<br />
+<code class="language-plaintext highlighter-rouge">git log</code></p>
+
+<p>Cada commit té una etiqueta que consisteix en una seqüència de dígits i lletres. En l’exemple anterior, el nostre commit s’ha etiquetat com a <code class="language-plaintext highlighter-rouge">08f4ed1751…</code>. Aquesta etiqueta serà útil per a comprovar el commit més endavant, encara que no cal recordar tots aquests caràcters, només el prefix inicial.</p>
+
+<p><strong>Mostrar els canvis</strong></p>
+
+<p>També podem veure els canvis entre dues versions consecutives del repositori. Hi ha moltes maneres de fer-ho:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">git show</code>: mostra els canvis realitzats en l’últim commit.</li>
+  <li><code class="language-plaintext highlighter-rouge">git show cb1fd6f8</code>: mostra els canvis fets en el commit etiquetat amb el prefix <code class="language-plaintext highlighter-rouge">cb1fd6f8</code> (com es pot veure, no necessitem escriure tota l’etiqueta).</li>
+  <li><code class="language-plaintext highlighter-rouge">git diff</code>: mostra els canvis realitzats en l’última versió que encara no s’ha commés.</li>
+  <li></li>
+</ul>
+
+<p><strong>Exercici 2:</strong></p>
+
+<p>Fes els següents canvis en el repositori <strong>MyFirstLocalRepo</strong> que has creat en l’exercici anterior:</p>
+
+<ol>
+  <li>Crea un fitxer nou anomenat <code class="language-plaintext highlighter-rouge">file.txt</code> amb el text “El meu primer fitxer de text”. Guarda els canvis en aquest fitxer.</li>
+  <li>Executa la comanda <code class="language-plaintext highlighter-rouge">git add .</code> per preparar aquest fitxer.</li>
+  <li>Executa la comanda <code class="language-plaintext highlighter-rouge">git commit</code> amb el missatge “El meu primer commit” per desar els canvis a la base de dades.</li>
+  <li>Edita el fitxer <code class="language-plaintext highlighter-rouge">file.txt</code> i afegeix una segona línia amb el teu nom.</li>
+  <li>Executa la comanda <code class="language-plaintext highlighter-rouge">git commit -a -m</code> per preparar i commetre automàticament els canvis amb el missatge “El meu segon commit”.</li>
+  <li>Executa la comanda <code class="language-plaintext highlighter-rouge">git log</code> per veure l’historial de commits. Hauries de veure una cosa semblant a aquesta:</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>commit 08f4ed1751… 
+Author: John Doe &lt;john@example.com&gt;
+Date: Wed Apr 14 15:00 2023
+    El meu primer commit
+commit cb1fd6f8… 
+Author: John Doe &lt;john@example.com&gt;
+Date: Wed Apr 14 16:00 2023
+    El meu segon commit
+</code></pre></div></div>
+
+<ol>
+  <li>Executa la comanda <code class="language-plaintext highlighter-rouge">git show</code> per veure els canvis fets en l’últim commit. Hauries de veure alguna cosa semblant a això:</li>
+</ol>
+
+<p>Els nous canvis es mostren en verd si han sigut afegits (en aquest cas, el teu nom al final del contingut del fitxer), o en roig si han sigut eliminats.</p>
+
+<h2 id="etiquetar-commits"><strong>Etiquetar commits</strong></h2>
+
+<p>Podem afegir manualment etiquetes a un commit determinat, de manera que el podem trobar fàcilment més endavant quan vulguem mostrar els seus canvis. Utilitzem la comanda <code class="language-plaintext highlighter-rouge">git tag</code> seguida del nom de l’etiqueta:<br />
+<code class="language-plaintext highlighter-rouge">git tag v1.0</code></p>
+
+<p>Això s’aplica a l’últim commit enviat. A continuació, podem mostrar els canvis d’aquest commit amb aquesta comanda:<br />
+<code class="language-plaintext highlighter-rouge">git show v1.0</code></p>
+
+<p>Si volem etiquetar un commit que no és l’últim, llavors hem d’especificar l’etiqueta anterior d’aquest commit (o el seu prefix inicial), després de la nova etiqueta que volem assignar-li:<br />
+<code class="language-plaintext highlighter-rouge">git tag v1.0 cb1fd6f8</code></p>
+
+<p><strong>2.4. Desfer canvis</strong><br />
+I si volem tornar a un commit anterior i desfer els canvis fets en l’últim(s) commit(s)? Podem utilitzar la comanda <code class="language-plaintext highlighter-rouge">git reset</code>. Aquesta comanda es pot utilitzar de moltes maneres, però ací explicarem una d’elles: hem d’identificar l’etiqueta del commit que volem establir com l’actual i després escriure aquesta comanda:<br />
+<code class="language-plaintext highlighter-rouge">git reset --hard 0305afd</code></p>
+
+<p>on <code class="language-plaintext highlighter-rouge">0305afd</code> és el prefix de l’etiqueta del commit que volem establir com el nostre estat actual actiu.</p>
+
+<p><strong>2.5. El fitxer .gitignore</strong><br />
+En cada repositori Git, podem afegir manualment un fitxer anomenat <code class="language-plaintext highlighter-rouge">.gitignore</code>. És només un fitxer de text que conté una llista de fitxers i carpetes que han de ser ignorats quan pugem nous canvis. Per exemple, si estem treballant en un projecte C#, no necessitem pujar fitxers <code class="language-plaintext highlighter-rouge">.exe</code> al repositori, ja que podem recompilar el projecte de nou. Així que podem editar aquest fitxer i especificar-ho així:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*.exe
+</code></pre></div></div>
+
+<p>Això saltarà tots els fitxers <code class="language-plaintext highlighter-rouge">.exe</code> de la carpeta principal del projecte. De la mateixa manera, podem afegir tants fitxers i carpetes com necessitem en aquest fitxer. Per exemple:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node_modules/
+*.exe
+*.tmp
+</code></pre></div></div>
+
+<p>Això omet la carpeta <code class="language-plaintext highlighter-rouge">node_modules</code> i tots els fitxers <code class="language-plaintext highlighter-rouge">.exe</code> o <code class="language-plaintext highlighter-rouge">.tmp</code> en la carpeta arrel. Ací pots trobar fitxers <code class="language-plaintext highlighter-rouge">.gitignore</code> típics per a molts tipus diferents de projectes, com projectes Node, Laravel, etc.</p>
+
+<p><strong>NOTA</strong>: El fitxer <code class="language-plaintext highlighter-rouge">.gitignore</code> <strong>NO</strong> exclou fitxers que ja han sigut commesos prèviament. Per exemple, si li diem a aquest fitxer que ignore fitxers <code class="language-plaintext highlighter-rouge">.exe</code> però prèviament hem commés un fitxer <code class="language-plaintext highlighter-rouge">.exe</code> al repositori, aquest fitxer no s’eliminarà del mateix.</p>
+
+<h3 id="3-treballant-amb-repositoris-remots">3. Treballant amb repositoris remots</h3>
+
+<p>Ara que hem après com afegir i editar contingut en un repositori local, vegem com connectar-nos a un repositori remot de GitHub per descarregar o pujar els canvis. Primerament, si volem treballar amb repositoris remots emmagatzemats en GitHub, necessitarem crear aquest repositori remot en GitHub.</p>
+
+<h4 id="31-clonar-repositoris">3.1. Clonar repositoris</h4>
+
+<p>Una vegada tinguem el nostre repositori creat en GitHub, necessitarem copiar-lo a la nostra màquina local. Aquesta operació es coneix com una operació de <strong>clonació</strong>, i la fem amb la comanda <code class="language-plaintext highlighter-rouge">git clone</code>, especificant la URL del repositori, la qual es pot recuperar del botó <em>Clone or download</em> en el mateix repositori.</p>
+
+<p><strong>Exemple de pàgina principal del repositori:</strong></p>
+
+<p>Si tinguérem un repositori a GitHub, la comanda adequada per clonar-lo seria així:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/johndoe/test
+</code></pre></div></div>
+
+<p>Aquesta comanda crearà una carpeta anomenada <strong>test</strong> en el directori des del qual estem executant aquesta comanda, així que assegura’t d’executar-la dins de la carpeta on vulgues col·locar el teu projecte.</p>
+
+<h4 id="32-actualitzar-els-canvis-remots-en-local">3.2. Actualitzar els canvis remots en local</h4>
+
+<p>Una vegada tinguem el repositori clonat localment, si estem treballant en equip o gestionant el mateix repositori des de diferents ordinadors, potser necessitarem descarregar els últims canvis d’aquest repositori per actualitzar la nostra còpia local. Aquest pas és essencial per assegurar-nos que tenim els continguts actualitzats abans de fer nous canvis.</p>
+
+<p>Per fer això, simplement utilitzem la comanda <code class="language-plaintext highlighter-rouge">git pull</code> des de la carpeta del repositori:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull
+</code></pre></div></div>
+
+<p>Això descarrega automàticament els últims canvis i actualitza els fitxers afectats.</p>
+
+<h4 id="33-pujar-els-canvis-locals-al-repositori-remot">3.3. Pujar els canvis locals al repositori remot</h4>
+
+<p>Si tenim el nostre repositori local actualitzat i fem nous canvis a qualsevol fitxer, podem pujar aquests canvis al repositori remot. Els passos necessaris són els següents:</p>
+
+<ol>
+  <li>Fes canvis en el(s) fitxer(s) desitjat(s).</li>
+  <li>Marca els fitxers com preparats amb la comanda <code class="language-plaintext highlighter-rouge">git add .</code> que ja hem vist abans.</li>
+  <li>Fes un <strong>commit</strong> dels canvis localment amb la comanda <code class="language-plaintext highlighter-rouge">git commit</code> que també hem vist abans.</li>
+  <li>Puja aquest commit (o els últims commits, si n’hi ha més d’un) amb la comanda <code class="language-plaintext highlighter-rouge">git push</code>.</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+</code></pre></div></div>
+
+<p><strong>Exercici 3:</strong></p>
+
+<ol>
+  <li>
+    <p>Clona el repositori de GitHub <strong>MyFirstRepo</strong> que hauràs creat en el document anterior. Clona’l dins de la mateixa carpeta principal on estàs creant la resta de repositoris locals d’aquest document. Veureu una nova carpeta anomenada <strong>MyFirstRepo</strong> que conté tots els elements del vostre repositori remot.</p>
+  </li>
+  <li>Aplica aquests canvis:
+    <ul>
+      <li>Afegeix un nou fitxer anomenat <code class="language-plaintext highlighter-rouge">shopping_list.txt</code> amb una llista d’articles que vulgues comprar.</li>
+      <li>Puja aquest fitxer al repositori remot (recorda, primer afegeix els canvis, després fes el commit i finalment fes el push).</li>
+    </ul>
+  </li>
+  <li>
+    <p>Vés a GitHub i comprova que el nou fitxer s’ha pujat correctament.</p>
+  </li>
+  <li>
+    <p>Vés a una carpeta diferent de l’ordinador i clona una còpia nova del mateix repositori.</p>
+  </li>
+  <li>
+    <p>Des d’aquesta segona carpeta, afegeix un nou fitxer anomenat <code class="language-plaintext highlighter-rouge">to_do.txt</code> i afegeix algunes tasques pendents per a les properes setmanes.</p>
+  </li>
+  <li>
+    <p>Pujar els canvis al repositori remot.</p>
+  </li>
+  <li>Torna a la teua carpeta original <strong>MyFirstRepo</strong> i fes una comanda <code class="language-plaintext highlighter-rouge">git pull</code>. Comprova si el nou fitxer <strong>to_do.txt</strong> s’ha descarregat en aquesta còpia local.</li>
+</ol>
+
+<h2 id="taula-resum-de-comandes-bàsiques">Taula resum de comandes bàsiques</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comanda</th>
+      <th>Utilitat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git init</code></td>
+      <td>Inicialitza un nou repositori Git en la carpeta actual.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git status</code></td>
+      <td>Mostra l’estat del repositori i els fitxers modificats o no commesos.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git add &lt;fitxer&gt;</code></td>
+      <td>Afegeix un fitxer específic a l’àrea d’stage per al següent commit.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git add .</code></td>
+      <td>Afegeix tots els fitxers modificats a l’àrea d’stage.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git commit -m "&lt;missatge&gt;"</code></td>
+      <td>Realitza un commit dels canvis amb un missatge descriptiu.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git commit -a -m "&lt;missatge&gt;"</code></td>
+      <td>Afegeix i commet automàticament els canvis sense necessitat de <code class="language-plaintext highlighter-rouge">git add</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git log</code></td>
+      <td>Mostra l’historial de commits del repositori.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git show</code></td>
+      <td>Mostra els canvis realitzats en l’últim commit o en un commit específic.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git diff</code></td>
+      <td>Compara els canvis entre les versions no commeses del repositori.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git rm --cached &lt;fitxer&gt;</code></td>
+      <td>Elimina un fitxer de l’àrea d’stage sense esborrar-lo del sistema.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git reset --hard &lt;commit&gt;</code></td>
+      <td>Restaura l’estat del repositori a un commit anterior.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git tag &lt;etiqueta&gt;</code></td>
+      <td>Afegeix una etiqueta a un commit específic.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git clone &lt;URL&gt;</code></td>
+      <td>Clona un repositori remot en la màquina local.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git pull</code></td>
+      <td>Actualitza la còpia local amb els canvis del repositori remot.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git push</code></td>
+      <td>Puja els canvis locals al repositori remot.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git config --global user.name "&lt;nom&gt;"</code></td>
+      <td>Configura el nom d’usuari per als commits.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git config --global user.email "&lt;email&gt;"</code></td>
+      <td>Configura el correu electrònic per als commits.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git config --list</code></td>
+      <td>Mostra la configuració actual de Git.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git version</code></td>
+      <td>Mostra la versió de Git instal·lada.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="ús-de-branques-en-git">Ús de branques en Git</h1>
+
+<p>En aquesta segona part, ens centrarem en el treball amb branques (<strong>branches</strong>) de Git, una de les funcionalitats més poderoses d’aquest sistema de control de versions. Les branques permeten treballar en funcions o millores de manera independent sense afectar la branca principal del projecte (normalment anomenada <code class="language-plaintext highlighter-rouge">main</code> o <code class="language-plaintext highlighter-rouge">master</code>). Així, podem desenvolupar, provar i modificar noves funcionalitats sense interferir en la versió estable del projecte.</p>
+
+<h3 id="1-què-és-una-branca-en-git">1. Què és una branca en Git?</h3>
+
+<p>Una branca en Git és essencialment una seqüència de commits que comença a partir d’un punt específic en la història del repositori. La branca principal del projecte és generalment <code class="language-plaintext highlighter-rouge">main</code> o <code class="language-plaintext highlighter-rouge">master</code>, però podem crear tantes branques com necessitem per desenvolupar noves característiques o corregir errors de manera paral·lela.</p>
+
+<p>Quan treballem amb branques, podem fer canvis en una branca sense que afecten les altres, i posteriorment podem combinar les branques per integrar aquests canvis en el projecte principal.</p>
+
+<h3 id="2-crear-i-canviar-de-branques">2. Crear i canviar de branques</h3>
+
+<h4 id="21-crear-una-nova-branca">2.1. Crear una nova branca</h4>
+
+<p>Per crear una nova branca, utilitzem la comanda <code class="language-plaintext highlighter-rouge">git branch</code>, seguida del nom de la nova branca. Aquesta nova branca es crearà a partir de l’estat actual del repositori, és a dir, del commit on estem en aquest moment.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch nom-branca
+</code></pre></div></div>
+
+<p>Per exemple, si vols crear una branca per desenvolupar una nova funcionalitat anomenada “nova-funcio”, pots fer-ho així:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch nova-funcio
+</code></pre></div></div>
+
+<h4 id="22-canviar-de-branca">2.2. Canviar de branca</h4>
+
+<p>Una vegada creada la nova branca, si volem treballar en ella, hem de canviar-hi. Per això, utilitzem la comanda <code class="language-plaintext highlighter-rouge">git checkout</code> seguida del nom de la branca a la qual volem canviar:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout nova-funcio
+</code></pre></div></div>
+
+<p>A partir d’aquest moment, qualsevol canvi que fem s’aplicarà a aquesta branca, sense afectar la branca principal (<code class="language-plaintext highlighter-rouge">main</code> o <code class="language-plaintext highlighter-rouge">master</code>).</p>
+
+<p><strong>Nota:</strong> A partir de Git 2.23, també podem utilitzar <code class="language-plaintext highlighter-rouge">git switch</code> per canviar de branca, una alternativa més clara a <code class="language-plaintext highlighter-rouge">git checkout</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git switch nova-funcio
+</code></pre></div></div>
+
+<h4 id="23-crear-i-canviar-de-branca-en-un-sol-pas">2.3. Crear i canviar de branca en un sol pas</h4>
+
+<p>És possible crear una branca i canviar-hi en un sol pas amb aquesta comanda:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> nom-branca
+</code></pre></div></div>
+
+<p>Per exemple:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> nova-funcio
+</code></pre></div></div>
+
+<p>Aquesta comanda crea la branca <code class="language-plaintext highlighter-rouge">nova-funcio</code> i automàticament ens hi canvia.</p>
+
+<h3 id="3-treballar-en-una-branca">3. Treballar en una branca</h3>
+
+<p>Una vegada estiguem treballant en una nova branca, podem fer modificacions, afegir fitxers i realitzar commits de la mateixa manera que ho faríem en la branca principal. Aquests canvis quedaran aïllats dins de la branca i no afectaran cap altra branca fins que decidim combinar-les.</p>
+
+<h4 id="31-veure-les-branques-disponibles">3.1. Veure les branques disponibles</h4>
+
+<p>Podem veure totes les branques existents en el nostre repositori utilitzant aquesta comanda:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch
+</code></pre></div></div>
+
+<p>La branca en la qual estem treballant actualment estarà marcada amb un asterisc <code class="language-plaintext highlighter-rouge">*</code>.</p>
+
+<h3 id="4-fusionar-branques-merge">4. Fusionar branques (merge)</h3>
+
+<p>Una vegada hàgem acabat el desenvolupament o la correcció d’errors en la nostra branca, és moment de fusionar els canvis amb la branca principal. Aquest procés s’anomena <strong>fusió</strong> o <strong>merge</strong>.</p>
+
+<p>Abans de realitzar la fusió, és recomanable assegurar-se que estem en la branca on volem aplicar els canvis (normalment <code class="language-plaintext highlighter-rouge">main</code> o <code class="language-plaintext highlighter-rouge">master</code>). Per a això, canviem a la branca amb:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+</code></pre></div></div>
+
+<p>Una vegada estem en la branca principal, podem utilitzar la comanda <code class="language-plaintext highlighter-rouge">git merge</code> per fusionar els canvis de la branca secundària en la qual hem estat treballant (per exemple, <code class="language-plaintext highlighter-rouge">nova-funcio</code>):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge nova-funcio
+</code></pre></div></div>
+
+<p>Si no hi ha conflictes entre els canvis, Git combinarà automàticament les dues branques. Si hi ha conflictes (per exemple, si s’han modificat les mateixes línies de codi en ambdues branques), Git ens avisarà i haurem de resoldre’ls manualment.</p>
+
+<h3 id="5-resoldre-conflictes-de-fusió">5. Resoldre conflictes de fusió</h3>
+
+<p>Quan apareixen conflictes durant una fusió, Git marca les línies de codi en els fitxers afectats que tenen conflictes. Hauríem de revisar aquestes línies manualment, escollir quina versió volem mantenir, i després marcar els conflictes com resolts amb <code class="language-plaintext highlighter-rouge">git add</code>. Finalment, fem un commit per completar la fusió:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add &lt;fitxer&gt;
+git commit
+</code></pre></div></div>
+
+<h3 id="6-esborrar-branques">6. Esborrar branques</h3>
+
+<p>Després de fusionar els canvis d’una branca secundària a la branca principal, és una bona pràctica eliminar aquesta branca per mantindre el repositori net. Podem fer-ho amb la comanda <code class="language-plaintext highlighter-rouge">git branch -d</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-d</span> nova-funcio
+</code></pre></div></div>
+
+<p>Si la branca no ha sigut fusionada, Git no permetrà esborrar-la. Si estem segurs que volem eliminar-la encara que no haja sigut fusionada, podem forçar l’eliminació amb <code class="language-plaintext highlighter-rouge">git branch -D</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-D</span> nova-funcio
+</code></pre></div></div>
+
+<h3 id="7-treball-amb-branques-remotes">7. Treball amb branques remotes</h3>
+
+<p>Quan treballem amb repositoris remots (com GitHub o GitLab), les branques locals no es pugen automàticament al servidor remot. Per pujar una nova branca, hem d’utilitzar la comanda <code class="language-plaintext highlighter-rouge">git push</code> especificant el nom de la branca:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin nova-funcio
+</code></pre></div></div>
+
+<p>Una vegada la branca estiga pujada al repositori remot, altres col·laboradors podran accedir-hi.</p>
+<h3 id="exercici-4-treballant-amb-branques-en-git">Exercici 4: Treballant amb branques en Git</h3>
+
+<p>En aquest exercici, aprendràs a treballar amb branques per desenvolupar noves funcionalitats o fer correccions sense afectar el codi de la branca principal. Seguiràs el procés complet de creació de branques, fusió de canvis i resolució de conflictes, tot en un escenari pràctic.</p>
+
+<h4 id="escenari">Escenari:</h4>
+<p>Afegeix al repositori abans creat, MyFirstRepo, un fitxer anomenat <code class="language-plaintext highlighter-rouge">index.html</code> a la branca principal (<code class="language-plaintext highlighter-rouge">main</code>). El teu objectiu és afegir dues noves funcionalitats de manera independent, treballant en branques separades i, després, fusionar-les amb la branca principal. Documental els passos amb captures de pantalla i comparteix la memòria de l’exercisi.
+Pots emprar el següent codi com a base del fixer:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"es"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Arxiu<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h4 id="passos-a-seguir">Passos a seguir:</h4>
+
+<ol>
+  <li>
+    <p><strong>Clona el repositori i situa’t en la branca principal:</strong></p>
+  </li>
+  <li>
+    <p><strong>Crea una nova branca per afegir un títol a la pàgina web:</strong></p>
+
+    <ul>
+      <li>Crea la branca <code class="language-plaintext highlighter-rouge">afegir-titol</code> i canvia a aquesta branca:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> afegir-titol
+</code></pre></div>        </div>
+      </li>
+      <li>Obri el fitxer <code class="language-plaintext highlighter-rouge">index.html</code> i afegeix un títol dins de l’etiqueta <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>:
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Benvinguts a la meua pàgina web<span class="nt">&lt;/h1&gt;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Desa els canvis i fes un commit:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add index.html
+git commit <span class="nt">-m</span> <span class="s2">"Afegit títol a la pàgina web"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Crea una altra branca per afegir un paràgraf d’introducció:</strong></p>
+
+    <ul>
+      <li>Canvia a la branca principal (<code class="language-plaintext highlighter-rouge">main</code>) i després crea una nova branca <code class="language-plaintext highlighter-rouge">afegir-introduccio</code>:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+git checkout <span class="nt">-b</span> afegir-introduccio
+</code></pre></div>        </div>
+      </li>
+      <li>Modifica el fitxer <code class="language-plaintext highlighter-rouge">index.html</code> i afegeix un paràgraf d’introducció sota el títol:
+        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>Aquesta és una pàgina web d’exemple creada per aprendre Git.<span class="nt">&lt;/p&gt;</span>
+</code></pre></div>        </div>
+      </li>
+      <li>Desa els canvis i fes un commit:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add index.html
+git commit <span class="nt">-m</span> <span class="s2">"Afegit paràgraf d'introducció"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Fusiona les branques amb la branca principal:</strong></p>
+
+    <ul>
+      <li>Torna a la branca principal:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout main
+</code></pre></div>        </div>
+      </li>
+      <li>Fusiona la branca <code class="language-plaintext highlighter-rouge">afegir-titol</code> amb la branca principal:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge afegir-titol
+</code></pre></div>        </div>
+      </li>
+      <li>A continuació, fusiona la branca <code class="language-plaintext highlighter-rouge">afegir-introduccio</code> amb la branca principal:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge afegir-introduccio
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Resol un conflicte de fusió (opcional):</strong></p>
+
+    <p>Si hi haguera conflictes durant la fusió (per exemple, si el títol i el paràgraf hagueren estat afegits en les mateixes línies del fitxer <code class="language-plaintext highlighter-rouge">index.html</code>), resol-los de la següent manera:</p>
+
+    <ul>
+      <li>Obri el fitxer conflictiu (<code class="language-plaintext highlighter-rouge">index.html</code>) i modifica les línies marcades per Git per mantenir les dues funcionalitats (el títol i el paràgraf).</li>
+      <li>Després, marca els conflictes com resolts:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add index.html
+</code></pre></div>        </div>
+      </li>
+      <li>Fes un commit per completar la fusió:
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">-m</span> <span class="s2">"Resolts conflictes i fusionades branques"</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Esborra les branques:</strong></p>
+
+    <p>Després de fusionar les branques, pots esborrar-les per mantindre el repositori net:</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-d</span> afegir-titol
+git branch <span class="nt">-d</span> afegir-introduccio
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="taula-resum-de-comandes-de-branques-en-git">Taula resum de comandes de branques en Git</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comanda</th>
+      <th>Utilitat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git branch</code></td>
+      <td>Llista totes les branques del repositori.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git branch &lt;nom-branca&gt;</code></td>
+      <td>Crea una nova branca amb el nom especificat.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git checkout &lt;nom-branca&gt;</code></td>
+      <td>Canvia a la branca especificada.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git checkout -b &lt;nom-branca&gt;</code></td>
+      <td>Crea una nova branca i canvia-hi en un sol pas.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git switch &lt;nom-branca&gt;</code></td>
+      <td>Canvia a la branca especificada (alternativa a <code class="language-plaintext highlighter-rouge">git checkout</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git merge &lt;nom-branca&gt;</code></td>
+      <td>Fusiona la branca especificada amb la branca actual.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git branch -d &lt;nom-branca&gt;</code></td>
+      <td>Esborra una branca local després de fusionar-la.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git branch -D &lt;nom-branca&gt;</code></td>
+      <td>Força l’eliminació d’una branca no fusionada.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git push origin &lt;nom-branca&gt;</code></td>
+      <td>Pujar una nova branca al repositori remot.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git pull origin &lt;nom-branca&gt;</code></td>
+      <td>Descarrega i integra els canvis d’una branca remota en la branca local.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git stash</code></td>
+      <td>Guarda els canvis no commesos temporalment per canviar de branca.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">git stash apply</code></td>
+      <td>Recupera els canvis guardats anteriorment amb <code class="language-plaintext highlighter-rouge">git stash</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

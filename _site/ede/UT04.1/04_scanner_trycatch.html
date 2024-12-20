@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>arturoalbero.github.io | Web para probar</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="arturoalbero.github.io" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT04.1/04_scanner_trycatch.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT04.1/04_scanner_trycatch.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="arturoalbero.github.io" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"arturoalbero.github.io","url":"http://localhost:4000/ede/UT04.1/04_scanner_trycatch.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+} 
+p{
+    text-indent: 1rem;
+    text-align: justify;
+}
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bold;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<ul>
+  <li><a href="#consejos-para-el-control-del-flujo-de-datos-en-java-cas">Consejos para el control del flujo de datos en Java (CAS)</a>
+    <ul>
+      <li><a href="#contro-del-flujo-de-datos">Contro del flujo de datos</a>
+        <ul>
+          <li><a href="#la-clase-scanner">La clase <code class="language-plaintext highlighter-rouge">Scanner</code></a></li>
+          <li><a href="#lectura-de-datos">Lectura de datos</a>
+            <ul>
+              <li><a href="#problema-común-a-la-hora-de-leer-datos">Problema común a la hora de leer datos</a></li>
+            </ul>
+          </li>
+          <li><a href="#conversión-de-cadenas-a-tipos-de-datos">Conversión de cadenas a tipos de datos</a></li>
+          <li><a href="#controlar-la-entrada-de-datos-con-try-catch">Controlar la entrada de datos con <code class="language-plaintext highlighter-rouge">try-catch</code></a>
+            <ul>
+              <li><a href="#cómo-funciona-try-catch">Cómo funciona <code class="language-plaintext highlighter-rouge">try-catch</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#control-de-entrada-en-un-bucle">Control de entrada en un bucle</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#consells-per-al-control-del-flux-de-dades-en-java-val">Consells per al control del flux de dades en Java (VAL)</a>
+    <ul>
+      <li><a href="#control-del-flux-de-dades">Control del flux de dades</a>
+        <ul>
+          <li><a href="#la-classe-scanner">La classe <code class="language-plaintext highlighter-rouge">Scanner</code></a></li>
+          <li><a href="#lectura-de-dades">Lectura de dades</a>
+            <ul>
+              <li><a href="#problema-comú-en-llegir-dades">Problema comú en llegir dades</a></li>
+            </ul>
+          </li>
+          <li><a href="#conversió-de-cadenes-a-tipus-de-dades">Conversió de cadenes a tipus de dades</a></li>
+          <li><a href="#controlar-lentrada-de-dades-amb-try-catch">Controlar l’entrada de dades amb <code class="language-plaintext highlighter-rouge">try-catch</code></a>
+            <ul>
+              <li><a href="#com-funciona-try-catch">Com funciona <code class="language-plaintext highlighter-rouge">try-catch</code></a></li>
+            </ul>
+          </li>
+          <li><a href="#control-dentrada-en-un-bucle">Control d’entrada en un bucle</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="consejos-para-el-control-del-flujo-de-datos-en-java-cas">Consejos para el control del flujo de datos en Java (CAS)</h1>
+
+<h2 id="contro-del-flujo-de-datos">Contro del flujo de datos</h2>
+
+<h3 id="la-clase-scanner">La clase <code class="language-plaintext highlighter-rouge">Scanner</code></h3>
+
+<p>La clase <code class="language-plaintext highlighter-rouge">Scanner</code> permite controlar el flujo de datos en Java de forma sencilla y homogénea. Sirve tanto para la entrada de datos desde consola como para la entrada de datos desde ficheros, empleando los mismos métodos.</p>
+
+<p>Para empezar a usarla, debes importar <code class="language-plaintext highlighter-rouge">Scanner</code> desde el paquete <code class="language-plaintext highlighter-rouge">java.util</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>No obstante, gracias al funcionamiento de IntelliJ, podemos crear directamente el objeto <code class="language-plaintext highlighter-rouge">Scanner</code> en nuestro código y el IDE se encargará de hacer la importación. Recomiendo hacerlo de esta forma, ya que es más rápido y más fiable que hacerlo a mano. Al crear el objeto <code class="language-plaintext highlighter-rouge">Scanner</code>, debemos elegir la fuente desde la que recibiremos el flujo de datos.</p>
+
+<p>Si queremos leer datos desde consola, lo hacemos de la siguiente manera:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Si queremos leer datos desde un fichero, lo hacemos de la siguiente manera:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"nombre_del_fichero.txt"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>A la hora de leer rutas de ficheros, se leen siempre desde la carpeta raíz del proyecto.</p>
+
+<hr />
+
+<h3 id="lectura-de-datos">Lectura de datos</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Scanner</code> tiene varios métodos para leer distintos tipos de datos, como:</p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">nextLine()</code></strong>: Lee una línea completa como una cadena de texto (<code class="language-plaintext highlighter-rouge">String</code>), hasta que encuentra un salto de línea. Esto incluye espacios y todo lo que se haya escrito hasta presionar Enter.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ingresa tu nombre:"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">nombre</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hola, "</span> <span class="o">+</span> <span class="n">nombre</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">nextInt()</code></strong>: Lee el siguiente número entero en la entrada. <code class="language-plaintext highlighter-rouge">nextInt()</code> solo lee el número y no el salto de línea posterior. Esto puede causar problemas si después de <code class="language-plaintext highlighter-rouge">nextInt()</code> quieres leer una línea completa usando <code class="language-plaintext highlighter-rouge">nextLine()</code>.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ingresa tu edad:"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">edad</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tienes "</span> <span class="o">+</span> <span class="n">edad</span> <span class="o">+</span> <span class="s">" años."</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Aparte de <code class="language-plaintext highlighter-rouge">nextInt()</code>, contamos con muchos métodos equivalentes para cada tipo de datos primitivo, como <code class="language-plaintext highlighter-rouge">Float</code>, <code class="language-plaintext highlighter-rouge">Double</code>, <code class="language-plaintext highlighter-rouge">Boolean</code>, etc.</p>
+  </li>
+</ul>
+
+<h4 id="problema-común-a-la-hora-de-leer-datos">Problema común a la hora de leer datos</h4>
+
+<p>Un problema común es que al usar <code class="language-plaintext highlighter-rouge">nextInt()</code> (o cualquier método para leer datos concretos), el salto de línea <code class="language-plaintext highlighter-rouge">\n</code> que el usuario introduce se queda “atrapado” en el flujo de entrada. Esto causa que se capturen los datos hasta el espacio y sigan estando presentes para la siguiente solicitud de lectura que hagamos, por lo que de una entrada de datos de usuario podríamos rellenar varias solicitudes de <code class="language-plaintext highlighter-rouge">nextInt()</code>, hasta que una de ellas capturara el salto de línea.</p>
+
+<p><strong>Solución</strong>: Para evitar este problema, agregamos una llamada a <code class="language-plaintext highlighter-rouge">nextLine()</code> después de <code class="language-plaintext highlighter-rouge">nextInt()</code> para “limpiar” el salto de línea pendiente y todos los datos añadidos después del dato recogido.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ingresa tu edad:"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">edad</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+<span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">// Consumir el salto de línea</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ingresa tu nombre:"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">nombre</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>Otra forma un poco más compleja, y que puede causar más errores, pero que tiene más flexibilidad y control, es usar <code class="language-plaintext highlighter-rouge">nextLine</code> en combinación con las herramientas para conversión de datos, como veremos a continuación.</p>
+
+<hr />
+
+<h3 id="conversión-de-cadenas-a-tipos-de-datos">Conversión de cadenas a tipos de datos</h3>
+
+<p>Java dispone de métodos para la conversión de datos dentro de un tipo de clases de utilidades específicas que se llaman <em>wrappers</em>. Los tipos de datos básicos no son objetos, pero podemos usar su objeto equivalente para invocar determinados métodos. Por ejemplo, para enteros, <code class="language-plaintext highlighter-rouge">int</code>, el wrapper es <code class="language-plaintext highlighter-rouge">Integer</code>. Notamos que el <em>wrapper</em> siempre tiene el nombre completo empezando en mayúscula. A través de él, accedemos a los métodos estáticos que nos sirven para transformar datos.</p>
+
+<p>Si tienes una entrada como cadena y necesitas convertirla a un tipo numérico, puedes usar métodos como <code class="language-plaintext highlighter-rouge">Integer.parseInt()</code> para convertir una <code class="language-plaintext highlighter-rouge">String</code> a <code class="language-plaintext highlighter-rouge">int</code>. Esto es útil si, por ejemplo, estás leyendo datos de un fichero o de una cadena que no se puede leer directamente como número con <code class="language-plaintext highlighter-rouge">nextInt()</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">numeroEnTexto</span> <span class="o">=</span> <span class="s">"123"</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">numero</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">numeroEnTexto</span><span class="o">);</span> <span class="c1">// Convierte "123" en el número 123</span>
+</code></pre></div></div>
+
+<p>Además de <code class="language-plaintext highlighter-rouge">Integer.parseInt()</code>, existen otros métodos de <em>parseo</em>:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Double.parseDouble()</code></strong>: para convertir a <code class="language-plaintext highlighter-rouge">double</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Float.parseFloat()</code></strong>: para convertir a <code class="language-plaintext highlighter-rouge">float</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Long.parseLong()</code></strong>: para convertir a <code class="language-plaintext highlighter-rouge">long</code>.</li>
+</ul>
+
+<p>Estos métodos son útiles porque puedes controlar mejor el flujo de entrada y, por ejemplo, leer una línea completa con <code class="language-plaintext highlighter-rouge">nextLine()</code> y luego <em>parsearla</em>.</p>
+
+<hr />
+
+<h3 id="controlar-la-entrada-de-datos-con-try-catch">Controlar la entrada de datos con <code class="language-plaintext highlighter-rouge">try-catch</code></h3>
+
+<p>Al trabajar con entradas de usuario, a menudo es necesario asegurarse de que el usuario introduzca datos válidos. Por ejemplo, si el usuario introduce una letra en lugar de un número y estamos usando <code class="language-plaintext highlighter-rouge">nextInt()</code>, el programa arrojará una excepción <code class="language-plaintext highlighter-rouge">InputMismatchException</code>. También tendremos problemas de este tipo al <em>parsear</em> los datos recogidos por un <code class="language-plaintext highlighter-rouge">nextLine()</code>.</p>
+
+<p>Podemos controlar estos errores usando <code class="language-plaintext highlighter-rouge">try-catch</code> para manejar situaciones en las que el usuario no introduzca el tipo de dato esperado:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ingresa un número entero:"</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">numero</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"El número ingresado es: "</span> <span class="o">+</span> <span class="n">numero</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InputMismatchException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Error: No ingresaste un número entero. Inténtalo de nuevo."</span><span class="o">);</span>
+    <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">// Limpiar el buffer para el siguiente intento</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Si no sabemos qué excepción toca, podemos usar la excepción básica, <code class="language-plaintext highlighter-rouge">Exception</code>, que es la madre de todas las excepciones. En el siguiente ejemplo, vemos el código de arriba pero usando nextLine para capturar los datos y el mensaje por defecto de la excepción. Además, usamos <code class="language-plaintext highlighter-rouge">System.err</code> para que nos devuelva el mensaje en forma de error.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Ingresa un número entero:"</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">numero</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">());</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"El número ingresado es: "</span> <span class="o">+</span> <span class="n">numero</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Error: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="cómo-funciona-try-catch">Cómo funciona <code class="language-plaintext highlighter-rouge">try-catch</code></h4>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">try</code></strong>: Colocamos el código que queremos intentar ejecutar en el bloque <code class="language-plaintext highlighter-rouge">try</code>. Aquí es donde podría ocurrir una excepción.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">catch</code></strong>: Si ocurre una excepción dentro del bloque <code class="language-plaintext highlighter-rouge">try</code>, el programa salta al bloque <code class="language-plaintext highlighter-rouge">catch</code>. Aquí podemos manejar el error de manera amigable, como mostrar un mensaje informativo.</li>
+</ol>
+
+<p>El bloque <code class="language-plaintext highlighter-rouge">catch</code> también se puede personalizar para capturar diferentes tipos de excepciones, si sabes específicamente qué tipo de error podría ocurrir.</p>
+
+<p>A nivel conceptual, funciona como <em>“Intenta realizar el código de dentro del bloque <code class="language-plaintext highlighter-rouge">try{}</code>. Si no lo consigues, ejecuta el código dentro del bloque <code class="language-plaintext highlighter-rouge">catch(Exception e)</code> y gestiona el error que te ha impedido conseguir ejecutar el código”</em>.</p>
+
+<hr />
+
+<h3 id="control-de-entrada-en-un-bucle">Control de entrada en un bucle</h3>
+
+<p>Para hacer que el programa pida repetidamente al usuario que ingrese un valor válido, puedes usar un bucle junto con <code class="language-plaintext highlighter-rouge">try-catch</code>. Este es un ejemplo donde se le pide al usuario un número entero y no se acepta otro tipo de entrada:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numero</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">entradaCorrecta</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">entradaCorrecta</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Por favor, ingresa un número entero:"</span><span class="o">);</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">entradaCorrecta</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Habilitamos la salida del bucle si la entrada es válida</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InputMismatchException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Entrada inválida. Asegúrate de ingresar un número entero."</span><span class="o">);</span>
+        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">// Limpiar el buffer para el siguiente intento</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Número ingresado correctamente: "</span> <span class="o">+</span> <span class="n">numero</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Esta es una forma elegante de controlar una entrada de datos, sobre todo de cara a un producto final. Evita que el programa “explote” por algún error en la entrada del usuario. No obstante, para ejercicios y programas en los cuales tenemos una entrada de datos controlada, solemos asumir que siempre la vamos a hacer de forma correcta, para evitar escribir demasiado código y centrarnos más en el problema que queremos resolver que en los problemas que un usuario despistado o con ganas de reventar el sistema nos pudiera ocasionar.</p>
+
+<p>Sin embargo, el control de la entrada de datos es fundamental por motivos de seguridad y para evitar filtraciones de datos, así que no debe ser tomado a la ligera e implementarlo siempre que sea conveniente.</p>
+
+<h1 id="consells-per-al-control-del-flux-de-dades-en-java-val">Consells per al control del flux de dades en Java (VAL)</h1>
+
+<h2 id="control-del-flux-de-dades">Control del flux de dades</h2>
+
+<h3 id="la-classe-scanner">La classe <code class="language-plaintext highlighter-rouge">Scanner</code></h3>
+
+<p>La classe <code class="language-plaintext highlighter-rouge">Scanner</code> permet controlar el flux de dades en Java de manera senzilla i homogènia. Serveix tant per a l’entrada de dades des de consola com per a l’entrada de dades des de fitxers, emprant els mateixos mètodes.</p>
+
+<p>Per començar a utilitzar-la, has d’importar <code class="language-plaintext highlighter-rouge">Scanner</code> des del paquet <code class="language-plaintext highlighter-rouge">java.util</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>No obstant això, gràcies al funcionament d’IntelliJ, podem crear directament l’objecte <code class="language-plaintext highlighter-rouge">Scanner</code> en el nostre codi, i l’IDE s’encarregarà de fer la importació. Recomane fer-ho d’aquesta manera, ja que és més ràpid i fiable que fer-ho manualment. En crear l’objecte <code class="language-plaintext highlighter-rouge">Scanner</code>, hem d’elegir la font des de la qual rebrem el flux de dades.</p>
+
+<p>Si volem llegir dades des de la consola, ho fem de la manera següent:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Si volem llegir dades des d’un fitxer, ho fem de la manera següent:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"nom_del_fitxer.txt"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>A l’hora de llegir rutes de fitxers, es llegeixen sempre des de la carpeta arrel del projecte.</p>
+
+<hr />
+
+<h3 id="lectura-de-dades">Lectura de dades</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Scanner</code> té diversos mètodes per a llegir diferents tipus de dades, com ara:</p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">nextLine()</code></strong>: Llig una línia completa com una cadena de text (<code class="language-plaintext highlighter-rouge">String</code>), fins que troba un salt de línia. Açò inclou espais i tot el que s’haja escrit fins a prémer Enter.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introdueix el teu nom:"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">nom</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hola, "</span> <span class="o">+</span> <span class="n">nom</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">nextInt()</code></strong>: Llig el següent nombre enter en l’entrada. <code class="language-plaintext highlighter-rouge">nextInt()</code> només llig el nombre i no el salt de línia posterior, la qual cosa pot causar problemes si després de <code class="language-plaintext highlighter-rouge">nextInt()</code> vols llegir una línia completa usant <code class="language-plaintext highlighter-rouge">nextLine()</code>.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introdueix la teua edat:"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">edat</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Tens "</span> <span class="o">+</span> <span class="n">edat</span> <span class="o">+</span> <span class="s">" anys."</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>A més de <code class="language-plaintext highlighter-rouge">nextInt()</code>, tenim molts mètodes equivalents per a cada tipus de dades primitiu, com <code class="language-plaintext highlighter-rouge">Float</code>, <code class="language-plaintext highlighter-rouge">Double</code>, <code class="language-plaintext highlighter-rouge">Boolean</code>, etc.</p>
+  </li>
+</ul>
+
+<h4 id="problema-comú-en-llegir-dades">Problema comú en llegir dades</h4>
+
+<p>Un problema comú és que en usar <code class="language-plaintext highlighter-rouge">nextInt()</code> (o qualsevol mètode per a llegir dades concretes), el salt de línia <code class="language-plaintext highlighter-rouge">\n</code> que l’usuari introdueix es queda “atrapat” en el flux d’entrada. Açò causa que es capturen les dades fins a l’espai, que es mantenen en el flux per a la següent sol·licitud de lectura, per la qual cosa una sola entrada de dades podria omplir diverses sol·licituds de <code class="language-plaintext highlighter-rouge">nextInt()</code>, fins que una d’elles capturara el salt de línia.</p>
+
+<p><strong>Solució</strong>: Per a evitar aquest problema, afegim una crida a <code class="language-plaintext highlighter-rouge">nextLine()</code> després de <code class="language-plaintext highlighter-rouge">nextInt()</code> per a “netejar” el salt de línia pendent i totes les dades afegides després del valor recollit.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introdueix la teua edat:"</span><span class="o">);</span>
+<span class="kt">int</span> <span class="n">edat</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+<span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">// Consumir el salt de línia</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introdueix el teu nom:"</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">nom</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>Una altra forma un poc més complexa, i que pot causar més errors però que té més flexibilitat i control, és usar <code class="language-plaintext highlighter-rouge">nextLine</code> en combinació amb les eines per a conversió de dades, com veurem a continuació.</p>
+
+<hr />
+
+<h3 id="conversió-de-cadenes-a-tipus-de-dades">Conversió de cadenes a tipus de dades</h3>
+
+<p>Java disposa de mètodes per a la conversió de dades dins d’un tipus de classes d’utilitats específiques anomenades <em>wrappers</em>. Els tipus de dades bàsics no són objectes, però podem usar el seu objecte equivalent per a invocar determinats mètodes. Per exemple, per a enters, <code class="language-plaintext highlighter-rouge">int</code>, el wrapper és <code class="language-plaintext highlighter-rouge">Integer</code>. Notem que el <em>wrapper</em> sempre té el nom complet començant en majúscula. A través d’ell, accedim als mètodes estàtics que ens serveixen per a transformar dades.</p>
+
+<p>Si tens una entrada com una cadena i necessites convertir-la a un tipus numèric, pots usar mètodes com <code class="language-plaintext highlighter-rouge">Integer.parseInt()</code> per a convertir una <code class="language-plaintext highlighter-rouge">String</code> a <code class="language-plaintext highlighter-rouge">int</code>. Açò és útil si, per exemple, estàs llegint dades d’un fitxer o d’una cadena que no es pot llegir directament com a nombre amb <code class="language-plaintext highlighter-rouge">nextInt()</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span> <span class="n">numeroEnText</span> <span class="o">=</span> <span class="s">"123"</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">numero</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">numeroEnText</span><span class="o">);</span> <span class="c1">// Converteix "123" en el nombre 123</span>
+</code></pre></div></div>
+
+<p>A més de <code class="language-plaintext highlighter-rouge">Integer.parseInt()</code>, existeixen altres mètodes de <em>parseig</em>:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Double.parseDouble()</code></strong>: per a convertir a <code class="language-plaintext highlighter-rouge">double</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Float.parseFloat()</code></strong>: per a convertir a <code class="language-plaintext highlighter-rouge">float</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">Long.parseLong()</code></strong>: per a convertir a <code class="language-plaintext highlighter-rouge">long</code>.</li>
+</ul>
+
+<p>Aquests mètodes són útils perquè permeten controlar millor el flux d’entrada i, per exemple, llegir una línia completa amb <code class="language-plaintext highlighter-rouge">nextLine()</code> i després <em>parsejar-la</em>.</p>
+
+<hr />
+
+<h3 id="controlar-lentrada-de-dades-amb-try-catch">Controlar l’entrada de dades amb <code class="language-plaintext highlighter-rouge">try-catch</code></h3>
+
+<p>En treballar amb entrades de l’usuari, sovint cal assegurar-se que l’usuari introdueix dades vàlides. Per exemple, si l’usuari introdueix una lletra en lloc d’un nombre i estem usant <code class="language-plaintext highlighter-rouge">nextInt()</code>, el programa llançarà una excepció <code class="language-plaintext highlighter-rouge">InputMismatchException</code>. També tindrem problemes d’aquest tipus en <em>parsejar</em> les dades recollides per un <code class="language-plaintext highlighter-rouge">nextLine()</code>.</p>
+
+<p>Podem controlar aquests errors usant <code class="language-plaintext highlighter-rouge">try-catch</code> per a manejar situacions en què l’usuari no introdueix el tipus de dada esperat:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introdueix un nombre enter:"</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">numero</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"El nombre introduït és: "</span> <span class="o">+</span> <span class="n">numero</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InputMismatchException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Error: No has introduït un nombre enter. Torna-ho a intentar."</span><span class="o">);</span>
+    <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">// Netejar el buffer per al següent intent</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Si no sabem quina excepció s’està produint, podem usar l’excepció bàsica, <code class="language-plaintext highlighter-rouge">Exception</code>, que és la mare de totes les excepcions. En l’exemple següent, veiem el codi de dalt però usant <code class="language-plaintext highlighter-rouge">nextLine</code> per a capturar les dades i el missatge per defecte de l’excepció. A més, usem <code class="language-plaintext highlighter-rouge">System.err</code> per a mostrar el missatge en forma d’error.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Introdueix un nombre enter:"</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="n">numero</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">());</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"El nombre introduït és: "</span> <span class="o">+</span> <span class="n">numero</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">err</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Error: "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+    
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="com-funciona-try-catch">Com funciona <code class="language-plaintext highlighter-rouge">try-catch</code></h4>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">try</code></strong>: Col·loquem el codi que volem intentar executar en el bloc <code class="language-plaintext highlighter-rouge">try</code>. Ací és on podria ocórrer una excepció.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">catch</code></strong>: Si ocorre una excepció dins del bloc <code class="language-plaintext highlighter-rouge">try</code>, el programa salta al bloc <code class="language-plaintext highlighter-rouge">catch</code>. Ací podem manejar l’error de manera amigable, com mostrar un missatge informatiu.</li>
+</ol>
+
+<p>El bloc <code class="language-plaintext highlighter-rouge">catch</code> també es pot personalitzar per a capturar diferents tipus d’excepcions, si sabem específicament quin tipus d’error podria ocórrer.</p>
+
+<p>Conceptualment, funciona com <em>“Intenta realitzar el codi de dins del bloc <code class="language-plaintext highlighter-rouge">try{}</code>. Si no ho aconsegueixes, executa el codi dins del bloc <code class="language-plaintext highlighter-rouge">catch(Exception e)</code> i gestiona l’error que t’ha impedit aconseguir executar el codi”</em>.</p>
+
+<hr />
+
+<h3 id="control-dentrada-en-un-bucle">Control d’entrada en un bucle</h3>
+
+<p>Per a fer que el programa demane repetidament a l’usuari que introduïsca un valor vàlid, pots usar un bucle junt amb <code class="language-plaintext highlighter-rouge">try-catch</code>. Aquest és un exemple on se li demana a l’usuari un nombre enter i no s’accepta cap altre tipus d’entrada:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numero</span><span class="o">;</span>
+<span class="kt">boolean</span> <span class="n">entradaCorrecta</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+<span class="k">while</span> <span class="o">(!</span><span class="n">entradaCorrecta</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Per favor, introdueix un nombre enter:"</span><span class="o">);</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">numero</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">entradaCorrecta</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span> <span class="c1">// Habilitem l'eixida del bucle si l'entrada és vàlida</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InputMismatchException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Entrada no vàlida. Assegura't d'introduir un nombre enter."</span><span class="o">);</span>
+        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span> <span class="c1">// Netejar el buffer per al següent intent</span>
+    <span class="o">}</span>
+
+
+<span class="o">}</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Nombre introduït correctament: "</span> <span class="o">+</span> <span class="n">numero</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Aquesta és una manera elegant de controlar una entrada de dades, especialment per a un producte final. Evita que el programa “es trenque” per algun error en l’entrada de l’usuari. No obstant això, per a exercicis i programes en què tenim una entrada de dades controlada, solem assumir que sempre es farà de manera correcta, per evitar escriure massa codi i centrar-nos més en el problema que volem resoldre que en els problemes que un usuari despistat o amb ganes de desestabilitzar el sistema ens poguera ocasionar.</p>
+
+<p>Tanmateix, el control de l’entrada de dades és fonamental per motius de seguretat i per evitar filtracions de dades, així que no s’ha de prendre a la lleugera i cal implementar-lo sempre que siga convenient.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

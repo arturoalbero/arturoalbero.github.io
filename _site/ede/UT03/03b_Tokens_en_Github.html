@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Autenticació en Git amb Tokens Personals (PAT) | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Autenticació en Git amb Tokens Personals (PAT)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT03/03b_Tokens_en_Github.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT03/03b_Tokens_en_Github.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Autenticació en Git amb Tokens Personals (PAT)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Autenticació en Git amb Tokens Personals (PAT)","url":"http://localhost:4000/ede/UT03/03b_Tokens_en_Github.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="autenticació-en-git-amb-tokens-personals-pat"><strong>Autenticació en Git amb Tokens Personals (PAT)</strong></h1>
+
+<p>A partir del 13 d’agost de 2021, GitHub ja no accepta contrasenyes de compte per a l’autenticació d’operacions Git. Cal utilitzar un <strong>PAT (Token d’Accés Personal)</strong>. Pots seguir el mètode següent per a afegir un PAT al teu sistema.</p>
+
+<h2 id="crear-un-token-daccés-personal-en-github">Crear un Token d’Accés Personal en GitHub</h2>
+
+<ol>
+  <li>Des del teu compte de GitHub, ves a <strong>Settings</strong> → <strong>Developer Settings</strong> → <strong>Personal Access Token</strong> → <strong>Tokens (classic)</strong> → <strong>Generate New Token</strong>.</li>
+  <li>Introdueix la teua contrasenya, ompli el formulari i fes clic a <strong>Generate Token</strong>.</li>
+  <li>Copia el Token generat, que tindrà un format similar a: <code class="language-plaintext highlighter-rouge">ghp_sFhFsSHhTzMDreGRLjmks4Tzuzgthdvfsrta</code>.</li>
+</ol>
+
+<h2 id="mètodes-segons-el-teu-sistema-operatiu">Mètodes segons el teu sistema operatiu:</h2>
+
+<h3 id="per-a-windows">Per a Windows:</h3>
+
+<ol>
+  <li>Ves al <strong>Gestor de Credencials</strong> des del <strong>Panell de Control</strong> → <strong>Credencials de Windows</strong> → busca <code class="language-plaintext highlighter-rouge">git:https://github.com</code> → <strong>Edita</strong>.</li>
+  <li>Substitueix la contrasenya pel teu <strong>GitHub Personal Access Token</strong>.</li>
+  <li>Si no trobes <code class="language-plaintext highlighter-rouge">git:https://github.com</code>, fes clic a <strong>Afegir una credencial genèrica</strong>.
+    <ul>
+      <li>L’adreça d’Internet serà <code class="language-plaintext highlighter-rouge">git:https://github.com</code>.</li>
+      <li>Introdueix el teu nom d’usuari, i per a la contrasenya, utilitza el teu <strong>Personal Access Token</strong>.</li>
+    </ul>
+  </li>
+  <li>Fes clic a <strong>Ok</strong> i ja estarà configurat.</li>
+</ol>
+
+<h3 id="per-a-macos">Per a macOS:</h3>
+
+<ol>
+  <li>Fes clic a la icona de la lupa (Spotlight) en la part dreta de la barra de menú.</li>
+  <li>Escriu <strong>Keychain Access</strong> i prem la tecla Enter per a obrir l’aplicació.</li>
+  <li>Cerca <code class="language-plaintext highlighter-rouge">github.com</code> dins de <strong>Keychain Access</strong>.</li>
+  <li>Troba l’entrada de la contrasenya d’Internet per a <code class="language-plaintext highlighter-rouge">github.com</code> i edita o elimina l’entrada segons siga necessari.<br />
+Ja hauries acabat.</li>
+</ol>
+
+<h3 id="per-a-sistemes-basats-en-linux">Per a sistemes basats en Linux:</h3>
+
+<ol>
+  <li>
+    <p>Necessites configurar el client local de GIT amb un nom d’usuari i adreça de correu electrònic:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>git config <span class="nt">--global</span> user.name <span class="s2">"el_teu_nom_dusuari_github"</span>
+ <span class="nv">$ </span>git config <span class="nt">--global</span> user.email <span class="s2">"el_teu_correo_github"</span>
+ <span class="nv">$ </span>git config <span class="nt">-l</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Una vegada GIT estiga configurat, pots començar a utilitzar-lo per accedir a GitHub. Exemple:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>git clone https://github.com/EL-TEU-NOM-DUSUARI/EL-TEU-REPOSITORI
+ <span class="o">&gt;</span> Cloning into <span class="sb">`</span>EL-TEU-REPOSITORI<span class="sb">`</span>...
+ Username: &lt;introdueix el teu nom d<span class="s1">'usuari&gt;
+ Password: &lt;introdueix la teua contrasenya o token d'</span>accés personal de GitHub&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Ara, pots guardar (cache) el token en el teu ordinador per a recordar-lo:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>git config <span class="nt">--global</span> credential.helper cache
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Si necessites esborrar la memòria cau en algun moment:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>git config <span class="nt">--global</span> <span class="nt">--unset</span> credential.helper
+ <span class="nv">$ </span>git config <span class="nt">--system</span> <span class="nt">--unset</span> credential.helper
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Pots verificar amb l’opció <code class="language-plaintext highlighter-rouge">-v</code> quan facis un pull:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>git pull <span class="nt">-v</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Per a clonar en Debian o altres distribucions de Linux:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://&lt;el_teu_token_ací&gt;@github.com/&lt;usuari&gt;/&lt;repositori&gt;.git
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="per-a-ides-de-jetbrains-intellij-phpstorm-webstorm-etc">Per a IDEs de JetBrains (IntelliJ, PhpStorm, WebStorm, etc.):</h3>
+
+<ol>
+  <li>Consulta la pàgina d’ajuda de l’IDE que utilitzes per a més informació sobre com iniciar sessió amb un Token.</li>
+  <li>A continuació, tens un resum ràpid de com fer-ho en <strong>IntelliJ</strong>:
+    <ul>
+      <li>Obre els <strong>ajustos</strong> prement ⌘Cmd0/CtrlAlt0 (les tecles poden variar).</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>Selecciona **Version Control</td>
+              <td>GitHub**.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>Fes clic al botó <strong>Afegir</strong>.</li>
+      <li>Tria l’opció <strong>Iniciar Sessió amb Token</strong>.</li>
+      <li>Introdueix el token generat en el camp de text corresponent.</li>
+      <li>Fes clic a <strong>Afegir Compte</strong>.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><em>Informació extraiguda de <a href="https://stackoverflow.com/questions/68775869/message-support-for-password-authentication-was-removed">stackoverflow</a>.</em></p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

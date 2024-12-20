@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>arturoalbero.github.io | Web para probar</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="arturoalbero.github.io" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT04.2/01_poo.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT04.2/01_poo.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="arturoalbero.github.io" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"arturoalbero.github.io","url":"http://localhost:4000/ede/UT04.2/01_poo.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+} 
+p{
+    text-indent: 1rem;
+    text-align: justify;
+}
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bold;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<ul>
+  <li><a href="#programación-orienada-a-objetos-cas">Programación Orienada a Objetos (CAS)</a>
+    <ul>
+      <li><a href="#aspectos-básicos-del-paradigma-orientado-a-objetos">Aspectos básicos del paradigma orientado a objetos</a>
+        <ul>
+          <li><a href="#actividad-1-creación-de-diagramas-a-partir-de-una-definición">Actividad 1: Creación de diagramas a partir de una definición</a></li>
+          <li><a href="#actividad-2-explicación-de-diagramas">Actividad 2: Explicación de diagramas</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#programació-orientada-a-objectes-val">Programació Orientada a Objectes (VAL)</a>
+    <ul>
+      <li><a href="#aspectes-bàsics-del-paradigma-orientat-a-objectes">Aspectes bàsics del paradigma orientat a objectes</a>
+        <ul>
+          <li><a href="#activitat-1-creació-de-diagrames-a-partir-duna-definició">Activitat 1: Creació de diagrames a partir d’una definició</a></li>
+          <li><a href="#activitat-2-explicació-de-diagrames">Activitat 2: Explicació de diagrames</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="programación-orienada-a-objetos-cas">Programación Orienada a Objetos (CAS)</h1>
+
+<h2 id="aspectos-básicos-del-paradigma-orientado-a-objetos">Aspectos básicos del paradigma orientado a objetos</h2>
+
+<p>Un paradigma de programación consiste en un enfoque y una serie de reglas que nos ayudan a resolver problemas. En el caso del paradigma orientado a objetos, definimos la realidad a través de objetos. Los objetos tienen una serie de propiedades, que llamamos atributos, y pueden realizar una serie de acciones, que llamamos métodos. Asimismo, los objetos se comunican entre ellos a través del paso de mensajes.</p>
+
+<p>La programación orientada a objetos puede basarse en prototipos, como ocurre en Javascript, en la cual unos objetos sirven como base de otros; o bien basarse en clases. Una clase es un patrón que define una serie de atributos y métodos propios que tendrán los objetos que pertenezcan a la misma. A estos objetos, se los conoce como <em>instancias</em> de la clase.</p>
+
+<p>Para representar una clase emplearemos diagramas de clases del estándar UML. Cada clase se representa con una caja que tiene tres apartados:</p>
+
+<ul>
+  <li><strong>Superior</strong>: Se coloca el nombre de la clase y su tipo. Puede ser una clase normal (C), una clase abstracta (A) o una interfaz (I). En Java, se emplea CamelCase para los nombres. Es decir, la primera letra de cada palabra en mayúscula y sin espacios. Se evitan caracteres especiales que no pertenezcan al ANSII (como tildes, ñ o ç).</li>
+  <li><strong>Medio</strong>: En este espacio se colocan los atributos de la clase, en CamelCase pero con la primera letra en minúscula. El tipo se puede colocar antes, como en Java o C#, o después, como en TypeScript.</li>
+  <li><strong>Inferior</strong>: En este espacio se colocan los métodos. Se nombran como los atributos, pero al final tienen paréntesis. Dentro del paréntesis puede haber parámetros (con su tipo correspondiente) y, si el método devuelve algo, se coloca al lado el tipo de datos del retorno.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class EstoEsUnaClase{
+    + estoEsUnAtributo : number
+    - estoEsUnMetodo(parametro : number) : number
+}
+</code></pre>
+
+<p>Podemos pensar en los atributos y métodos de una clase de la siguiente forma:</p>
+
+<ul>
+  <li><strong>Atributos:</strong> Conforman las propiedades del objeto.</li>
+  <li><strong>Métodos:</strong> Conforman el comportamiento del objeto.</li>
+</ul>
+
+<p>Cuando definimos una clase, los diferentes componentes tienen una visibilidad determinada:</p>
+
+<ul>
+  <li>Si un componente es <strong>público</strong>, es accesible por cualquier otro objeto. Lo representamos con un +:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoPúblico{
+    + atributoPúblico
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un componente es <strong>privado</strong>, es accesible solo por el mismo objeto. Lo representamos con un -:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoPrivado{
+    - atributoPrivado
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un componente es <strong>protegido</strong>, funciona como privado excepto cuando el objeto que quiere acceder a él es de una clase derivada, que entonces funciona como público. Lo representamos con un #:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoProtegido{
+    # atributoProtegido
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un componente tiene visibilidad de <strong>paquete</strong>, funciona como público para todos los miembros del paquete y privado para todos los demás. Es una visibilidad característica del lenguaje de programación Java (es la visibilidad por defecto, de hecho). En UML se representa con el signo ~:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoPaquete{
+    ~ AtributoDePaquete
+}
+@enduml
+</code></pre>
+
+<p>Para estos diagramas se está usando <a href="https://plantuml.com/es/class-diagram">PlantUML</a>. Para que aparezcan los signos indicados se debe especificar antes de empezar a escribir el diagrama la línea <code class="language-plaintext highlighter-rouge">skinparam classAttributeIconSize 0</code>. Si no se hace, aparecen formas geométricas de diferentes colores según la visibilidad, y están rellenas o no según si son atributo o método:</p>
+
+<pre><code class="language-plantuml">@startuml
+
+class TodasLasVisibilidades{
+    - atributoPrivado
+    + atributoPublico
+    # atributoProtegido
+    ~ atributoDePaquete
+    - metodoPrivado()
+    + metodoPublico()
+    # metodoProtegido()
+    ~ metodoDePaquete()
+}
+@enduml
+</code></pre>
+
+<h3 id="actividad-1-creación-de-diagramas-a-partir-de-una-definición">Actividad 1: Creación de diagramas a partir de una definición</h3>
+
+<p>Crea un diagrama de clase que se corresponda con cada una de estas definiciones:</p>
+
+<ul>
+  <li>Para representar un libro, necesitamos saber su autor, su editorial, su año de publicación, su ISBN y su número de páginas. Un libro se puede leer.</li>
+  <li>Para representar a un perro, necesitamos saber su nombre, su raza y su edad. Un perro puede ladrar y pasear.</li>
+</ul>
+
+<h3 id="actividad-2-explicación-de-diagramas">Actividad 2: Explicación de diagramas</h3>
+
+<p>Explica los siguientes diagramas:</p>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class Motocicleta{
+    - matricula : string
+    - modelo : string
+    - velocidadMaxima : number
+    - deposito : number
+    + repostar() : void
+    + circular() : void
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+abstract class Poste{
+    - lugar : string
+    # altura: number
+    # publicidad: Array
+    + anyadirPublicidad() : bool
+    + verPublicidad(indice: number) : string
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class Motorista{
+    - nombre : string
+    - edad : number
+    - moto : Motocicleta
+    + conducir() : void
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+interface PuedeCircular{
+    + circular() : void
+}
+@enduml
+</code></pre>
+
+<hr />
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="programació-orientada-a-objectes-val">Programació Orientada a Objectes (VAL)</h1>
+
+<h2 id="aspectes-bàsics-del-paradigma-orientat-a-objectes">Aspectes bàsics del paradigma orientat a objectes</h2>
+
+<p>Un paradigma de programació consisteix en un enfocament i una sèrie de regles que ens ajuden a resoldre problemes. En el cas del paradigma orientat a objectes, definim la realitat a través d’objectes. Els objectes tenen una sèrie de propietats, que anomenem atributs, i poden realitzar una sèrie d’accions, que anomenem mètodes. Així mateix, els objectes es comuniquen entre ells a través del pas de missatges.</p>
+
+<p>La programació orientada a objectes pot basar-se en prototips, com ocorre en Javascript, en la qual uns objectes serveixen com a base d’altres; o bé basar-se en classes. Una classe és un patró que defineix una sèrie d’atributs i mètodes propis que tindran els objectes que pertanguen a la mateixa. A aquests objectes se’ls coneix com a <em>instàncies</em> de la classe.</p>
+
+<p>Per a representar una classe emprarém diagrames de classes de l’estàndard UML. Cada classe es representa amb una caixa que té tres apartats:</p>
+
+<ul>
+  <li><strong>Superior</strong>: Es col·loca el nom de la classe i el seu tipus. Pot ser una classe normal (C), una classe abstracta (A) o una interfície (I). En Java, s’empra CamelCase per als noms. És a dir, la primera lletra de cada paraula en majúscula i sense espais. S’eviten caràcters especials que no pertanguen a l’ANSI (com accents, ñ o ç).</li>
+  <li><strong>Mitjà</strong>: En aquest espai es col·loquen els atributs de la classe, en CamelCase però amb la primera lletra en minúscula. El tipus es pot col·locar abans, com en Java o C#, o després, com en TypeScript.</li>
+  <li><strong>Inferior</strong>: En aquest espai es col·loquen els mètodes. Es nomenen com els atributs, però al final tenen parèntesis. Dins del parèntesi pot haver-hi paràmetres (amb el seu tipus corresponent) i, si el mètode retorna alguna cosa, es col·loca al costat el tipus de dades del retorn.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AixòÉsUnaClasse{
+    + aixòÉsUnAtribut : number
+    - aixòÉsUnMètode(paràmetre : number) : number
+}
+</code></pre>
+
+<p>Podem pensar en els atributs i mètodes d’una classe de la següent manera:</p>
+
+<ul>
+  <li><strong>Atributs:</strong> Formen les propietats de l’objecte.</li>
+  <li><strong>Mètodes:</strong> Formen el comportament de l’objecte.</li>
+</ul>
+
+<p>Quan definim una classe, els diferents components tenen una visibilitat determinada:</p>
+
+<ul>
+  <li>Si un component és <strong>públic</strong>, és accessible per qualsevol altre objecte. Ho representem amb un +:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributPúblic{
+    + atributPúblic
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un component és <strong>privat</strong>, és accessible només pel mateix objecte. Ho representem amb un -:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributPrivat{
+    - atributPrivat
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un component és <strong>protegit</strong>, funciona com a privat, excepte quan l’objecte que vol accedir-hi és d’una classe derivada, que aleshores funciona com a públic. Ho representem amb un #:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributProtegit{
+    # atributProtegit
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un component té visibilitat de <strong>paquet</strong>, funciona com a públic per a tots els membres del paquet i com a privat per a tots els altres. És una visibilitat característica del llenguatge de programació Java (és la visibilitat per defecte, de fet). En UML es representa amb el signe ~:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributPaquet{
+    ~ AtributDePaquet
+}
+@enduml
+</code></pre>
+
+<p>Per a aquests diagrames s’està utilitzant <a href="https://plantuml.com/es/class-diagram">PlantUML</a>. Perquè apareguen els signes indicats s’ha d’especificar abans de començar a escriure el diagrama la línia <code class="language-plaintext highlighter-rouge">skinparam classAttributeIconSize 0</code>. Si no es fa, apareixen formes geomètriques de diferents colors segons la visibilitat, i estan plenes o no segons si són atribut o mètode:</p>
+
+<pre><code class="language-plantuml">@startuml
+
+class TotesLesVisibilitats{
+    - atributPrivat
+    + atributPublic
+    # atributProtegit
+    ~ atributDePaquet
+    - mètodePrivat()
+    + mètodePublic()
+    # mètodeProtegit()
+    ~ mètodeDePaquet()
+}
+@enduml
+</code></pre>
+
+<h3 id="activitat-1-creació-de-diagrames-a-partir-duna-definició">Activitat 1: Creació de diagrames a partir d’una definició</h3>
+
+<p>Crea un diagrama de classe que es corresponga amb cadascuna d’aquestes definicions:</p>
+
+<ul>
+  <li>Per a representar un llibre, necessitem saber el seu autor, la seua editorial, el seu any de publicació, el seu ISBN i el seu nombre de pàgines. Un llibre es pot llegir.</li>
+  <li>Per a representar un gos, necessitem saber el seu nom, la seua raça i la seua edat. Un gos pot bordar i passejar.</li>
+</ul>
+
+<h3 id="activitat-2-explicació-de-diagrames">Activitat 2: Explicació de diagrames</h3>
+
+<p>Explica els diagrames següents:</p>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class Motocicleta{
+    - matrícula : string
+    - model : string
+    - velocitatMàxima : number
+    - dipòsit : number
+    + repostar() : void
+    + circular() : void
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+abstract class Poste{
+    - lloc : string
+    # alçada: number
+    # publicitat: Array
+    + afegirPublicitat() : bool
+    + veurePublicitat(index: number) : string
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class Motorista{
+    - nom : string
+    - edat : number
+    - moto : Motocicleta
+    + conduir() : void
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+interface potCircular{
+    + circular() : void
+}
+@enduml
+</code></pre>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 02: Diagramas de actividad II | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 02: Diagramas de actividad II" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT05/02_actividad2.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT05/02_actividad2.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 02: Diagramas de actividad II" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 02: Diagramas de actividad II","url":"http://localhost:4000/ede/UT05/02_actividad2.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="sesión-02-diagramas-de-actividad-ii">Sesión 02: Diagramas de actividad II</h1>
+
+<ul>
+  <li><a href="#sesión-02-diagramas-de-actividad-ii">Sesión 02: Diagramas de actividad II</a>
+    <ul>
+      <li><a href="#1-diagramas-de-actividad">1. Diagramas de actividad</a>
+        <ul>
+          <li><a href="#11-estructuras-comunes-parte-ii">1.1 Estructuras comunes parte II</a></li>
+          <li><a href="#12-subprocesos-y-llamadas-a-otros-diagramas">1.2 Subprocesos y llamadas a otros diagramas</a></li>
+          <li><a href="#13-ejercicio-1">1.3 Ejercicio 1</a></li>
+          <li><a href="#14-ejercicio-2">1.4 Ejercicio 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-diagramas-de-flujo-de-datos-dfd">2. Diagramas de flujo de datos (DFD)</a>
+        <ul>
+          <li><a href="#21-componentes-de-un-dfd">2.1 Componentes de un DFD</a></li>
+          <li><a href="#22-cómo-se-estructuran-los-dfd">2.2 Cómo se estructuran los DFD</a></li>
+          <li><a href="#23-reglas-básicas-para-construir-dfd">2.3 Reglas básicas para construir DFD</a></li>
+          <li><a href="#24-de-un-dfd-simple-a-uno-detallado">2.4 De un DFD simple a uno detallado</a>
+            <ul>
+              <li><a href="#nivel-0-dfd-de-contexto">Nivel 0 (DFD de contexto)</a></li>
+              <li><a href="#nivel-1-dfd-de-primer-nivel">Nivel 1 (DFD de primer nivel)</a></li>
+            </ul>
+          </li>
+          <li><a href="#25-ejercicio-3-construcción-de-un-dfd">2.5 Ejercicio 3: Construcción de un DFD</a></li>
+          <li><a href="#26-ejercicio-4-interpretación-de-un-dfd">2.6 Ejercicio 4: Interpretación de un DFD</a></li>
+          <li><a href="#27-importancia-de-los-dfd">2.7 Importancia de los DFD</a></li>
+          <li><a href="#28-ejercicio-5-combinando-dfds-y-diagramas-de-flujo">2.8 Ejercicio 5: Combinando DFDs y Diagramas de Flujo</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-concurrencia-en-diagramas-de-actividad">3. Concurrencia en diagramas de actividad</a>
+        <ul>
+          <li><a href="#31-representación-de-los-hilos">3.1 Representación de los hilos</a></li>
+          <li><a href="#32-ejercicio-6-coordinación-de-tareas-en-una-cocina">3.2 Ejercicio 6: Coordinación de Tareas en una Cocina</a></li>
+        </ul>
+      </li>
+      <li><a href="#4-ejercicios-de-ampliación-sobre-diagramas-de-actividad-y-dfd">4. Ejercicios de ampliación sobre diagramas de actividad y DFD</a>
+        <ul>
+          <li><a href="#41-ejercicio-7-proceso-de-compra-en-una-tienda-online">4.1 Ejercicio 7: Proceso de Compra en una Tienda Online</a></li>
+          <li><a href="#42-ejercicio-8-sistema-de-registro-de-asistencia">4.2 Ejercicio 8: Sistema de Registro de Asistencia</a></li>
+          <li><a href="#43-ejercicio-9-sistema-de-reservas-para-un-gimnasio">4.3 Ejercicio 9: Sistema de Reservas para un Gimnasio</a></li>
+          <li><a href="#44-ejercicio-10-sistema-de-seguimiento-de-paquetes">4.4 Ejercicio 10: Sistema de Seguimiento de Paquetes</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-diagramas-de-actividad">1. Diagramas de actividad</h2>
+
+<h3 id="11-estructuras-comunes-parte-ii">1.1 Estructuras comunes parte II</h3>
+
+<h3 id="12-subprocesos-y-llamadas-a-otros-diagramas">1.2 Subprocesos y llamadas a otros diagramas</h3>
+
+<p>Los subprocesos permiten dividir un diagrama en partes más manejables y reutilizables. Es lo que en programación conocemos como “llamar a una función”. Podemos indicarlo como cualquier otra instrucción.</p>
+
+<pre><code class="language-plantuml">@startuml
+start
+:Introduce un número n;
+:resultado = procesar(n);
+note right
+  Aquí se llamaría al subproceso "procesar" con el parámetro de entrada n, que en este caso nos devolvería un resultado
+end note
+:Imprimir resultado;
+stop
+@enduml
+</code></pre>
+
+<h3 id="13-ejercicio-1">1.3 Ejercicio 1</h3>
+
+<p>Dibuja un diagrama de flujo para calcular el área de varios triángulos introducidos por el usuario. Define un subproceso para calcular el área de un triángulo e invócalo en el momento adecuado.</p>
+
+<h3 id="14-ejercicio-2">1.4 Ejercicio 2</h3>
+
+<p>Realiza un diagrama de actividad de las siguientes actividades, usando llamadas a subprocesos:</p>
+
+<ul>
+  <li>Determinar la cantidad de días que tiene un mes en un año, ambos datos introducidos por el usuario. Los datos se imprimen por pantalla. El programa termina si el usuario introduce un número de mes incorrecto (menor que 1 o mayor que 12).</li>
+  <li>Un programa que calcule el factorial de un número entero y mayor o igual a 1 introducido por el usuario. La fórmula del factorial es Factorial(n) = n * Factorial(n-1) y Factorial(1) = 1. Hazlo de forma recursiva.</li>
+  <li>Un programa que recorra las estanterías de una biblioteca y diga la siguiente información:
+    <ul>
+      <li>Cuál es el libro que más páginas tiene de cada estantería (necesitas un diagrama para indicar en una estantería cuál es el libro con más páginas)</li>
+      <li>Cuál es la estantería que más autores diferentes tiene (necesitas un diagrama para indicar en una estantería cuántos autores diferentes tiene)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2-diagramas-de-flujo-de-datos-dfd">2. Diagramas de flujo de datos (DFD)</h2>
+
+<p>Los diagramas de flujo de datos (DFD) son una herramienta gráfica utilizada para representar cómo la información se mueve dentro de un sistema, detallando las entradas, procesos, salidas y almacenamiento de datos. Son especialmente útiles en el análisis de sistemas para comprender y modelar sistemas informáticos, pero también pueden aplicarse en otros contextos donde se maneje información.</p>
+
+<p>A diferencia de los diagramas de flujo tradicionales, los DFD no se centran en las decisiones ni en el control del flujo, sino en el flujo de datos y las transformaciones que estos sufren.</p>
+
+<h3 id="21-componentes-de-un-dfd">2.1 Componentes de un DFD</h3>
+
+<p>Los DFD están formados por los siguientes elementos clave:</p>
+
+<ol>
+  <li><strong>Procesos</strong>: Representados por círculos o elipses. Muestran las transformaciones que sufren los datos dentro del sistema.</li>
+  <li><strong>Entidades externas (o agentes externos)</strong>: Representadas por cuadrados. Son los actores externos al sistema que interactúan con él (por ejemplo, usuarios o sistemas externos).</li>
+  <li><strong>Almacenes de datos</strong>: Representados por líneas paralelas o rectángulos abiertos. Indican lugares donde se almacenan datos, como bases de datos o archivos.</li>
+  <li><strong>Flujo de datos</strong>: Representado por flechas. Indican cómo los datos se mueven entre procesos, entidades externas y almacenes de datos.</li>
+</ol>
+
+<pre><code class="language-mermaid">flowchart TB
+  proceso((Proceso))
+  almacen[[Almacén de datos]]
+  externo[Entidad Externa]
+
+  almacen --&gt; proceso
+  proceso --&gt; almacen
+
+  externo --&gt; proceso
+  proceso --&gt; externo
+
+</code></pre>
+
+<h3 id="22-cómo-se-estructuran-los-dfd">2.2 Cómo se estructuran los DFD</h3>
+
+<p>Los DFD se diseñan en <strong>niveles jerárquicos</strong>, desde lo general a lo específico:</p>
+
+<ol>
+  <li>
+    <p><strong>Nivel 0 (DFD de contexto)</strong>: Es la representación más simple. Muestra el sistema como un único proceso, las entidades externas que interactúan con él y los flujos de datos entre ellas. Este nivel sirve para dar una visión global del sistema.</p>
+  </li>
+  <li>
+    <p><strong>Nivel 1 (DFD de primer nivel)</strong>: Descompone el sistema en sus principales subprocesos, mostrando cómo interactúan entre sí y con las entidades externas.</p>
+  </li>
+  <li>
+    <p><strong>Niveles más detallados (Nivel 2 en adelante)</strong>: Descomponen cada subproceso en procesos más pequeños, proporcionando detalles más específicos sobre el funcionamiento interno del sistema. En nuestras especificaciones, podemos sustituirlos por diagramas de actividad.</p>
+  </li>
+</ol>
+
+<h3 id="23-reglas-básicas-para-construir-dfd">2.3 Reglas básicas para construir DFD</h3>
+
+<ol>
+  <li>Todos los procesos deben tener al menos una entrada y una salida.</li>
+  <li>Los flujos de datos deben tener un origen (entidad externa o almacén de datos) y un destino (proceso, entidad externa o almacén de datos).</li>
+  <li>No deben conectarse directamente dos entidades externas o dos almacenes de datos; siempre debe haber un proceso intermediario.</li>
+  <li>Evitar ciclos innecesarios en el flujo de datos.</li>
+</ol>
+
+<p>A continuación, un ejemplo simple de un DFD de contexto para un sistema de consulta de datos:</p>
+
+<pre><code class="language-mermaid">flowchart TB
+  Sistema((Sistema))
+  DB[[Base de datos]]
+  User[Usuario]
+
+User -- Solicitar información --&gt; Sistema
+DB -- Enviar Datos --&gt; Sistema
+Sistema -- Consultar Datos --&gt; DB
+Sistema -- Responder con resultados --&gt; User
+
+</code></pre>
+
+<p><strong>Descripción del ejemplo</strong>:</p>
+
+<ul>
+  <li>Un usuario (entidad externa) envía una solicitud al sistema (proceso principal).</li>
+  <li>El sistema consulta la información necesaria en la base de datos (almacén de datos).</li>
+  <li>La base de datos responde con los datos requeridos.</li>
+  <li>El sistema procesa la respuesta y la envía al usuario.</li>
+</ul>
+
+<h3 id="24-de-un-dfd-simple-a-uno-detallado">2.4 De un DFD simple a uno detallado</h3>
+
+<h4 id="nivel-0-dfd-de-contexto">Nivel 0 (DFD de contexto)</h4>
+
+<p>En este nivel, el sistema se presenta como un único proceso que interactúa con entidades externas.</p>
+
+<pre><code class="language-mermaid">flowchart TB
+  c[Cliente]
+  p[Proveedor]
+  sp((Sistema de Pedidos))
+
+  c --Solicita producto --&gt; sp
+  sp -- Realiza pedido --&gt; p
+  p -- Confirma entrega --&gt; sp
+  sp -- Notifica estado del pedido --&gt; c
+</code></pre>
+
+<h4 id="nivel-1-dfd-de-primer-nivel">Nivel 1 (DFD de primer nivel)</h4>
+
+<p>El proceso “Sistema de pedidos” se divide en subprocesos más específicos.</p>
+
+<pre><code class="language-mermaid">flowchart TB
+  c[Cliente]
+  rp((Recepción de pedidos))
+  gi((Gestión de inventario))
+  en((Envío de notificaciones))
+  inv[[Inventario]]
+
+  c -- Solicitud de producto --&gt; rp
+  rp -- Verificar disponibilidad --&gt; gi
+  gi -- Consultar el stock --&gt; inv
+  inv -- Respuesta de stock --&gt; gi
+  gi -- Resultado --&gt; en
+  en -- Notificación de estado --&gt; c
+
+</code></pre>
+
+<h3 id="25-ejercicio-3-construcción-de-un-dfd">2.5 Ejercicio 3: Construcción de un DFD</h3>
+
+<p><strong>Enunciado</strong>: Diseña un DFD de contexto y un DFD de nivel 1 para un sistema de registro de estudiantes. El sistema debe:</p>
+
+<ul>
+  <li>Recibir solicitudes de inscripción de estudiantes.</li>
+  <li>Consultar una base de datos para verificar disponibilidad en los cursos.</li>
+  <li>Confirmar la inscripción del estudiante.</li>
+</ul>
+
+<h3 id="26-ejercicio-4-interpretación-de-un-dfd">2.6 Ejercicio 4: Interpretación de un DFD</h3>
+
+<p><strong>Instrucción</strong>: Observa el siguiente DFD (te lo proporciono en PlantUML) y responde:</p>
+
+<ul>
+  <li>¿Qué actores externos interactúan con el sistema?</li>
+  <li>¿Qué procesos realiza el sistema?</li>
+  <li>¿Cómo se mueven los datos entre los procesos?</li>
+</ul>
+
+<pre><code class="language-mermaid">flowchart TB
+  est[Estudiante]
+  adm[Administrador]
+  sga((Sistema de gestión académica))
+  bdc[[Base de datos de cursos]]
+
+  est -- Solicitar inscripción --&gt; sga
+  adm -- Registrar curso --&gt; sga
+  sga -- Actualizar datos --&gt; bdc
+  bdc -- Confirmar actualización --&gt; sga
+  sga -- Confirmar inscripción --&gt; est
+</code></pre>
+
+<h3 id="27-importancia-de-los-dfd">2.7 Importancia de los DFD</h3>
+
+<ul>
+  <li><strong>Facilitan la comunicación</strong>: Al ser visuales, son fáciles de entender incluso para personas no técnicas.</li>
+  <li><strong>Clarifican procesos complejos</strong>: Permiten identificar redundancias o errores en los flujos de datos.</li>
+  <li><strong>Base para el diseño de sistemas</strong>: Sirven como referencia para la implementación técnica.</li>
+</ul>
+
+<h3 id="28-ejercicio-5-combinando-dfds-y-diagramas-de-flujo">2.8 Ejercicio 5: Combinando DFDs y Diagramas de Flujo</h3>
+
+<p><strong>Planteamiento:</strong><br />
+Diseña un sistema para modelar el funcionamiento de un cajero automático que permite al usuario realizar múltiples operaciones, siguiendo estas características:</p>
+
+<ol>
+  <li><strong>Operaciones disponibles:</strong>
+    <ul>
+      <li>Ingresar dinero: El sistema debe permitir añadir una cantidad al saldo de la cuenta.</li>
+      <li>Extraer dinero: Antes de realizar una extracción, el sistema debe comprobar si hay saldo suficiente en la cuenta. Si no hay saldo, debe mostrar un mensaje de error.</li>
+      <li>Finalizar sesión: El usuario puede cerrar la sesión en cualquier momento.</li>
+    </ul>
+  </li>
+  <li><strong>Funcionamiento general:</strong>
+    <ul>
+      <li>El usuario puede realizar tantas operaciones consecutivas como desee, hasta que decida finalizar su sesión.</li>
+      <li>Al finalizar la sesión, el sistema debe cerrar correctamente el flujo de datos y permitir que el usuario retire su tarjeta.</li>
+    </ul>
+  </li>
+  <li><strong>Tareas a realizar:</strong>
+    <ul>
+      <li><strong>DFD (Nivel 0 y Nivel 1):</strong> Representa cómo fluyen los datos en el sistema, incluyendo las entidades externas (como el usuario), procesos internos y almacenes de datos (como la cuenta bancaria).</li>
+      <li><strong>Diagrama de flujo:</strong> Diseña el flujo completo del sistema, utilizando estructuras como:
+        <ul>
+          <li>Un <strong>switch</strong> para manejar las diferentes operaciones.</li>
+          <li>Un <strong>if-else</strong> para verificar condiciones (como el saldo suficiente para una extracción).</li>
+          <li>Un <strong>while</strong> para permitir múltiples operaciones consecutivas.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="3-concurrencia-en-diagramas-de-actividad">3. Concurrencia en diagramas de actividad</h2>
+
+<p>Aunque no se trabaja programación concurrente en el primer curso del ciclo, es apropiado conocer cómo representar flujos paralelos (hilos) en un diagrama de actividad. Esta técnica es útil cuando se modelan procesos que pueden ejecutarse simultáneamente, algo común en sistemas donde las operaciones independientes pueden ocurrir al mismo tiempo (como cuando se consulta una base de datos externa o se trabaja con interfaces gráficas).</p>
+
+<h3 id="31-representación-de-los-hilos">3.1 Representación de los hilos</h3>
+
+<p>En un diagrama de actividad, los hilos (o actividades concurrentes) se representan mediante <strong>ramificaciones paralelas</strong>, utilizando nodos de bifurcación (<em>fork</em>) y unión (<em>join</em>):</p>
+
+<ul>
+  <li><strong>Fork (Bifurcación):</strong> Representado por una línea horizontal o vertical gruesa. Indica que el flujo se divide en varios caminos paralelos que se ejecutan simultáneamente.</li>
+  <li><strong>Join (Unión):</strong> También representado por una línea gruesa, marca el punto donde los flujos paralelos se sincronizan para continuar con un único flujo.</li>
+</ul>
+
+<p>Por ejemplo, Supongamos un sistema de cajero automático que debe realizar dos tareas en paralelo:</p>
+
+<ol>
+  <li><strong>Actualizar el saldo de la cuenta.</strong></li>
+  <li><strong>Registrar la operación en un historial de transacciones.</strong></li>
+</ol>
+
+<p>Ambas tareas pueden ejecutarse de forma concurrente, ya que no dependen entre sí, pero deben completarse antes de que el sistema pueda finalizar la operación.</p>
+
+<p><strong>Representación en un diagrama de actividad:</strong></p>
+
+<pre><code class="language-plantuml">@startuml
+start
+:Recibir solicitud del usuario;
+:Validar operación;
+
+fork
+  :Actualizar saldo;
+fork again
+  :Registrar operación en el historial;
+endfork
+
+:Confirmar al usuario que la operación fue realizada;
+stop
+@enduml
+</code></pre>
+
+<p>En este caso, se puede observar que el diagrama representa las siguientes acciones:</p>
+
+<ol>
+  <li><strong>Inicio del flujo:</strong> El sistema recibe la solicitud del usuario y valida que la operación sea posible.</li>
+  <li><strong>Bifurcación:</strong> El flujo se divide en dos hilos: uno para actualizar el saldo y otro para registrar la operación en el historial.</li>
+  <li><strong>Unión:</strong> Ambos hilos se sincronizan para continuar con el flujo principal.</li>
+  <li><strong>Fin del flujo:</strong> El sistema confirma al usuario que la operación fue realizada.</li>
+</ol>
+
+<p>Es importante no confundir los hilos con las diferentes opciones que nos proporciona un <code class="language-plaintext highlighter-rouge">if-else</code> o un <code class="language-plaintext highlighter-rouge">switch</code>. En el caso de los hilos, <strong>todas</strong> las acciones desde el <strong>fork</strong> se llevan a cabo de manera simultánea y el programa espera en el punto de encuentro, el <strong>join</strong>. Como curiosidad, el nombre de <strong>fork</strong> viene de tenedor (<strong>fork</strong> en inglés es tenedor), pues su representación se asemeja a un tenedor (en realidad no, viene de bifurcación, que es el otro significado de fork, pero sirve como regla mnemotécnica).</p>
+
+<p>Aunque no vayamos a hacer programación concurrente este curso, la división en hilos sí que nos permite representar las siguientes cosas:</p>
+
+<ul>
+  <li>Visualizar procesos que pueden ejecutarse en paralelo, optimizando tiempos.</li>
+  <li>Detectar posibles dependencias entre actividades que podrían causar errores.</li>
+  <li>Representar sistemas más complejos con mayor precisión.</li>
+  <li>Planificar los sprints de un equipo de desarrollo.</li>
+</ul>
+
+<h3 id="32-ejercicio-6-coordinación-de-tareas-en-una-cocina">3.2 Ejercicio 6: Coordinación de Tareas en una Cocina</h3>
+
+<p>En una cocina, varios trabajadores deben colaborar para preparar y entregar hamburguesas según los pedidos de los clientes. Cada trabajador tiene una tarea específica, y el pedido solo puede ser entregado cuando todos hayan terminado su parte. El flujo de trabajo se divide en las siguientes actividades:</p>
+
+<ol>
+  <li><strong>Cocinero 1:</strong> Cocina la carne de la hamburguesa.</li>
+  <li><strong>Cocinero 2:</strong> Prepara el pan (lo corta y lo coloca).</li>
+  <li><strong>Cocinero 3:</strong> Añade los condimentos (queso, salsas, etc.). Solo se puede hacer si el pan está preparado.</li>
+  <li><strong>Cocinero 4:</strong> Prepara la guarnición (patatas fritas, ensaladas, etc.).</li>
+  <li><strong>Trabajador de entrega:</strong> Ensambla el pedido y lo entrega al cliente, pero <strong>solo puede hacerlo cuando todos los cocineros hayan terminado sus tareas</strong>.</li>
+</ol>
+
+<p>Modela el sistema de preparación de pedidos de hamburguesas mediante un <strong>diagrama de actividad</strong>, representando los flujos paralelos de trabajo.</p>
+
+<h2 id="4-ejercicios-de-ampliación-sobre-diagramas-de-actividad-y-dfd">4. Ejercicios de ampliación sobre diagramas de actividad y DFD</h2>
+
+<h3 id="41-ejercicio-7-proceso-de-compra-en-una-tienda-online">4.1 Ejercicio 7: Proceso de Compra en una Tienda Online</h3>
+
+<p><strong>Enunciado:</strong> Diseña un sistema para modelar el proceso de compra en una tienda online. El sistema debe contemplar los siguientes pasos:</p>
+
+<ol>
+  <li>El cliente selecciona los productos que desea comprar y los añade al carrito.</li>
+  <li>El cliente procede al pago. Antes de realizar el pago, se verifica si hay stock suficiente para cada producto en el carrito.</li>
+  <li>Si el stock es suficiente, el sistema calcula el total a pagar y solicita al cliente los datos de pago.</li>
+  <li>Se procesa el pago. Si el pago es exitoso, el sistema genera una orden de compra y actualiza el stock. En caso contrario, se notifica al cliente del error.</li>
+  <li>El cliente recibe la confirmación de la compra y el sistema programa el envío del pedido.</li>
+</ol>
+
+<p><strong>Tareas a realizar:</strong></p>
+
+<ul>
+  <li>Crea un <strong>diagrama de actividad</strong> que represente el flujo completo del proceso de compra.</li>
+  <li>Diseña un <strong>DFD de contexto</strong> para modelar las interacciones entre el cliente, el sistema y los almacenes de datos (como el carrito y el inventario).</li>
+  <li>Desarrolla un <strong>DFD de nivel 1</strong> que detalle los subprocesos involucrados en la verificación de stock y el procesamiento del pago.</li>
+</ul>
+
+<h3 id="42-ejercicio-8-sistema-de-registro-de-asistencia">4.2 Ejercicio 8: Sistema de Registro de Asistencia</h3>
+
+<p><strong>Enunciado:</strong> Una institución educativa desea implementar un sistema digital para registrar la asistencia de los estudiantes. El sistema debe realizar las siguientes funciones:</p>
+
+<ol>
+  <li>El profesor inicia sesión y selecciona el grupo al que va a pasar lista.</li>
+  <li>El sistema muestra una lista de estudiantes matriculados en el grupo.</li>
+  <li>El profesor marca la asistencia de cada estudiante como “presente”, “ausente” o “justificado”.</li>
+  <li>Al finalizar, el sistema almacena los datos en una base de datos y genera un reporte con los porcentajes de asistencia de los estudiantes.</li>
+  <li>El profesor puede descargar el reporte o consultarlo en pantalla.</li>
+</ol>
+
+<p><strong>Tareas a realizar:</strong></p>
+
+<ul>
+  <li>Diseña un <strong>diagrama de actividad</strong> que modele el flujo del registro de asistencia.</li>
+  <li>Crea un <strong>DFD de contexto</strong> que represente las interacciones entre el profesor, el sistema y la base de datos de estudiantes.</li>
+  <li>Realiza un <strong>DFD de nivel 1</strong> que detalle los subprocesos de registro de asistencia y generación de reportes.</li>
+</ul>
+
+<h3 id="43-ejercicio-9-sistema-de-reservas-para-un-gimnasio">4.3 Ejercicio 9: Sistema de Reservas para un Gimnasio</h3>
+
+<p><strong>Enunciado:</strong> Un gimnasio necesita automatizar su sistema de reservas para clases grupales. El sistema debe permitir las siguientes acciones:</p>
+
+<ol>
+  <li>Los clientes pueden consultar las clases disponibles, incluyendo el horario, el instructor y el número de plazas.</li>
+  <li>Para reservar una clase, el cliente debe iniciar sesión en el sistema y seleccionar una clase.</li>
+  <li>El sistema verifica si hay plazas disponibles. Si hay, registra la reserva y actualiza el número de plazas. Si no hay, notifica al cliente de la falta de disponibilidad.</li>
+  <li>Los clientes pueden cancelar una reserva hasta 24 horas antes de la clase. En este caso, el sistema actualiza el número de plazas.</li>
+  <li>El sistema debe permitir al personal administrativo consultar el estado de las reservas y generar reportes de ocupación.</li>
+</ol>
+
+<p><strong>Tareas a realizar:</strong></p>
+
+<ul>
+  <li>Crea un <strong>diagrama de actividad</strong> que modele el flujo para realizar y cancelar una reserva.</li>
+  <li>Diseña un <strong>DFD de contexto</strong> para representar las interacciones entre los clientes, el sistema y la base de datos de reservas.</li>
+  <li>Elabora un <strong>DFD de nivel 1</strong> que detalle los subprocesos de consulta de disponibilidad, registro de reserva y cancelación.</li>
+</ul>
+
+<h3 id="44-ejercicio-10-sistema-de-seguimiento-de-paquetes">4.4 Ejercicio 10: Sistema de Seguimiento de Paquetes</h3>
+
+<p><strong>Enunciado:</strong> Una empresa de mensajería desea implementar un sistema que permita a los clientes rastrear sus envíos. El sistema debe realizar las siguientes acciones:</p>
+
+<ol>
+  <li>El cliente introduce el código de seguimiento del paquete en una aplicación web.</li>
+  <li>El sistema consulta una base de datos para obtener el estado actual del paquete.</li>
+  <li>Si el paquete ha sido entregado, el sistema muestra la fecha de entrega y el nombre del receptor.</li>
+  <li>Si el paquete está en tránsito, el sistema muestra la ubicación actual y el siguiente paso programado.</li>
+  <li>Si el código no es válido, el sistema notifica al cliente del error.</li>
+</ol>
+
+<p><strong>Tareas a realizar:</strong></p>
+
+<ul>
+  <li>Diseña un <strong>diagrama de actividad</strong> que represente el flujo del seguimiento de paquetes.</li>
+  <li>Crea un <strong>DFD de contexto</strong> que modele las interacciones entre el cliente, el sistema y la base de datos de paquetes.</li>
+  <li>Realiza un <strong>DFD de nivel 1</strong> que detalle los subprocesos de consulta de datos y notificación al cliente.</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

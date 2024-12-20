@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 01: Aspectos básicos del paradigma orientado a objetos | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 01: Aspectos básicos del paradigma orientado a objetos" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/04_poo/01_poo.html" />
+<meta property="og:url" content="http://localhost:4000/prog/04_poo/01_poo.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 01: Aspectos básicos del paradigma orientado a objetos" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 01: Aspectos básicos del paradigma orientado a objetos","url":"http://localhost:4000/prog/04_poo/01_poo.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      
+<h1 id="sesión-01-aspectos-básicos-del-paradigma-orientado-a-objetos">Sesión 01: Aspectos básicos del paradigma orientado a objetos</h1>
+
+<ul>
+  <li><a href="#sesión-01-aspectos-básicos-del-paradigma-orientado-a-objetos">Sesión 01: Aspectos básicos del paradigma orientado a objetos</a>
+    <ul>
+      <li><a href="#1-el-paradigma-orientado-a-objetos">1. El paradigma orientado a objetos</a>
+        <ul>
+          <li><a href="#11-representación-de-una-clase-en-uml">1.1 Representación de una clase en UML</a></li>
+          <li><a href="#actividad-1-creación-de-diagramas-a-partir-de-una-definición">Actividad 1: Creación de diagramas a partir de una definición</a></li>
+          <li><a href="#actividad-2-explicación-de-diagramas">Actividad 2: Explicación de diagramas</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-relaciones-entre-clases">2. Relaciones entre clases</a>
+        <ul>
+          <li><a href="#21-relaciones-principales-entre-clases">2.1 Relaciones principales entre clases</a></li>
+          <li><a href="#22-otras-relaciones">2.2 Otras relaciones</a></li>
+          <li><a href="#actividad-3-explica-el-siguiente-diagrama">Actividad 3: Explica el siguiente diagrama</a></li>
+          <li><a href="#actividad-4-crea-un-diagrama-de-la-siguiente-explicación">Actividad 4: Crea un diagrama de la siguiente explicación</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-el-paradigma-orientado-a-objetos">1. El paradigma orientado a objetos</h2>
+
+<p>Un paradigma de programación consiste en un enfoque y una serie de reglas que nos ayudan a resolver problemas. En el caso del paradigma orientado a objetos, definimos la realidad a través de objetos. Los objetos tienen una serie de propiedades, que llamamos atributos, y pueden realizar una serie de acciones, que llamamos métodos. Asimismo, los objetos se comunican entre ellos a través del paso de mensajes.</p>
+
+<p>La programación orientada a objetos puede basarse en prototipos, como ocurre en Javascript, en la cual unos objetos sirven como base de otros; o bien basarse en clases. Una clase es un patrón que define una serie de atributos y métodos propios que tendrán los objetos que pertenezcan a la misma. A estos objetos, se los conoce como <em>instancias</em> de la clase.</p>
+
+<h3 id="11-representación-de-una-clase-en-uml">1.1 Representación de una clase en UML</h3>
+
+<p>Para representar una clase emplearemos diagramas de clases del estándar UML. Cada clase se representa con una caja que tiene tres apartados:</p>
+
+<ul>
+  <li><strong>Superior</strong>: Se coloca el nombre de la clase y su tipo. Puede ser una clase normal (C), una clase abstracta (A) o una interfaz (I). En Java, se emplea CamelCase para los nombres. Es decir, la primera letra de cada palabra en mayúscula y sin espacios. Se evitan caracteres especiales que no pertenezcan al ANSII (como tildes, ñ o ç).</li>
+  <li><strong>Medio</strong>: En este espacio se colocan los atributos de la clase, en CamelCase pero con la primera letra en minúscula. El tipo se puede colocar antes, como en Java o C#, o después, como en TypeScript.</li>
+  <li><strong>Inferior</strong>: En este espacio se colocan los métodos. Se nombran como los atributos, pero al final tienen paréntesis. Dentro del paréntesis puede haber parámetros (con su tipo correspondiente) y, si el método devuelve algo, se coloca al lado el tipo de datos del retorno.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class EstoEsUnaClase{
+    + estoEsUnAtributo : number
+    - estoEsUnMetodo(parametro : number) : number
+}
+</code></pre>
+
+<p>Podemos pensar en los atributos y métodos de una clase de la siguiente forma:</p>
+
+<ul>
+  <li><strong>Atributos:</strong> Conforman las propiedades del objeto.</li>
+  <li><strong>Métodos:</strong> Conforman el comportamiento del objeto.</li>
+</ul>
+
+<p>Cuando definimos una clase, los diferentes componentes tienen una visibilidad determinada:</p>
+
+<ul>
+  <li>Si un componente es <strong>público</strong>, es accesible por cualquier otro objeto. Lo representamos con un +:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoPúblico{
+    + atributoPúblico
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un componente es <strong>privado</strong>, es accesible solo por el mismo objeto. Lo representamos con un -:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoPrivado{
+    - atributoPrivado
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un componente es <strong>protegido</strong>, funciona como privado excepto cuando el objeto que quiere acceder a él es de una clase derivada, que entonces funciona como público. Lo representamos con un #:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoProtegido{
+    # atributoProtegido
+}
+@enduml
+</code></pre>
+
+<ul>
+  <li>Si un componente tiene visibilidad de <strong>paquete</strong>, funciona como público para todos los miembros del paquete y privado para todos los demás. Es una visibilidad característica del lenguaje de programación Java (es la visibilidad por defecto, de hecho). En UML se representa con el signo ~:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class AtributoPaquete{
+    ~ AtributoDePaquete
+}
+@enduml
+</code></pre>
+
+<p>Para estos diagramas se está usando <a href="https://plantuml.com/es/class-diagram">PlantUML</a>. Para que aparezcan los signos indicados se debe especificar antes de empezar a escribir el diagrama la línea <code class="language-plaintext highlighter-rouge">skinparam classAttributeIconSize 0</code>. Si no se hace, aparecen formas geométricas de diferentes colores según la visibilidad, y están rellenas o no según si son atributo o método:</p>
+
+<pre><code class="language-plantuml">@startuml
+
+class TodasLasVisibilidades{
+    - atributoPrivado
+    + atributoPublico
+    # atributoProtegido
+    ~ atributoDePaquete
+    - metodoPrivado()
+    + metodoPublico()
+    # metodoProtegido()
+    ~ metodoDePaquete()
+}
+@enduml
+</code></pre>
+
+<h3 id="actividad-1-creación-de-diagramas-a-partir-de-una-definición">Actividad 1: Creación de diagramas a partir de una definición</h3>
+
+<p>Crea un diagrama de clase que se corresponda con cada una de estas definiciones:</p>
+
+<ul>
+  <li>Para representar un libro, necesitamos saber su autor, su editorial, su año de publicación, su ISBN y su número de páginas. Un libro se puede leer.</li>
+  <li>Para representar a un perro, necesitamos saber su nombre, su raza y su edad. Un perro puede ladrar y pasear.</li>
+</ul>
+
+<h3 id="actividad-2-explicación-de-diagramas">Actividad 2: Explicación de diagramas</h3>
+
+<p>Explica los siguientes diagramas:</p>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class Motocicleta{
+    - matricula : string
+    - modelo : string
+    - velocidadMaxima : number
+    - deposito : number
+    + repostar() : void
+    + circular() : void
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+abstract class Poste{
+    - lugar : string
+    # altura: number
+    # publicidad: Array
+    + anyadirPublicidad() : bool
+    + verPublicidad(indice: number) : string
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+class Motorista{
+    - nombre : string
+    - edad : number
+    - moto : Motocicleta
+    + conducir() : void
+}
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+interface PuedeCircular{
+    + circular() : void
+}
+@enduml
+</code></pre>
+
+<h2 id="2-relaciones-entre-clases">2. Relaciones entre clases</h2>
+
+<p>A través de los diagramas UML podemos expresar las relaciones entre las clases de múltiples maneras, mediante líneas que las unen. A su vez, también podemos especificar cardinalidades, como en los diagramas Entidad-Relación empleados en base de datos, para cuantificar los detalles de las relaciones, e incluso nombrar a dichas relaciones (generalmente con un verbo). Representamos las cardinalidades con 0, 1, muchos (representado a veces con <code class="language-plaintext highlighter-rouge">*</code> o una letra) o números fijos.</p>
+
+<h3 id="21-relaciones-principales-entre-clases">2.1 Relaciones principales entre clases</h3>
+
+<ul>
+  <li><strong>Herencia:</strong> “es un” (relación jerárquica). Una clase deriva de otra. La clase base se denomina a veces clase padre y la clase derivda clase hija. En algunos casos, la clase padre es una clase abstracta. Esto significa que la clase abstracta no puede ser instanciada, pero las derivadas (mientras no sean abstractas a su vez) sí. Las clases abstractas, a la hora de ser programadas, pueden tener métodos abstractos, que son métodos sin definir (se definen en las clases derivadas).</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+class Persona{}
+class Profesor{}
+Persona&lt;|--Profesor
+@enduml
+</code></pre>
+
+<pre><code class="language-plantuml">@startuml
+abstract class SerVivo{}
+class Perro{}
+class Persona{}
+SerVivo &lt;|--Persona
+SerVivo &lt;|--Perro
+@enduml
+</code></pre>
+
+<ul>
+  <li><strong>Componente:</strong> “tiene un”. Una clase contiene como atributo un objeto (o varios) de otra.</li>
+  <li><strong>Composición:</strong> De tipo <em>componente</em>. En este caso, el atributo es dependiente de la clase principal.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+class Persona{}
+class Brazo{}
+Persona "1" *-- "2" Brazo : tiene
+@enduml
+</code></pre>
+
+<p><em>Una persona tiene dos brazos. Los brazos no pueden existir sin la persona.</em></p>
+
+<ul>
+  <li><strong>Agregación:</strong> De tipo <em>componente</em>. En este caso, el atributo no es dependiente de la clase principal y puede existir por separado.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+class Persona{}
+class Motocicleta{}
+Persona "1" o-- "muchas" Motocicleta : Posee
+@enduml
+</code></pre>
+
+<p><em>Una persona posee muchas motocicletas. Cada motocicleta puede existir sin la persona.</em></p>
+
+<ul>
+  <li><strong>Asociación:</strong> “colabora con”. Dos clases pueden trabajar en colaboración. La colaboración puede ser simétrica o asimétrica (señalamos la dirección con una flecha). Aunque no es exactamente el mismo concepto, la asociación se puede usar de forma alternativa a la agregación y la composición. De hecho, muchas veces, el resultado al programarla será el mismo.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+class Alumno{}
+class Profesor{}
+Profesor -- Alumno : Enseña &gt;
+@enduml
+</code></pre>
+
+<h3 id="22-otras-relaciones">2.2 Otras relaciones</h3>
+
+<p>Además de esas relaciones básicas, existen otras un poco más avanzadas.</p>
+
+<ul>
+  <li><strong>Dependencia:</strong> “usa”. En este tipo de relación, se dice que una clase usa a otra. Este uso puede ser mediante clases que contengan otras clases o mediante la implementación de interfaces dentro de una clase. Se representa como la herencia, pero con línea discontinua. A efectos de programación, una interfaz y una clase abstracta son muy similares. En ambos casos, no permiten instancias de ellas, sino de clases derivadas o que las usen. En Java, las interfaces vienen a compensar las limitaciones que tiene el hecho de que no exista la herencia múltiple.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+interface PuedeMoverse{
+    + mover() : void
+}
+class Persona{
+    - nombre : string
+    - edad : number
+}
+class Motocicleta{
+    - cilindrada : string
+    - matricula : string
+}
+Persona ..|&gt; PuedeMoverse
+Motocicleta ..|&gt;PuedeMoverse
+@enduml
+</code></pre>
+
+<p>Un uso muy habitual de las interfaces es el de agrupar instancias que semánticamente son cosas distintas, pero que todas pueden realizar la misma acción. De esta forma, les podemos pedir a todas ellas con un mensaje que realicen dicha acción, aunque sean cosas tan dispares como una puerta o un plazo de entrega (en ambos casos, se podrían cerrar).</p>
+
+<ul>
+  <li><strong>Pertenencia al mismo paquete:</strong> En caso de que queramos especificar también los paquetes, podemos encapsular las clases en formas geométricas para verlo claro, de la siguiente manera:</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+
+package animales{
+    abstract class Animal{}
+    package mamiferos{
+        class Perro{}
+        class Gato{}
+    }
+    package aves{
+        class Periquito{}
+        class Loro{}
+    }
+}
+package vehiculos{
+    class Motocicleta{}
+    class Coche{}
+    class CocheElectrico{}
+    class Avion{}
+}
+package utilidades{
+    interface PuedeVolar{}
+}
+Perro --|&gt; Animal
+Gato --|&gt; Animal
+Periquito --|&gt; Animal
+Loro --|&gt; Animal
+CocheElectrico --|&gt; Coche
+Periquito ..|&gt; PuedeVolar
+Loro ..|&gt; PuedeVolar
+Avion ..|&gt; PuedeVolar
+
+@enduml
+</code></pre>
+
+<p>Como se puede observar, puede haber paquetes dentro de paquetes y las clases de un paquete pueden relacionarse con clases de otros paquetes. Los paquetes tienen una relación más de conveniencia a la hora de programar que semántica.</p>
+
+<h3 id="actividad-3-explica-el-siguiente-diagrama">Actividad 3: Explica el siguiente diagrama</h3>
+
+<pre><code class="language-plantuml">@startuml
+skinparam classAttributeIconSize 0
+package animales{
+class Persona{
+    + hablar()
+}
+class Perro{
+    + ladrar()
+}
+}
+package utilidades{
+class Aspiración{
+    - descripción : string
+}
+abstract class SerVivo{
+    # edad : number
+    # nombre : string
+    # respirar() : void
+}
+package caracteristicas{
+class Extremidad{
+    - peso : number
+}
+interface Respira{}
+}
+}
+
+SerVivo "1" *-- "*" Extremidad : tiene
+SerVivo ..|&gt; Respira
+Persona --|&gt; SerVivo
+Perro --|&gt; SerVivo
+Persona "1" *-- "*" Aspiración
+Persona "1" o-- "1" Perro : tiene
+@enduml
+</code></pre>
+
+<h3 id="actividad-4-crea-un-diagrama-de-la-siguiente-explicación">Actividad 4: Crea un diagrama de la siguiente explicación</h3>
+
+<p>La vida es dura, pero la vida de cada persona tiene un grado de dureza diferente, que clasificamos con un número. Las personas asismo tienen algo que las identifica, su propio nombre. Pueden elegir varias profesiones, como carpintero o influencer. Los carpinteros usan la madera para construir muebles. Los influencer usan las mesas, que son muebles, para poner sus ordenadores. Una persona puede tener varios muebles. Las sillas también son muebles.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

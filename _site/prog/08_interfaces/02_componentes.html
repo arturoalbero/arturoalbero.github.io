@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Componentes básicos de Swing | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Componentes básicos de Swing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/08_interfaces/02_componentes.html" />
+<meta property="og:url" content="http://localhost:4000/prog/08_interfaces/02_componentes.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Componentes básicos de Swing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Componentes básicos de Swing","url":"http://localhost:4000/prog/08_interfaces/02_componentes.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="componentes-básicos-de-swing">Componentes básicos de Swing</h1>
+
+<ul>
+  <li><a href="#componentes-básicos-de-swing">Componentes básicos de Swing</a>
+    <ul>
+      <li><a href="#1-los-componentes-principales-de-swing">1. Los componentes principales de Swing</a></li>
+      <li><a href="#2-componentes-básicos">2. Componentes básicos</a>
+        <ul>
+          <li><a href="#21-jlabel-etiqueta"><strong>2.1 JLabel (Etiqueta)</strong></a></li>
+          <li><a href="#22-jbutton-botón"><strong>2.2 JButton (Botón)</strong></a></li>
+          <li><a href="#23-jtextfield-campo-de-texto"><strong>2.3 JTextField (Campo de texto)</strong></a></li>
+          <li><a href="#24-jtextarea-área-de-texto"><strong>2.4 JTextArea (Área de texto)</strong></a>
+            <ul>
+              <li><a href="#document-en-swing"><strong><code class="language-plaintext highlighter-rouge">Document</code> en Swing</strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#25-ejercicio-1">2.5 Ejercicio 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-componentes-avanzados">3. Componentes avanzados</a>
+        <ul>
+          <li><a href="#31-jradiobutton-botón-de-opción"><strong>3.1 JRadioButton (Botón de opción)</strong></a></li>
+          <li><a href="#32-jcheckbox-botón-de-selección"><strong>3.2 JCheckBox (Botón de selección)</strong></a></li>
+          <li><a href="#32-ejercicio-2">3.2 Ejercicio 2</a></li>
+          <li><a href="#33-jcombobox-menú-desplegable"><strong>3.3 JComboBox (Menú desplegable)</strong></a></li>
+          <li><a href="#34-jlist-lista"><strong>3.4 JList (Lista)</strong></a></li>
+          <li><a href="#35-jtable-tabla"><strong>3.5 JTable (Tabla)</strong></a></li>
+          <li><a href="#36-ejercicio-3">3.6 Ejercicio 3</a></li>
+        </ul>
+      </li>
+      <li><a href="#4-uso-de-genéricos-con-los-componentes-de-swing">4. Uso de genéricos con los componentes de Swing</a>
+        <ul>
+          <li><a href="#41-ejercicio-4">4.1 Ejercicio 4</a></li>
+        </ul>
+      </li>
+      <li><a href="#5-modelos-y-defaultmodel">5. Modelos y <code class="language-plaintext highlighter-rouge">DefaultModel</code></a>
+        <ul>
+          <li><a href="#51-defaultcomboboxmodel"><strong>5.1 DefaultComboBoxModel</strong></a></li>
+          <li><a href="#52-defaultlistmodel"><strong>5.2 DefaultListModel</strong></a></li>
+          <li><a href="#53-defaulttablemodel"><strong>5.3 DefaultTableModel</strong></a></li>
+          <li><a href="#45-ejercicio-5">4.5 Ejercicio 5</a></li>
+          <li><a href="#46-ejercicio-6">4.6 Ejercicio 6</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-los-componentes-principales-de-swing">1. Los componentes principales de Swing</h2>
+
+<p>8 horas</p>
+
+<p>Los componentes principales de la librería Swing son los siguientes:</p>
+
+<ul>
+  <li><strong>JLabel:</strong> Muestra texto o imágenes estáticas.</li>
+  <li><strong>JButton:</strong> Un botón que realiza una acción al hacer clic.</li>
+  <li><strong>JTextField:</strong> Campo de texto de una sola línea.</li>
+  <li><strong>JRadioButton:</strong> Botón de opción para seleccionar una sola opción dentro de un grupo.</li>
+  <li><strong>JComboBox:</strong> Menú desplegable.</li>
+  <li><strong>JList:</strong> Lista de elementos seleccionables.</li>
+  <li><strong>JTable:</strong> Tabla para mostrar datos en filas y columnas.</li>
+</ul>
+
+<p>En general, la API de Swing sigue esta jerarquía:
+<img src="/prog/08_interfaces/jerarquia_API_Swing.png" alt="Jerarquía del API de Swing" /></p>
+
+<p>Además de estos, existen muchos otros componentes, cada uno de ellos con su propósito específico. Consúltalos en la <a href="https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html">documentación oficial</a>.</p>
+
+<p>Los componentes tienen algunas propiedades y métodos comunes, entre las que destacan:</p>
+
+<ul>
+  <li><strong>Tamaño y posición:</strong> <code class="language-plaintext highlighter-rouge">setBounds(x, y, width, height)</code>.</li>
+  <li><strong>Texto y contenido:</strong> <code class="language-plaintext highlighter-rouge">setText(String texto)</code>, <code class="language-plaintext highlighter-rouge">addItem(T item)</code> (Donde T es un tipo de datos que podemos especificar o mantener como Object).</li>
+  <li><strong>Eventos:</strong> Usar <code class="language-plaintext highlighter-rouge">ActionListener</code> o <code class="language-plaintext highlighter-rouge">ItemListener</code>.</li>
+</ul>
+
+<p>Para poner en la práctica el uso de los diferentes componentes, antes de explicarlos en detalle, vamos a crear una ventana que incluya:</p>
+
+<ul>
+  <li>Un campo de texto para introducir el nombre.</li>
+  <li>Un grupo de radio buttons para seleccionar género.</li>
+  <li>Un combo box para elegir un país.</li>
+  <li>Una lista de intereses.</li>
+  <li>Una tabla para mostrar la información ingresada.</li>
+</ul>
+
+<p>Así quedaría el código en Java:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.swing.table.DefaultTableModel</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ComponentesBasicos</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">ComponentesBasicos</span><span class="o">()</span> <span class="o">{</span>
+
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"Componentes Básicos en Swing"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="mi">400</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+        <span class="cm">/*
+        Etiqueta "Nombre" y campo de texto para que el usuario pueda ingresar su nombre.
+        Usamos setBounds() para definir la posición y tamaño del componente.
+        */</span>
+        <span class="nc">JLabel</span> <span class="n">nombreLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Nombre:"</span><span class="o">);</span>
+        <span class="n">nombreLabel</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">nombreLabel</span><span class="o">);</span>
+
+        <span class="nc">JTextField</span> <span class="n">nombreField</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">();</span>
+        <span class="n">nombreField</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">nombreField</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Etiqueta y grupo de botones de opción (radio buttons) para seleccionar el género.
+        Creamos un grupo (ButtonGroup) para que solo uno de los botones pueda ser seleccionado a la vez.
+        */</span>
+        <span class="nc">JLabel</span> <span class="n">generoLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Género:"</span><span class="o">);</span>
+        <span class="n">generoLabel</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">generoLabel</span><span class="o">);</span>
+
+        <span class="nc">JRadioButton</span> <span class="n">masculino</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"Masculino"</span><span class="o">);</span>
+        <span class="n">masculino</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="nc">JRadioButton</span> <span class="n">femenino</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"Femenino"</span><span class="o">);</span>
+        <span class="n">femenino</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">200</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Agrupamos los botones de género para que sean mutuamente exclusivos.
+        */</span>
+        <span class="nc">ButtonGroup</span> <span class="n">generoGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ButtonGroup</span><span class="o">();</span>
+        <span class="n">generoGroup</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">masculino</span><span class="o">);</span>
+        <span class="n">generoGroup</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">femenino</span><span class="o">);</span>
+
+        <span class="n">add</span><span class="o">(</span><span class="n">masculino</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">femenino</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Etiqueta y cuadro desplegable (JComboBox) para seleccionar un país.
+        El JComboBox se inicializa con una lista de opciones.
+        */</span>
+        <span class="nc">JLabel</span> <span class="n">paisLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"País:"</span><span class="o">);</span>
+        <span class="n">paisLabel</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">paisLabel</span><span class="o">);</span>
+
+        <span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">paisCombo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"España"</span><span class="o">,</span> <span class="s">"Portugal"</span><span class="o">,</span> <span class="s">"Francia"</span><span class="o">,</span> <span class="s">"Andorra"</span><span class="o">,</span> <span class="s">"Italia"</span><span class="o">,</span> <span class="s">"Marruecos"</span><span class="o">,</span> <span class="s">"Argelia"</span><span class="o">,</span> <span class="s">"Túnez"</span><span class="o">});</span>
+        <span class="n">paisCombo</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">paisCombo</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Etiqueta y lista de opciones (JList) para seleccionar intereses.
+        En este caso, permitimos que el usuario seleccione varios intereses.
+        */</span>
+        <span class="nc">JLabel</span> <span class="n">interesesLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"Intereses:"</span><span class="o">);</span>
+        <span class="n">interesesLabel</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">140</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">interesesLabel</span><span class="o">);</span>
+
+        <span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">interesesList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"Deportes"</span><span class="o">,</span> <span class="s">"Música"</span><span class="o">,</span> <span class="s">"Lectura"</span><span class="o">,</span> <span class="s">"Viajes"</span><span class="o">});</span>
+        <span class="n">interesesList</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">140</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">60</span><span class="o">);</span>
+        <span class="n">interesesList</span><span class="o">.</span><span class="na">setSelectionMode</span><span class="o">(</span><span class="nc">ListSelectionModel</span><span class="o">.</span><span class="na">MULTIPLE_INTERVAL_SELECTION</span><span class="o">);</span> <span class="c1">// Permite seleccionar múltiples elementos.</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">interesesList</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Botón "Mostrar" que recogerá los datos introducidos en los componentes anteriores y los mostrará en una tabla.
+        */</span>
+        <span class="nc">JButton</span> <span class="n">mostrarButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Mostrar"</span><span class="o">);</span>
+        <span class="n">mostrarButton</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">220</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">mostrarButton</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Tabla para mostrar los datos recopilados. La tabla utiliza un modelo de datos (DefaultTableModel)
+        que nos facilita la gestión de filas y columnas. Creamos un JScrollPane para que la tabla tenga
+        barra de desplazamiento en caso de ser necesario.
+        */</span>
+        <span class="nc">String</span><span class="o">[]</span> <span class="n">columnas</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Nombre"</span><span class="o">,</span> <span class="s">"Género"</span><span class="o">,</span> <span class="s">"País"</span><span class="o">,</span> <span class="s">"Intereses"</span><span class="o">};</span>
+        <span class="nc">JTable</span> <span class="n">tabla</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTable</span><span class="o">();</span>
+        <span class="nc">DefaultTableModel</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultTableModel</span><span class="o">();</span>
+
+        <span class="cm">/*
+        Añadimos las columnas al modelo de la tabla.
+        */</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">columna</span> <span class="o">:</span> <span class="n">columnas</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">model</span><span class="o">.</span><span class="na">addColumn</span><span class="o">(</span><span class="n">columna</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">tabla</span><span class="o">.</span><span class="na">setModel</span><span class="o">(</span><span class="n">model</span><span class="o">);</span>
+
+        <span class="nc">JScrollPane</span> <span class="n">scrollPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">tabla</span><span class="o">);</span> <span class="c1">// La tabla se agrega al JScrollPane.</span>
+        <span class="n">scrollPane</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">260</span><span class="o">,</span> <span class="mi">450</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">scrollPane</span><span class="o">);</span>
+
+        <span class="cm">/*
+        Definimos la acción del botón "Mostrar". Cuando el botón sea pulsado, recogeremos los valores de
+        los componentes (campo de texto, botones, comboBox y lista), los formatearemos y los añadiremos
+        como una nueva fila a la tabla.
+        */</span>
+        <span class="n">mostrarButton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">nombre</span> <span class="o">=</span> <span class="n">nombreField</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">genero</span> <span class="o">=</span> <span class="n">masculino</span><span class="o">.</span><span class="na">isSelected</span><span class="o">()</span> <span class="o">?</span> <span class="s">"Masculino"</span> <span class="o">:</span> <span class="n">femenino</span><span class="o">.</span><span class="na">isSelected</span><span class="o">()</span> <span class="o">?</span> <span class="s">"Femenino"</span> <span class="o">:</span> <span class="s">"No especificado"</span><span class="o">;</span>
+            <span class="nc">String</span> <span class="n">pais</span> <span class="o">=</span> <span class="o">(</span><span class="nc">String</span><span class="o">)</span> <span class="n">paisCombo</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">intereses</span> <span class="o">=</span> <span class="nc">String</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="s">", "</span><span class="o">,</span> <span class="n">interesesList</span><span class="o">.</span><span class="na">getSelectedValuesList</span><span class="o">());</span>
+
+            <span class="cm">/*
+            Validamos si el nombre está vacío para evitar filas incompletas. Si está vacío, muestra un
+            aviso en una ventana modal (un diálogo). Si no, añade la fila.
+            */</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">nombre</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+                <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="s">"Por favor, ingresa un nombre."</span><span class="o">,</span> <span class="s">"Error"</span><span class="o">,</span> <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">ERROR_MESSAGE</span><span class="o">);</span>
+            <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+                <span class="n">model</span><span class="o">.</span><span class="na">addRow</span><span class="o">(</span><span class="k">new</span> <span class="nc">Object</span><span class="o">[]{</span><span class="n">nombre</span><span class="o">,</span> <span class="n">genero</span><span class="o">,</span> <span class="n">pais</span><span class="o">,</span> <span class="n">intereses</span><span class="o">});</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">ComponentesBasicos</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ComponentesBasicos</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>Con este código empleamos todos los componentes básicos de Swing, y nos sirve para comprender cómo funcionan. A continuación, los desgranamos uno a uno.</p>
+
+<h2 id="2-componentes-básicos">2. Componentes básicos</h2>
+
+<h3 id="21-jlabel-etiqueta"><strong>2.1 JLabel (Etiqueta)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JLabel</code> se usa para mostrar texto o imágenes estáticas. No puede recibir interacción del usuario. Sus propiedades y métodos más comunes son:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setText(String texto)</code>: Cambia el texto mostrado.</li>
+  <li><code class="language-plaintext highlighter-rouge">setIcon(Icon icono)</code>: Muestra una imagen.</li>
+  <li><code class="language-plaintext highlighter-rouge">setHorizontalAlignment(int align)</code>: Alinea el contenido horizontalmente (<code class="language-plaintext highlighter-rouge">SwingConstants.LEFT</code>, <code class="language-plaintext highlighter-rouge">CENTER</code>, <code class="language-plaintext highlighter-rouge">RIGHT</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">setForeground(Color color)</code>: Cambia el color del texto.</li>
+  <li><code class="language-plaintext highlighter-rouge">setFont(Font fuente)</code>: Cambia la fuente del texto.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JLabel</span> <span class="n">etiqueta</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JLabel</span><span class="o">(</span><span class="s">"¡Hola, Swing!"</span><span class="o">);</span>
+<span class="n">etiqueta</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+<span class="n">etiqueta</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+<span class="n">etiqueta</span><span class="o">.</span><span class="na">setFont</span><span class="o">(</span><span class="k">new</span> <span class="nc">Font</span><span class="o">(</span><span class="s">"Arial"</span><span class="o">,</span> <span class="nc">Font</span><span class="o">.</span><span class="na">BOLD</span><span class="o">,</span> <span class="mi">16</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h3 id="22-jbutton-botón"><strong>2.2 JButton (Botón)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JButton</code> es un botón que realiza una acción cuando el usuario hace clic. Aparte de las propiedades de las etiquetas, cuenta con las siguientes:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setEnabled(boolean estado)</code>: Activa/desactiva el botón.</li>
+  <li><code class="language-plaintext highlighter-rouge">addActionListener(ActionListener listener)</code>: Detecta el clic.</li>
+</ul>
+
+<p>El evento más común es el clic, manejado con un <code class="language-plaintext highlighter-rouge">ActionListener</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JButton</span> <span class="n">boton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Aceptar"</span><span class="o">);</span>
+<span class="n">boton</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+<span class="n">boton</span><span class="o">.</span><span class="na">setBackground</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">GREEN</span><span class="o">);</span>
+<span class="n">boton</span><span class="o">.</span><span class="na">setForeground</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">WHITE</span><span class="o">);</span>
+<span class="n">boton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"¡Botón presionado!"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h3 id="23-jtextfield-campo-de-texto"><strong>2.3 JTextField (Campo de texto)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JTextField</code> permite al usuario ingresar texto en una sola línea. Sus propiedades y métodos más habituales son:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setText(String texto)</code>: Establece el texto inicial.</li>
+  <li><code class="language-plaintext highlighter-rouge">getText()</code>: Recupera el texto ingresado.</li>
+  <li><code class="language-plaintext highlighter-rouge">setEditable(boolean estado)</code>: Define si se puede editar.</li>
+  <li><code class="language-plaintext highlighter-rouge">setColumns(int columnas)</code>: Define el ancho en términos de caracteres (usado en Layouts).</li>
+  <li><code class="language-plaintext highlighter-rouge">setToolTipText(String texto)</code>: Muestra una descripción emergente.</li>
+</ul>
+
+<p>Como alternativa a JTextField podemos usar JTextArea, que en lugar de una línea recoge un espacio más grande de texto.</p>
+
+<h3 id="24-jtextarea-área-de-texto"><strong>2.4 JTextArea (Área de texto)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JTextArea</code> es un componente de Swing que permite la entrada y edición de múltiples líneas de texto. Es ideal para capturar grandes cantidades de texto o mostrar información extensa en una interfaz gráfica.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">setText(String texto)</code></strong>: Establece el texto inicial.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">getText()</code></strong>: Recupera el texto ingresado.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">setEditable(boolean estado)</code></strong>: Define si el área de texto es editable.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">setRows(int filas)</code></strong>: Establece el número de filas visibles.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">setColumns(int columnas)</code></strong>: Establece el número de columnas visibles.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">append(String texto)</code></strong>: Añade texto al final del área existente.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">setLineWrap(boolean estado)</code></strong>: Define si las líneas de texto se ajustan automáticamente al ancho del área.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">setWrapStyleWord(boolean estado)</code></strong>: Ajusta el texto al borde de la palabra completa (en lugar de cortar palabras).</li>
+  <li>El salto automático de línea es útil para evitar que el texto se salga de los límites del componente. Esto se logra mediante los métodos <code class="language-plaintext highlighter-rouge">setLineWrap(true)</code> y <code class="language-plaintext highlighter-rouge">setWrapStyleWord(true)</code>.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JTextAreaDemo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Ejemplo de JTextArea"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">300</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BorderLayout</span><span class="o">());</span>
+
+        <span class="c1">// Crear JTextArea</span>
+        <span class="nc">JTextArea</span> <span class="n">textArea</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextArea</span><span class="o">();</span>
+        <span class="n">textArea</span><span class="o">.</span><span class="na">setRows</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+        <span class="n">textArea</span><span class="o">.</span><span class="na">setColumns</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span>
+        <span class="n">textArea</span><span class="o">.</span><span class="na">setLineWrap</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Activar salto de línea automático</span>
+        <span class="n">textArea</span><span class="o">.</span><span class="na">setWrapStyleWord</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// Ajustar por palabra completa</span>
+        <span class="n">textArea</span><span class="o">.</span><span class="na">setToolTipText</span><span class="o">(</span><span class="s">"Escribe texto aquí"</span><span class="o">);</span>
+
+        <span class="c1">// Añadir JScrollPane para soporte de scroll</span>
+        <span class="nc">JScrollPane</span> <span class="n">scrollPane</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JScrollPane</span><span class="o">(</span><span class="n">textArea</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">scrollPane</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+
+        <span class="c1">// Mostrar ventana</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li><strong>Conexión con <code class="language-plaintext highlighter-rouge">Document</code>:</strong> Al igual que con <code class="language-plaintext highlighter-rouge">JTextField</code>, puedes escuchar cambios en el texto utilizando un <code class="language-plaintext highlighter-rouge">DocumentListener</code>. Esto permite validar el texto en tiempo real.</li>
+  <li><strong>Usar JScrollPane:</strong> Para textos largos, se recomienda encapsular el <code class="language-plaintext highlighter-rouge">JTextArea</code> dentro de un <code class="language-plaintext highlighter-rouge">JScrollPane</code>, como se muestra en el ejemplo.</li>
+</ol>
+
+<p>Este ejemplo muestra cómo implementar un área de texto que ajusta automáticamente las líneas y permite desplazarse cómodamente cuando el texto excede el área visible.</p>
+
+<h4 id="document-en-swing"><strong><code class="language-plaintext highlighter-rouge">Document</code> en Swing</strong></h4>
+
+<p>En Swing, la clase <code class="language-plaintext highlighter-rouge">Document</code> representa el modelo subyacente de texto para componentes como <code class="language-plaintext highlighter-rouge">JTextField</code> o <code class="language-plaintext highlighter-rouge">JTextArea</code>. Es particularmente útil cuando necesitas manejar o interceptar cambios en el texto. Usaremos <code class="language-plaintext highlighter-rouge">Document</code> en los siguientes casos:</p>
+
+<ul>
+  <li>Para validar o procesar el texto en tiempo real (por ejemplo, validación de entrada o autocompletado).</li>
+  <li>Para mantener sincronizados los datos entre varios componentes.</li>
+</ul>
+
+<p>Para detectar los cambios en un JTextField o JTextArea, tenemos que obtener el documento del campo y añadirle un objeto que implemente la interfaz <code class="language-plaintext highlighter-rouge">DocumentListener</code>. Si usamos IntelliJ, nos añadirá los métodos que debemos sobreescribir para que funcione.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JTextField</span> <span class="n">nombreField</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTextField</span><span class="o">();</span>
+        <span class="n">nombreField</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+        <span class="n">nombreField</span><span class="o">.</span><span class="na">setToolTipText</span><span class="o">(</span><span class="s">"Introduce tu nombre aquí"</span><span class="o">);</span>
+
+        <span class="n">nombreField</span><span class="o">.</span><span class="na">getDocument</span><span class="o">().</span><span class="na">addDocumentListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">DocumentListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertUpdate</span><span class="o">(</span><span class="nc">DocumentEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"inserto"</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeUpdate</span><span class="o">(</span><span class="nc">DocumentEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"borro"</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">changedUpdate</span><span class="o">(</span><span class="nc">DocumentEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Cambio"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">nombreField</span><span class="o">);</span>
+
+</code></pre></div></div>
+
+<h3 id="25-ejercicio-1">2.5 Ejercicio 1</h3>
+
+<p>Crea una interfaz gráfica usando Swing que contenga dos JTextArea. Lo que escribamos en una se debe de copiar en la otra. Añade una etiqueta que cuente el número de caracteres cada vez que se haga algún cambio.</p>
+
+<h2 id="3-componentes-avanzados">3. Componentes avanzados</h2>
+
+<h3 id="31-jradiobutton-botón-de-opción"><strong>3.1 JRadioButton (Botón de opción)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JRadioButton</code> permite elegir una opción entre varias. Para agruparlos, se usa <code class="language-plaintext highlighter-rouge">ButtonGroup</code>. Las propiedades y métodos más comunes son:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setText(String texto)</code>: Define el texto del botón.</li>
+  <li><code class="language-plaintext highlighter-rouge">isSelected()</code>: Retorna si el botón está seleccionado.</li>
+  <li><code class="language-plaintext highlighter-rouge">setEnabled(boolean estado)</code>: Activa o desactiva el botón.</li>
+</ul>
+
+<p>Podemos detectar un cambio en la selección del botón con un <code class="language-plaintext highlighter-rouge">ItemListener</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JRadioButton</span> <span class="n">masculino</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"Masculino"</span><span class="o">);</span>
+<span class="n">masculino</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+<span class="nc">JRadioButton</span> <span class="n">femenino</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JRadioButton</span><span class="o">(</span><span class="s">"Femenino"</span><span class="o">);</span>
+<span class="n">femenino</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">150</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+<span class="nc">ButtonGroup</span> <span class="n">generoGroup</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ButtonGroup</span><span class="o">();</span>
+<span class="n">generoGroup</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">masculino</span><span class="o">);</span>
+<span class="n">generoGroup</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">femenino</span><span class="o">);</span>
+<span class="n">masculino</span><span class="o">.</span><span class="na">addItemListener</span><span class="o">(</span><span class="n">e</span><span class="o">-&gt;{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">masculino</span><span class="o">.</span><span class="na">isSelected</span><span class="o">())</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Masculino"</span><span class="o">);</span>
+<span class="o">});</span>
+<span class="n">femenino</span><span class="o">.</span><span class="na">addItemListener</span><span class="o">(</span><span class="n">e</span><span class="o">-&gt;{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">femenino</span><span class="o">.</span><span class="na">isSelected</span><span class="o">())</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Femenino"</span><span class="o">);</span>
+<span class="o">});</span>
+<span class="n">add</span><span class="o">(</span><span class="n">masculino</span><span class="o">);</span>
+<span class="n">add</span><span class="o">(</span><span class="n">femenino</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="32-jcheckbox-botón-de-selección"><strong>3.2 JCheckBox (Botón de selección)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JCheckBox</code> permite seleccionar una opción con una casilla de verificado. Aunque no es habitual. Aunque <code class="language-plaintext highlighter-rouge">JCheckBox</code> normalmente permite múltiples selecciones, puedes agruparlos en un <strong><code class="language-plaintext highlighter-rouge">ButtonGroup</code></strong> si quieres que el usuario seleccione solo una opción. Sin embargo, para opciones exclusivas se recomienda usar <code class="language-plaintext highlighter-rouge">JRadioButton</code>. Las propiedades y métodos más comunes son:</p>
+
+<ul>
+  <li>Un <strong><code class="language-plaintext highlighter-rouge">JCheckBox</code></strong> puede estar en uno de los dos estados: seleccionado (<code class="language-plaintext highlighter-rouge">true</code>) o no seleccionado (<code class="language-plaintext highlighter-rouge">false</code>).</li>
+  <li>Permite asociar un <strong>evento de acción</strong> para realizar acciones cuando el usuario cambia su estado.</li>
+  <li>Puede incluir un texto o ícono asociado.</li>
+  <li>Es posible agrupar varios <code class="language-plaintext highlighter-rouge">JCheckBox</code> para permitir múltiples selecciones independientes.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">setSelected(boolean estado)</code></strong>: Selecciona (<code class="language-plaintext highlighter-rouge">true</code>) o deselecciona (<code class="language-plaintext highlighter-rouge">false</code>) la casilla.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">isSelected()</code></strong>: Retorna el estado actual (<code class="language-plaintext highlighter-rouge">true</code> si está seleccionado).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">setText(String texto)</code></strong>: Establece el texto asociado a la casilla.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">addActionListener(ActionListener l)</code></strong>: Permite capturar eventos cuando cambia el estado de la casilla.</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">JCheckBoxDemo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Crear la ventana</span>
+        <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Ejemplo de JCheckBox"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span> <span class="c1">// Usar diseño nulo para posicionamiento manual</span>
+
+        <span class="c1">// Crear un JCheckBox</span>
+        <span class="nc">JCheckBox</span> <span class="n">checkBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JCheckBox</span><span class="o">(</span><span class="s">"Aceptar términos y condiciones"</span><span class="o">);</span>
+        <span class="n">checkBox</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">50</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+        <span class="c1">// Añadir un ActionListener para capturar eventos</span>
+        <span class="n">checkBox</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="k">new</span> <span class="nc">ActionListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">checkBox</span><span class="o">.</span><span class="na">isSelected</span><span class="o">())</span> <span class="o">{</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Seleccionado"</span><span class="o">);</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Deseleccionado"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+
+        <span class="c1">// Añadir el JCheckBox a la ventana</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">checkBox</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MultiCheckBoxDemo</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Crear ventana</span>
+        <span class="nc">JFrame</span> <span class="n">frame</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Ejemplo con varios JCheckBox"</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">300</span><span class="o">,</span> <span class="mi">200</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">setLayout</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+
+        <span class="c1">// Crear varios JCheckBox</span>
+        <span class="nc">JCheckBox</span> <span class="n">opcion1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JCheckBox</span><span class="o">(</span><span class="s">"Opción 1"</span><span class="o">);</span>
+        <span class="n">opcion1</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">30</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+        <span class="nc">JCheckBox</span> <span class="n">opcion2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JCheckBox</span><span class="o">(</span><span class="s">"Opción 2"</span><span class="o">);</span>
+        <span class="n">opcion2</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+        <span class="nc">JCheckBox</span> <span class="n">opcion3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JCheckBox</span><span class="o">(</span><span class="s">"Opción 3"</span><span class="o">);</span>
+        <span class="n">opcion3</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+
+        <span class="c1">// Añadir ActionListener para capturar eventos</span>
+        <span class="n">opcion1</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Opción 1: "</span> <span class="o">+</span> <span class="n">opcion1</span><span class="o">.</span><span class="na">isSelected</span><span class="o">()));</span>
+        <span class="n">opcion2</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Opción 2: "</span> <span class="o">+</span> <span class="n">opcion2</span><span class="o">.</span><span class="na">isSelected</span><span class="o">()));</span>
+        <span class="n">opcion3</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Opción 3: "</span> <span class="o">+</span> <span class="n">opcion3</span><span class="o">.</span><span class="na">isSelected</span><span class="o">()));</span>
+
+        <span class="c1">// Añadir JCheckBox a la ventana</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">opcion1</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">opcion2</span><span class="o">);</span>
+        <span class="n">frame</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">opcion3</span><span class="o">);</span>
+
+        <span class="n">frame</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="32-ejercicio-2">3.2 Ejercicio 2</h3>
+
+<p>Haz un formulario en el que tengas los siguientes apartados:</p>
+
+<ul>
+  <li>Un texfield con tu nombre.</li>
+  <li>Un radioButton con las opciones <code class="language-plaintext highlighter-rouge">masculino</code>, <code class="language-plaintext highlighter-rouge">femenino</code> y <code class="language-plaintext highlighter-rouge">no especificado</code>. Selecciona <code class="language-plaintext highlighter-rouge">no especificado</code> por defecto.</li>
+  <li>Una etiqueta que ponga “Matriculado en:”</li>
+  <li>Un checkbox con las asignaturas de primer curso (PROG, EDE, SIN, ING, IPE, LMGSI, BD, PYI)</li>
+  <li>Un botón que al pulsarlo haga aparecer un diálogo con la información seleccionada de la siguiente forma:
+    <ul>
+      <li>“Hola [nombre], tu sexo es [sexo] y te has matriculado en [lo que te hayas matriculado, separado por comas]”.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="33-jcombobox-menú-desplegable"><strong>3.3 JComboBox (Menú desplegable)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JComboBox</code> permite al usuario seleccionar una opción de un menú desplegable. Admite genéricos. Sus propiedades y métodos más comunes son:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">addItem(T item)</code>: Añade un elemento al menú.</li>
+  <li><code class="language-plaintext highlighter-rouge">getSelectedItem()</code>: Obtiene el elemento seleccionado.</li>
+  <li><code class="language-plaintext highlighter-rouge">removeItem(T item)</code>: Elimina un elemento.</li>
+  <li><code class="language-plaintext highlighter-rouge">setEditable(boolean estado)</code>: Define si el usuario puede escribir en el campo.</li>
+</ul>
+
+<p>Como sucede con el RadioButton, podemos detectar un cambio en la selección con un <code class="language-plaintext highlighter-rouge">ActionListener</code> o <code class="language-plaintext highlighter-rouge">ItemListener</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">comboBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"Opción 1"</span><span class="o">,</span> <span class="s">"Opción 2"</span><span class="o">,</span> <span class="s">"Opción 3"</span><span class="o">});</span>
+<span class="n">comboBox</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">200</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+<span class="n">comboBox</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Seleccionado: "</span> <span class="o">+</span> <span class="n">comboBox</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">()));</span>
+</code></pre></div></div>
+
+<h3 id="34-jlist-lista"><strong>3.4 JList (Lista)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JList</code> permite mostrar una lista de elementos y seleccionar uno o varios. Como sucede con el comboBox, admite genéricos. Sus propiedades y métodos más comunes son:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setListData(T[] datos)</code>: Establece los elementos de la lista.</li>
+  <li><code class="language-plaintext highlighter-rouge">getSelectedValuesList()</code>: Retorna los elementos seleccionados.</li>
+  <li><code class="language-plaintext highlighter-rouge">setSelectionMode(int modo)</code>: Define si se pueden seleccionar uno o varios elementos (<code class="language-plaintext highlighter-rouge">SINGLE_SELECTION</code>, <code class="language-plaintext highlighter-rouge">MULTIPLE_INTERVAL_SELECTION</code>).</li>
+</ul>
+
+<p>Permite detectar la selección de uno o más elementos con un <code class="language-plaintext highlighter-rouge">ListSelectionListener</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">lista</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"Elemento 1"</span><span class="o">,</span> <span class="s">"Elemento 2"</span><span class="o">,</span> <span class="s">"Elemento 3"</span><span class="o">});</span>
+<span class="n">lista</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">250</span><span class="o">,</span> <span class="mi">150</span><span class="o">,</span> <span class="mi">60</span><span class="o">);</span>
+<span class="n">lista</span><span class="o">.</span><span class="na">setSelectionMode</span><span class="o">(</span><span class="nc">ListSelectionModel</span><span class="o">.</span><span class="na">MULTIPLE_INTERVAL_SELECTION</span><span class="o">);</span>
+<span class="n">lista</span><span class="o">.</span><span class="na">addListSelectionListener</span><span class="o">(</span><span class="n">e</span><span class="o">-&gt;</span><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Elemento seleccionado"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h3 id="35-jtable-tabla"><strong>3.5 JTable (Tabla)</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">JTable</code> muestra datos en filas y columnas. Sus propiedades más usadas son:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setValueAt(Object value, int row, int column)</code>: Cambia el valor de una celda.</li>
+  <li><code class="language-plaintext highlighter-rouge">getValueAt(int row, int column)</code>: Obtiene el valor de una celda.</li>
+  <li><code class="language-plaintext highlighter-rouge">setEnabled(boolean estado)</code>: Permite o no editar celdas.</li>
+  <li><code class="language-plaintext highlighter-rouge">setRowHeight(int altura)</code>: Define la altura de las filas.</li>
+</ul>
+
+<p>Comparte el ListSelectionListener de las listas.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span><span class="o">[]</span> <span class="n">columnas</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Columna 1"</span><span class="o">,</span> <span class="s">"Columna 2"</span><span class="o">};</span>
+<span class="nc">Object</span><span class="o">[][]</span> <span class="n">datos</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="o">{</span><span class="s">"Dato 1"</span><span class="o">,</span> <span class="s">"Dato 2"</span><span class="o">},</span>
+    <span class="o">{</span><span class="s">"Dato 3"</span><span class="o">,</span> <span class="s">"Dato 4"</span><span class="o">}</span>
+<span class="o">};</span>
+<span class="nc">JTable</span> <span class="n">tabla</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTable</span><span class="o">(</span><span class="n">datos</span><span class="o">,</span> <span class="n">columnas</span><span class="o">);</span>
+<span class="n">tabla</span><span class="o">.</span><span class="na">setBounds</span><span class="o">(</span><span class="mi">50</span><span class="o">,</span> <span class="mi">330</span><span class="o">,</span> <span class="mi">300</span><span class="o">,</span> <span class="mi">80</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="36-ejercicio-3">3.6 Ejercicio 3</h3>
+
+<p>Completa el ejercicio 3 con un Combobox en el que puedas elegir un curso (por ejemplo, “2024-2025”), una lista donde puedas elegir tus estudios previos (“Ciclo formativo medio”, “Ciclo formativo superior”, “Bachillerato”, “Carrera universitaria”, “Master universitario”) y visualiza toda la información en la tabla en lugar de usar un JDialog. Se debe quedar algo similar al primer ejemplo, pero con otras características.</p>
+
+<h2 id="4-uso-de-genéricos-con-los-componentes-de-swing">4. Uso de genéricos con los componentes de Swing</h2>
+
+<p>Swing permite el uso de genéricos en ciertos componentes como <code class="language-plaintext highlighter-rouge">JComboBox</code> y <code class="language-plaintext highlighter-rouge">JList</code>, lo que garantiza la seguridad de tipos en tiempo de compilación. Esto reduce la necesidad de realizar conversiones explícitas y previene errores comunes.</p>
+
+<p>Por ejemplo, en lugar de usar un <code class="language-plaintext highlighter-rouge">JComboBox</code> sin especificar el tipo de datos:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JComboBox</span> <span class="n">comboBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">();</span>
+<span class="n">comboBox</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="s">"Opción 1"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Es preferible usar genéricos para indicar que manejará <code class="language-plaintext highlighter-rouge">String</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">comboBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"Opción 1"</span><span class="o">,</span> <span class="s">"Opción 2"</span><span class="o">});</span>
+<span class="n">comboBox</span><span class="o">.</span><span class="na">addItem</span><span class="o">(</span><span class="s">"Opción 3"</span><span class="o">);</span> <span class="c1">// Ahora solo permite añadir Strings.</span>
+</code></pre></div></div>
+
+<p>Esto aplica también a <code class="language-plaintext highlighter-rouge">JList</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">lista</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;&gt;(</span><span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"Elemento 1"</span><span class="o">,</span> <span class="s">"Elemento 2"</span><span class="o">});</span>
+</code></pre></div></div>
+
+<p>No es obligatorio usar genéricos, podemos usar <code class="language-plaintext highlighter-rouge">Object</code> ya que en Java todas las clases heredan de esta. Sin embargo, nos va a venir bien para tener más pulcro el código o para usar funcionalidades específicas de determinados tipos de datos.</p>
+
+<h3 id="41-ejercicio-4">4.1 Ejercicio 4</h3>
+
+<p>Cambia el ejercicio 3 y emplea genéricos siempre que puedas.</p>
+
+<h2 id="5-modelos-y-defaultmodel">5. Modelos y <code class="language-plaintext highlighter-rouge">DefaultModel</code></h2>
+
+<p>En Swing, los componentes como <code class="language-plaintext highlighter-rouge">JTable</code>, <code class="language-plaintext highlighter-rouge">JList</code> y <code class="language-plaintext highlighter-rouge">JComboBox</code> separan los datos (modelo) de la vista (componente visual). Esto permite actualizar los datos dinámicamente sin alterar la interfaz gráfica directamente.</p>
+
+<h3 id="51-defaultcomboboxmodel"><strong>5.1 DefaultComboBoxModel</strong></h3>
+
+<p>De manera similar, <code class="language-plaintext highlighter-rouge">DefaultComboBoxModel</code> facilita la gestión de datos dinámicos en un <code class="language-plaintext highlighter-rouge">JComboBox</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">DefaultComboBoxModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">comboBoxModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultComboBoxModel</span><span class="o">&lt;&gt;();</span>
+<span class="n">comboBoxModel</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="s">"Elemento 1"</span><span class="o">);</span>
+<span class="n">comboBoxModel</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="s">"Elemento 2"</span><span class="o">);</span>
+
+<span class="nc">JComboBox</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">comboBox</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JComboBox</span><span class="o">&lt;&gt;(</span><span class="n">comboBoxModel</span><span class="o">);</span>
+
+</code></pre></div></div>
+
+<h3 id="52-defaultlistmodel"><strong>5.2 DefaultListModel</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">DefaultListModel</code> se utiliza con <code class="language-plaintext highlighter-rouge">JList</code> para gestionar listas dinámicas:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">DefaultListModel</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">listModel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultListModel</span><span class="o">&lt;&gt;();</span>
+<span class="n">listModel</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="s">"Opción 1"</span><span class="o">);</span>
+<span class="n">listModel</span><span class="o">.</span><span class="na">addElement</span><span class="o">(</span><span class="s">"Opción 2"</span><span class="o">);</span>
+
+<span class="nc">JList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">lista</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JList</span><span class="o">&lt;&gt;(</span><span class="n">listModel</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="53-defaulttablemodel"><strong>5.3 DefaultTableModel</strong></h3>
+
+<p><code class="language-plaintext highlighter-rouge">DefaultTableModel</code> se utiliza con <code class="language-plaintext highlighter-rouge">JTable</code> para gestionar datos tabulares. Te permite añadir, eliminar y actualizar filas o columnas dinámicamente:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">String</span><span class="o">[]</span> <span class="n">columnas</span> <span class="o">=</span> <span class="o">{</span><span class="s">"Nombre"</span><span class="o">,</span> <span class="s">"Edad"</span><span class="o">};</span>
+<span class="nc">DefaultTableModel</span> <span class="n">modelo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultTableModel</span><span class="o">(</span><span class="n">columnas</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span> <span class="c1">// Sin filas iniciales</span>
+
+<span class="c1">// Añadir filas</span>
+<span class="n">modelo</span><span class="o">.</span><span class="na">addRow</span><span class="o">(</span><span class="k">new</span> <span class="nc">Object</span><span class="o">[]{</span><span class="s">"Juan"</span><span class="o">,</span> <span class="mi">25</span><span class="o">});</span>
+<span class="n">modelo</span><span class="o">.</span><span class="na">addRow</span><span class="o">(</span><span class="k">new</span> <span class="nc">Object</span><span class="o">[]{</span><span class="s">"María"</span><span class="o">,</span> <span class="mi">30</span><span class="o">});</span>
+
+<span class="c1">// Asignar el modelo a una tabla</span>
+<span class="nc">JTable</span> <span class="n">tabla</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JTable</span><span class="o">(</span><span class="n">modelo</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>Si necesitáramos un control más avanzado sobre la manipulación de datos o un comportamiento específico, podríamos crear un modelo personalizado implementando las interfaces correspondientes (por ejemplo, <code class="language-plaintext highlighter-rouge">TableModel</code>).</p>
+
+<h3 id="45-ejercicio-5">4.5 Ejercicio 5</h3>
+
+<p>Crea una interfaz gráfica en la cual tengamos un TextField, un TextArea, un ComboBox y varios botones. Su función será almacenar conceptos y sus respectivas descripciones, pudiendo consultarlas seleccionando la opción adecuada en el ComboBox. Añade un botón Añadir que haga lo siguiente:</p>
+
+<ul>
+  <li>Cada vez que se le pulse, si el TextField y el TextArea están rellenados, añade en un <code class="language-plaintext highlighter-rouge">HashMap&lt;String, String&gt;</code> el texto del TextField como clave y el del TextArea como valor.</li>
+  <li>Cada vez que eso sucede, se actualiza el modelo del Combobox añadiendo un elemento nuevo al combo, que será la clave. En general, las opciones del combobox deben equivaler a las claves del mapa.</li>
+  <li>Cuando seleccionamos una opción en el combobox, se deben rellenar el TextField y el TextArea con sus valores correspondientes.</li>
+  <li>Crea dos botones más, Actualizar y Borrar. Solo se pueden pulsar si hay un combobox seleccionado. Si pulsamos Actualizar, se elimina el elemento del mapa y se reemplaza por el que esté escrito en ese momento. Si pulsamos Borrar, se elimina el elemento del mapa y se limpian los campos del programa.</li>
+  <li>Al pulsar cualquier botón, la seleccion del combobox se debe borrar. En el caso del botón Añadir, la clave del nuevo par debe ser lo que se quede seleccionado.</li>
+</ul>
+
+<h3 id="46-ejercicio-6">4.6 Ejercicio 6</h3>
+
+<p>Crea una interfaz gráfica con un TextField y tres RadioButton con los valores “Rojo, Verde, Azul”. Añade un Label. En el label indicaremos el color del fondo.</p>
+
+<p>En el TextField podemos escribir números entre el 0 y el 255. Cuando pongamos un número, cambiará el parámetro RGB del color que esté seleccionado en el RadioButton (por defecto, Rojo). Ese color se aplicará al fondo y se verá en la etiqueta.</p>
+
+<p>Añade otro textfield, un botón y una tabla. Al pulsar el botón, guardaremos el contenido del textfield como nombre del color, y sus valores RGB (uno por cada columna) en la tabla.</p>
+
+<p>Al hacer click en el nombre de un color, cambiaremos el fondo a ese color.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

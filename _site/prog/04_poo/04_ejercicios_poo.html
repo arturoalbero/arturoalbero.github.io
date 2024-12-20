@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>arturoalbero.github.io | Web para probar</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="arturoalbero.github.io" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/04_poo/04_ejercicios_poo.html" />
+<meta property="og:url" content="http://localhost:4000/prog/04_poo/04_ejercicios_poo.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="arturoalbero.github.io" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"arturoalbero.github.io","url":"http://localhost:4000/prog/04_poo/04_ejercicios_poo.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+} 
+p{
+    text-indent: 1rem;
+    text-align: justify;
+}
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bold;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<ul>
+  <li><a href="#programación-orienada-a-objetos">Programación Orienada a Objetos</a>
+    <ul>
+      <li><a href="#ejercicios-de-ampliación">Ejercicios de ampliación</a>
+        <ul>
+          <li><a href="#ejercicio-1-gestor-de-liga-de-fútbol">Ejercicio 1: Gestor de Liga de Fútbol</a></li>
+          <li><a href="#ejercicio-2-gestor-de-aeropuertos">Ejercicio 2: Gestor de Aeropuertos</a></li>
+          <li><a href="#ejercicio-3-sistema-de-gestión-de-turnos-en-un-hospital">Ejercicio 3: Sistema de Gestión de Turnos en un Hospital</a></li>
+          <li><a href="#ejercicio-4-sistema-de-gestión-de-alquiler-de-coches">Ejercicio 4: Sistema de Gestión de Alquiler de Coches</a></li>
+          <li><a href="#rúbrica-para-los-ejercicios">Rúbrica para los ejercicios</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#programació-orientada-a-objectes-val">Programació Orientada a Objectes (VAL)</a>
+    <ul>
+      <li><a href="#exercicis-dampliació">Exercicis d’ampliació</a>
+        <ul>
+          <li><a href="#exercici-1-gestor-de-lliga-de-futbol">Exercici 1: Gestor de Lliga de Futbol</a></li>
+          <li><a href="#exercici-2-gestor-daeroports">Exercici 2: Gestor d’Aeroports</a></li>
+          <li><a href="#exercici-3-sistema-de-gestió-de-torn-en-un-hospital">Exercici 3: Sistema de Gestió de Torn en un Hospital</a></li>
+          <li><a href="#exercici-4-sistema-de-gestió-de-lloguer-de-cotxes">Exercici 4: Sistema de Gestió de Lloguer de Cotxes</a></li>
+          <li><a href="#rúbrica-per-als-exercicis">Rúbrica per als exercicis</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="programación-orienada-a-objetos">Programación Orienada a Objetos</h1>
+
+<h2 id="ejercicios-de-ampliación">Ejercicios de ampliación</h2>
+
+<p>Dada las siguientes especificaciones de texto, de cada una debes crear un proyecto informático completo. Empieza con el diagrama de clases y luego programa en Java el proyecto. Cuando esté terminado, testea la clase principal y añade la documentación necesaria en javadoc.</p>
+
+<h3 id="ejercicio-1-gestor-de-liga-de-fútbol">Ejercicio 1: Gestor de Liga de Fútbol</h3>
+
+<p>Se ha encargado desarrollar un gestor para una liga de fútbol. La liga debe estar identificada por un nombre y una temporada, definida por el año de inicio y el de finalización. La liga estará compuesta por un máximo de 22 equipos.</p>
+
+<p>Cada equipo debe incluir información como su nombre, el número de partidos ganados, empatados y perdidos. A partir de estos datos, se podrá calcular la puntuación total de cada equipo según el sistema estándar de puntos (3 puntos por victoria, 1 por empate, 0 por derrota). Además, cada equipo debe tener entre 18 y 24 futbolistas.</p>
+
+<p>Cada futbolista debe tener datos que lo identifiquen: nombre, nacionalidad, un número de identificación único, su posición en el campo (portero, defensa, centrocampista o delantero), el número de goles marcados y el número de partidos jugados.</p>
+
+<p>Se requiere que solo exista una instancia de la liga (patrón singleton). Debes implementar la funcionalidad para añadir y eliminar equipos, así como para añadir y eliminar futbolistas de los equipos. Además, se debe poder acceder a la información completa de cada jugador, equipo o la liga misma.</p>
+
+<p>El sistema debe proporcionar las siguientes funcionalidades:</p>
+
+<ul>
+  <li>Mostrar los equipos en posiciones de descenso (los 4 últimos).</li>
+  <li>Mostrar los equipos en posiciones de clasificación para competiciones europeas (los 4 primeros).</li>
+  <li>Calcular los goles a favor de cada equipo.</li>
+  <li>Identificar al máximo goleador (“pichichi”) de la liga.</li>
+</ul>
+
+<hr />
+
+<h3 id="ejercicio-2-gestor-de-aeropuertos">Ejercicio 2: Gestor de Aeropuertos</h3>
+
+<p>Se te ha pedido desarrollar un sistema para gestionar la operativa de un aeropuerto internacional. El aeropuerto debe estar identificado por un nombre, un código IATA de tres letras, y la ciudad donde se encuentra.</p>
+
+<p>Cada aeropuerto gestiona varios vuelos. Un vuelo está identificado por un número único, la aerolínea operadora, el destino y el origen. También debe incluir la hora de salida, la hora de llegada estimada y el estado del vuelo (en hora, retrasado, cancelado).</p>
+
+<p>Cada vuelo tiene una tripulación asignada, formada por al menos un piloto y dos auxiliares de vuelo. Los tripulantes deben incluir información como su nombre, nacionalidad, y su número de identificación único.</p>
+
+<p>Se debe poder:</p>
+
+<ul>
+  <li>Añadir y eliminar vuelos.</li>
+  <li>Asignar o eliminar tripulantes de los vuelos.</li>
+  <li>Consultar el estado de cualquier vuelo en cualquier momento.</li>
+  <li>Filtrar los vuelos por su destino, origen o estado.</li>
+  <li>Calcular el tiempo estimado de llegada para los vuelos en base a su hora de salida.</li>
+</ul>
+
+<p>El sistema debe permitir acceder a la información completa de cada vuelo y cada tripulante.</p>
+
+<hr />
+
+<h3 id="ejercicio-3-sistema-de-gestión-de-turnos-en-un-hospital">Ejercicio 3: Sistema de Gestión de Turnos en un Hospital</h3>
+
+<p>Un hospital te ha solicitado desarrollar un sistema para gestionar los turnos de trabajo de su personal. El hospital está compuesto por diferentes departamentos (p. ej., Urgencias, Pediatría, Cardiología), y cada uno tiene un nombre que lo identifica.</p>
+
+<p>El personal del hospital incluye doctores, enfermeros y auxiliares. Cada empleado está identificado por su nombre, número de identificación, su cargo, y su especialidad (en el caso de los doctores). Cada empleado está asignado a un departamento específico.</p>
+
+<p>El sistema debe gestionar los turnos de trabajo de cada empleado. Un turno tiene una fecha, una hora de inicio y una hora de fin. Cada empleado puede estar asignado a múltiples turnos, pero no puede tener más de un turno asignado en el mismo horario.</p>
+
+<p>El sistema debe permitir:</p>
+
+<ul>
+  <li>Asignar turnos a empleados y eliminarlos si es necesario.</li>
+  <li>Consultar los turnos asignados a un empleado o a un departamento completo.</li>
+  <li>Filtrar turnos por fecha o por departamento.</li>
+  <li>Identificar empleados con exceso de horas de trabajo (más de 40 horas semanales).</li>
+  <li>Consultar la disponibilidad de un empleado en un horario determinado.</li>
+</ul>
+
+<p>Se debe acceder fácilmente a la información completa de cada empleado, sus turnos y los departamentos del hospital.</p>
+
+<hr />
+
+<h3 id="ejercicio-4-sistema-de-gestión-de-alquiler-de-coches">Ejercicio 4: Sistema de Gestión de Alquiler de Coches</h3>
+
+<p>Se te ha encargado desarrollar un sistema de gestión para una empresa de alquiler de coches. La empresa tiene un nombre y varias sucursales distribuidas en distintas ciudades. Cada sucursal está identificada por su ciudad y dirección.</p>
+
+<p>Cada sucursal cuenta con una flota de vehículos de diferentes tipos (por ejemplo, sedán, SUV, furgoneta). Cada vehículo está identificado por una matrícula, modelo, marca, año de fabricación, y el número de asientos. Además, cada coche puede estar disponible o alquilado.</p>
+
+<p>El sistema debe permitir:</p>
+
+<ul>
+  <li>Registrar la información de nuevos vehículos en una sucursal.</li>
+  <li>Alquilar un coche a un cliente. Para ello, se debe registrar el nombre del cliente, su identificación y el coche que ha alquilado.</li>
+  <li>Devolver coches alquilados.</li>
+  <li>Consultar la disponibilidad de vehículos en cada sucursal.</li>
+  <li>Filtrar los vehículos por tipo, marca o número de asientos.</li>
+</ul>
+
+<p>Además, el sistema debe llevar un control de la cantidad de vehículos disponibles y en uso por cada sucursal, y debe permitir acceder a la información de cada coche, sucursal y cliente.</p>
+
+<h3 id="rúbrica-para-los-ejercicios">Rúbrica para los ejercicios</h3>
+
+<p>Los ejercicios de la práctica en la parte del tema 4 estarán basados en estos ejercicios de ampliación y seguirán la siguiente rúbrica. Podéis emplearla para orientaros en cuánta importancia tiene cada aspecto de cara a la corrección:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th>Ponderación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Diagrama de clases. Definiciones de clases</td>
+      <td>15%</td>
+    </tr>
+    <tr>
+      <td>Diagrama de clases. Relaciones de asociación, agregación y composición</td>
+      <td>15%</td>
+    </tr>
+    <tr>
+      <td>Diagrama de clases. Relaciones de herencia, dependencia y empaquetado</td>
+      <td>15%</td>
+    </tr>
+    <tr>
+      <td>Diseño de las pruebas en texto</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td>Java. Traslado del diagrama a lenguaje de programación</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Java. Implementación de los métodos</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Java. Implementación de las pruebas</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Java. Implementación de un Main para acceder a la aplicación</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td>Javadoc. Documentación en javadoc y generación de la documentación</td>
+      <td>15%</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="programació-orientada-a-objectes-val">Programació Orientada a Objectes (VAL)</h1>
+
+<h2 id="exercicis-dampliació">Exercicis d’ampliació</h2>
+
+<p>A partir de les següents especificacions de text, per a cada una has de crear un projecte informàtic complet. Comença amb el diagrama de classes i després programa en Java el projecte. Quan estiga acabat, testa la classe principal i afegeix la documentació necessària en javadoc.</p>
+
+<h3 id="exercici-1-gestor-de-lliga-de-futbol">Exercici 1: Gestor de Lliga de Futbol</h3>
+
+<p>S’ha encarregat desenvolupar un gestor per a una lliga de futbol. La lliga ha d’estar identificada per un nom i una temporada, definida per l’any d’inici i el de finalització. La lliga estarà composta per un màxim de 22 equips.</p>
+
+<p>Cada equip ha d’incloure informació com el seu nom, el nombre de partits guanyats, empatats i perduts. A partir d’aquestes dades, es podrà calcular la puntuació total de cada equip segons el sistema estàndard de punts (3 punts per victòria, 1 per empat, 0 per derrota). A més, cada equip ha de tindre entre 18 i 24 futbolistes.</p>
+
+<p>Cada futbolista ha de tindre dades que l’identifiquen: nom, nacionalitat, un número d’identificació únic, la seua posició en el camp (porter, defensa, migcampista o davanter), el nombre de gols marcats i el nombre de partits jugats.</p>
+
+<p>Es requereix que només existisca una instància de la lliga (patró singleton). Has d’implementar la funcionalitat per a afegir i eliminar equips, així com per a afegir i eliminar futbolistes dels equips. A més, s’ha de poder accedir a la informació completa de cada jugador, equip o de la lliga mateixa.</p>
+
+<p>El sistema ha de proporcionar les següents funcionalitats:</p>
+
+<ul>
+  <li>Mostrar els equips en posicions de descens (els últims 4).</li>
+  <li>Mostrar els equips en posicions de classificació per a competicions europees (els primers 4).</li>
+  <li>Calcular els gols a favor de cada equip.</li>
+  <li>Identificar el màxim golejador (“pichichi”) de la lliga.</li>
+</ul>
+
+<hr />
+
+<h3 id="exercici-2-gestor-daeroports">Exercici 2: Gestor d’Aeroports</h3>
+
+<p>Se t’ha demanat desenvolupar un sistema per a gestionar l’operativa d’un aeroport internacional. L’aeroport ha d’estar identificat per un nom, un codi IATA de tres lletres, i la ciutat on es troba.</p>
+
+<p>Cada aeroport gestiona diversos vols. Un vol està identificat per un número únic, la línia aèria operadora, la destinació i l’origen. També ha d’incloure l’hora d’eixida, l’hora d’arribada estimada i l’estat del vol (a temps, endarrerit, cancel·lat).</p>
+
+<p>Cada vol té una tripulació assignada, formada per almenys un pilot i dos auxiliars de vol. Els tripulants han d’incloure informació com el seu nom, nacionalitat, i el seu número d’identificació únic.</p>
+
+<p>Es podrà:</p>
+
+<ul>
+  <li>Afegir i eliminar vols.</li>
+  <li>Assignar o eliminar tripulants dels vols.</li>
+  <li>Consultar l’estat de qualsevol vol en qualsevol moment.</li>
+  <li>Filtrar els vols per destinació, origen o estat.</li>
+  <li>Calcular el temps estimat d’arribada per als vols basant-se en la seua hora d’eixida.</li>
+</ul>
+
+<p>El sistema ha de permetre accedir a la informació completa de cada vol i cada tripulant.</p>
+
+<hr />
+
+<h3 id="exercici-3-sistema-de-gestió-de-torn-en-un-hospital">Exercici 3: Sistema de Gestió de Torn en un Hospital</h3>
+
+<p>Un hospital t’ha sol·licitat desenvolupar un sistema per a gestionar els torns de treball del seu personal. L’hospital està compost per diferents departaments (p. ex., Urgències, Pediatria, Cardiologia), i cada un té un nom que l’identifica.</p>
+
+<p>El personal de l’hospital inclou doctors, infermers i auxiliars. Cada empleat està identificat pel seu nom, número d’identificació, el seu càrrec, i la seua especialitat (en el cas dels doctors). Cada empleat està assignat a un departament específic.</p>
+
+<p>El sistema ha de gestionar els torns de treball de cada empleat. Un torn té una data, una hora d’inici i una hora de finalització. Cada empleat pot estar assignat a múltiples torns, però no pot tindre més d’un torn assignat en el mateix horari.</p>
+
+<p>El sistema ha de permetre:</p>
+
+<ul>
+  <li>Assignar torns a empleats i eliminar-los si és necessari.</li>
+  <li>Consultar els torns assignats a un empleat o a un departament complet.</li>
+  <li>Filtrar torns per data o per departament.</li>
+  <li>Identificar empleats amb excés d’hores de treball (més de 40 hores setmanals).</li>
+  <li>Consultar la disponibilitat d’un empleat en un horari determinat.</li>
+</ul>
+
+<p>S’ha d’accedir fàcilment a la informació completa de cada empleat, els seus torns i els departaments de l’hospital.</p>
+
+<hr />
+
+<h3 id="exercici-4-sistema-de-gestió-de-lloguer-de-cotxes">Exercici 4: Sistema de Gestió de Lloguer de Cotxes</h3>
+
+<p>Se t’ha encarregat desenvolupar un sistema de gestió per a una empresa de lloguer de cotxes. L’empresa té un nom i diverses sucursals distribuïdes en diferents ciutats. Cada sucursal està identificada per la seua ciutat i adreça.</p>
+
+<p>Cada sucursal compta amb una flota de vehicles de diferents tipus (per exemple, sedán, SUV, furgoneta). Cada vehicle està identificat per una matrícula, model, marca, any de fabricació, i el nombre de seients. A més, cada cotxe pot estar disponible o llogat.</p>
+
+<p>El sistema ha de permetre:</p>
+
+<ul>
+  <li>Registrar la informació de nous vehicles en una sucursal.</li>
+  <li>Llogar un cotxe a un client. Per a això, s’ha de registrar el nom del client, la seua identificació i el cotxe que ha llogat.</li>
+  <li>Tornar cotxes llogats.</li>
+  <li>Consultar la disponibilitat de vehicles en cada sucursal.</li>
+  <li>Filtrar els vehicles per tipus, marca o nombre de seients.</li>
+</ul>
+
+<p>A més, el sistema ha de portar un control de la quantitat de vehicles disponibles i en ús per cada sucursal, i ha de permetre accedir a la informació de cada cotxe, sucursal i client.</p>
+
+<h3 id="rúbrica-per-als-exercicis">Rúbrica per als exercicis</h3>
+
+<p>Els exercicis de la pràctica en la part del tema 4 estaran basats en aquests exercicis d’ampliació i seguiran la següent rúbrica. Podeu emprar-la per a orientar-vos en quina importància té cada aspecte de cara a la correcció:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concepte</th>
+      <th>Ponderació</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Diagrama de classes. Definicions de classes</td>
+      <td>15%</td>
+    </tr>
+    <tr>
+      <td>Diagrama de classes. Relacions d’associació, agregació i composició</td>
+      <td>15%</td>
+    </tr>
+    <tr>
+      <td>Diagrama de classes. Relacions d’herència, dependència i empaquetatge</td>
+      <td>15%</td>
+    </tr>
+    <tr>
+      <td>Disseny de les proves en text</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td>Java. Trasllat del diagrama a llenguatge de programació</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Java. Implementació dels mètodes</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Java. Implementació de les proves</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>Java. Implementació d’un Main per accedir a l’aplicació</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td>Javadoc. Documentació en javadoc i generació de la documentació</td>
+      <td>15%</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

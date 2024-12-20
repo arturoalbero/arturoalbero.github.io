@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>arturoalbero.github.io | Web para probar</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="arturoalbero.github.io" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT04.1/03_pruebasUnitarias.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT04.1/03_pruebasUnitarias.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="arturoalbero.github.io" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"arturoalbero.github.io","url":"http://localhost:4000/ede/UT04.1/03_pruebasUnitarias.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+} 
+p{
+    text-indent: 1rem;
+    text-align: justify;
+}
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+h3{
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bold;
+}
+img{
+    display: block;
+    margin: 0 auto;
+}
+</style>
+
+<ul>
+  <li><a href="#cas-introducción-a-las-pruebas-unitarias">(CAS) Introducción a las pruebas unitarias</a>
+    <ul>
+      <li><a href="#qué-son-los-test-de-unidad">¿Qué son los <strong>Test de Unidad</strong>?</a>
+        <ul>
+          <li><a href="#beneficios-de-los-test-de-unidad">Beneficios de los Test de Unidad</a>
+            <ul>
+              <li><a href="#ejemplo-sencillo-de-test-de-unidad">Ejemplo sencillo de test de unidad</a></li>
+            </ul>
+          </li>
+          <li><a href="#implementación-de-test-de-unidad-en-java-usando-intellij-y-junit">Implementación de Test de Unidad en Java usando IntelliJ y JUnit</a>
+            <ul>
+              <li><a href="#paso-1-configurar-el-proyecto-en-intellij-con-junit"><strong>Paso 1: Configurar el proyecto en IntelliJ con JUnit</strong></a></li>
+              <li><a href="#paso-2-escribir-un-test-de-unidad-en-java-usando-junit"><strong>Paso 2: Escribir un Test de Unidad en Java usando JUnit</strong></a></li>
+              <li><a href="#paso-3-ejecutar-el-test-en-intellij"><strong>Paso 3: Ejecutar el Test en IntelliJ</strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#agregando-más-tests">Agregando más tests</a></li>
+        </ul>
+      </li>
+      <li><a href="#diseño-de-test-de-unidad">Diseño de Test de unidad</a>
+        <ul>
+          <li><a href="#actividad-1-números-primos">Actividad 1: Números primos</a></li>
+          <li><a href="#actividad-2-sumador-de-palabras">Actividad 2: Sumador de palabras</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#valintroducció-a-les-proves-unitàries">(VAL)Introducció a les proves unitàries</a>
+    <ul>
+      <li><a href="#què-són-els-tests-dunitat">Què són els <strong>Tests d’Unitat</strong>?</a>
+        <ul>
+          <li><a href="#beneficis-dels-tests-dunitat">Beneficis dels Tests d’Unitat</a>
+            <ul>
+              <li><a href="#exemple-senzill-de-test-dunitat">Exemple senzill de test d’unitat</a></li>
+            </ul>
+          </li>
+          <li><a href="#implementació-de-test-dunitat-en-java-amb-intellij-i-junit">Implementació de Test d’Unitat en Java amb IntelliJ i JUnit</a>
+            <ul>
+              <li><a href="#pas-1-configurar-el-projecte-en-intellij-amb-junit"><strong>Pas 1: Configurar el projecte en IntelliJ amb JUnit</strong></a></li>
+              <li><a href="#pas-2-escriure-un-test-dunitat-en-java-amb-junit"><strong>Pas 2: Escriure un Test d’Unitat en Java amb JUnit</strong></a></li>
+              <li><a href="#pas-3-executar-el-test-en-intellij"><strong>Pas 3: Executar el Test en IntelliJ</strong></a></li>
+            </ul>
+          </li>
+          <li><a href="#afegint-més-tests">Afegint més tests</a></li>
+        </ul>
+      </li>
+      <li><a href="#disseny-de-test-dunitat">Disseny de Test d’unitat</a>
+        <ul>
+          <li><a href="#activitat-1-nombres-primers">Activitat 1: Nombres primers</a></li>
+          <li><a href="#activitat-2-sumador-de-paraules">Activitat 2: Sumador de paraules</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="cas-introducción-a-las-pruebas-unitarias">(CAS) Introducción a las pruebas unitarias</h1>
+
+<h2 id="qué-son-los-test-de-unidad">¿Qué son los <strong>Test de Unidad</strong>?</h2>
+
+<p>Los <strong>tests de unidad</strong> son pequeñas pruebas automatizadas que se escriben para verificar que una porción específica de código (una “unidad”, generalmente una función o método) funcione correctamente. Su propósito es comprobar que una unidad de código aislada haga lo que se espera que haga sin depender de otras partes del sistema.</p>
+
+<h3 id="beneficios-de-los-test-de-unidad">Beneficios de los Test de Unidad</h3>
+
+<ol>
+  <li><strong>Mejora la calidad del código</strong>: Detectan errores en las primeras etapas del desarrollo.</li>
+  <li><strong>Facilitan el mantenimiento</strong>: Al cambiar el código, los tests ayudan a asegurarse de que no se rompa el comportamiento existente.</li>
+  <li><strong>Permiten refactorizar con confianza</strong>: Si los tests pasan después de refactorizar, es probable que el código siga funcionando.</li>
+</ol>
+
+<hr />
+
+<h4 id="ejemplo-sencillo-de-test-de-unidad">Ejemplo sencillo de test de unidad</h4>
+
+<p>Supongamos que tenemos una clase <strong>Calculadora</strong> en Java, con un método que suma dos números:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculadora</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">sumar</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">a</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Queremos escribir un test de unidad para verificar que el método <code class="language-plaintext highlighter-rouge">sumar()</code> funciona correctamente.</p>
+
+<hr />
+
+<h3 id="implementación-de-test-de-unidad-en-java-usando-intellij-y-junit">Implementación de Test de Unidad en Java usando IntelliJ y JUnit</h3>
+
+<h4 id="paso-1-configurar-el-proyecto-en-intellij-con-junit"><strong>Paso 1: Configurar el proyecto en IntelliJ con JUnit</strong></h4>
+
+<ol>
+  <li>
+    <p><strong>Crear un nuevo proyecto en IntelliJ</strong> utilizando Maven.</p>
+  </li>
+  <li>
+    <p><strong>Agregar dependencia de JUnit (si no está configurado automáticamente)</strong>:
+Asegúrate de que el archivo <code class="language-plaintext highlighter-rouge">pom.xml</code> tenga la siguiente dependencia para JUnit:</p>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>junit-jupiter-api<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>5.7.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>junit-jupiter-engine<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>5.7.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Crear la clase de test</strong>:</p>
+    <ul>
+      <li>En el árbol de directorios de IntelliJ, crea un nuevo paquete llamado <code class="language-plaintext highlighter-rouge">test</code> (en <code class="language-plaintext highlighter-rouge">src/test/java</code>).</li>
+      <li>Crea una nueva clase de prueba (ej. <code class="language-plaintext highlighter-rouge">CalculadoraTest</code>) en ese paquete.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="paso-2-escribir-un-test-de-unidad-en-java-usando-junit"><strong>Paso 2: Escribir un Test de Unidad en Java usando JUnit</strong></h4>
+
+<p>Vamos a escribir un test para la clase <code class="language-plaintext highlighter-rouge">Calculadora</code>:</p>
+
+<ol>
+  <li>Crea la clase <code class="language-plaintext highlighter-rouge">CalculadoraTest</code> y usa las anotaciones de <strong>JUnit</strong> para definir tus pruebas:</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.junit.jupiter.api.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">jupiter</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculadoraTest</span> <span class="o">{</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSumar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">resultado</span> <span class="o">=</span> <span class="nc">Calculadora</span><span class="o">.</span><span class="na">sumar</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">resultado</span><span class="o">,</span> <span class="s">"La suma de 2 y 3 debe ser 5"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>@Test</strong>: Esta anotación indica que el método <code class="language-plaintext highlighter-rouge">testSumar</code> es una prueba que se debe ejecutar.</li>
+  <li><strong>assertEquals(esperado, actual)</strong>: Verifica si el valor que devuelve el método (en este caso <code class="language-plaintext highlighter-rouge">5</code>) es igual al valor esperado (también <code class="language-plaintext highlighter-rouge">5</code>). Si no coincide, el test fallará.</li>
+</ul>
+
+<hr />
+
+<h4 id="paso-3-ejecutar-el-test-en-intellij"><strong>Paso 3: Ejecutar el Test en IntelliJ</strong></h4>
+
+<ol>
+  <li>Haz clic derecho sobre la clase de prueba <code class="language-plaintext highlighter-rouge">CalculadoraTest</code> y selecciona “Run ‘CalculadoraTest’”.</li>
+  <li>Si todo está bien, IntelliJ te mostrará que el test ha pasado exitosamente.</li>
+</ol>
+
+<hr />
+
+<h3 id="agregando-más-tests">Agregando más tests</h3>
+
+<p>Para asegurarnos de que la clase <strong>Calculadora</strong> se comporta correctamente en diferentes escenarios, podemos agregar más tests. Por ejemplo, un test para sumar números negativos:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSumarNumerosNegativos</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">resultado</span> <span class="o">=</span> <span class="nc">Calculadora</span><span class="o">.</span><span class="na">sumar</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(-</span><span class="mi">6</span><span class="o">,</span> <span class="n">resultado</span><span class="o">,</span> <span class="s">"La suma de -1 y -5 debe ser -6"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Cada vez que agregues un test, simplemente ejecútalo de nuevo para verificar que todos los casos pasen.</p>
+
+<hr />
+
+<h2 id="diseño-de-test-de-unidad">Diseño de Test de unidad</h2>
+
+<p>Cuando creamos los test de unidad, debemos diseñarlos para comprobar valores tanto acertados, como errados o fuera de ámbito. Es tan importante comprobar que hace bien una operación como que el programa sabe enfrentarse a entradas no esperadas. En general, cuando diseñamos un test, creamos una tabla como la que sigue:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Identificador</th>
+      <th>Nombre</th>
+      <th>Entrada de datos</th>
+      <th>Resultado esperado</th>
+      <th>Resultado obtenido</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>U1</td>
+      <td>testSumarNumerosNegativos</td>
+      <td>Calculadora.sumar(-1, -5)</td>
+      <td>-6</td>
+      <td>?</td>
+    </tr>
+    <tr>
+      <td>U2</td>
+      <td>testSumarConStrings</td>
+      <td>Calculadora.sumar(-1, “paco”)</td>
+      <td><code class="language-plaintext highlighter-rouge">error</code></td>
+      <td>?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Una buena estrategia es:</p>
+
+<ul>
+  <li>Buscar casos comunes.</li>
+  <li>Si procede, buscar casos en el límite de operaciones.</li>
+  <li>Comprobar cómo reacciona un método ante entradas inesperadas.</li>
+</ul>
+
+<h3 id="actividad-1-números-primos">Actividad 1: Números primos</h3>
+
+<p>Diseña test de unidad para el siguiente método, tanto en una tabla como en JUNIT.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculadora</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">esPrimo</span><span class="o">(</span><span class="kt">int</span> <span class="n">numero</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">numero</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">numero</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">numero</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="actividad-2-sumador-de-palabras">Actividad 2: Sumador de palabras</h3>
+
+<p>Diseña test de unidad para el siguiente método, tanto en una tabla como en JUNIT. El método coge dos palabras y suma el valor de todos los caracteres. El valor de un caracter es su número en ASCII.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculadora</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">sumaPalabras</span><span class="o">(</span><span class="nc">String</span> <span class="n">palabra1</span><span class="o">,</span> <span class="nc">String</span> <span class="n">palabra2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">suma</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">palabra1</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">suma</span> <span class="o">+=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">c</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">palabra2</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">suma</span> <span class="o">+=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">c</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">suma</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div style="page-break-after: always;"></div>
+
+<h1 id="valintroducció-a-les-proves-unitàries">(VAL)Introducció a les proves unitàries</h1>
+
+<h2 id="què-són-els-tests-dunitat">Què són els <strong>Tests d’Unitat</strong>?</h2>
+
+<p>Els <strong>tests d’unitat</strong> són petites proves automatitzades que s’escriuen per a verificar que una porció específica de codi (una “unitat”, generalment una funció o mètode) funcione correctament. El seu propòsit és comprovar que una unitat de codi aïllada fa el que s’espera que faça sense dependre d’altres parts del sistema.</p>
+
+<h3 id="beneficis-dels-tests-dunitat">Beneficis dels Tests d’Unitat</h3>
+
+<ol>
+  <li><strong>Millora la qualitat del codi</strong>: Detecten errors en les primeres etapes del desenvolupament.</li>
+  <li><strong>Faciliten el manteniment</strong>: En modificar el codi, els tests ajuden a assegurar que no es trenque el comportament existent.</li>
+  <li><strong>Permeten refactoritzar amb confiança</strong>: Si els tests passen després de refactoritzar, és probable que el codi continue funcionant.</li>
+</ol>
+
+<hr />
+
+<h4 id="exemple-senzill-de-test-dunitat">Exemple senzill de test d’unitat</h4>
+
+<p>Suposem que tenim una classe <strong>Calculadora</strong> en Java, amb un mètode que suma dos números:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculadora</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">sumar</span><span class="o">(</span><span class="nc">Integer</span> <span class="n">a</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Volem escriure un test d’unitat per a verificar que el mètode <code class="language-plaintext highlighter-rouge">sumar()</code> funciona correctament.</p>
+
+<hr />
+
+<h3 id="implementació-de-test-dunitat-en-java-amb-intellij-i-junit">Implementació de Test d’Unitat en Java amb IntelliJ i JUnit</h3>
+
+<h4 id="pas-1-configurar-el-projecte-en-intellij-amb-junit"><strong>Pas 1: Configurar el projecte en IntelliJ amb JUnit</strong></h4>
+
+<ol>
+  <li>
+    <p><strong>Crear un nou projecte en IntelliJ</strong> utilitzant Maven.</p>
+  </li>
+  <li>
+    <p><strong>Afegir dependència de JUnit (si no està configurat automàticament)</strong>:
+Assegura’t que l’arxiu <code class="language-plaintext highlighter-rouge">pom.xml</code> tinga la següent dependència per a JUnit:</p>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>junit-jupiter-api<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>5.7.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.junit.jupiter<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>junit-jupiter-engine<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>5.7.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Crear la classe de test</strong>:</p>
+    <ul>
+      <li>En l’arbre de directoris d’IntelliJ, crea un nou paquet anomenat <code class="language-plaintext highlighter-rouge">test</code> (en <code class="language-plaintext highlighter-rouge">src/test/java</code>).</li>
+      <li>Crea una nova classe de prova (p. ex. <code class="language-plaintext highlighter-rouge">CalculadoraTest</code>) en aquest paquet.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="pas-2-escriure-un-test-dunitat-en-java-amb-junit"><strong>Pas 2: Escriure un Test d’Unitat en Java amb JUnit</strong></h4>
+
+<p>Anem a escriure un test per a la classe <code class="language-plaintext highlighter-rouge">Calculadora</code>:</p>
+
+<ol>
+  <li>Crea la classe <code class="language-plaintext highlighter-rouge">CalculadoraTest</code> i usa les anotacions de <strong>JUnit</strong> per a definir les teues proves:</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.junit.jupiter.api.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">junit</span><span class="o">.</span><span class="na">jupiter</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CalculadoraTest</span> <span class="o">{</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSumar</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">resultat</span> <span class="o">=</span> <span class="nc">Calculadora</span><span class="o">.</span><span class="na">sumar</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="n">resultat</span><span class="o">,</span> <span class="s">"La suma de 2 i 3 ha de ser 5"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>@Test</strong>: Aquesta anotació indica que el mètode <code class="language-plaintext highlighter-rouge">testSumar</code> és una prova que s’ha d’executar.</li>
+  <li><strong>assertEquals(esperat, actual)</strong>: Verifica si el valor que retorna el mètode (en aquest cas <code class="language-plaintext highlighter-rouge">5</code>) és igual al valor esperat (també <code class="language-plaintext highlighter-rouge">5</code>). Si no coincideix, el test fallarà.</li>
+</ul>
+
+<hr />
+
+<h4 id="pas-3-executar-el-test-en-intellij"><strong>Pas 3: Executar el Test en IntelliJ</strong></h4>
+
+<ol>
+  <li>Fes clic dret sobre la classe de prova <code class="language-plaintext highlighter-rouge">CalculadoraTest</code> i selecciona “Run ‘CalculadoraTest’”.</li>
+  <li>Si tot està correcte, IntelliJ et mostrarà que el test ha passat amb èxit.</li>
+</ol>
+
+<hr />
+
+<h3 id="afegint-més-tests">Afegint més tests</h3>
+
+<p>Per a assegurar-nos que la classe <strong>Calculadora</strong> es comporta correctament en diferents escenaris, podem afegir més tests. Per exemple, un test per a sumar nombres negatius:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSumarNumerosNegatius</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kt">int</span> <span class="n">resultat</span> <span class="o">=</span> <span class="nc">Calculadora</span><span class="o">.</span><span class="na">sumar</span><span class="o">(-</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">5</span><span class="o">);</span>
+    <span class="n">assertEquals</span><span class="o">(-</span><span class="mi">6</span><span class="o">,</span> <span class="n">resultat</span><span class="o">,</span> <span class="s">"La suma de -1 i -5 ha de ser -6"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Cada vegada que afegeixes un test, simplement executa’l de nou per a verificar que tots els casos passen.</p>
+
+<hr />
+
+<h2 id="disseny-de-test-dunitat">Disseny de Test d’unitat</h2>
+
+<p>Quan creem els tests d’unitat, hem de dissenyar-los per a comprovar valors tant encertats com erronis o fora d’àmbit. És tan important comprovar que fa bé una operació com que el programa sap enfrontar-se a entrades inesperades. En general, quan dissenyem un test, creem una taula com la que segueix:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Identificador</th>
+      <th>Nom</th>
+      <th>Entrada de dades</th>
+      <th>Resultat esperat</th>
+      <th>Resultat obtingut</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>U1</td>
+      <td>testSumarNumerosNegatius</td>
+      <td>Calculadora.sumar(-1, -5)</td>
+      <td>-6</td>
+      <td>?</td>
+    </tr>
+    <tr>
+      <td>U2</td>
+      <td>testSumarAmbStrings</td>
+      <td>Calculadora.sumar(-1, “paco”)</td>
+      <td><code class="language-plaintext highlighter-rouge">error</code></td>
+      <td>?</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Una bona estratègia és:</p>
+
+<ul>
+  <li>Buscar casos comuns.</li>
+  <li>Si és procedent, buscar casos en el límit de les operacions.</li>
+  <li>Comprovar com reacciona un mètode davant d’entrades inesperades.</li>
+</ul>
+
+<h3 id="activitat-1-nombres-primers">Activitat 1: Nombres primers</h3>
+
+<p>Dissenya tests d’unitat per al següent mètode, tant en una taula com en JUnit.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculadora</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">esPrimer</span><span class="o">(</span><span class="kt">int</span> <span class="n">numero</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">numero</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">numero</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">numero</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span> 
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span> 
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="activitat-2-sumador-de-paraules">Activitat 2: Sumador de paraules</h3>
+
+<p>Dissenya tests d’unitat per al següent mètode, tant en una taula com en JUnit. El mètode agafa dues paraules i suma el valor de tots els caràcters. El valor d’un caràcter és el seu número en ASCII.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculadora</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">sumaParaules</span><span class="o">(</span><span class="nc">String</span> <span class="n">paraula1</span><span class="o">,</span> <span class="nc">String</span> <span class="n">paraula2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">suma</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">paraula1</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">suma</span> <span class="o">+=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">c</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">paraula2</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">suma</span> <span class="o">+=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">c</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">suma</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

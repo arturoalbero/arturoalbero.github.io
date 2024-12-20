@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sistemes de control de versions | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sistemes de control de versions" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT03/01_vcs_basic.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT03/01_vcs_basic.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sistemes de control de versions" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sistemes de control de versions","url":"http://localhost:4000/ede/UT03/01_vcs_basic.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="sistemes-de-control-de-versions"><strong>Sistemes de control de versions</strong></h1>
+
+<p>Els sistemes de control de versions (VCS) són eines que poden registrar qualsevol canvi en qualsevol fitxer o conjunt de fitxers al llarg del temps, de manera que puguem recuperar fàcilment qualsevol versió anterior. Poden ser utilitzats no només amb fitxers fonts, sinó també amb qualsevol altre tipus de fitxer.</p>
+
+<p>Un VCS ens permet revertir l’estat de qualsevol fitxer o fins i tot d’un projecte sencer, i comparar fitxers al llarg del temps, determinar qui va canviar el fitxer en un moment determinat i molt més. A més, si algun fitxer es danya o es perd, podem tornar a una versió anterior en la història i recuperar-lo de nou.</p>
+<h2 id="1-tipus-de-vcs">1. Tipus de VCS</h2>
+
+<h3 id="11-vcs-local"><strong>1.1 VCS Local</strong></h3>
+<p>Els VCS poden ser utilitzats tant en línia com en mode local. Aquest últim mode és particularment útil perquè podem crear fàcilment una còpia de seguretat d’un projecte i emmagatzemar-la localment, de manera que la podem restaurar més tard si la necessitem (en cas d’un error, per exemple) i tornar a una versió estable.</p>
+
+<p>L’avantatge principal d’això és la seva simplicitat, i el principal inconvenient és que hem de gestionar el control de versions manualment, de manera que podem cometre alguns errors en aquest procés. Per exemple, hem d’oblidar-nos que estem en la carpeta equivocada i després modificar el fitxer de còpia de seguretat en lloc del fitxer actual.</p>
+
+<p>Per fer front a aquests problemes, hi ha algunes eines interessants que ens ajuden a gestionar els fitxers i canvis. Una de les més populars és un sistema anomenat rcs, que encara es pot trobar en molts ordinadors. Aquesta eina bàsicament emmagatzema un conjunt de pegats o diferències entre fitxers d’una versió a l’altra. Aquests canvis s’emmagatzemen en un tipus de fitxer especial, i després el sistema pot recuperar qualsevol estat anterior de qualsevol fitxer, afegint o restant els pegats corresponents.
+<img src="/ede/UT03/image.png" alt="alt text" /></p>
+
+<h3 id="12-vcs-centralitzat"><strong>1.2 VCS Centralitzat</strong></h3>
+<p>Els VCS locals no són adequats quan necessitem col·laborar amb altres membres de l’equip. Per resoldre aquest problema, també hi ha VCS centralitzats (CVCS). Aquests sistemes s’instal·len en un sol servidor que conté tots els fitxers i les seves diferents versions. Aleshores, molts clients poden connectar-se a aquest servidor i descarregar/pujar canvis a aquests fitxers. Aquesta segona manera de controlar les versions va ser un estàndard durant molts anys, ja que tenia grans avantatges sobre els sistemes CVS locals, però el seu principal inconvenient és que, si el servidor falla, podríem perdre tot el projecte.
+<img src="/ede/UT03/image-1.png" alt="alt text" /></p>
+
+<h3 id="13-vcs-distribuït"><strong>1.3 VCS Distribuït</strong></h3>
+<p>Els VCS distribuïts (DVCS) van sorgir per resoldre el principal inconvenient del CVCS. En un DVCS (com Git, Mercurial, Bazaar o Darcs), els clients no només es connecten al servidor, sinó que també descarreguen tot el repositori. Així, si un servidor falla, qualsevol dels repositoris locals dels clients pot ser copiat al servidor de nou, i el projecte pot ser restaurat. Cada vegada que descarreguem qualsevol cosa del repositori, estem fent una còpia de seguretat completa de les dades.</p>
+
+<p><img src="/ede/UT03/image-2.png" alt="alt text" /></p>
+
+<h2 id="2-git">2. <strong>Git</strong></h2>
+<p>Git va ser desenvolupat per l’equip de Linux un cop van trencar la relació amb BitKeeper, l’eina que utilitzaven per al control de versions abans. A partir de les mancances vistes en aquesta eina, van decidir alguns dels principals objectius del nou sistema a desenvolupar:</p>
+
+<ul>
+  <li>Velocitat</li>
+  <li>Disseny fàcil</li>
+  <li>Fort suport al desenvolupament no lineal (milers de branques paral·leles)</li>
+  <li>Totalment distribuït</li>
+  <li>Adequat per a grans projectes (com el nucli de Linux)</li>
+  <li>Eficàcia (en termes de velocitat i mida de dades)</li>
+</ul>
+
+<p>Des de la seva creació el 2005, Git ha evolucionat i s’ha tornat cada cop més fàcil d’utilitzar. És realment ràpid i eficient amb grans projectes, i té un sistema de branques excepcional.</p>
+
+<h3 id="21-fonaments-de-git">2.1 <strong>Fonaments de Git</strong></h3>
+
+<h4 id="211-modelatge-de-dades">2.1.1 <strong>Modelatge de dades</strong></h4>
+
+<p>Git emmagatzema una mena de conjunt d’instantànies (snapshots) del seu sistema de fitxers, en lloc d’emmagatzemar una llista de canvis. Cada vegada que pugem un nou canvi, bàsicament pren una “fotografia” de cada fitxer en aquell moment i emmagatzema una referència a aquesta instantània. Si el fitxer no ha estat modificat, Git no guarda una còpia nova, sinó un enllaç a la versió anterior, que és idèntica.</p>
+
+<p><img src="/ede/UT03/image-3.png" alt="alt text" /></p>
+
+<p>Aquesta és una diferència important entre Git i gairebé tots els altres VCS, i fa que Git replantege alguns aspectes de les generacions anteriors de VCS. Per tant, s’assembla més a un petit sistema de fitxers amb eines útils, més que a un VCS tradicional.</p>
+
+<h4 id="212-treball-local">2.1.2 <strong>Treball local</strong></h4>
+
+<p>La major part de les funcions de Git només necessiten fitxers i recursos locals per funcionar. Com que la història del projecte s’emmagatzema localment, moltes operacions són immediates, i ens permet treballar en un projecte fins i tot si no estem connectats a Internet. Els canvis es guarden localment, i tan prompte com tinguem una connexió, es pot actualitzar el repositori extern.</p>
+
+<ol>
+  <li><strong>Integritat</strong></li>
+</ol>
+
+<p>Git utilitza l’algoritme de hash SHA-1 per emmagatzemar la informació, de manera que les dades estan sempre verificades, i si es modifica alguna cosa, Git se n’adonaria.</p>
+
+<ol>
+  <li><strong>Només afegeix informació</strong></li>
+</ol>
+
+<p>Cada operació de Git consisteix a afegir informació, de manera que tot es pot desfer fàcilment (la informació no s’esborra). Després de confirmar una instantània, la informació es guarda de manera segura.</p>
+
+<ol>
+  <li><strong>Estats del projecte</strong></li>
+</ol>
+
+<p>Git té tres estats principals en què pot estar qualsevol fitxer d’un projecte:</p>
+
+<ul>
+  <li><strong>Modificat</strong>: les dades han estat canviades localment, però encara no s’han confirmat (committed).</li>
+  <li><strong>En estat d’espera (staged)</strong>: les dades s’han etiquetat per ser enviades en el pròxim commit.</li>
+  <li><strong>Confirmat (committed)</strong>: les dades s’han emmagatzemat de manera segura en un magatzem local.</li>
+</ul>
+
+<p>Per tant, hi ha tres seccions en Git:</p>
+
+<ul>
+  <li><strong>Directori de Git (repository)</strong>: on Git emmagatzema les metadades i la base de dades dels elements del projecte. Aquesta part és la que copiem quan clonem el repositori des d’un altre ordinador.</li>
+  <li><strong>Directori de treball (working directory)</strong>: és una còpia d’una versió del projecte. Aquests fitxers s’extrauen de la base de dades de Git i es col·loquen en una carpeta, llestos per a ser utilitzats.</li>
+  <li><strong>Àrea d’espera (staging area)</strong>: és un fitxer simple emmagatzemat en el directori de Git que conté informació sobre els fitxers que seran enviats en el següent commit. També es coneix com a índex.</li>
+</ul>
+
+<p><img src="/ede/UT03/image-4.png" alt="alt text" /></p>
+
+<h3 id="22-cicle-bàsic-de-treball-amb-git">2.2 <strong>Cicle bàsic de treball amb Git</strong></h3>
+
+<p>Ara que ja coneixem alguns dels conceptes bàsics de Git, vegem el cicle de treball típic amb Git.</p>
+
+<ol>
+  <li><strong>Modificar fitxers</strong>: Treballem en els fitxers del projecte en el directori de treball.</li>
+  <li><strong>Afegir canvis a l’àrea d’espera</strong>: Una vegada hem fet canvis que volem registrar, els afegim a l’àrea d’espera utilitzant l’ordre <code class="language-plaintext highlighter-rouge">git add</code>.</li>
+  <li><strong>Confirmar canvis (commit)</strong>: Finalment, fem un commit dels canvis afegits a l’àrea d’espera amb l’ordre <code class="language-plaintext highlighter-rouge">git commit</code>. Això emmagatzema de manera segura una instantània dels canvis en el repositori de Git.</li>
+</ol>
+
+<p>A més, podem pujar els canvis a un repositori remot amb <code class="language-plaintext highlighter-rouge">git push</code> o baixar canvis amb <code class="language-plaintext highlighter-rouge">git pull</code>.</p>
+
+<h4 id="221-comandes-bàsiques">2.2.1 Comandes bàsiques</h4>
+
+<ul>
+  <li><strong>git init</strong>: Inicialitza un nou repositori Git.</li>
+  <li><strong>git clone</strong>: Clona un repositori existent a l’ordinador local.</li>
+  <li><strong>git status</strong>: Mostra l’estat actual del projecte, indicant quins fitxers han estat modificats i quins estan en l’àrea d’espera.</li>
+  <li><strong>git add</strong>: Afegix fitxers a l’àrea d’espera (per exemple, <code class="language-plaintext highlighter-rouge">git add &lt;fitxer&gt;</code>).</li>
+  <li><strong>git commit</strong>: Confirma els canvis en l’historial del projecte.</li>
+  <li><strong>git push</strong>: Puja els canvis al repositori remot.</li>
+  <li><strong>git pull</strong>: Descarrega els canvis des del repositori remot i els fusiona amb el projecte local.</li>
+</ul>
+
+<h4 id="222-branques-a-git">2.2.2 <strong>Branques a Git</strong></h4>
+
+<p>Una de les característiques més potents de Git és el seu sistema de branques. Una branca en Git és una línia de desenvolupament independent dins d’un projecte. Podem crear branques noves, treballar-hi i després fusionar-les amb la branca principal (normalment anomenada <code class="language-plaintext highlighter-rouge">main</code> o <code class="language-plaintext highlighter-rouge">master</code>).</p>
+
+<ul>
+  <li><strong>Crear una branca nova</strong>: Amb <code class="language-plaintext highlighter-rouge">git branch &lt;nom-branca&gt;</code>, creem una nova branca.</li>
+  <li><strong>Canviar de branca</strong>: Amb <code class="language-plaintext highlighter-rouge">git checkout &lt;nom-branca&gt;</code>, ens movem a una altra branca.</li>
+  <li><strong>Fusionar branques</strong>: Amb <code class="language-plaintext highlighter-rouge">git merge &lt;nom-branca&gt;</code>, fusionem els canvis d’una branca en una altra.</li>
+</ul>
+
+<p>Les branques són ideals per a treballar en noves funcionalitats sense afectar la branca principal del projecte. Quan la funcionalitat està acabada, podem fusionar-la amb la branca principal.</p>
+
+<h4 id="223-fusionar-conflictes">2.2.3 <strong>Fusionar conflictes</strong></h4>
+
+<p>Quan es treballa amb altres persones en el mateix projecte, de vegades poden ocórrer conflictes quan dos desenvolupadors fan canvis al mateix fitxer i intenten fusionar-los. Això és el que es coneix com a <strong>conflicte de fusió</strong>.</p>
+
+<p>Quan ocorre un conflicte, Git ens avisa i ens demana que el resolguem manualment. Hem de revisar el fitxer conflictiu, triar quins canvis conservar i després confirmar la fusió resolta.</p>
+
+<h4 id="224-clonar-un-repositori">2.2.4 <strong>Clonar un repositori</strong></h4>
+
+<p>Quan comencem a treballar en un projecte que ja està en un repositori remot, el primer que fem és clonar-lo al nostre ordinador local amb l’ordre:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;url-del-repositori&gt;
+</code></pre></div></div>
+
+<p>Això descarrega una còpia completa del repositori i la seva història.</p>
+
+<h4 id="225-estats-dels-fitxers-en-git">2.2.5 <strong>Estats dels fitxers en Git</strong></h4>
+
+<p>Com hem vist, Git utilitza tres estats principals per als fitxers:</p>
+
+<ol>
+  <li><strong>Modificat (Modified)</strong>: El fitxer ha estat canviat, però no s’ha afegit a l’àrea d’espera.</li>
+  <li><strong>En espera (Staged)</strong>: El fitxer ha estat afegit a l’àrea d’espera i està llest per al següent commit.</li>
+  <li><strong>Confirmat (Committed)</strong>: El fitxer està emmagatzemat de manera segura en el repositori local.</li>
+</ol>
+
+<p>Aquests estats permeten gestionar de manera eficient els canvis en el projecte i assegurar-nos que cada modificació està correctament registrada.</p>
+
+<p><strong><em><a href="https://nachoiborraies.github.io/entornos/md/en/05a">font</a></em></strong></p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

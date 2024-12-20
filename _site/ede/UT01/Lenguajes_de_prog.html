@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introducción a los Lenguajes de Programación | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Introducción a los Lenguajes de Programación" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT01/Lenguajes_de_prog.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT01/Lenguajes_de_prog.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introducción a los Lenguajes de Programación" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Introducción a los Lenguajes de Programación","url":"http://localhost:4000/ede/UT01/Lenguajes_de_prog.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h3 id="introducción-a-los-lenguajes-de-programación">Introducción a los Lenguajes de Programación</h3>
+<p>En la asignatura de “Entornos de desarrollo” vamos a introducirnos en los conceptos fundamentales de los lenguajes de programación, haciendo énfasis en elementos comunes que nos permitirán comprender y programar en diversos lenguajes como C, C++, C#, Java y Python. Utilizaremos el entorno en línea <a href="https://www.mycompiler.io/es">MyCompiler.io</a> para escribir, compilar e interpretar nuestro código, permitiéndonos explorar las características esenciales de cada lenguaje.</p>
+
+<h4 id="elementos-básicos-de-un-lenguaje-de-programación">Elementos Básicos de un Lenguaje de Programación</h4>
+
+<h5 id="variables">Variables</h5>
+<p>Una <strong>variable</strong> es un espacio en la memoria de un programa donde podemos almacenar y manipular datos. Cada lenguaje de programación maneja las variables de manera diferente en cuanto a la declaración y el tipo de datos que almacenan. Estos tipos de datos pueden ser enteros, decimales, caracteres, cadenas, entre otros.</p>
+
+<p>Por ejemplo, en C o C++ necesitamos declarar el tipo de la variable antes de usarla:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numero</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">letra</span> <span class="o">=</span> <span class="sc">'A'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>En lenguajes como Python, no es necesario declarar el tipo, ya que el lenguaje asigna el tipo automáticamente:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numero</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">letra</span> <span class="o">=</span> <span class="s">'A'</span>
+</code></pre></div></div>
+
+<h5 id="tipos-de-datos-y-tipado">Tipos de Datos y Tipado</h5>
+<p>Los lenguajes de programación también difieren en la manera en que manejan los tipos de datos. Esto nos lleva a dos conceptos importantes:</p>
+
+<ul>
+  <li>
+    <p><strong>Tipado estático vs. tipado dinámico</strong>: En lenguajes como C, C++ y Java, el tipo de una variable debe ser declarado explícitamente, lo que se denomina <strong>tipado estático</strong>. En cambio, en Python, el tipo de una variable se asigna en tiempo de ejecución, lo que se llama <strong>tipado dinámico</strong>.</p>
+  </li>
+  <li>
+    <p><strong>Tipado fuerte vs. tipado débil</strong>: Un lenguaje con <strong>tipado fuerte</strong> (como Java o Python) restringe más las operaciones entre tipos diferentes, mientras que un lenguaje con <strong>tipado débil</strong> (como C) puede permitir ciertas conversiones automáticas entre tipos.</p>
+  </li>
+</ul>
+
+<h5 id="operadores">Operadores</h5>
+<p>Los <strong>operadores</strong> permiten realizar operaciones sobre las variables, como sumar, restar, comparar o asignar valores. Los operadores básicos incluyen:</p>
+
+<ul>
+  <li><strong>Aritméticos</strong>: Suma (<code class="language-plaintext highlighter-rouge">+</code>), resta (<code class="language-plaintext highlighter-rouge">-</code>), multiplicación (<code class="language-plaintext highlighter-rouge">*</code>), división (<code class="language-plaintext highlighter-rouge">/</code>)</li>
+  <li><strong>De asignación</strong>: Igualdad (<code class="language-plaintext highlighter-rouge">=</code>), suma y asignación (<code class="language-plaintext highlighter-rouge">+=</code>), etc.</li>
+  <li><strong>Relacionales</strong>: Mayor que (<code class="language-plaintext highlighter-rouge">&gt;</code>), menor que (<code class="language-plaintext highlighter-rouge">&lt;</code>), igual a (<code class="language-plaintext highlighter-rouge">==</code>), etc.</li>
+  <li><strong>Lógicos</strong>: Y (<code class="language-plaintext highlighter-rouge">&amp;&amp;</code> o <code class="language-plaintext highlighter-rouge">and</code>), O (<code class="language-plaintext highlighter-rouge">||</code> o <code class="language-plaintext highlighter-rouge">or</code>), negación (<code class="language-plaintext highlighter-rouge">!</code> o <code class="language-plaintext highlighter-rouge">not</code>)</li>
+</ul>
+
+<p>Ejemplo de uso de operadores en C++:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">suma</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span> <span class="c1">// Operador aritmético</span>
+<span class="kt">bool</span> <span class="n">resultado</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// Operador relacional</span>
+</code></pre></div></div>
+
+<h5 id="entrada-y-salida-por-consola">Entrada y Salida por Consola</h5>
+<p>La <strong>entrada y salida de datos</strong> es un aspecto fundamental en cualquier lenguaje de programación. Nos permite interactuar con el usuario o con otros sistemas mediante el uso de la consola.</p>
+
+<ul>
+  <li><strong>Salida por consola</strong>: Imprimir datos en la consola es común en todos los lenguajes. En C o C++, usamos <code class="language-plaintext highlighter-rouge">printf</code> o <code class="language-plaintext highlighter-rouge">cout</code> respectivamente, mientras que en Java usamos <code class="language-plaintext highlighter-rouge">System.out.println</code>, y en Python usamos <code class="language-plaintext highlighter-rouge">print</code>.</li>
+</ul>
+
+<p>Ejemplos de salida en distintos lenguajes:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// En C</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Hola Mundo</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+
+<span class="c1">// En C++</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Hola Mundo"</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="c1">// En Python</span>
+<span class="n">print</span><span class="p">(</span><span class="s">"Hola Mundo"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Entrada por consola</strong>: Para recibir datos del usuario, podemos usar funciones como <code class="language-plaintext highlighter-rouge">scanf</code> en C, <code class="language-plaintext highlighter-rouge">cin</code> en C++ o <code class="language-plaintext highlighter-rouge">input</code> en Python.</li>
+</ul>
+
+<p>Ejemplo de entrada:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// En C</span>
+<span class="kt">int</span> <span class="n">edad</span><span class="p">;</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">edad</span><span class="p">);</span>
+
+<span class="c1">// En Python</span>
+<span class="n">edad</span> <span class="o">=</span> <span class="n">input</span><span class="p">(</span><span class="s">"Introduce tu edad: "</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="compiladores-intérpretes-y-máquinas-virtuales">Compiladores, Intérpretes y Máquinas Virtuales</h4>
+
+<p>Los lenguajes de programación se pueden clasificar según cómo ejecutan su código:</p>
+
+<ul>
+  <li>
+    <p><strong>Compiladores</strong>: Transforman el código fuente en <strong>código objeto</strong> (binario o ejecutable) antes de ejecutarlo. Ejemplos de lenguajes compilados incluyen C y C++. Aquí, el compilador traduce todo el código antes de ejecutarlo.</p>
+  </li>
+  <li>
+    <p><strong>Intérpretes</strong>: Los lenguajes interpretados ejecutan el código línea por línea sin compilarlo previamente. Python es un ejemplo de lenguaje interpretado.</p>
+  </li>
+  <li>
+    <p><strong>Máquinas virtuales</strong>: En lenguajes como Java y C#, el código se compila en un <strong>código intermedio</strong> llamado <strong>bytecode</strong>, que es ejecutado por una máquina virtual (JVM en Java, CLR en C#). Esto permite que el código sea más portátil entre diferentes sistemas operativos.</p>
+  </li>
+</ul>
+
+<h4 id="ejemplos-de-ejecución-en-mycompilerio">Ejemplos de Ejecución en MyCompiler.io</h4>
+
+<p>Utilizaremos <a href="https://www.mycompiler.io/es">MyCompiler.io</a> para escribir y probar los ejemplos en los distintos lenguajes. Este entorno permite escribir código y ejecutarlo en diferentes lenguajes sin necesidad de instalar un entorno de desarrollo local. El compilador o intérprete asociado con cada lenguaje se encargará de ejecutar el código en la web.</p>
+
+<h4 id="ejercicios-propuestos">Ejercicios Propuestos</h4>
+<p>A continuación, te proponemos algunos ejercicios básicos que deberás implementar en los lenguajes que estamos trabajando (C, C++, C#, Java y Python). Estos ejercicios te permitirán familiarizarte con la sintaxis básica, las variables, los operadores y las entradas y salidas por consola:</p>
+
+<ol>
+  <li>
+    <p><strong>Imprimir un mensaje en consola</strong>: Escribe un programa que imprima “Hola, Mundo” en consola.</p>
+  </li>
+  <li>
+    <p><strong>Suma de dos números</strong>: Escribe un programa que solicite al usuario dos números enteros, los sume e imprima el resultado.</p>
+  </li>
+  <li>
+    <p><strong>Área de un rectángulo</strong>: Escribe un programa que solicite al usuario el ancho y la altura de un rectángulo e imprima su área.</p>
+  </li>
+  <li>
+    <p><strong>Conversión de temperatura</strong>: Escribe un programa que convierta una temperatura de grados Celsius a Fahrenheit.</p>
+  </li>
+  <li>
+    <p><strong>Cálculo de edad</strong>: Escribe un programa que solicite al usuario su año de nacimiento y calcule su edad actual.</p>
+  </li>
+</ol>
+
+<p>Recuerda realizar cada uno de estos ejercicios en los lenguajes que estamos utilizando (C, C++, C#, Java y Python), y observa cómo cambian la sintaxis y las herramientas utilizadas en cada uno.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

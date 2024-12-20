@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 03: Componentes estáticos, patrones de diseño, testeo y documentación | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 03: Componentes estáticos, patrones de diseño, testeo y documentación" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/04_poo/03_poo_misc.html" />
+<meta property="og:url" content="http://localhost:4000/prog/04_poo/03_poo_misc.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 03: Componentes estáticos, patrones de diseño, testeo y documentación" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 03: Componentes estáticos, patrones de diseño, testeo y documentación","url":"http://localhost:4000/prog/04_poo/03_poo_misc.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      
+<h1 id="sesión-03-componentes-estáticos-patrones-de-diseño-testeo-y-documentación">Sesión 03: Componentes estáticos, patrones de diseño, testeo y documentación</h1>
+
+<ul>
+  <li><a href="#sesión-03-componentes-estáticos-patrones-de-diseño-testeo-y-documentación">Sesión 03: Componentes estáticos, patrones de diseño, testeo y documentación</a>
+    <ul>
+      <li><a href="#1-métodos-y-atributos-estáticos">1. Métodos y atributos estáticos</a>
+        <ul>
+          <li><a href="#actividad-8-uso-de-métodos-y-atributos-estáticos">Actividad 8: Uso de métodos y atributos estáticos</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-el-patrón-de-diseño-singleton">2. El patrón de diseño Singleton</a>
+        <ul>
+          <li><a href="#actividad-9-la-clase-biblioteca">Actividad 9: La clase biblioteca</a></li>
+          <li><a href="#actividad-10-pruebas-unitarias-con-singleton">Actividad 10: Pruebas unitarias con singleton</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-javadoc">3. Javadoc</a>
+        <ul>
+          <li><a href="#actividad-11-documenta-el-proyecto-biblioteca">Actividad 11: Documenta el proyecto Biblioteca</a></li>
+        </ul>
+      </li>
+      <li><a href="#4-diagramas-en-plantuml-y-markdown">4. Diagramas en PlantUML y markdown</a>
+        <ul>
+          <li><a href="#actividad-12-diagramas-en-markdown">Actividad 12: Diagramas en Markdown</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-métodos-y-atributos-estáticos">1. Métodos y atributos estáticos</h2>
+
+<p>Existe una palabra reservada que hemos estado utilizando hasta ahora sin saber muy bien qué era: <code class="language-plaintext highlighter-rouge">static</code>. Los métodos y atributos estáticos son aquellos que no pertenecen al objeto, sino a la clase.</p>
+
+<p>Esto quiere decir que una vez que el programa es ejecutado, son siempre accesibles independientemente de si hay o no instancias de la clase que los contiene.</p>
+
+<p>En las primeras etapas del curso hemos usado los elementos estáticos para simular el paradigma de programación procedural en Java, es decir, la resolución de problemas mediante funciones/procedimientos y no mediante objetos.</p>
+
+<p>Si declaramos una atributo como estático, se convierte en una especie de variable con ámbito dentro de toda la clase y a la cual podemos acceder desde fuera dependiendo de su visibilidad. Lo mismo sucede con los métodos.</p>
+
+<p>Una cosa que hay que tener en cuenta es que no se pueden usar atributos de la clase dentro de métodos estáticos (porque, en realidad, no tiene sentido ya que no hay instancia de la clase), pero sí podemos usar atributos estáticos dentro de métodos del objeto.</p>
+
+<p>En cierto modo, podemos usar las clases como contenedores de métodos estáticos, que se comportan como librerías de funciones. Tal es el caso de la clase <code class="language-plaintext highlighter-rouge">Math</code>, que incluye métodos estáticos para operaciones matemáticas complejas.</p>
+
+<p>De esta manera, podemos emplear los atributos y métodos estáticos como herramientas útiles para emplear dentro o fuera de la clase.</p>
+
+<h3 id="actividad-8-uso-de-métodos-y-atributos-estáticos">Actividad 8: Uso de métodos y atributos estáticos</h3>
+
+<p>Crea una variable estática dentro de la clase libro que sirva para contar el número de libros (instancias) que hay. Empléala para darles a cada libro un identificador único. Para ello, añade un atributo privado <code class="language-plaintext highlighter-rouge">id</code> de tipo entero. El <code class="language-plaintext highlighter-rouge">id</code> no debe pasarse como atributo al constructor ni debe poder ser modificado con un setter.</p>
+
+<p>Después, crea un método estático dentro de la clase Estantería que reciba como parámetro una estantería y devuelva un array de string. El contenido del array de string es cada uno de los parámetros, incluido el <code class="language-plaintext highlighter-rouge">id</code>, separado por el caracter <code class="language-plaintext highlighter-rouge">;</code>. Puedes rodear cada parámetro entre ` ` si dentro de alguno de los campos hubiera un <code class="language-plaintext highlighter-rouge">;</code>. Cada libro ocupa un espacio distinto del array. A este formato de texto se le conoce como CSV (Comma Separated Values) y es muy empleado en la codificación de datos.</p>
+
+<hr />
+
+<h2 id="2-el-patrón-de-diseño-singleton">2. El patrón de diseño Singleton</h2>
+
+<p>Uno de los usos más particulares de los atributos y métodos estáticos es mediante el patrón de diseño Singleton. Este patrón garantiza que solo haya una instancia de una clase haciendo que el constructor sea privado.</p>
+
+<p>Para que funcione, dentro de la clase debemos añadir un atributo privado y estático de la propia clase, así como un getter para ese atributo. En el getter, si la instancia no está inicializada, se llama al constructor. Después, en cualquier caso, se devuelve la instancia.</p>
+
+<p>De esta forma, si no hay instancia, se crea una y, si la hay, obtienes la que ya había.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Singleton</span> <span class="o">{</span>
+    <span class="c1">// Instancia privada y estática de la clase</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="n">instancia</span><span class="o">;</span>
+
+    <span class="c1">// Constructor privado para evitar la instanciación desde fuera</span>
+    <span class="kd">private</span> <span class="nf">Singleton</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+
+    <span class="c1">// Método público y estático que proporciona acceso a la única instancia</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Singleton</span> <span class="nf">getInstancia</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">instancia</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">instancia</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Singleton</span><span class="o">();</span> <span class="c1">// Crear instancia si no existe</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">instancia</span><span class="o">;</span> <span class="c1">// Retornar la instancia única</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Aunque el patrón singleton es muy útil para almacenar datos globales y de configuración, no está exento de problemas:</p>
+
+<ul>
+  <li><strong>Dificultad para el testeo y el mantenimiento:</strong> La naturaleza global de la instancia puede complicar las pruebas unitarias, ya que introduce un acoplamiento fuerte. El acoplamiento ocurre cuando un módulo o clase es altamente dependiente de otro, es decir, necesita conocer detalles específicos de la implementación del otro para funcionar y, por lo tanto, es más complejo de mantener.</li>
+  <li><strong>Problemas de concurrencia:</strong> En entornos multihilo, puede haber problemas si no se maneja adecuadamente el acceso a la instancia. Esto se soluciona con los mecanismos propios de la programación concurrente, pero añaden complejidad a la ejecución del programa.</li>
+</ul>
+
+<h3 id="actividad-9-la-clase-biblioteca">Actividad 9: La clase biblioteca</h3>
+
+<p>La clase <code class="language-plaintext highlighter-rouge">Biblioteca</code> contiene diez estanterías, numeradas del 1 al 10. Añade este atributo a la clase <code class="language-plaintext highlighter-rouge">Estanteria</code>. Solo existe una biblioteca. La biblioteca permite hacer las siguientes cosas:</p>
+
+<ul>
+  <li>Añadir libros nuevos. Se añaden a la primera estantería disponible. Devuelve falso si la biblioteca está llena.</li>
+  <li>Añadir libros nuevos a estanterías concretas. Devuelve falso si la estantería no tiene hueco.</li>
+  <li>Eliminar un libro. Se le pasa el isbn del libro y, si está, devuelve verdadero y lo elimina. Si no está, devuelve falso.</li>
+  <li>Cambiar un libro de estantería. Se le pasa el isbn del libro y el número de la estantería. Devuelve verdadero si se puede cambiar o si ya estuviera en la estantería. Devuelve falso si la estantería nueva está llena o si el libro no existe en la biblioteca.</li>
+  <li>Mejora el método anterior con un enum que indique lo que ha pasado en cada caso.</li>
+  <li>Intercambia dos libros de estantería. Recibe como parámetro el isbn de los dos libros y devuelve verdadero si el cambio es posible y falso si no lo es (por ejemplo, porque un libro no existe en la librería).</li>
+  <li>Un método que, dado el isbn o el título de un libro, te devuelva la estantería en la que se encuentra.</li>
+  <li>Un método que te devuelva el libro con más páginas.</li>
+  <li>Un método que te devuelva la primera estantería con más libros.</li>
+  <li>Un método que te devuelva la primera estantería con más páginas.</li>
+  <li>Cambia el main para que realice las siguientes acciones:
+    <ul>
+      <li>Primero consigue el acceso a la biblioteca.</li>
+      <li>Después te pide introducir todos los libros secuencialmente.</li>
+      <li>Después te pide eliminar 5 libros. Detecta si hay algún problema.</li>
+      <li>Después te pide introducir 5 libros en distintas estanterías. Detecta si hay algún problema.</li>
+      <li>Después te pide cambiar 4 libros de estantería. Detecta si hay algún problema.</li>
+      <li>Después te pide intercambiar libros 2 veces. Detecta si hay algún problema.</li>
+      <li>Muestra la biblioteca entera en formato csv.</li>
+      <li>Finalmente, muestra el libro con más páginas y en qué estantería se encuentra; muestra la estantería con más libros y también la estantería con más páginas.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="actividad-10-pruebas-unitarias-con-singleton">Actividad 10: Pruebas unitarias con singleton</h3>
+
+<p>Para ejecutar pruebas unitarias con singleton, debemos “trampear” el singleton. Una técnica sencilla es crear un método para restablecer la instancia, para así poder controlar de forma precisa qué datos tiene la instancia en cada momento. Este método es tan sencillo como lo que sigue:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">resetInstancia</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">instancia</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Con esto en mente, crea un conjunto de pruebas unitarias para todos los métodos de la clase <code class="language-plaintext highlighter-rouge">Biblioteca</code>.</p>
+
+<hr />
+
+<h2 id="3-javadoc">3. Javadoc</h2>
+
+<p>Javadoc es una herramienta oficial de Java que se utiliza para generar documentación API en formato HTML directamente desde el código fuente. Esta documentación se basa en comentarios especiales que se escriben en el código, justo antes de las clases, métodos y otros elementos, y proporciona una manera fácil de crear y mantener documentación legible y coherente para los desarrolladores.</p>
+
+<p>Javadoc utiliza comentarios específicos que comienzan con <code class="language-plaintext highlighter-rouge">/**</code> y terminan con <code class="language-plaintext highlighter-rouge">*/</code>, lo que los distingue de los comentarios regulares en Java (<code class="language-plaintext highlighter-rouge">//</code> y <code class="language-plaintext highlighter-rouge">/*</code> … <code class="language-plaintext highlighter-rouge">*/</code>). Los comentarios Javadoc incluyen etiquetas especiales:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@author</code>: Especifica quién escribió la clase.</li>
+  <li><code class="language-plaintext highlighter-rouge">@version</code>: Es la versión actual de la clase, útil para llevar control de cambios.</li>
+  <li><code class="language-plaintext highlighter-rouge">@since</code>: Indica la fecha o versión en la que la clase fue introducida o modificada.</li>
+  <li><code class="language-plaintext highlighter-rouge">@param</code> para describir parámetros.</li>
+  <li><code class="language-plaintext highlighter-rouge">@return</code> para describir el valor de retorno.</li>
+  <li><code class="language-plaintext highlighter-rouge">@throws</code> para excepciones (si las hay).</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Clase que representa una cuenta bancaria simple con operaciones 
+ * básicas como depósito, retiro y consulta de saldo.
+ * 
+ * Esta clase es utilizada para gestionar cuentas bancarias individuales
+ * en una aplicación de banca.
+ * 
+ * 
+ * @author Juan Pérez
+ * @version 1.0
+ * @since 2024-10-24
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CuentaBancaria</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">saldo</span><span class="o">;</span>
+
+    <span class="cm">/**
+     * Constructor para crear una cuenta bancaria con un saldo inicial.
+     * 
+     * @param saldoInicial El saldo inicial de la cuenta.
+     */</span>
+    <span class="kd">public</span> <span class="nf">CuentaBancaria</span><span class="o">(</span><span class="kt">double</span> <span class="n">saldoInicial</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">saldo</span> <span class="o">=</span> <span class="n">saldoInicial</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Método para depositar dinero en la cuenta bancaria.
+     * 
+     * @param monto El monto a depositar.
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">depositar</span><span class="o">(</span><span class="kt">double</span> <span class="n">monto</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">saldo</span> <span class="o">+=</span> <span class="n">monto</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Método para retirar dinero de la cuenta bancaria.
+     * 
+     * @param monto El monto a retirar.
+     * @throws IllegalArgumentException si el monto es mayor que el saldo.
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">retirar</span><span class="o">(</span><span class="kt">double</span> <span class="n">monto</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">monto</span> <span class="o">&gt;</span> <span class="n">saldo</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"Fondos insuficientes"</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">saldo</span> <span class="o">-=</span> <span class="n">monto</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Método que devuelve el saldo actual de la cuenta.
+     * 
+     * @return El saldo actual de la cuenta.
+     */</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">consultarSaldo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">saldo</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>IntelliJ ofrece herramientas para generar tanto la documentación como la página web resultante de manera más o menos automatizada. Cuando colocas comentarios especiales de javadoc encima de un método, al pulsar intro después de <code class="language-plaintext highlighter-rouge">/**</code>, aparecerán los parámetros relevantes, así como el cierre del comentario. Una vez documentado el proyecto, seguimos los siguientes pasos en IntelliJ:</p>
+
+<ol>
+  <li><strong>Selecciona tu clase o paquete</strong> en el explorador de proyectos, el que contiene el código que quieres documentar.</li>
+  <li>
+    <p>Ve a <strong>Tools</strong> → <strong>Generate JavaDoc</strong> (Herramientas → Generar JavaDoc).</p>
+  </li>
+  <li>Se abre una ventana donde puedes especificar opciones como:
+    <ul>
+      <li>El <strong>directorio de salida</strong> donde se guarda la documentación generada (generalmente un directorio como <code class="language-plaintext highlighter-rouge">docs</code> o <code class="language-plaintext highlighter-rouge">javadoc</code>).</li>
+      <li>Los <strong>filtros</strong> para elegir si quieres generar la documentación para todo el proyecto, solo algunas clases, etc.</li>
+      <li>La posibilidad de inclusión de <strong>fuentes</strong> o <strong>archivos relacionados</strong> en la documentación.</li>
+    </ul>
+  </li>
+  <li>Haz clic en <strong>OK</strong>. IntelliJ ejecutará el proceso de generación de Javadoc.</li>
+</ol>
+
+<p>Una vez completada la generación, se puede encontrar la documentación en el directorio especificado, normalmente en formato HTML. Busca el archivo <code class="language-plaintext highlighter-rouge">index.html</code>.</p>
+
+<p>La documentación es especialmente importante cuando se trabaja en equipo o en proyectos grandes, pero es peligrosa si no se mantiene con regularidad, ya que los compiladores avisan de errores en el código, pero normalmente no en la documentación. Puedes emplear modelos de generación de texto a través de Inteligencia Artificial, como <em>Chatgpt</em>, para generar documentación de tus clases, aunque el resultado no siempre será adecuado. Sin embargo, sí puede ayudarte a la hora de comprobar que la clase hace, efectivamente, lo que la documentación dice que hace la clase y corregir errores menores y de formato.</p>
+
+<h3 id="actividad-11-documenta-el-proyecto-biblioteca">Actividad 11: Documenta el proyecto Biblioteca</h3>
+
+<p>Crea un proyecto llamado Biblioteca si no lo tenías hecho ya. El proyecto contendrá un paquete también llamado <code class="language-plaintext highlighter-rouge">biblioteca</code> y dentro de él estarán las clases <code class="language-plaintext highlighter-rouge">Libro</code>, <code class="language-plaintext highlighter-rouge">Estanteria</code> y <code class="language-plaintext highlighter-rouge">Biblioteca</code> definidas en las actividades anteriores. Fuera del paquete, en el raíz del código fuente, estará la clase  <code class="language-plaintext highlighter-rouge">Main</code>. Adapta el código para que se ejecute con normalidad. Incluye los test de la clase <code class="language-plaintext highlighter-rouge">Biblioteca</code>. Documéntalo todo en javadoc y genera la documentación. Con esto, ya tienes un proyecto sencillo de gestión de bibliotecas.</p>
+
+<hr />
+
+<h2 id="4-diagramas-en-plantuml-y-markdown">4. Diagramas en PlantUML y markdown</h2>
+
+<p>Estos apuntes están realizados en <em>VSCode</em>, empleando la extensión <strong>“Markdown All in One”</strong> y la extensión de <em>PlantUML</em> para generar los diagramas. Puedes consultar más sobre <a href="https://plantuml.com/es/"><em>PlantUML</em> en este enlace</a>. Para que los diagramas se impriman bien al pasarlos a html o pdf, es necesario añadir en el archivo settings.json las siguientes líneas:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"markdown-pdf.plantumlOpenMarker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"```plantuml"</span><span class="err">,</span><span class="w">
+</span><span class="nl">"markdown-pdf.plantumlCloseMarker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"```"</span><span class="err">,</span><span class="w">
+</span></code></pre></div></div>
+
+<p>El archivo settings.json es accesible desde los comandos de <em>vscode</em>. Para entrar en ellos, pulsa F1 o escribe <code class="language-plaintext highlighter-rouge">&gt;</code> dentro del buscador.</p>
+
+<p>Al escribir diagramas se puede observar que la sintaxis no es muy diferente a hacerlos directamente sobre un lenguaje de programación convencional. Hay herramientas como Visual Paradigm que convierten el código en diagramas y también los diagramas en código.</p>
+
+<h3 id="actividad-12-diagramas-en-markdown">Actividad 12: Diagramas en Markdown</h3>
+
+<p>Consulta la documentación oficial de <a href="https://plantuml.com/es/"><em>PlantUML</em></a> y escribe todos los diagramas que has realizado hasta ahora en <em>vscode</em>. Puedes usar la extensión <code class="language-plaintext highlighter-rouge">.plantuml</code> y luego exportarlos como imagen, o bien integrarlos dentro de un archivo <em>markdown</em>.</p>
+
+<hr />
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

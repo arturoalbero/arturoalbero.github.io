@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 04: Diagramas de Estados (Máquinas de Estados) | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 04: Diagramas de Estados (Máquinas de Estados)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT05/04_estados.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT05/04_estados.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 04: Diagramas de Estados (Máquinas de Estados)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 04: Diagramas de Estados (Máquinas de Estados)","url":"http://localhost:4000/ede/UT05/04_estados.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="sesión-04-diagramas-de-estados-máquinas-de-estados">Sesión 04: Diagramas de Estados (Máquinas de Estados)</h1>
+
+<ul>
+  <li><a href="#sesión-04-diagramas-de-estados-máquinas-de-estados">Sesión 04: Diagramas de Estados (Máquinas de Estados)</a>
+    <ul>
+      <li><a href="#1-introducción-a-los-diagramas-de-estados">1. Introducción a los Diagramas de Estados</a>
+        <ul>
+          <li><a href="#11-ejercicio-1">1.1 Ejercicio 1</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-partes-de-un-diagrama-de-estados">2. Partes de un Diagrama de Estados</a>
+        <ul>
+          <li><a href="#21-estado">2.1. Estado</a>
+            <ul>
+              <li><a href="#22-transición">2.2. Transición</a></li>
+              <li><a href="#23-evento">2.3. Evento</a></li>
+              <li><a href="#24-estado-inicial-y-estado-final">2.4. Estado Inicial y Estado Final</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#3-ejemplo-práctico-ciclo-de-vida-de-un-pedido">3. Ejemplo Práctico: Ciclo de Vida de un Pedido</a>
+        <ul>
+          <li><a href="#31-ejercicio-2">3.1 Ejercicio 2</a>
+            <ul>
+              <li><a href="#diagrama-1-ciclo-de-vida-de-una-tarea">Diagrama 1: Ciclo de vida de una tarea</a></li>
+              <li><a href="#diagrama-2-sistema-de-un-semáforo">Diagrama 2: Sistema de un semáforo</a></li>
+              <li><a href="#diagrama-3-proceso-de-pago-en-línea">Diagrama 3: Proceso de pago en línea</a></li>
+              <li><a href="#diagrama-4-gestión-de-una-cuenta-de-usuario">Diagrama 4: Gestión de una cuenta de usuario</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#4-máquinas-de-estados-simples-y-compuestas">4. Máquinas de Estados Simples y Compuestas</a>
+        <ul>
+          <li><a href="#41-máquina-de-estados-simple">4.1 Máquina de estados simple</a></li>
+          <li><a href="#42-máquinas-de-estados-compuestas">4.2 Máquinas de estados compuestas</a></li>
+        </ul>
+      </li>
+      <li><a href="#5-cómo-crear-un-diagrama-de-estados">5. Cómo Crear un Diagrama de Estados</a>
+        <ul>
+          <li><a href="#51-ejercicio-3">5.1 Ejercicio 3</a>
+            <ul>
+              <li><a href="#turnos-de-un-hospital">Turnos de un hospital</a></li>
+              <li><a href="#gestión-de-una-máquina-de-café-automática">Gestión de una máquina de café automática</a></li>
+              <li><a href="#control-de-acceso-a-un-edificio-inteligente">Control de acceso a un edificio inteligente</a></li>
+            </ul>
+          </li>
+          <li><a href="#52-ejercicio-4">5.2 Ejercicio 4</a>
+            <ul>
+              <li><a href="#ciclo-de-vida-de-un-teléfono-móvil">Ciclo de vida de un teléfono móvil</a></li>
+              <li><a href="#proceso-de-reserva-de-un-vuelo">Proceso de reserva de un vuelo</a></li>
+              <li><a href="#gestión-de-una-máquina-expendedora">Gestión de una máquina expendedora</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#6-máquinas-finitas-de-estados-historia-y-evolución">6. Máquinas Finitas de Estados (Historia y Evolución)</a>
+        <ul>
+          <li><a href="#7-relación-de-los-diagramas-de-estados-con-otros-diagramas-uml">7. Relación de los Diagramas de Estados con Otros Diagramas UML</a></li>
+          <li><a href="#71-relación-con-diagramas-de-clases">7.1 Relación con Diagramas de Clases</a></li>
+          <li><a href="#72-relación-con-diagramas-de-casos-de-uso">7.2 Relación con Diagramas de Casos de Uso</a></li>
+          <li><a href="#73-relación-con-diagramas-de-actividad">7.3 Relación con Diagramas de Actividad</a></li>
+          <li><a href="#74-relación-con-diagramas-de-secuencia">7.4 Relación con Diagramas de Secuencia</a></li>
+          <li><a href="#75-ejercicio-5-relación-con-el-resto-de-diagramas-uml">7.5 Ejercicio 5: Relación con el resto de diagramas UML</a>
+            <ul>
+              <li><a href="#gestión-de-una-máquina-de-café-automática-2">Gestión de una máquina de café automática (2)</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-introducción-a-los-diagramas-de-estados">1. Introducción a los Diagramas de Estados</h2>
+
+<p>Un diagrama de estados es una representación gráfica del <strong>comportamiento dinámico</strong> de un objeto o sistema, mostrando los <strong>estados</strong> en los que puede encontrarse y las <strong>transiciones</strong> entre ellos debido a eventos.</p>
+
+<p>Un diagrama de estados facilita el modelado de sistemas en los que un objeto cambia de estado a medida que ocurren <strong>eventos</strong>. Por lo tanto, es útil en sistemas secuenciales como <strong>máquinas expendedoras, procesos de pedidos, autenticación de usuarios, etc.</strong>.</p>
+
+<p>Imagina que un semáforo es como un sistema que cambia de estado (verde, amarillo, rojo) en función de eventos (el tiempo transcurrido o la llegada de un coche). Así funcionan las máquinas de estados.</p>
+
+<h3 id="11-ejercicio-1">1.1 Ejercicio 1</h3>
+
+<p>Señala tres ejemplos de la vida cotidiana, como el del semáforo, donde se pudiera aplicar un diagrama de estados.</p>
+
+<h2 id="2-partes-de-un-diagrama-de-estados">2. Partes de un Diagrama de Estados</h2>
+
+<h3 id="21-estado">2.1. Estado</h3>
+
+<p>Un <strong>estado</strong> representa una condición en la que se encuentra un objeto.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Estado1
+Estado1 --&gt; Estado2
+@enduml
+</code></pre>
+
+<ul>
+  <li>El punto negro (*) representa el <strong>estado inicial</strong>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Estado1</code> y <code class="language-plaintext highlighter-rouge">Estado2</code> son ejemplos de <strong>estados</strong>.</li>
+</ul>
+
+<h4 id="22-transición">2.2. Transición</h4>
+
+<p>Una <strong>transición</strong> conecta dos estados y ocurre cuando se dispara un <strong>evento</strong>. Las transiciones tienen un solo sentido.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; PedidoRecibido : Pedido creado
+PedidoRecibido --&gt; PedidoPreparado : Preparar pedido
+PedidoPreparado --&gt; PedidoEnviado : Enviar pedido
+PedidoEnviado --&gt; Entregado : Confirmar entrega
+@enduml
+</code></pre>
+
+<ul>
+  <li><strong>Eventos</strong>: “Pedido creado”, “Preparar pedido”, “Enviar pedido”, etc.</li>
+  <li>Cada flecha entre estados representa una <strong>transición</strong>. Una transición cambia desde el estado de donde nace la flecha hasta el estado donde apunta la flecha y ocurre cuando se dispara el evento.</li>
+</ul>
+
+<h4 id="23-evento">2.3. Evento</h4>
+
+<p>El <strong>evento</strong> es la acción que provoca una transición. Puede escribirse como texto en las flechas.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; NoAutenticado
+NoAutenticado --&gt; Autenticado : Login exitoso
+NoAutenticado --&gt; Bloqueado : 3 intentos fallidos
+Autenticado --&gt; NoAutenticado : Logout
+@enduml
+</code></pre>
+
+<ul>
+  <li>Estados: <em>NoAutenticado</em>, <em>Autenticado</em>, <em>Bloqueado</em>.</li>
+  <li>Eventos: <em>Login exitoso</em>, <em>3 intentos fallidos</em>, <em>Logout</em>.</li>
+</ul>
+
+<h4 id="24-estado-inicial-y-estado-final">2.4. Estado Inicial y Estado Final</h4>
+
+<ul>
+  <li><strong>Estado inicial</strong>: Punto de partida del sistema (círculo relleno).</li>
+  <li><strong>Estado final</strong>: Punto donde el proceso termina (círculo doble). El proceso puede ser cíclico y no terminar.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Inicio
+Inicio --&gt; Proceso : Ejecutar proceso
+Proceso --&gt; [*] : Finalizado
+@enduml
+</code></pre>
+
+<h2 id="3-ejemplo-práctico-ciclo-de-vida-de-un-pedido">3. Ejemplo Práctico: Ciclo de Vida de un Pedido</h2>
+
+<p>Este ejemplo muestra cómo un pedido pasa por varios estados durante su procesamiento.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; PedidoRecibido : Crear pedido
+PedidoRecibido --&gt; PedidoPreparado : Preparar pedido
+PedidoPreparado --&gt; PedidoEnviado : Enviar pedido
+PedidoEnviado --&gt; PedidoEntregado : Confirmar entrega
+PedidoRecibido --&gt; PedidoCancelado : Cancelar pedido
+PedidoEnviado --&gt; PedidoDevuelto : Devolver pedido
+PedidoDevuelto --&gt; [*]
+PedidoEntregado --&gt; [*]
+@enduml
+</code></pre>
+
+<p>En este diagrama podemos observar lo siguiente:</p>
+
+<ol>
+  <li><strong>Estados</strong>: PedidoRecibido, PedidoPreparado, PedidoEnviado, PedidoEntregado, PedidoCancelado, PedidoDevuelto.</li>
+  <li><strong>Transiciones</strong>:
+    <ul>
+      <li><em>Crear pedido</em>: De <code class="language-plaintext highlighter-rouge">[ * ]</code> a <code class="language-plaintext highlighter-rouge">PedidoRecibido</code>.</li>
+      <li><em>Preparar pedido</em>: De <code class="language-plaintext highlighter-rouge">PedidoRecibido</code> a <code class="language-plaintext highlighter-rouge">PedidoPreparado</code>.</li>
+      <li><em>Enviar pedido</em>: De <code class="language-plaintext highlighter-rouge">PedidoPreparado</code> a <code class="language-plaintext highlighter-rouge">PedidoEnviado</code>.</li>
+      <li><em>Cancelar pedido</em>: Transición directa a <code class="language-plaintext highlighter-rouge">PedidoCancelado</code>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="31-ejercicio-2">3.1 Ejercicio 2</h3>
+
+<p><strong>Identifica el significado de los siguientes diagramas de estados.</strong> Para ello, sigue los siguientes pasos:</p>
+
+<ul>
+  <li>¿Qué representa cada estado?</li>
+  <li>¿Qué significado tienen las transiciones?</li>
+  <li>¿Qué proceso o sistema modela el diagrama?</li>
+</ul>
+
+<p>Finalmente, escribe una descripción breve (de 3-5 líneas) para cada diagrama, explicando su <strong>función y aplicación en el mundo real</strong>.</p>
+
+<h4 id="diagrama-1-ciclo-de-vida-de-una-tarea">Diagrama 1: Ciclo de vida de una tarea</h4>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Pendiente
+Pendiente --&gt; EnProgreso : Iniciar tarea
+EnProgreso --&gt; Completada : Finalizar tarea
+EnProgreso --&gt; Pendiente : Pausar tarea
+Completada --&gt; [*]
+@enduml
+</code></pre>
+
+<h4 id="diagrama-2-sistema-de-un-semáforo">Diagrama 2: Sistema de un semáforo</h4>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Rojo
+Rojo --&gt; Verde : Cambiar luz
+Verde --&gt; Amarillo : Cambiar luz
+Amarillo --&gt; Rojo : Cambiar luz
+@enduml
+</code></pre>
+
+<h4 id="diagrama-3-proceso-de-pago-en-línea">Diagrama 3: Proceso de pago en línea</h4>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Carrito
+Carrito --&gt; PagoPendiente : Proceder al pago
+PagoPendiente --&gt; PagoExitoso : Confirmar pago
+PagoPendiente --&gt; PagoFallido : Error en pago
+PagoExitoso --&gt; [*]
+PagoFallido --&gt; Carrito : Reintentar pago
+@enduml
+</code></pre>
+
+<h4 id="diagrama-4-gestión-de-una-cuenta-de-usuario">Diagrama 4: Gestión de una cuenta de usuario</h4>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Inactivo
+Inactivo --&gt; Activo : Activar cuenta
+Activo --&gt; Bloqueado : Bloquear cuenta
+Bloqueado --&gt; Activo : Desbloquear cuenta
+Activo --&gt; Inactivo : Desactivar cuenta
+@enduml
+</code></pre>
+
+<h2 id="4-máquinas-de-estados-simples-y-compuestas">4. Máquinas de Estados Simples y Compuestas</h2>
+
+<h3 id="41-máquina-de-estados-simple">4.1 Máquina de estados simple</h3>
+
+<p>Una máquina de estados simple representa de forma lineal los estados y las transiciones.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Pendiente
+Pendiente --&gt; Aprobado : Aprobar
+Pendiente --&gt; Rechazado : Rechazar
+Aprobado --&gt; [*]
+Rechazado --&gt; [*]
+@enduml
+</code></pre>
+
+<h3 id="42-máquinas-de-estados-compuestas">4.2 Máquinas de estados compuestas</h3>
+
+<p>Una máquina de estados compuesta representa estados que pueden contener <strong>subestados</strong>.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; ProcesoPrincipal
+
+state ProcesoPrincipal {
+  [*] --&gt; SubProceso1
+  SubProceso1 --&gt; SubProceso2 : Completar tarea 1
+  SubProceso2 --&gt; [*] : Completar tarea 2
+}
+
+ProcesoPrincipal --&gt; Finalizado : Terminar proceso
+Finalizado --&gt; [*]
+@enduml
+</code></pre>
+
+<h2 id="5-cómo-crear-un-diagrama-de-estados">5. Cómo Crear un Diagrama de Estados</h2>
+
+<p>A la hora de realizar diagramas de estados debemos seguir los siguientes pasos:</p>
+
+<ol>
+  <li>Identificar los <strong>estados</strong> del objeto.</li>
+  <li>Determinar los <strong>eventos</strong> que provocan transiciones.</li>
+  <li>Dibujar el <strong>estado inicial</strong> y el <strong>estado final</strong>.</li>
+  <li>Conectar los estados mediante <strong>transiciones</strong> etiquetadas.</li>
+  <li>Revisar la lógica y corregir posibles inconsistencias.</li>
+</ol>
+
+<p>Por supuesto, si queremos que la máquina sea compuesta, por cada estado que deseamos convertir a su vez en una máquina de estados debemos seguir el mismo proceso.</p>
+
+<p>Los errores más comunes a la hora de realizar diagramas de estados son:</p>
+
+<ul>
+  <li>Olvidar el estado inicial o final.</li>
+  <li>No etiquetar correctamente las transiciones.</li>
+  <li>Confundir estados con eventos.</li>
+</ul>
+
+<h3 id="51-ejercicio-3">5.1 Ejercicio 3</h3>
+
+<p>Diseña diagramas de estados a partir de las siguientes especificaciones:</p>
+
+<h4 id="turnos-de-un-hospital">Turnos de un hospital</h4>
+
+<blockquote>
+  <p>Para gestionar los turnos de un hospital y evitar que se acumulen horas excesivas en los profesionales, debemos tener en cuenta que un miembro del personal puede estar trabajando, descansando o en expectativa de turno. El periodo de descanso empieza inmediatamente después de haber estado trabajando y dura 12 horas. En el momento en que vencen esas 12 horas, un trabajador puede o bien volver a trabajar o bien quedarse en expectativa de turno. Un trabajador en expectativa de turno puede ser asignado para trabajar por el gestor de turnos. El trabajador comienza siempre en expectativa de turno.</p>
+</blockquote>
+
+<h4 id="gestión-de-una-máquina-de-café-automática">Gestión de una máquina de café automática</h4>
+
+<blockquote>
+  <p>Una máquina de café automática gestiona la preparación y entrega de bebidas calientes. En su funcionamiento, la máquina puede encontrarse en varios estados. Al inicio, la máquina está a la espera de que un usuario realice una selección. Cuando el usuario elige una bebida (como café, té o chocolate caliente), la máquina pasa a un proceso de preparación específico según la bebida seleccionada. Si el proceso de preparación concluye sin problemas, la máquina entrega el producto al usuario y regresa al estado inicial para una nueva solicitud.</p>
+
+  <p>Sin embargo, si durante la preparación ocurre un error, como falta de ingredientes o una avería técnica, la máquina debe entrar en un estado de error que bloquea nuevas solicitudes hasta que un técnico de mantenimiento intervenga. El técnico podrá reiniciar el sistema y devolver la máquina a su estado inicial. Además, el proceso de <strong>preparación</strong> debe incluir detalles específicos dependiendo del tipo de bebida elegida: preparar café, preparar té o preparar chocolate caliente.</p>
+</blockquote>
+
+<h4 id="control-de-acceso-a-un-edificio-inteligente">Control de acceso a un edificio inteligente</h4>
+
+<blockquote>
+  <p>El sistema de control de acceso de un edificio inteligente se encarga de gestionar la entrada y salida de las personas. Una persona comienza siempre fuera del edificio. Cuando intenta acceder, debe escanear su tarjeta, iniciando así un proceso de verificación. Durante este proceso de acceso, se realizan varios pasos, como la validación de la tarjeta y un escaneo de seguridad. Si todo es correcto, la persona puede entrar al edificio y pasar al estado de estar dentro.</p>
+
+  <p>Sin embargo, si la tarjeta es inválida o se detecta algún problema de seguridad, el acceso se deniega y la persona entra en un estado bloqueado. Para salir de este estado, un guardia de seguridad puede intervenir y decidir si la persona debe volver al inicio, es decir, al estado fuera del edificio, o si puede intentar nuevamente el acceso. Por último, una vez que una persona se encuentra dentro del edificio, puede salir en cualquier momento, regresando al estado inicial fuera del edificio.</p>
+</blockquote>
+
+<h3 id="52-ejercicio-4">5.2 Ejercicio 4</h3>
+
+<p>Describe los siguientes diagramas de estados siguiendo estas pautas:</p>
+
+<ol>
+  <li><strong>Analiza cada diagrama compuesto</strong>:
+    <ul>
+      <li>Identifica los <strong>estados principales</strong> y los <strong>subestados</strong>.</li>
+      <li>Describe el flujo general del sistema y qué proceso representa.</li>
+    </ul>
+  </li>
+  <li><strong>Escribe una breve explicación</strong> para cada diagrama, enfocándote en:
+    <ul>
+      <li><strong>Qué sistema modela</strong> (por ejemplo: máquina expendedora, proceso de reserva de vuelo).</li>
+      <li><strong>Cómo los subestados mejoran la comprensión del sistema</strong>.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="ciclo-de-vida-de-un-teléfono-móvil">Ciclo de vida de un teléfono móvil</h4>
+
+<p>Este diagrama modela el comportamiento de un teléfono móvil cuando se encuentra bloqueado, desbloqueado o apagado.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; Apagado
+
+state Apagado {
+  [*] --&gt; Reinicio : Encender teléfono
+}
+
+Apagado --&gt; Bloqueado : Encender pantalla
+
+state Bloqueado {
+  [*] --&gt; EsperaDesbloqueo
+  EsperaDesbloqueo --&gt; Desbloqueado : Introducir contraseña
+  EsperaDesbloqueo --&gt; [*] : Apagar pantalla
+}
+
+Bloqueado --&gt; Desbloqueado : Deslizar y desbloquear
+
+state Desbloqueado {
+  [*] --&gt; UsoApps : Abrir aplicaciones
+  UsoApps --&gt; Llamada : Realizar llamada
+  Llamada --&gt; UsoApps : Finalizar llamada
+  UsoApps --&gt; [*] : Bloquear pantalla
+}
+
+Desbloqueado --&gt; Bloqueado : Bloquear pantalla
+@enduml
+</code></pre>
+
+<h4 id="proceso-de-reserva-de-un-vuelo">Proceso de reserva de un vuelo</h4>
+
+<p>Este diagrama describe el flujo de estados en el sistema de reservas de una aerolínea, con subestados para el proceso de pago.</p>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; SeleccionVuelo
+
+state SeleccionVuelo {
+  [*] --&gt; EsperandoDatos : Ingresar información
+  EsperandoDatos --&gt; VueloSeleccionado : Confirmar vuelo
+}
+
+SeleccionVuelo --&gt; Pago : Proceder al pago
+
+state Pago {
+  [*] --&gt; PagoPendiente
+  PagoPendiente --&gt; PagoExitoso : Confirmar pago
+  PagoPendiente --&gt; PagoFallido : Error en pago
+  PagoFallido --&gt; PagoPendiente : Reintentar pago
+}
+
+Pago --&gt; ReservaConfirmada : Pago exitoso
+ReservaConfirmada --&gt; [*]
+@enduml
+</code></pre>
+
+<h4 id="gestión-de-una-máquina-expendedora">Gestión de una máquina expendedora</h4>
+
+<pre><code class="language-plantuml">@startuml
+[*] --&gt; EsperaSeleccion
+
+state EsperaSeleccion {
+  [*] --&gt; ProductoSeleccionado : Seleccionar producto
+  ProductoSeleccionado --&gt; [*] : Cancelar operación
+}
+
+EsperaSeleccion --&gt; EsperaPago : Confirmar selección
+
+state EsperaPago {
+  [*] --&gt; PagoPendiente : Insertar dinero
+  PagoPendiente --&gt; PagoExitoso : Monto exacto ingresado
+  PagoPendiente --&gt; PagoInsuficiente : Monto insuficiente
+  PagoInsuficiente --&gt; PagoPendiente : Añadir más dinero
+}
+
+EsperaPago --&gt; EntregaProducto : Pago exitoso
+EntregaProducto --&gt; [*] : Retirar producto
+@enduml
+</code></pre>
+
+<h2 id="6-máquinas-finitas-de-estados-historia-y-evolución">6. Máquinas Finitas de Estados (Historia y Evolución)</h2>
+
+<p>Los diagramas de estados dervian de las <strong>máquinas de estados finitos</strong> (FSM). Estas tienen sus orígenes en la teoría de la computación:</p>
+
+<ul>
+  <li><strong>Alan Turing</strong> (1936): Introdujo el concepto de la <strong>máquina de Turing</strong>, un modelo teórico que definió los límites de la computación. Aunque no es exactamente una FSM, sentó las bases para entender cómo un sistema puede procesar información paso a paso, cambiando de estado.</li>
+  <li><strong>Claude Shannon</strong> y <strong>Warren McCulloch</strong> (1940s): Estudiaron las <strong>redes lógicas</strong> y los autómatas, dando lugar a las máquinas de estados finitos como modelos para representar sistemas secuenciales.</li>
+  <li><strong>Avances modernos</strong>:
+    <ul>
+      <li>Las FSM evolucionaron hacia máquinas <strong>deterministas</strong> y <strong>no deterministas</strong>, fundamentales en teoría de autómatas.</li>
+      <li>Su aplicación se amplió a lenguajes formales, <strong>inteligencia artificial</strong>, sistemas operativos y <strong>modelado UML</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="7-relación-de-los-diagramas-de-estados-con-otros-diagramas-uml">7. Relación de los Diagramas de Estados con Otros Diagramas UML</h3>
+
+<p>Los diagramas de estados no funcionan de forma aislada. Se relacionan con otros diagramas UML, aportando una visión más completa del sistema:</p>
+
+<h3 id="71-relación-con-diagramas-de-clases">7.1 Relación con Diagramas de Clases</h3>
+
+<ul>
+  <li>Los <strong>estados</strong> suelen estar asociados a <strong>objetos</strong> definidos en los diagramas de clases.</li>
+  <li>Cada clase puede tener un <strong>diagrama de estados</strong> que describe cómo cambian sus instancias a lo largo del tiempo.</li>
+  <li><strong>Ejemplo</strong>: Un objeto <code class="language-plaintext highlighter-rouge">Pedido</code> en el diagrama de clases tendrá un diagrama de estados con los estados “Recibido”, “Preparado”, etc.</li>
+</ul>
+
+<pre><code class="language-plantuml">@startuml
+class Pedido {
+    + idPedido: int
+    + estado: string
+    + cambiarEstado()
+}
+@enduml
+</code></pre>
+
+<h3 id="72-relación-con-diagramas-de-casos-de-uso">7.2 Relación con Diagramas de Casos de Uso</h3>
+
+<ul>
+  <li>Los <strong>diagramas de casos de uso</strong> muestran <strong>interacciones entre actores y el sistema</strong>.</li>
+  <li>Los diagramas de estados detallan cómo el sistema <strong>reacciona</strong> cuando un actor realiza una acción.</li>
+  <li><strong>Ejemplo</strong>: En el caso de uso <em>“Procesar pedido”</em>, el diagrama de estados muestra cómo evoluciona el pedido a distintos estados.</li>
+</ul>
+
+<h3 id="73-relación-con-diagramas-de-actividad">7.3 Relación con Diagramas de Actividad</h3>
+
+<ul>
+  <li>Los diagramas de actividad modelan el <strong>flujo de control</strong> y las <strong>acciones</strong> ejecutadas.</li>
+  <li>Los diagramas de estados se centran en los <strong>cambios de estado</strong> que ocurren como resultado de esas acciones.</li>
+  <li><strong>Ejemplo</strong>:
+    <ul>
+      <li>Diagrama de actividad: “Preparar pedido” incluye pasos como “Recoger productos” y “Empaquetar”.</li>
+      <li>Diagrama de estados: “PedidoPreparado” es el estado final tras completar esa actividad.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="74-relación-con-diagramas-de-secuencia">7.4 Relación con Diagramas de Secuencia</h3>
+
+<p>Aunque todavía no los hemos trabajado, los diagramas de secuencia muestran cómo <strong>objetos interactúan</strong> intercambiando mensajes a lo largo del tiempo. Se relacionan con los diagramas de estados de la siguiente forma:</p>
+
+<ul>
+  <li>Los diagramas de estados complementan la información de los diagramas de secuencia mostrando cómo los objetos <strong>cambian de estado</strong> como consecuencia de los mensajes que se envían.
+    <ul>
+      <li><strong>Ejemplo</strong>: Un mensaje <em>“Confirmar entrega”</em> en un diagrama de secuencia puede provocar el cambio de estado de <code class="language-plaintext highlighter-rouge">Pedido</code> a “Entregado”.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="75-ejercicio-5-relación-con-el-resto-de-diagramas-uml">7.5 Ejercicio 5: Relación con el resto de diagramas UML</h3>
+
+<p>Volvamos al enunciado de la máquina de café:</p>
+
+<h4 id="gestión-de-una-máquina-de-café-automática-2">Gestión de una máquina de café automática (2)</h4>
+
+<blockquote>
+  <p>Una máquina de café automática gestiona la preparación y entrega de bebidas calientes. En su funcionamiento, la máquina puede encontrarse en varios estados. Al inicio, la máquina está a la espera de que un usuario realice una selección. Cuando el usuario elige una bebida (como café, té o chocolate caliente), la máquina pasa a un proceso de preparación específico según la bebida seleccionada. Si el proceso de preparación concluye sin problemas, la máquina entrega el producto al usuario y regresa al estado inicial para una nueva solicitud.</p>
+
+  <p>Sin embargo, si durante la preparación ocurre un error, como falta de ingredientes o una avería técnica, la máquina debe entrar en un estado de error que bloquea nuevas solicitudes hasta que un técnico de mantenimiento intervenga. El técnico podrá reiniciar el sistema y devolver la máquina a su estado inicial. Además, el proceso de <strong>preparación</strong> debe incluir detalles específicos dependiendo del tipo de bebida elegida: preparar café, preparar té o preparar chocolate caliente.</p>
+</blockquote>
+
+<p>Realiza a partir de esta descripción el diagrama de clases, el SRS, el diagrama de casos de uso y los diagramas de actividad que necesites para describir el sistema. Si no has hecho todavía el diagrama de estados, ahora es el momento.</p>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

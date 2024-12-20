@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 1: Algoritmos y notación natural | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 1: Algoritmos y notación natural" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/01_fundamentos/01_algoritmos.html" />
+<meta property="og:url" content="http://localhost:4000/prog/01_fundamentos/01_algoritmos.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 1: Algoritmos y notación natural" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 1: Algoritmos y notación natural","url":"http://localhost:4000/prog/01_fundamentos/01_algoritmos.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="sesión-1-algoritmos-y-notación-natural"><strong>Sesión 1: Algoritmos y notación natural</strong></h1>
+
+<h2 id="1-introducción-al-concepto-de-algoritmo">1. Introducción al concepto de algoritmo</h2>
+
+<p>Un algoritmo es un conjunto finito de pasos que resuelve un problema o realiza una tarea. No se aplican solamente a programas informáticos, sino a todo problema que se pueda resolver siguiendo una serie de instrucciones. Por ejemplo, los siguientes:</p>
+
+<ul>
+  <li>Preparar un café.</li>
+  <li>Ir de casa al trabajo cogiendo un autobús.</li>
+  <li>Ir a comprar al supermercado los productos apuntados en una lista.</li>
+</ul>
+
+<p>Cuando un problema se puede resolver de esta manera, se dice que es computable. Todos los problemas computables son susceptibles de ser resueltos (o simulados) en un ordenador.</p>
+
+<h2 id="2-propiedades-clave-de-los-algoritmos">2. Propiedades clave de los algoritmos</h2>
+
+<p>Para que un algoritmo esté bien redactado, se tienen que cumplir una serie de condiciones:</p>
+
+<ul>
+  <li>Los pasos deben estar ordenados y ejecutarse en el orden correcto.</li>
+  <li>Cada paso debe ser preciso y sin ambigüedades.</li>
+  <li>El algoritmo debe terminar en un número finito de pasos (aunque el número sea desconocido a priori).</li>
+</ul>
+
+<h3 id="ejercicio-1">Ejercicio 1</h3>
+
+<p>Coge las actividades descritas en el ejemplo anterior y realiza una secuencia numerada de instrucciones que es necesario llevar a cabo para completarlas con éxito.</p>
+
+<h2 id="3-errores-comunes-en-los-algoritmos">3. Errores comunes en los algoritmos</h2>
+
+<p>Es habitual, sobre todo al comenzar, cometer uno de los siguientes errores al realizar algoritmos:</p>
+
+<ul>
+  <li><strong>Falta de precisión:</strong> Si los pasos no son claros, el algoritmo no funcionará correctamente.</li>
+  <li><strong>Pasos redundantes:</strong> Incluir pasos innecesarios puede complicar el algoritmo.</li>
+  <li><strong>Secuencia incorrecta:</strong> Si el orden es erróneo, el resultado final no será correcto.</li>
+</ul>
+
+<p>Vamos a discutir una serie de algoritmos, cada uno de ellos con un problema diferente:</p>
+
+<p><strong>Hacer la compra</strong>:</p>
+
+<ol>
+  <li>Ve al supermercado</li>
+  <li>Compra cosas</li>
+  <li>Vuelve a casa</li>
+</ol>
+
+<p>En este caso, el paso 2 es demasiado ambiguo. ¿Qué es <em>compra cosas</em>? Un algoritmo debería ser mucho más concreto y explícito con lo que se hace.</p>
+
+<p><strong>Pela una patata</strong>:</p>
+
+<ol>
+  <li>Coge la patata</li>
+  <li>Lava la patata</li>
+  <li>Coge el pelador de patatas</li>
+  <li>Pásalo por la piel</li>
+  <li>Pela la patata</li>
+  <li>Lava la patata</li>
+  <li>Deja la patata</li>
+</ol>
+
+<p>En este caso, el paso 4 y el paso 5 son esencialmente lo mismo, dicho de dos formas distintas. Los errores de redundancia son más difíciles de ver, salvo que sean muy obvios como en este caso.</p>
+
+<p><em>Haz la fregaza</em>:</p>
+
+<ol>
+  <li>Secar los platos.</li>
+  <li>Poner agua y detergente en el fregadero.</li>
+  <li>Enjuagar los platos.</li>
+  <li>Fregar los platos.</li>
+</ol>
+
+<p>Por último, auqí vemos claramente un cambio en el orden de los pasos. El paso 4 y el paso 3 están intercambiados. Además, el paso 1 debería ser el último en realidad. El orden es fundamental en la mayoría de casos para que un algoritmo pueda resolverse con éxito.</p>
+
+<h3 id="ejercicio-2">Ejercicio 2</h3>
+
+<p>Detecta los errores de los siguientes algoritmos:</p>
+
+<p><strong>1. Hacer un té</strong>:</p>
+
+<ol>
+  <li>Llena la tetera con agua.</li>
+  <li>Sirve el té en una taza.</li>
+  <li>Calienta el agua en la tetera.</li>
+  <li>Coloca una bolsita de té en la taza.</li>
+  <li>Hierve el agua.</li>
+</ol>
+
+<p><strong>2. Ponerse una camiseta</strong>:</p>
+
+<ol>
+  <li>Toma la camiseta con las manos.</li>
+  <li>Mete la cabeza por el agujero para el brazo.</li>
+  <li>Coloca un brazo en el agujero correspondiente.</li>
+  <li>Coloca el otro brazo en el agujero.</li>
+  <li>Ajusta la camiseta al cuerpo.</li>
+</ol>
+
+<p><strong>3. Cruzar la calle</strong>:</p>
+
+<ol>
+  <li>Mira a la derecha.</li>
+  <li>Cruza la calle.</li>
+  <li>Mira a la izquierda.</li>
+  <li>Llega al otro lado.</li>
+</ol>
+
+<p><strong>4. Hacer un bocadillo</strong>:</p>
+
+<ol>
+  <li>Toma dos rebanadas de pan.</li>
+  <li>Unta la mantequilla en el pan.</li>
+  <li>Añade el queso.</li>
+  <li>Guarda el queso en la nevera.</li>
+  <li>Come el bocadillo.</li>
+</ol>
+
+<p><strong>5. Encender un ordenador</strong>:</p>
+
+<ol>
+  <li>Presiona el botón de encendido en el monitor.</li>
+  <li>Abre el navegador de internet.</li>
+  <li>Presiona el botón de encendido en la torre del ordenador.</li>
+  <li>Escribe la página web que deseas visitar.</li>
+</ol>
+
+<p><strong>6. Lavar la ropa</strong>:</p>
+
+<ol>
+  <li>Mete la ropa en la lavadora.</li>
+  <li>Añade detergente en el compartimento correspondiente.</li>
+  <li>Cierra la puerta de la lavadora.</li>
+  <li>Lava la ropa a mano.</li>
+  <li>Enciende la lavadora.</li>
+  <li>Elige el programa de lavado adecuado.</li>
+</ol>
+
+<p><strong>7. Encender una lámpara</strong>:</p>
+
+<ol>
+  <li>Coloca la bombilla en el casquillo.</li>
+  <li>Conecta el cable de la lámpara al enchufe.</li>
+  <li>Pulsa el interruptor de la lámpara.</li>
+  <li>Enchufa la lámpara.</li>
+</ol>
+
+<p><strong>8. Abrir una puerta cerrada con llave</strong>:</p>
+
+<ol>
+  <li>Coge la llave.</li>
+  <li>Introduce la llave en la cerradura.</li>
+  <li>Gira la llave para desbloquear la puerta.</li>
+  <li>Empuja la puerta para abrirla.</li>
+  <li>Cierra la puerta con llave.</li>
+</ol>
+
+<p><strong>9. Montar un mueble</strong>:</p>
+
+<ol>
+  <li>Saca las piezas del mueble de la caja.</li>
+  <li>Consulta las instrucciones.</li>
+  <li>Une todas las piezas entre sí con tornillos.</li>
+  <li>Coloca las piezas pequeñas que sobren.</li>
+  <li>Ajusta los tornillos con el destornillador.</li>
+</ol>
+
+<p><strong>10. Cocinar arroz</strong>:</p>
+
+<ol>
+  <li>Enciende el fuego.</li>
+  <li>Pon agua en una olla.</li>
+  <li>Lava el arroz.</li>
+  <li>Echa el arroz en la olla.</li>
+  <li>Hierve el agua.</li>
+  <li>Saca el arroz de la olla.</li>
+</ol>
+
+<p><strong>11. Ir al trabajo</strong>:</p>
+
+<ol>
+  <li>Ponte los zapatos.</li>
+  <li>Sal de casa.</li>
+  <li>Súbete al coche.</li>
+  <li>Conduce hasta el trabajo.</li>
+  <li>Arranca el coche.</li>
+</ol>
+
+<p><strong>12. Hacer un dibujo</strong>:</p>
+
+<ol>
+  <li>Toma un papel y un lápiz.</li>
+  <li>Dibuja un círculo.</li>
+  <li>Borra el círculo.</li>
+  <li>Dibuja una línea recta.</li>
+  <li>Colorea el círculo.</li>
+</ol>
+
+<h2 id="4-algoritmos-en-lenguaje-natural">4. Algoritmos en lenguaje natural</h2>
+
+<p>A esta forma de resolver algoritmos se le llama notación natural o lenguaje natural. Consiste en enumerar una serie de instrucciones, que se deben seguir de forma ordenada salvo que haya un salto condicional o incondicional. Un salto condicional es una instrucción que, si se cumple la condición que presenta, te dirige a otra instrucción concreta (que puede ser anterior o posterior). Un salto incondicional es aquel que ocurre siempre. Generalmente, tiene que haber una forma de eludir el salto incondicional para que no se produzcan bucles infinitos.</p>
+
+<p><em>Haz la fregaza mejorada</em>:</p>
+
+<ol>
+  <li>Pon los platos sucios en la pila de platos sucios.</li>
+  <li>Si no hay platos en la pila de platos sucios, salta al paso 11.</li>
+  <li>Si el estropajo tiene jabón salta al paso 5, si no, sigue adelante.</li>
+  <li>Pon jabón en el estropajo.</li>
+  <li>Coge un plato de la pila de platos sucios.</li>
+  <li>Échale agua al plato.</li>
+  <li>Friega el plato.</li>
+  <li>Enjuaga el plato.</li>
+  <li>Deja el plato en el escurridor.</li>
+  <li>Salta al paso 2.</li>
+  <li>Guarda los platos en su sitio.</li>
+</ol>
+
+<p>En este algoritmo, podemos ver un salto condicional en el paso 2, que nos llevaría al paso 11 con el que acabaríamos el algoritmo. También vemos un salto incondicional en el paso 10, que nos devuelve al paso 2. En este caso, no se produciría un bucle infinito porque el paso 2 nos lleva al paso 11 si la pila de platos sucios está vacía, y en el paso 5 cogemos un plato sucio, por lo que la vamos vaciando constantemente. También tiene otro salto condicional en el paso 3, que nos permite saltarnos el paso 4 si el estropajo ya tiene jabón.</p>
+
+<p>En cierto sentido, este diseño de algoritmos se asemeja a los libros de <em>Escoge tu propia aventura</em>, en los cuales podíamos elegir si ir a una página u otra del libro según nuestras decisiones. Todas las aventuras alcanzaban un final, aunque no necesariamente el mismo.</p>
+
+<h3 id="los-bucles-infinitos-el-gran-enemigo-del-diseñador-de-algoritmos">Los bucles infinitos, el gran enemigo del diseñador de algoritmos</h3>
+
+<p>Un <strong>bucle infinito</strong> ocurre cuando un algoritmo nunca llega a un estado de finalización debido a una mala implementación de saltos condicionales o incondicionales. Esto puede hacer que el sistema se bloquee o se comporte de manera incorrecta. Se trata de uno de los errores más comunes y peligrosos cuando se trabaja con saltos a la hora de diseñar algoritmos, y es fundamental evitarlos. A continuación, se presentan las claves para evitar este error:</p>
+
+<h4 id="1-define-una-condición-de-terminación-clara"><strong>1. Define una condición de terminación clara</strong></h4>
+
+<ul>
+  <li><strong>Qué es:</strong> Una condición de terminación es un criterio que asegura que el algoritmo finalizará en algún momento.</li>
+  <li><strong>Cómo aplicarlo:</strong>
+    <ul>
+      <li>Antes de escribir un salto, pregúntate: “¿Cuándo terminará este bucle?”.</li>
+      <li>Asegúrate de que exista al menos un paso dentro del algoritmo que modifique el estado actual y acerque al sistema a cumplir esa condición.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Ejemplo malo:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Si hay ropa sucia, salta al paso 1.
+2. Da por terminada la tarea.
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Problema:</em> Nunca se cambia el estado de “ropa sucia”, por lo que el algoritmo sigue saltando al paso 1 infinitamente.</p>
+</blockquote>
+
+<p><strong>Ejemplo bueno:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Si hay ropa sucia, lávala y salta al paso 1.
+2. Da por terminada la tarea.
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Solución:</em> El estado “ropa sucia” cambia (se lava), lo que garantiza que eventualmente no quedará ropa sucia y el bucle finalizará.</p>
+</blockquote>
+
+<h4 id="2-limita-el-número-de-iteraciones"><strong>2. Limita el número de iteraciones</strong></h4>
+
+<ul>
+  <li><strong>Qué es:</strong> Define un límite explícito para cuántas veces se puede repetir un conjunto de pasos.</li>
+  <li><strong>Cómo aplicarlo:</strong>
+    <ul>
+      <li>Usa contadores o listas de elementos para medir el progreso.</li>
+      <li>Asegúrate de reducir el contador o vaciar la lista en cada iteración.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Ejemplo malo:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Coge un plato de la pila.
+2. Lava el plato.
+3. Salta al paso 1.
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Problema:</em> No hay una condición que limite el bucle, lo que puede llevar a un bucle infinito si no se vacía la pila.</p>
+</blockquote>
+
+<p><strong>Ejemplo bueno:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Si hay platos en la pila, coge uno.
+2. Lávalo.
+3. Si la pila sigue teniendo platos, salta al paso 1.
+4. Da por terminada la tarea.
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Solución:</em> Se verifica que la pila tiene platos antes de saltar, y la pila se vacía progresivamente.</p>
+</blockquote>
+
+<h4 id="3-evita-condiciones-ambiguas"><strong>3. Evita condiciones ambiguas</strong></h4>
+
+<ul>
+  <li><strong>Qué es:</strong> Una condición ambigua ocurre cuando los saltos dependen de criterios que no están claramente definidos o que no cambian dentro del algoritmo.</li>
+  <li><strong>Cómo aplicarlo:</strong>
+    <ul>
+      <li>Asegúrate de que cada condición sea concreta, medible y esté basada en un cambio que ocurre durante la ejecución del algoritmo.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Ejemplo malo:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Si el arroz no está cocido, salta al paso 1.
+2. Sirve el arroz.
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Problema:</em> No se especifica cómo verificar si el arroz está cocido ni qué acción tomar para cocerlo.</p>
+</blockquote>
+
+<p><strong>Ejemplo bueno:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Si el agua no está hirviendo, espera 1 minuto y salta al paso 1.
+2. Añade el arroz.
+3. Si el arroz no está cocido, espera 5 minutos y salta al paso 3.
+4. Sirve el arroz.
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Solución:</em> Se define una acción para cada estado y se asegura que el arroz progresará hacia la cocción.</p>
+</blockquote>
+
+<h4 id="4-introduce-una-forma-de-detener-el-algoritmo-manualmente"><strong>4. Introduce una forma de detener el algoritmo manualmente</strong></h4>
+
+<ul>
+  <li><strong>Qué es:</strong> Proporcionar un mecanismo que permita detener el proceso si detectas un error o un bucle infinito.</li>
+  <li><strong>Cómo aplicarlo:</strong>
+    <ul>
+      <li>Añade una instrucción que permita salir del bucle si se cumple una condición específica o si el algoritmo ha iterado más de lo esperado.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Ejemplo bueno:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Si hay más de 10 iteraciones, salta al paso 4.
+2. Repite los pasos necesarios.
+3. Salta al paso 1.
+4. Da por terminado el algoritmo.
+</code></pre></div></div>
+
+<blockquote>
+  <p><em>Solución:</em> Se asegura que el bucle no se ejecute indefinidamente.</p>
+</blockquote>
+
+<h4 id="5-valida-los-algoritmos-antes-de-usarlos"><strong>5. Valida los algoritmos antes de usarlos</strong></h4>
+
+<ul>
+  <li><strong>Qué es:</strong> Revisar el diseño del algoritmo con cuidado antes de implementarlo.</li>
+  <li><strong>Cómo aplicarlo:</strong>
+    <ul>
+      <li>Simula el algoritmo en papel o con datos simples para verificar que la condición de terminación se cumple.</li>
+      <li>Identifica posibles estados iniciales o condiciones que podrían causar bucles infinitos.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="checklist-para-evitar-bucles-infinitos"><strong>Checklist para evitar bucles infinitos:</strong></h4>
+
+<ol>
+  <li>¿Existe una condición clara que haga terminar el algoritmo?</li>
+  <li>¿Cada salto condicional está diseñado para modificar el estado o progresar hacia el fin?</li>
+  <li>¿Se limita explícitamente el número de iteraciones, si es necesario?</li>
+  <li>¿Se verifica que todas las condiciones sean claras y medibles?</li>
+  <li>¿Hay mecanismos para detectar y corregir errores en tiempo de ejecución?</li>
+</ol>
+
+<p>Con estas indicaciones se puede tomar consciencia para evitar diseñar algoritmos con bucles infinitos. En general, los bucles infinitos deben ser evitados salvo para algunas aplicaciones concretas, pero esos son casos avanzados que no se corresponden con este nivel de diseño de algoritmos.</p>
+
+<h3 id="ejercicio-3">Ejercicio 3</h3>
+
+<p>Diseña un algoritmo en lenguaje natural que tenga saltos condicionales e incondicionales. Haz que se trate de una tarea cotidiana, como la del ejemplo de fregar los platos. Podría ser limpiar la casa, preparar la cena, pintar una habitación. Ponlo en común con tus compañeros.</p>
+
+<h3 id="ejercicio-4">Ejercicio 4</h3>
+
+<p>Diseña un algoritmo en lenguaje natural a modo de gimkana. Desde un punto de la clase, un compañero debe llegar a otro siguiendo las instrucciones que le das. Las instrucciones pueden ser avanzar un número de pasos, girar 90 grados en una dirección, comprobar un obstáculo, agacharse y coger un objeto. El objetivo del algoritmo es guiar al compañero hasta un punto de la clase para que pueda coger un objeto meta.</p>
+
+<h3 id="ejercicio-5">Ejercicio 5</h3>
+
+<p>Analiza los siguientes algoritmos y determina qué errores tienen, en el caso de que estén mal. Algunos errores son sutiles, así que mantente vigilante:</p>
+
+<p><strong>1. Regar las plantas</strong>:</p>
+
+<ol>
+  <li>Llena la regadera con agua.</li>
+  <li>Si la regadera está vacía, salta al paso 1.</li>
+  <li>Riega una planta.</li>
+  <li>Si hay plantas sin regar, salta al paso 3.</li>
+  <li>Deja la regadera en su lugar.</li>
+</ol>
+
+<p><strong>2. Hacer palomitas</strong>:</p>
+
+<ol>
+  <li>Saca un paquete de palomitas.</li>
+  <li>Si no hay paquetes de palomitas, salta al paso 7.</li>
+  <li>Coloca el paquete en el microondas.</li>
+  <li>Enciende el microondas por 3 minutos.</li>
+  <li>Si escuchas que las palomitas han dejado de reventar, apaga el microondas y salta al paso 6</li>
+  <li>Saca las palomitas del microondas.</li>
+  <li>Disfruta de las palomitas.</li>
+</ol>
+
+<p><strong>3. Organizar un escritorio</strong>:</p>
+
+<ol>
+  <li>Recoge todos los objetos del escritorio.</li>
+  <li>Si hay basura, tírala a la papelera.</li>
+  <li>Coloca los objetos útiles en el lugar correspondiente.</li>
+  <li>Si el escritorio no está vacío, salta al paso 2.</li>
+  <li>Limpia el escritorio con un paño húmedo.</li>
+  <li>Si hay objetos sobre el escritorio, salta al paso 3.</li>
+  <li>Da por terminada la tarea.</li>
+</ol>
+
+<p><strong>4. Vestirse para salir</strong>:</p>
+
+<ol>
+  <li>Ponte la ropa interior.</li>
+  <li>Ponte los pantalones.</li>
+  <li>Si hace frío, salta al paso 5.</li>
+  <li>Ponte una camiseta.</li>
+  <li>Ponte un abrigo o chaqueta.</li>
+  <li>Si estás vestido correctamente, salta al paso 8.</li>
+  <li>Revisa qué falta y vuelve al paso 1.</li>
+  <li>Sal de casa.</li>
+</ol>
+
+<p><strong>5. Cocinar pasta</strong>:</p>
+
+<ol>
+  <li>Llena una olla con agua.</li>
+  <li>Si el agua está hirviendo, salta al paso 4.</li>
+  <li>Añade la pasta a la olla.</li>
+  <li>Si no está lista, salta al paso 3.</li>
+  <li>Escurre la pasta.</li>
+  <li>Sirve la pasta en un plato.</li>
+  <li>Añade salsa y disfruta.</li>
+</ol>
+
+<p><strong>6. Buscar un libro en la biblioteca</strong>:</p>
+
+<ol>
+  <li>Entra en la biblioteca.</li>
+  <li>Ve al estante de libros.</li>
+  <li>Busca el libro que necesitas.</li>
+  <li>Si no encuentras el libro, salta al paso 7.</li>
+  <li>Toma el libro y llévalo al mostrador.</li>
+  <li>Sal de la biblioteca.</li>
+  <li>Busca en otro estante.</li>
+</ol>
+
+<p><strong>7. Poner la mesa</strong>:</p>
+
+<ol>
+  <li>Si no hay platos en el armario, salta al paso 6.</li>
+  <li>Coloca un plato en cada asiento.</li>
+  <li>Si no hay cubiertos en el cajón, salta al paso 6.</li>
+  <li>Coloca los cubiertos junto a cada plato.</li>
+  <li>Si faltan vasos, salta al paso 6.</li>
+  <li>Coloca un vaso en cada asiento.</li>
+  <li>Da por terminada la tarea.</li>
+</ol>
+
+<p><strong>8. Preparar un bocadillo</strong>:</p>
+
+<ol>
+  <li>Toma dos rebanadas de pan.</li>
+  <li>Si tienes ingredientes para rellenar el bocadillo, salta al paso 4.</li>
+  <li>Salta al paso 7.</li>
+  <li>Coloca los ingredientes entre las rebanadas de pan.</li>
+  <li>Si no hay ingredientes suficientes, salta al paso 2.</li>
+  <li>Cierra el bocadillo.</li>
+  <li>Come el bocadillo.</li>
+</ol>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

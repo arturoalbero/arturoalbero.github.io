@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Concurrencia y gráficos personalizados en Java Swing | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Concurrencia y gráficos personalizados en Java Swing" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/prog/08_interfaces/04_concurrencia.html" />
+<meta property="og:url" content="http://localhost:4000/prog/08_interfaces/04_concurrencia.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Concurrencia y gráficos personalizados en Java Swing" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Concurrencia y gráficos personalizados en Java Swing","url":"http://localhost:4000/prog/08_interfaces/04_concurrencia.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="concurrencia-y-gráficos-personalizados-en-java-swing">Concurrencia y gráficos personalizados en Java Swing</h1>
+<ul>
+  <li><a href="#concurrencia-y-gráficos-personalizados-en-java-swing">Concurrencia y gráficos personalizados en Java Swing</a>
+    <ul>
+      <li><a href="#1-gestión-de-concurrencia-en-swing"><strong>1. Gestión de Concurrencia en Swing</strong></a>
+        <ul>
+          <li><a href="#11-la-clase-swingworker">1.1 La clase <code class="language-plaintext highlighter-rouge">SwingWorker</code></a></li>
+        </ul>
+      </li>
+      <li><a href="#2-gráficos-y-visualizaciones"><strong>2. Gráficos y Visualizaciones</strong></a>
+        <ul>
+          <li><a href="#21-dibujar-gráficos-personalizados-con-graphics2d"><strong>2.1 Dibujar Gráficos Personalizados con <code class="language-plaintext highlighter-rouge">Graphics2D</code></strong></a></li>
+          <li><a href="#22-ejercicio-1">2.2 Ejercicio 1</a></li>
+          <li><a href="#23-ejercicio-2">2.3 Ejercicio 2</a></li>
+          <li><a href="#24-ejercicio-3-uso-de-synchronized">2.4 Ejercicio 3. Uso de <code class="language-plaintext highlighter-rouge">synchronized</code></a></li>
+          <li><a href="#25-ejercicio-4">2.5 Ejercicio 4</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-gestión-de-concurrencia-en-swing"><strong>1. Gestión de Concurrencia en Swing</strong></h2>
+
+<p>10 horas</p>
+
+<p>Swing utiliza un solo hilo para actualizar la interfaz gráfica: el <strong>Event Dispatch Thread (EDT)</strong>. Si ejecutamos tareas pesadas (como cálculos intensivos o consultas a bases de datos) en este hilo, la interfaz se bloqueará. Para evitar esto, usamos <code class="language-plaintext highlighter-rouge">SwingWorker</code>.</p>
+
+<h3 id="11-la-clase-swingworker">1.1 La clase <code class="language-plaintext highlighter-rouge">SwingWorker</code></h3>
+
+<p><code class="language-plaintext highlighter-rouge">SwingWorker</code> es una clase que permite ejecutar tareas en segundo plano sin bloquear la interfaz gráfica. Tiene dos métodos clave:</p>
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">doInBackground()</code></strong>, donde definimosla tarea en segundo plano.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">done()</code></strong>, que se ejecuta al terminar la tarea, normalmente para actualizar la interfaz gráfica.</li>
+</ol>
+
+<p>El flujo de actividad de un SwingWorker con respecto al EDT es así:</p>
+
+<pre><code class="language-plantuml">@startuml
+start
+:Escuchar eventos de usuario;
+:Invocar acción (usando execute() en el SwingWorker) en el hilo EDT;
+fork
+    partition SwingWorker{
+        :Ejecutar tarea en segundo plano;
+        while (¿tarea terminada?) is (falso)
+            :Realizar trabajo en doInBackground();
+            :Publicar progreso;
+        end while (verdadero)
+        :Ejecutar done() en hilo EDT;
+    }
+fork again
+    partition EDT{
+        :Recibir actualizaciones del SwingWorker;
+        :Actualizar UI (por ejemplo, barra de progreso);
+        :Esperar a que el usuario haga nuevas acciones;
+    }
+end fork
+:Mostrar resultados finales al usuario;
+stop
+@enduml
+
+</code></pre>
+
+<p>A continuación, vamos a ver un código en el que simulamos una tarea que actualiza una barra de progreso:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BarraDeProgreso</span> <span class="kd">extends</span> <span class="nc">JFrame</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">JProgressBar</span> <span class="n">barraProgreso</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">BarraDeProgreso</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">setTitle</span><span class="o">(</span><span class="s">"Concurrencia con SwingWorker"</span><span class="o">);</span>
+        <span class="n">setSize</span><span class="o">(</span><span class="mi">400</span><span class="o">,</span> <span class="mi">150</span><span class="o">);</span>
+        <span class="n">setDefaultCloseOperation</span><span class="o">(</span><span class="no">EXIT_ON_CLOSE</span><span class="o">);</span>
+        <span class="n">setLayout</span><span class="o">(</span><span class="k">new</span> <span class="nc">BorderLayout</span><span class="o">());</span>
+
+        <span class="cm">/* 
+        Código para crear una barra de progreso, que es otro componente de Swing.
+        */</span>
+        <span class="n">barraProgreso</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JProgressBar</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">100</span><span class="o">);</span>
+        <span class="n">barraProgreso</span><span class="o">.</span><span class="na">setStringPainted</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">barraProgreso</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">CENTER</span><span class="o">);</span>
+
+        <span class="cm">/* Botón para iniciar la tarea. La clase TareaLarga hereda de SwingWorker y la vemos más adelante. El método execute() es el que hace que se cree un hilo en el que la tarea va haciendo cosas, mientras el proceso principal sigue trabajando de forma independiente. 
+        */</span>
+        <span class="nc">JButton</span> <span class="n">iniciarButton</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JButton</span><span class="o">(</span><span class="s">"Iniciar"</span><span class="o">);</span>
+        <span class="n">iniciarButton</span><span class="o">.</span><span class="na">addActionListener</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">TareaLarga</span> <span class="n">tarea</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TareaLarga</span><span class="o">();</span>
+            <span class="n">tarea</span><span class="o">.</span><span class="na">execute</span><span class="o">();</span>
+        <span class="o">});</span>
+        <span class="n">add</span><span class="o">(</span><span class="n">iniciarButton</span><span class="o">,</span> <span class="nc">BorderLayout</span><span class="o">.</span><span class="na">SOUTH</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/*
+    Esta clase privada es la que se encarga de manejar la tarea pesada. Esta tarea podría ser la descarga de un archivo, la consulta a una base de datos o cualquier cosa susceptible de bloquear nuestra interfaz. Al crear un SwingWorker, debemos indicarle dos tipos que tiene genéricos. El primero representa lo que devuelve el método doInBackground y el segundo lo que devuelve el método publish. Los resultados del método publish son procesados en el método process.
+    */</span>
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">TareaLarga</span> <span class="kd">extends</span> <span class="nc">SwingWorker</span><span class="o">&lt;</span><span class="nc">Void</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="cm">/*
+        La función doInBackground devuelve Void (de ahí el return null del final) y simula un trabajo pesado haciendo dormir al hilo 50 milisegundos y luego publicando un número del 0 al 99.
+        */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="nc">Void</span> <span class="nf">doInBackground</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span> 
+                <span class="n">publish</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="cm">/*
+        El método process se procesa dentro del EDT y recibe como parámetro la lista de los valores publicados. En lugar de usar List, utilizamos java.util.List porque la librería java.awt.* tiene su propia interfaz List, que no queremos usar. De esta forma, evitamos la ambigüedad.
+        El parámetro se llama chunks, que significa "trozos". Cogemos el último de los trozos y le damos a la barra de progreso el valor de ese trozo. En este caso, los trozos son simplemente números del 0 al 99 en orden ascendente.
+        */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">chunks</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Actualiza la barra de progreso</span>
+            <span class="kt">int</span> <span class="n">progreso</span> <span class="o">=</span> <span class="n">chunks</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">chunks</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="n">barraProgreso</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="n">progreso</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="cm">/*
+        Cuando la función doInBackground() llega al final se ejecuta la función done(), que en este caso simplemente abre una ventana modal con un aviso.
+        */</span>
+        <span class="nd">@Override</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">done</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">JOptionPane</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="s">"Tarea completada"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">BarraDeProgreso</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BarraDeProgreso</span><span class="o">();</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>En definitiva, ten en cuenta las siguientes cosas:</p>
+
+<ol>
+  <li><strong>No bloquees el EDT</strong>: Nunca realices tareas pesadas directamente en los manejadores de eventos, ya que podrían congelar el programa. Usa <code class="language-plaintext highlighter-rouge">SwingWorker</code> para ello.</li>
+  <li><strong>Usa <code class="language-plaintext highlighter-rouge">SwingUtilities.invokeLater()</code></strong>: Para actualizar la interfaz desde otros hilos. La interfaz se actualizará cuando el EDT disponga de tiempo (si no lo haces así, se bloqueará hasta que se haya actualizado).</li>
+</ol>
+
+<h2 id="2-gráficos-y-visualizaciones"><strong>2. Gráficos y Visualizaciones</strong></h2>
+
+<p>Para emplear gráficos en nuestras aplicaciones de Swing, podemos usar bibliotecas externas como <strong>JFreeChart</strong> o componentes personalizados en Swing.</p>
+
+<h3 id="21-dibujar-gráficos-personalizados-con-graphics2d"><strong>2.1 Dibujar Gráficos Personalizados con <code class="language-plaintext highlighter-rouge">Graphics2D</code></strong></h3>
+
+<p>Podemos usar la clase <code class="language-plaintext highlighter-rouge">Graphics2D</code> para dibujar gráficos en Swing. Veamos un ejemplo de gráfico de barras:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GraficoBarras</span> <span class="kd">extends</span> <span class="nc">JPanel</span> <span class="o">{</span>
+    <span class="cm">/*
+    En primer lugar, preparamos los datos que vamos a representar y sus etiquetas
+    */</span>
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">valores</span> <span class="o">=</span> <span class="o">{</span><span class="mi">50</span><span class="o">,</span> <span class="mi">80</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">90</span><span class="o">,</span> <span class="mi">60</span><span class="o">};</span>
+    <span class="kd">private</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">etiquetas</span> <span class="o">=</span> <span class="o">{</span><span class="s">"A"</span><span class="o">,</span> <span class="s">"B"</span><span class="o">,</span> <span class="s">"C"</span><span class="o">,</span> <span class="s">"D"</span><span class="o">,</span> <span class="s">"E"</span><span class="o">};</span>
+    <span class="cm">/*
+    Después, sobreescribimos el método paintComponent, que recibe unos gráficos como parámetro.
+    En esta función, vamos llamar a la función base paintComponent y luego vamos a añadirle un comportamiento nuevo, por lo que más que sobreescribir, lo que estamos haciendo es técnicamente ampliar el método.
+    Lo que hacemos es castear los gráficos como Graphics2D. Después hacemos los cálculos necesarios para representar cada barra y, la pintamos de la siguiente manera.
+    Primero pintamos la barra, eligiendo un color y rellenando un rectángulo en las posiciones apropiadas y del tamaño calculado.
+    Después, dibujamos la etiqueta, que es un String.
+    Repetimos esto por cada uno de los valores. Por supuesto, es necesario que valores y etiquetas tengan el mismo tamaño. Podríamos haber usado un Map&lt;String, Integer&gt; donde la clave hubiera sido la etiqueta y el valor el valor, valga la redundancia.
+    */</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">paintComponent</span><span class="o">(</span><span class="nc">Graphics</span> <span class="n">g</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">paintComponent</span><span class="o">(</span><span class="n">g</span><span class="o">);</span>
+        <span class="nc">Graphics2D</span> <span class="n">g2</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Graphics2D</span><span class="o">)</span> <span class="n">g</span><span class="o">;</span>
+
+        <span class="kt">int</span> <span class="n">ancho</span> <span class="o">=</span> <span class="n">getWidth</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">alto</span> <span class="o">=</span> <span class="n">getHeight</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">margen</span> <span class="o">=</span> <span class="mi">40</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">espacio</span> <span class="o">=</span> <span class="mi">10</span><span class="o">;</span>
+
+        <span class="c1">// Calcular ancho de cada barra</span>
+        <span class="kt">int</span> <span class="n">anchoBarra</span> <span class="o">=</span> <span class="o">(</span><span class="n">ancho</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">margen</span> <span class="o">-</span> <span class="o">(</span><span class="n">valores</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="n">espacio</span><span class="o">)</span> <span class="o">/</span> <span class="n">valores</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">maxValor</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">valores</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">alturaBarra</span> <span class="o">=</span> <span class="o">(</span><span class="n">valores</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">*</span> <span class="o">(</span><span class="n">alto</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">margen</span><span class="o">))</span> <span class="o">/</span> <span class="n">maxValor</span><span class="o">;</span>
+
+            <span class="c1">// Dibujar barra</span>
+            <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">margen</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="o">(</span><span class="n">anchoBarra</span> <span class="o">+</span> <span class="n">espacio</span><span class="o">);</span>
+            <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">alto</span> <span class="o">-</span> <span class="n">margen</span> <span class="o">-</span> <span class="n">alturaBarra</span><span class="o">;</span>
+            <span class="n">g2</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLUE</span><span class="o">);</span>
+            <span class="n">g2</span><span class="o">.</span><span class="na">fillRect</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">,</span> <span class="n">anchoBarra</span><span class="o">,</span> <span class="n">alturaBarra</span><span class="o">);</span>
+
+            <span class="c1">// Dibujar etiqueta</span>
+            <span class="n">g2</span><span class="o">.</span><span class="na">setColor</span><span class="o">(</span><span class="nc">Color</span><span class="o">.</span><span class="na">BLACK</span><span class="o">);</span>
+            <span class="n">g2</span><span class="o">.</span><span class="na">drawString</span><span class="o">(</span><span class="n">etiquetas</span><span class="o">[</span><span class="n">i</span><span class="o">],</span> <span class="n">x</span> <span class="o">+</span> <span class="n">anchoBarra</span> <span class="o">/</span> <span class="mi">4</span><span class="o">,</span> <span class="n">alto</span> <span class="o">-</span> <span class="n">margen</span> <span class="o">+</span> <span class="mi">15</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="cm">/*
+La ejecución de este ejemplo es un poco diferente a los otros porque la clase desde la que extiende GraficoBarras es JPanel y no JFrame como hasta ahora. Por lo tanto, lo que hacemos es crear un frame de forma manual y añadirle nuestro gráfico de barras.
+*/</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SwingUtilities</span><span class="o">.</span><span class="na">invokeLater</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+            <span class="nc">JFrame</span> <span class="n">ventana</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JFrame</span><span class="o">(</span><span class="s">"Gráfico de Barras"</span><span class="o">);</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setDefaultCloseOperation</span><span class="o">(</span><span class="nc">JFrame</span><span class="o">.</span><span class="na">EXIT_ON_CLOSE</span><span class="o">);</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setSize</span><span class="o">(</span><span class="mi">500</span><span class="o">,</span> <span class="mi">400</span><span class="o">);</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">GraficoBarras</span><span class="o">());</span>
+            <span class="n">ventana</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Usando librerías externas, como <em>JFreeChart</em>, podemos conseguir resultados más profesionales. Sin embargo, estas librerías requieren una mayor configuración al no estar incluidas en el JDK de Java, por lo que no vamos a trabajarlas dentro de nuestro curso. Es más, en caso de requerir ese tipo de visualizaciones, podría ser más apropiado escribir nuestra interfaz directamente en JavaFX.</p>
+
+<h3 id="22-ejercicio-1">2.2 Ejercicio 1</h3>
+
+<p>Realiza una interfaz con un botón para cada mes. Cuando cliques el botón, se debe abrir una ventana modal con un gráfico de barras que represente la temperatura máxima del mes, la temperatura media del mes y la temperatura mínima del mes.</p>
+
+<p>Sin embargo, este gráfico no se cargará de forma instantánea, sino que emplearás un SwingWorker para dibujarlo simulando una animación que tarde 2 segundos. Al usar SwingWorker, debes ser capaz de cerrar la ventana modal sin esperar a que haya terminado de dibujarse el gráfico de barras.</p>
+
+<p>Puedes usar estos datos ficticios:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mes</th>
+      <th>Temp. Media (°C)</th>
+      <th>Temp. Máxima (°C)</th>
+      <th>Temp. Mínima (°C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Enero</td>
+      <td>6.5</td>
+      <td>12.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>Febrero</td>
+      <td>7.0</td>
+      <td>13.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <td>Marzo</td>
+      <td>10.5</td>
+      <td>17.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <td>Abril</td>
+      <td>13.5</td>
+      <td>20.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <td>Mayo</td>
+      <td>17.5</td>
+      <td>25.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <td>Junio</td>
+      <td>22.0</td>
+      <td>30.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <td>Julio</td>
+      <td>25.5</td>
+      <td>35.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <td>Agosto</td>
+      <td>25.0</td>
+      <td>34.5</td>
+      <td>17.5</td>
+    </tr>
+    <tr>
+      <td>Septiembre</td>
+      <td>21.0</td>
+      <td>30.0</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <td>Octubre</td>
+      <td>16.5</td>
+      <td>24.0</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <td>Noviembre</td>
+      <td>11.0</td>
+      <td>17.5</td>
+      <td>4.5</td>
+    </tr>
+    <tr>
+      <td>Diciembre</td>
+      <td>7.5</td>
+      <td>13.0</td>
+      <td>2.5</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="23-ejercicio-2">2.3 Ejercicio 2</h3>
+
+<p>Realiza una interfaz similar a la del ejemplo, pero con varias barras de progreso. Al pulsar el botón, las barras se van a rellenar a una velocidad aleatoria (le pondremos a sleep un valor entre 10 y 50). Se tienen que cumplir estas dos condiciones:</p>
+
+<ol>
+  <li>El botón para iniciar la barra debe quedar deshabilitado hasta que todas las barras completen su progreso.</li>
+  <li>La ventana de <code class="language-plaintext highlighter-rouge">carga finalizada</code> solo debe aparecer cuando todas las barras hayan completado su progreso.</li>
+</ol>
+
+<h3 id="24-ejercicio-3-uso-de-synchronized">2.4 Ejercicio 3. Uso de <code class="language-plaintext highlighter-rouge">synchronized</code></h3>
+
+<p>Queremos una interfaz que tenga varias barras de progreso que podremos activar de forma manual. Al lado izquierdo de cada barra vamos a colorcar un textfield y una etiqueta que indique la velocidad. La velocidad es un número positivo y entero entre 10 y 50. Al introducir el número, si el valor es válido el color de letra debe ser verde, mientras que si no lo es debe ser rojo.</p>
+
+<p>También añadiremos un botón <code class="language-plaintext highlighter-rouge">disparar</code>. El botón hará que su barra asociada empiece su progreso con la velocidad introducida, siempre y cuando el valor sea válido. Si el valor no es válido o no ha sido introducido, el botón debe estar desactivado.</p>
+
+<p>Mientras una barra está lanzándose, podemos editar otra barra y lanzarla. Eso sí, las barras que estén activas no deben poder ser editadas hasta que no lleguen al final. Una vez lleguen al final, se deben reiniciar solas (progreso a 0 y vaciar el texfield).</p>
+
+<p>Por último, añade una etiqueta en la parte inferior del programa que indique cuántas barras han llegado al final. Esto puede dar problemas de concurrencia si dos barras llegan al final al mismo tiempo, por lo que debes crear un método para editar el contador con la palabra clave <code class="language-plaintext highlighter-rouge">synchronized</code>, como el que sigue:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">incremento</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">contador</span><span class="o">++;</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Un método <code class="language-plaintext highlighter-rouge">synchronized</code> solamente puede ser accedido por un hilo a la vez, mientras que los demás se quedan a la cola esperando su turno. Siempre que necesites que varios hilos accedan a la vez a un recurso, debes usar algún método de sincronización como este. Sin embargo, <code class="language-plaintext highlighter-rouge">synchronized</code> resta eficiencia al programa, por lo que no debes usarlo a la ligera.</p>
+
+<p>Si se omitiera el synchronized, al acceder dos hilos al método incremento al mismo tiempo, ambos hilos podrían leer el valor del contador antes de que uno de ellos lo actualice. Ambos hilos sumarían 1 al contador de forma independiente, pero el valor final solo se incrementaría en 1, en lugar de 2, como sería esperado.</p>
+
+<p>Esto se debe a que los dos hilos “interfieren” entre sí, provocando que se pierda la actualización de uno de los hilos. A esto se lo conoce como <strong>condición de carrera</strong>.</p>
+
+<h3 id="25-ejercicio-4">2.5 Ejercicio 4</h3>
+
+<p>Vamos a hacer una aplicación que mida nuestra velocidad para mecanografiar. La interfaz consta de una etiqueta desde la que mostraremos información, una barra de progreso, un botón para comenzar el juego y dos textarea, uno de ellos no será editable, mientras que la otra será editable solo a partir de cierto punto.</p>
+
+<p>Al pulsar el botón, la etiqueta hará una cuenta atrás de tres segundos (3, 2, 1, YA) y en ese momento empezará la barra de carga, que durará 30 segundos. Mientras la carga esté activa, podremos usar uno de los textarea. En el otro, aparecerá un texto de tipo Lore Ipsum generado aleatoriamente (podemos precargarlos en la aplicación).</p>
+
+<p>El usuario debe escribir el texto Lore Ipsum en el textarea de abajo. Al finalizar la barra, ya no se podrá escribir y en la etiqueta se mostrarán las siguientes estadísticas:</p>
+
+<ul>
+  <li>Velocidad de tecleo (numero de caracteres escritos, incluyendo espacios, dividido entre el tiempo transcurrido -30 segundos-)</li>
+  <li>Precisión de tecleo. Se comparará el texto original con el texto escrito por el usuario caracter a caracter y se dividirán los fallos entre el total de caracteres escrito por el usuario. Para hacerlo más bonito, se mostrará en porcentaje (multiplicado por 100).</li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Sesión 05: Diagramas de Secuencia | arturoalbero.github.io</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Sesión 05: Diagramas de Secuencia" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Web para probar" />
+<meta property="og:description" content="Web para probar" />
+<link rel="canonical" href="http://localhost:4000/ede/UT05/05_secuencia.html" />
+<meta property="og:url" content="http://localhost:4000/ede/UT05/05_secuencia.html" />
+<meta property="og:site_name" content="arturoalbero.github.io" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sesión 05: Diagramas de Secuencia" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Web para probar","headline":"Sesión 05: Diagramas de Secuencia","url":"http://localhost:4000/ede/UT05/05_secuencia.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=e59a87becd5119a92fc488dbb3a40a2ce603ea0b">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4000/">arturoalbero.github.io</a></h1>
+      
+
+      <h1 id="sesión-05-diagramas-de-secuencia">Sesión 05: Diagramas de Secuencia</h1>
+
+<ul>
+  <li><a href="#sesión-05-diagramas-de-secuencia">Sesión 05: Diagramas de Secuencia</a>
+    <ul>
+      <li><a href="#1-qué-es-un-diagrama-de-secuencia-y-para-qué-se-usa">1. ¿Qué es un diagrama de secuencia y para qué se usa?</a></li>
+      <li><a href="#2-componentes-básicos-de-un-diagrama-de-secuencia-y-cómo-construirlo">2. Componentes básicos de un diagrama de secuencia y cómo construirlo</a>
+        <ul>
+          <li><a href="#21-actores-y-objetos">2.1 Actores y Objetos</a></li>
+          <li><a href="#22-líneas-de-vida">2.2 Líneas de vida</a>
+            <ul>
+              <li><a href="#líneas-de-vida-y-bloques-de-activación">Líneas de vida y bloques de activación</a></li>
+              <li><a href="#fragmentos-combinados-condicionales-y-bucles">Fragmentos combinados: condicionales y bucles</a></li>
+              <li><a href="#condicional-alt">Condicional (alt)</a></li>
+              <li><a href="#bucle-loop">Bucle (loop)</a></li>
+              <li><a href="#combinación-de-activación-y-fragmentos">Combinación de activación y fragmentos</a></li>
+              <li><a href="#añadir-estados-al-diagrama-de-secuencia">Añadir estados al diagrama de secuencia</a></li>
+            </ul>
+          </li>
+          <li><a href="#23-mensajes">2.3 Mensajes</a></li>
+          <li><a href="#24-construcción-de-diagramas-de-secuencia">2.4 Construcción de diagramas de secuencia</a></li>
+          <li><a href="#25-ejercico-1">2.5 Ejercico 1</a>
+            <ul>
+              <li><a href="#autenticación-de-un-usuario">Autenticación de un usuario</a></li>
+              <li><a href="#compra-en-línea">Compra en línea</a></li>
+              <li><a href="#retiro-de-efectivo-en-un-cajero-automático">Retiro de efectivo en un cajero automático</a></li>
+              <li><a href="#soporte-técnico-automatizado">Soporte técnico automatizado</a></li>
+            </ul>
+          </li>
+          <li><a href="#26-ejercicio-2">2.6 Ejercicio 2</a>
+            <ul>
+              <li><a href="#turnos-de-un-hospital">Turnos de un hospital</a></li>
+              <li><a href="#gestión-de-una-máquina-de-café-automática">Gestión de una máquina de café automática</a></li>
+              <li><a href="#control-de-acceso-a-un-edificio-inteligente">Control de acceso a un edificio inteligente</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#3-combinación-de-los-diagramas-de-secuencia-con-los-otros-diagramas">3. Combinación de los diagramas de secuencia con los otros diagramas</a>
+        <ul>
+          <li><a href="#31-con-diagramas-de-casos-de-uso">3.1 Con diagramas de casos de uso</a></li>
+          <li><a href="#32-con-diagramas-de-actividad">3.2 Con diagramas de actividad</a></li>
+          <li><a href="#33-con-diagramas-de-clases">3.3 Con diagramas de clases</a></li>
+          <li><a href="#34-ejercicio-3">3.4 Ejercicio 3</a></li>
+          <li><a href="#35-ejercicio-4--documento-de-diseño">3.5 Ejercicio 4 : Documento de diseño</a></li>
+        </ul>
+      </li>
+      <li><a href="#4-anexo-uso-de-mermaidjs-para-diagramas">4. ANEXO: Uso de mermaid.js para diagramas</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="1-qué-es-un-diagrama-de-secuencia-y-para-qué-se-usa">1. ¿Qué es un diagrama de secuencia y para qué se usa?</h2>
+
+<p>Un <strong>diagrama de secuencia</strong> es un tipo de diagrama de comportamiento en UML que modela la interacción entre actores (usuarios u otros sistemas) y los objetos de un sistema en un orden temporal. Su principal objetivo es mostrar el flujo de mensajes o eventos que ocurren entre diferentes participantes a lo largo del tiempo, destacando el <strong>orden cronológico</strong> de las interacciones.</p>
+
+<p>Se utiliza para:</p>
+
+<ul>
+  <li><strong>Especificar</strong> cómo se desarrolla un proceso dentro del sistema (por ejemplo, cómo se valida un pedido o cómo un usuario realiza una compra).</li>
+  <li><strong>Diseñar o analizar escenarios</strong> concretos de interacción entre componentes del sistema.</li>
+  <li><strong>Comunicar ideas entre desarrolladores</strong>, analistas y diseñadores.</li>
+</ul>
+
+<p>Un ejemplo típico sería la interacción entre un cliente, un cajero automático y un banco para retirar dinero. El cliente introduce su tarjeta, el cajero se conecta al banco para validar los datos, el cliente realiza la operación y finalmente, si todo es correcto, entrega el dinero (En el caso de que la operación fuera sacar el dinero).</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Cajero
+    participant Banco
+
+    Cliente -&gt;&gt;+ Cajero: Introduce su tarjeta y su pin
+    Cajero -&gt;&gt;+ Banco: Valida los datos de la tarjeta
+    Banco --&gt;&gt; Cajero : Confirma los datos de la tarjeta
+    Cajero --&gt;&gt; Cliente : Permite acceder a las operaciones
+    Cliente -&gt;&gt; Cajero: Realiza una operación si los datos son válidos
+    Cajero -&gt;&gt; Banco: Valida la operación
+    Banco --&gt;&gt;- Cajero : Confirma la validación
+    Cajero --&gt;&gt;- Cliente: Entrega el dinero si la operación es válida
+
+</code></pre>
+
+<h2 id="2-componentes-básicos-de-un-diagrama-de-secuencia-y-cómo-construirlo">2. Componentes básicos de un diagrama de secuencia y cómo construirlo</h2>
+
+<p>Un diagrama de secuencia se compone de los siguientes elementos:</p>
+
+<h3 id="21-actores-y-objetos">2.1 Actores y Objetos</h3>
+
+<p>Representan las entidades participantes:</p>
+
+<ul>
+  <li>Los actores suelen ser personas o sistemas externos.</li>
+  <li>Los objetos son instancias del sistema que participan en la interacción.</li>
+</ul>
+
+<p>Se representan como una línea y el nombre de la entidad aparece tanto al principio como al final de esta. Es común acompañar los nombres de símbolos representativos:</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Actor
+    participant Objeto
+</code></pre>
+
+<h3 id="22-líneas-de-vida">2.2 Líneas de vida</h3>
+
+<p>Son líneas verticales asociadas a cada actor/objeto. Representan el tiempo durante el cual estos están activos. Dentro de ellas se puede incluir determinada información:</p>
+
+<ol>
+  <li>
+    <p><strong>Bloques de activación</strong>:
+Rectángulos sobre las líneas de vida que indican que el actor/objeto está realizando una tarea. Pueden contener incluso estados como los trabajados en los diagramas de estados.</p>
+  </li>
+  <li>
+    <p><strong>Fragmentos combinados</strong>:
+Estructuras condicionales o repetitivas que representan lógica compleja (por ejemplo, bucles o decisiones).</p>
+  </li>
+</ol>
+
+<p>A continuación, vamos a profundizar un poco más en las líneas de vida:</p>
+
+<h4 id="líneas-de-vida-y-bloques-de-activación">Líneas de vida y bloques de activación</h4>
+
+<p>Las líneas de vida son las líneas verticales asociadas a actores y objetos, y los bloques de activación son los rectángulos sobre estas líneas que indican que un actor/objeto está realizando una tarea específica.</p>
+
+<p>En el siguiente ejemplo se representa una conversación entre un cliente y un sistema, donde se activa un bloque durante la validación de credenciales.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Sistema
+    participant BaseDeDatos as Base de Datos
+
+    Cliente-&gt;&gt;Sistema: Introduce usuario y contraseña
+    activate Sistema
+    Sistema-&gt;&gt;BaseDeDatos: Verifica credenciales
+    activate BaseDeDatos
+    BaseDeDatos--&gt;&gt;Sistema: Credenciales válidas
+    deactivate BaseDeDatos
+    Sistema--&gt;&gt;Cliente: Acceso concedido
+    deactivate Sistema
+</code></pre>
+
+<p>En este caso:</p>
+
+<ul>
+  <li>El <strong>Sistema</strong> está activo mientras procesa la solicitud del cliente.</li>
+  <li>La <strong>Base de Datos</strong> está activa mientras verifica las credenciales.</li>
+</ul>
+
+<h4 id="fragmentos-combinados-condicionales-y-bucles">Fragmentos combinados: condicionales y bucles</h4>
+
+<p>Los fragmentos combinados son estructuras que muestran flujos condicionales (<code class="language-plaintext highlighter-rouge">alt</code>) o repetitivos (<code class="language-plaintext highlighter-rouge">loop</code>).</p>
+
+<h4 id="condicional-alt">Condicional (alt)</h4>
+
+<p>El <strong>fragmento condicional</strong> permite modelar flujos donde existen diferentes caminos dependiendo de una condición.</p>
+
+<p><strong>Ejemplo: Validación de credenciales con diferentes respuestas:</strong></p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Sistema
+    participant BaseDeDatos as Base de Datos
+
+    Cliente-&gt;&gt;Sistema: Introduce usuario y contraseña
+    Sistema-&gt;&gt;BaseDeDatos: Verifica credenciales
+    alt Credenciales válidas
+        BaseDeDatos--&gt;&gt;Sistema: Credenciales válidas
+        Sistema--&gt;&gt;Cliente: Acceso permitido
+    else Credenciales inválidas
+        BaseDeDatos--&gt;&gt;Sistema: Credenciales inválidas
+        Sistema--&gt;&gt;Cliente: Error de autenticación
+    end
+</code></pre>
+
+<p>En este caso:</p>
+
+<ul>
+  <li>Si las credenciales son válidas, el cliente recibe acceso.</li>
+  <li>Si las credenciales son inválidas, se le notifica un error.</li>
+</ul>
+
+<h4 id="bucle-loop">Bucle (loop)</h4>
+
+<p>El <strong>fragmento de bucle</strong> representa procesos que se repiten hasta cumplir una condición.</p>
+
+<p><strong>Ejemplo: Reintento de inicio de sesión (máximo 3 intentos):</strong></p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Sistema
+    participant BaseDeDatos as Base de Datos
+
+    loop Hasta 3 intentos
+        Cliente-&gt;&gt;Sistema: Introduce usuario y contraseña
+        Sistema-&gt;&gt;BaseDeDatos: Verifica credenciales
+        BaseDeDatos--&gt;&gt;Sistema: Credenciales inválidas
+        Sistema--&gt;&gt;Cliente: Intenta de nuevo
+    end
+    Cliente-&gt;&gt;Sistema: Introduce usuario y contraseña
+    Sistema-&gt;&gt;BaseDeDatos: Verifica credenciales
+    BaseDeDatos--&gt;&gt;Sistema: Credenciales válidas
+    Sistema--&gt;&gt;Cliente: Acceso permitido
+</code></pre>
+
+<p>En este caso:</p>
+
+<ul>
+  <li>El cliente puede intentar ingresar sus credenciales hasta tres veces. Si en algún intento las credenciales son válidas, el flujo termina con acceso permitido.</li>
+</ul>
+
+<h4 id="combinación-de-activación-y-fragmentos">Combinación de activación y fragmentos</h4>
+
+<p>En muchos escenarios, los <strong>bloques de activación</strong> y los <strong>fragmentos combinados</strong> se combinan para modelar interacciones más complejas. Por ejemplo:</p>
+
+<p><strong>Ejemplo: Compra en línea con verificación de inventario y pago:</strong></p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Tienda as Tienda en Línea
+    participant Inventario
+    participant Pago as Pasarela de Pago
+
+    Cliente-&gt;&gt;Tienda: Selecciona producto
+    activate Tienda
+    Tienda-&gt;&gt;Inventario: Verifica disponibilidad
+    alt Producto disponible
+        Inventario--&gt;&gt;Tienda: Producto disponible
+        Tienda-&gt;&gt;Pago: Procesa pago
+        activate Pago
+        Pago--&gt;&gt;Tienda: Confirmación de pago
+        deactivate Pago
+        Tienda--&gt;&gt;Cliente: Pedido confirmado
+    else Producto no disponible
+        Inventario--&gt;&gt;Tienda: Producto no disponible
+        Tienda--&gt;&gt;Cliente: Producto agotado
+    end
+    deactivate Tienda
+</code></pre>
+
+<p>En este ejemplo:</p>
+
+<ol>
+  <li><strong>Bloques de activación</strong>:
+    <ul>
+      <li>La <strong>Tienda</strong> está activa mientras verifica el inventario y procesa el pago.</li>
+      <li>El <strong>Inventario</strong> y la <strong>Pasarela de Pago</strong> están activos mientras realizan sus tareas específicas.</li>
+    </ul>
+  </li>
+  <li><strong>Fragmento condicional</strong>:
+    <ul>
+      <li>Si el producto está disponible, se procesa el pago.</li>
+      <li>Si no está disponible, se informa al cliente.</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="añadir-estados-al-diagrama-de-secuencia">Añadir estados al diagrama de secuencia</h4>
+
+<p>Otra práctica que puede ser de utilidad es indicar los cambios de estado que se producen en la línea de vida de un proceso. Estos cambios se pueden indicar dentro de la línea de vida o, como en el siguiente ejemplo, en una nota aparte.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Puerta
+
+    Cliente -&gt;&gt; Puerta : Solicitar acceso
+    activate Puerta
+    note right of Puerta: Estado: CERRADA
+    Puerta --&gt;&gt; Cliente : verificar el acceso
+    note right of Puerta: Estado: ABRIENDO
+    Puerta --&gt;&gt; Cliente: Notificar apertura
+    note right of Puerta: Estado: ABIERTA
+    Cliente -&gt;&gt; Puerta : Atravesar la puerta
+    Cliente -&gt;&gt; Puerta : Cerrar la puerta
+    note right of Puerta: Estado: CERRANDO
+    Puerta --&gt;&gt; Cliente: Notificar el cierre
+    note right of Puerta : Estado: CERRADA
+    deactivate Puerta
+</code></pre>
+
+<p>Este sería el diagrama de estados correspondiente de la puerta:</p>
+
+<pre><code class="language-mermaid">stateDiagram
+    [*] --&gt; CERRADA
+    CERRADA --&gt; ABRIENDO : Cliente solicita acceso 
+    ABRIENDO --&gt; ABIERTA
+    ABIERTA --&gt; CERRANDO : Cliente solicita cierre
+    CERRANDO --&gt; CERRADA
+</code></pre>
+
+<h3 id="23-mensajes">2.3 Mensajes</h3>
+
+<p>Las flechas indican la comunicación entre actores/objetos. Los tipos principales son:</p>
+
+<ul>
+  <li><strong>Mensajes síncronos</strong>: llamadas o peticiones que esperan una respuesta. Se representan con una flecha normal y una línea continua.</li>
+</ul>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant A
+    participant B
+    
+    A-&gt;&gt;B: Petición síncrona
+    B--&gt;&gt;A: Respuesta
+</code></pre>
+
+<ul>
+  <li><strong>Mensajes asíncronos</strong>: peticiones que no esperan una respuesta inmediata. Se representan con una flecha abierta y una línea discontinua.</li>
+</ul>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant A
+    participant B
+    
+    A--)B: Petición asíncrona
+
+</code></pre>
+
+<ul>
+  <li><strong>Mensajes de retorno</strong>: respuestas enviadas tras una petición. Se representan con una línea discontinua. La flecha será abierta o cerrada dependiendo de si son retornos asíncronos o síncronos respectivamente</li>
+</ul>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant A
+    participant B
+
+    A-&gt;&gt;B: Petición
+    B--&gt;&gt;A: Respuesta síncrona
+    B--)A: Respuesta asíncrona
+</code></pre>
+
+<p>A continuación, un ejemplo con los tres tipos de mensajes:</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    participant Cliente
+    participant Sistema
+    participant Servidor
+
+    Cliente-&gt;&gt;Sistema: Petición síncrona
+    Sistema--&gt;&gt;Cliente: Respuesta síncrona
+
+    Sistema--)Servidor: Petición asíncrona
+    Sistema-&gt;&gt;Cliente: Mensaje sin esperar respuesta del servidor
+    Servidor--)Sistema: Respuesta asíncrona
+</code></pre>
+
+<h3 id="24-construcción-de-diagramas-de-secuencia">2.4 Construcción de diagramas de secuencia</h3>
+
+<p>Para construir un diagrama de secuencia, debemos seguir los siguientes pasos:</p>
+
+<ol>
+  <li><strong>Identificar los actores y objetos</strong> que participan en el escenario.</li>
+  <li><strong>Establecer el flujo de mensajes</strong> entre ellos, respetando el orden cronológico.</li>
+  <li>Agregar activaciones, retornos y fragmentos combinados según sea necesario.</li>
+</ol>
+
+<p>El siguiente ejemplo muestra cómo un cliente interactúa con un sistema de autenticación.</p>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Sistema
+    participant BaseDeDatos as Base de Datos
+
+    Cliente-&gt;&gt;+Sistema: Ingresa usuario y contraseña
+    Sistema-&gt;&gt;+BaseDeDatos: Valida credenciales
+    BaseDeDatos--&gt;&gt;-Sistema: Credenciales válidas
+    Sistema--&gt;&gt;-Cliente: Acceso concedido
+</code></pre>
+
+<p>Los diagramas de secuencia son especialmente útiles en casos donde es necesario modelar <strong>escenarios específicos y ordenados de interacción</strong>.</p>
+
+<h3 id="25-ejercico-1">2.5 Ejercico 1</h3>
+
+<p>Explica lo que ocurre en los siguientes diagramas de secuencia:</p>
+
+<h4 id="autenticación-de-un-usuario">Autenticación de un usuario</h4>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Usuario
+    participant Sistema
+    participant BaseDeDatos as Base de Datos
+
+    Usuario-&gt;&gt;Sistema: Introduce credenciales
+    Sistema-&gt;&gt;BaseDeDatos: Verifica credenciales
+    BaseDeDatos--&gt;&gt;Sistema: Respuesta (válidas o no)
+    alt Credenciales válidas
+        Sistema--&gt;&gt;Usuario: Acceso permitido
+    else Credenciales inválidas
+        Sistema--&gt;&gt;Usuario: Error de autenticación
+    end
+</code></pre>
+
+<h4 id="compra-en-línea">Compra en línea</h4>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Tienda as Tienda en línea
+    participant Pago as Pasarela de Pago
+    participant Inventario
+
+    Cliente-&gt;&gt;Tienda: Selecciona producto(s)
+    Tienda-&gt;&gt;Inventario: Verifica disponibilidad
+    Inventario--&gt;&gt;Tienda: Producto disponible
+    Cliente-&gt;&gt;Tienda: Realiza pedido
+    Tienda-&gt;&gt;Pago: Procesa pago
+    Pago--&gt;&gt;Tienda: Confirmación de pago
+    Tienda--&gt;&gt;Cliente: Confirmación del pedido
+</code></pre>
+
+<h4 id="retiro-de-efectivo-en-un-cajero-automático">Retiro de efectivo en un cajero automático</h4>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Cajero as Cajero Automático
+    participant Banco
+
+    Cliente-&gt;&gt;Cajero: Introduce tarjeta y PIN
+    Cajero-&gt;&gt;Banco: Valida credenciales
+    Banco--&gt;&gt;Cajero: Credenciales válidas
+    Cliente-&gt;&gt;Cajero: Solicita retiro de $200
+    Cajero-&gt;&gt;Banco: Verifica saldo
+    Banco--&gt;&gt;Cajero: Saldo aprobado
+    Cajero--&gt;&gt;Cliente: Entrega efectivo
+</code></pre>
+
+<h4 id="soporte-técnico-automatizado">Soporte técnico automatizado</h4>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    actor Cliente
+    participant Chatbot
+    participant SistemaDeTickets as Sistema de Tickets
+
+    Cliente-&gt;&gt;Chatbot: Reporta problema
+    Chatbot-&gt;&gt;SistemaDeTickets: Crea ticket
+    SistemaDeTickets--&gt;&gt;Chatbot: ID de ticket generado
+    Chatbot--&gt;&gt;Cliente: Se ha creado el ticket #1234
+    Cliente-&gt;&gt;Chatbot: Consulta estado del ticket
+    Chatbot-&gt;&gt;SistemaDeTickets: Obtiene estado
+    SistemaDeTickets--&gt;&gt;Chatbot: En proceso
+    Chatbot--&gt;&gt;Cliente: Estado: En proceso
+</code></pre>
+
+<h3 id="26-ejercicio-2">2.6 Ejercicio 2</h3>
+
+<p>Construye diagramas de secuencia atendiendo a las siguientes casuísticas:</p>
+
+<h4 id="turnos-de-un-hospital">Turnos de un hospital</h4>
+
+<blockquote>
+  <p>Para gestionar los turnos de un hospital y evitar que se acumulen horas excesivas en los profesionales, debemos tener en cuenta que un miembro del personal puede estar trabajando, descansando o en expectativa de turno. El periodo de descanso empieza inmediatamente después de haber estado trabajando y dura 12 horas. En el momento en que vencen esas 12 horas, un trabajador puede o bien volver a trabajar o bien quedarse en expectativa de turno. Un trabajador en expectativa de turno puede ser asignado para trabajar por el gestor de turnos. El trabajador comienza siempre en expectativa de turno.</p>
+</blockquote>
+
+<h4 id="gestión-de-una-máquina-de-café-automática">Gestión de una máquina de café automática</h4>
+
+<blockquote>
+  <p>Una máquina de café automática gestiona la preparación y entrega de bebidas calientes. En su funcionamiento, la máquina puede encontrarse en varios estados. Al inicio, la máquina está a la espera de que un usuario realice una selección. Cuando el usuario elige una bebida (como café, té o chocolate caliente), la máquina pasa a un proceso de preparación específico según la bebida seleccionada. Si el proceso de preparación concluye sin problemas, la máquina entrega el producto al usuario y regresa al estado inicial para una nueva solicitud.</p>
+
+  <p>Sin embargo, si durante la preparación ocurre un error, como falta de ingredientes o una avería técnica, la máquina debe entrar en un estado de error que bloquea nuevas solicitudes hasta que un técnico de mantenimiento intervenga. El técnico podrá reiniciar el sistema y devolver la máquina a su estado inicial. Además, el proceso de <strong>preparación</strong> debe incluir detalles específicos dependiendo del tipo de bebida elegida: preparar café, preparar té o preparar chocolate caliente.</p>
+</blockquote>
+
+<h4 id="control-de-acceso-a-un-edificio-inteligente">Control de acceso a un edificio inteligente</h4>
+
+<blockquote>
+  <p>El sistema de control de acceso de un edificio inteligente se encarga de gestionar la entrada y salida de las personas. Una persona comienza siempre fuera del edificio. Cuando intenta acceder, debe escanear su tarjeta, iniciando así un proceso de verificación. Durante este proceso de acceso, se realizan varios pasos, como la validación de la tarjeta y un escaneo de seguridad. Si todo es correcto, la persona puede entrar al edificio y pasar al estado de estar dentro.</p>
+
+  <p>Sin embargo, si la tarjeta es inválida o se detecta algún problema de seguridad, el acceso se deniega y la persona entra en un estado bloqueado. Para salir de este estado, un guardia de seguridad puede intervenir y decidir si la persona debe volver al inicio, es decir, al estado fuera del edificio, o si puede intentar nuevamente el acceso. Por último, una vez que una persona se encuentra dentro del edificio, puede salir en cualquier momento, regresando al estado inicial fuera del edificio.</p>
+</blockquote>
+
+<p>Se trata de los enunciados de los ejercicios sobre diagramas de estados que trabajamos en el apartado anterior.</p>
+
+<h2 id="3-combinación-de-los-diagramas-de-secuencia-con-los-otros-diagramas">3. Combinación de los diagramas de secuencia con los otros diagramas</h2>
+
+<p>Los diagramas de secuencia no funcionan de forma aislada. Para entender completamente un sistema, es necesario combinar los diagramas de secuencia con otros diagramas UML. Ya hemos visto durante esta sección cómo integrarlos con los <strong>diagramas de estados</strong>, sin embargo, también podemos integrarlos con el resto de diagramas:</p>
+
+<h3 id="31-con-diagramas-de-casos-de-uso">3.1 Con diagramas de casos de uso</h3>
+
+<p>El diagrama de casos de uso define los escenarios principales de interacción entre actores y el sistema. Los diagramas de secuencia detallan <strong>cómo</strong> se implementa cada caso de uso.</p>
+
+<p><strong>Ejemplo</strong>:</p>
+
+<ul>
+  <li>Caso de uso: “Autenticar usuario”.</li>
+  <li>Secuencia: Verificación de credenciales (ya descrita anteriormente).</li>
+</ul>
+
+<h3 id="32-con-diagramas-de-actividad">3.2 Con diagramas de actividad</h3>
+
+<p>Un diagrama de actividad describe un flujo de trabajo general. Un diagrama de secuencia especifica las <strong>interacciones detalladas</strong> en uno de los pasos.</p>
+
+<h3 id="33-con-diagramas-de-clases">3.3 Con diagramas de clases</h3>
+
+<p>Los objetos que interactúan en un diagrama de secuencia están definidos en el diagrama de clases. Por ejemplo:</p>
+
+<pre><code class="language-plantuml">     @startuml
+     class Usuario {
+         -nombre: String
+         -contraseña: String
+         +autenticar()
+     }
+     class Sistema {
+         -baseDeDatos: BaseDeDatos
+         +validarUsuario()
+     }
+     class BaseDeDatos {
+         +consultarUsuario()
+     }
+     Usuario --&gt; Sistema : Autentica
+     Sistema --&gt; BaseDeDatos : Consulta
+     @enduml
+</code></pre>
+
+<h3 id="34-ejercicio-3">3.4 Ejercicio 3</h3>
+
+<p>Sobre los enunciados del ejercicio 2, integra todos los diagramas trabajados hasta el momento. El de <em>Gestión de una máquina de café automática</em> ya deberías tenerlo terminado al haber completado el ejercicio anterior.</p>
+
+<h3 id="35-ejercicio-4--documento-de-diseño">3.5 Ejercicio 4 : Documento de diseño</h3>
+
+<p><em>Este ejercicio será parecido al del examen</em>. Diseña un documento con el SRS, el diagrama de casos de uso, el diagrama de clases, el diagrama de secuencia, los diagramas de actividad y los diagramas de estado que necesites de la siguiente especificación:</p>
+
+<blockquote>
+  <p>Queremos gestionar las reservas de un aula de estudio en una biblioteca. Las aulas, dentro de una franja horaria, pueden estar libres, reservadas u ocupadas. Un aula libre se puede reservar y ocupar. Una reserva se cancela automáticamente si no se confirma una hora antes. Los usuarios de la biblioteca pueden ocupar aulas que estén libres. Si el usuario es además estudiante de la universidad, también puede reservarlas si están libres. Una reserva se puede cancelar.</p>
+
+  <p>El administrador de la biblioteca puede modificar las reservas de los usuarios, y registrar a usuarios como estudiantes de la universidad. Un usuario debe notificar cuando entra y cuando sale de una sala.</p>
+
+  <p>Además, existe un sistema de notificaciones mediante el cual un estudiante puede solicitar que se le avise si un aula concreta que estaba reservada queda libre, para así poder elegir si reservarla u ocuparla.</p>
+</blockquote>
+
+<h2 id="4-anexo-uso-de-mermaidjs-para-diagramas">4. ANEXO: Uso de mermaid.js para diagramas</h2>
+
+<p>Los diagramas de estados y secuencia de esta sección están escritos empleando mermaid.js, combinado con markdown de forma similar a como se usa plantuml para otros diagramas. Para usar mermaid en VS CODE hay que seguir los siguientes pasos:</p>
+
+<ul>
+  <li>Instalar la extensión “Markdown Preview Mermaid” y “Mermaid Preview”.</li>
+  <li>Cambiar el servidor de renderizado a <code class="language-plaintext highlighter-rouge">https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js</code>
+    <ul>
+      <li>Para ello, accede a <code class="language-plaintext highlighter-rouge">File-&gt;Preferences-&gt;Settings</code> y busca el servidor de Mermaid que usa Mardownpdf</li>
+    </ul>
+  </li>
+</ul>
+
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
