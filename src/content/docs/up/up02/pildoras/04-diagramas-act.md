@@ -221,20 +221,6 @@ Aunque no vayamos a hacer programación concurrente este curso, la división en 
 - Representar sistemas más complejos con mayor precisión.
 - Planificar los sprints de un equipo de desarrollo.
 
-> ##### ***Para saber más...***
-> 
->**Concurrencia:** Se refiere a la capacidad de un sistema para manejar múltiples tareas al mismo tiempo, ya sea intercalando su ejecución en un solo procesador o ejecutándolas en paralelo en múltiples núcleos. Para gestionar la concurrencia, existen varias estrategias:
->
->- **Exclusión mutua:** Controla el acceso a recursos compartidos para evitar condiciones de carrera, asegurando que solo un proceso o hilo acceda a la vez. Se implementa con mutex, semáforos o monitores.
->- **Sincronización:** Coordina la ejecución de procesos o hilos mediante técnicas como semáforos, variables de condición o barreras cíclicas. Si no es necesaria esta sincronización, los procesos pueden ejecutarse de manera asíncrona.
->
->**Asincronía:** Un proceso asíncrono permite que una tarea continúe ejecutándose en segundo plano sin bloquear la ejecución principal. Un ejemplo común es la consulta a bases de datos:
->
->- El programa principal envía la solicitud y sigue ejecutándose sin esperar la respuesta.
->- Mientras tanto, el usuario puede seguir interactuando con la interfaz gráfica sin que se congele la aplicación.
->
->Un sistema puede ser asíncrono sin ser concurrente, y también puede ser concurrente sin ser asíncrono.
-
 ### Uso de carriles en los diagramas de actividad
 
 Para representar la intervención de varios actores dentro de una misma actividad, se puede dividir el diagrama de actividad en carriles, reservando cada carril para cada actor.

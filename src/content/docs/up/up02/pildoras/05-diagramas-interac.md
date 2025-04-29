@@ -11,7 +11,7 @@ Existen varios tipos de diagramas de interacción.
 - Diagramas de tiempos
 - Diagramas de interacción global
 
-En este apartado, vamos a trabajar los diagramas de secuencia por ser los más relevantes y, al mismo tiempo, los más complejos de entender.
+En este apartado, vamos a trabajar los diagramas de secuencia por ser los más relevantes y, al mismo tiempo, los más complejos de entender. Al final, introduciremos los diagramas de comunicación.
 
 ## ¿Qué es un diagrama de secuencia y para qué se usa?
 
@@ -311,3 +311,115 @@ sequenceDiagram
 ```
 
 Los diagramas de secuencia son especialmente útiles en casos donde es necesario modelar **escenarios específicos y ordenados de interacción**.
+
+## Diagramas de comunicación
+
+Los diagramas de comunicación modelan las interacciones entre objetos o partes empleando mensajes secuenciados. Representan una combinación de información que puede ser obtenida a través de los diagramas de clase, secuencia y casos de uso, que describen tanto la estructura estática como el comportamiento de un sistema. Asimismo, los diagramas de comunicación son una simplificación del diagrama de colaboración, que era estándar en UML 1.x y fue descartado en UML 2.x.
+
+Los diagramas de comunicación emplean una codificación gráfica similar a la que se usa en los diagramas de objetos. Los elementos se elanzan con líneas y en cada enlace se etiqueta con un número, que representa el orden cronológico del mensaje y el mensaje que se comunica. Los diagramas de comunicación empiezan desde el mensaje 1 y siguen los mensajes de objeto a objeto.
+
+```mermaid
+flowchart LR
+    o1[Objeto1]
+    o2[Objeto2]
+    o3[Objeto3]
+    o1 -- 1: accion1() --> o2
+    o2 -- 2: accion2() --> o3
+    o3 -- 3: accion3() --> o2
+```
+
+Los mensajes que se producen en la misma llamada tienen el mismo prefijo, pero usan diferentes sufijos según cuando se llaman. Aunque siguen manteniendo el orden, nos permite agrupar mensajes de tal forma que puedan tener más sentido.
+
+```mermaid
+flowchart LR
+    o1[Objeto1]
+    o2[Objeto2]
+    o3[Objeto3]
+    o4[Objeto4]
+    o1 -- 1: accion1() --> o2
+    o2 -- 2: accion2() --> o3
+    o3 -- 3.1: accion3() --> o2
+    o3 -- 3.2: accion4() --> o4
+```
+En este ejemplo, los mensajes suceden en orden, pero agrupamos los mensajes `accion3` y `accion4` dentro del mensaje 3. Podemos emplear tantos niveles como queramos para establecer una jerarquía con los mensajes.
+
+Por otro lado, para expresar concurrencia, podemos emplear letras. Si dos mensajes comparten el mismo número, se ejecutarán de forma concurrente o simultánea. Para diferenciarlos, los etiquetaremos con a, b, c, etc.
+
+```mermaid
+flowchart LR
+    o1[Objeto1]
+    o2[Objeto2]
+    o3[Objeto3]
+    o4[Objeto4]
+    o1 -- 1: accion1() --> o2
+    o2 -- 2.1: accion2() --> o3
+    o3 -- 2.2a: accion3() --> o2
+    o3 -- 2.2b: accion4() --> o4
+```
+En este ejemplo, hemos agrupado los mensajes `accion2`, `accion3` y `accion4` dentro del mensaje 2. En el mensaje 2, primero ha sucedido `accion2` y después, de forma simultánea, se han lanzado los mensajes `accion3` y `accion4`.
+
+Finalmente, se pueden asociar mensajes a condiciones, expresadas entre corchetes, lo que nos permite representar estructuras de selección y de bucle.
+
+```mermaid
+flowchart LR
+    o1[Objeto1]
+    o2[Objeto2]
+    o3[Objeto3]
+    o4[Objeto4]
+    o1 -- 1: accion1() --> o2
+    o2 -- 2.1: accion2() --> o3
+    o3 -- 2.2a: accion3() --> o2
+    o3 -- 2.2b: accion4() --> o4
+    o4 -- [condicion] 3: accion5() --> o1
+```
+En este ejemplo, el mensaje `accion5` solo se lanzará si se cumple la condición `condicion`.
+
+
+Los diagramas de comunicación muestran la misma información que los diagramas de secuencia, pero su presentación es totalmente diferente, lo que hace que algunos matices sean más evidentes en uno que en otro.
+
+- En los diagramas de comunicación, se entiende fácilmente qué partes interactúan entre sí.
+- En los diagramas de secuencia, se entiende fácilmente el orden de las interacciones.
+
+Este diagrama de comunicación:
+```mermaid
+flowchart LR
+    o1[Objeto1]
+    o2[Objeto2]
+    o3[Objeto3]
+    o4[Objeto4]
+    o1 -- 1: accion1() --> o2
+    o2 -- 2.1: accion2() --> o3
+    o3 -- 2.2a: accion3() --> o2
+    o3 -- 2.2b: accion4() --> o4
+    o4 -- [condicion] 3: accion5() --> o1
+```
+
+Es equivalente a este diagrama de interacción:
+
+```mermaid
+sequenceDiagram
+    participant o1 as Objeto1
+    participant o2 as Objeto2
+    participant o3 as Objeto3
+    participant o4 as Objeto4
+
+    activate o1
+    o1->>o2: accion1()
+    activate o2
+    o2->>o3: accion2()
+    activate o3
+    o3-->>o2: accion3()
+    deactivate o2
+    o3-->>o4: accion4()
+    activate o4
+    deactivate o3
+    alt condicion
+        o4->>o1: accion5()
+        deactivate o4
+        deactivate o1
+    end
+
+```
+
+
+

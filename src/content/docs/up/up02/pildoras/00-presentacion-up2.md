@@ -18,6 +18,7 @@ theme:
 - [Introducción a UML](#introducción-a-uml)
   - [¿Qué es UML?](#qué-es-uml)
   - [La importancia de UML en el mundo de las metodologías ágiles](#la-importancia-de-uml-en-el-mundo-de-las-metodologías-ágiles)
+  - [La especificación de requisitos de un sistema](#la-especificación-de-requisitos-de-un-sistema)
   - [Los diagramas de comportamiento](#los-diagramas-de-comportamiento)
   - [Herramientas para el diseño de diagramas](#herramientas-para-el-diseño-de-diagramas)
     - [Código en Plantuml de los ejemplos](#código-en-plantuml-de-los-ejemplos)
@@ -56,7 +57,11 @@ El desafío con UML en entornos ágiles es que los diagramas deberían actualiza
 
 Además, desde un enfoque pedagógico, la confección de diagramas ayuda a estructurar el pensamiento lógico y adaptarlo al desarrollo de software. Por ello, UML sigue siendo una herramienta poderosa en el aprendizaje de la informática y la programación.
 
->**Actividad:** Busca en internet cuántas versiones de UML hay, cuál es la actual y todos los diagramas UML que la componen, organizados.
+## La especificación de requisitos de un sistema
+
+Antes de comenzar a diseñar los diagramas que modelarán la aplicación, es necesario tener como mínimo una idea de lo que se quiere modelar. A partir de una especificación de un problema, dada por el cliente, se realiza lo que se conoce como la especificación de requisitos del sistema. El estándar IEEE 830 normaliza la forma que dicho documento puede tener.
+
+La finalidad del documento es focalizar el problema para que el desarrollador puede hacer su trabajo. A partir de los requisitos especificados, se pueden realizar los diferentes diagramas o, en el caso de scrum, las distintas historias de usuario.
 
 ## Los diagramas de comportamiento
 
@@ -123,6 +128,21 @@ Actor2 --> Datos : mensaje asíncrono
 Datos --> Actor2 : respuesta
 Actor2 --> Actor1 : respuesta 1
 @enduml
+```
+
+- Los **diagramas de comunicación** expresan la misma información que los diagramas de interacción, pero es más fácil observar la relación entre entidades, a costa de ser más difícil de ver la secuencia.
+
+```mermaid
+flowchart LR
+    o1[Objeto1]
+    o2[Objeto2]
+    o3[Objeto3]
+    o4[Objeto4]
+    o1 -- 1: accion1() --> o2
+    o2 -- 2.1: accion2() --> o3
+    o3 -- 2.2a: accion3() --> o2
+    o3 -- 2.2b: accion4() --> o4
+    o4 -- [condicion] 3: accion5() --> o1
 ```
 
 Estos diagramas, trabajando de manera conjunta, nos permiten modelar el comportamiento de nuestro sistema, una tarea importante que pertenece a la fase de diseño dentro del desarrollo de una aplicación. En esta unidad de programación, profundizaremos en estos 4 diagramas de comportamiento, pero como puedes comprobar, hay muchos más.
