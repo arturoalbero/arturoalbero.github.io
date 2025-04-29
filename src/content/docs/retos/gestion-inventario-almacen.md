@@ -1,6 +1,6 @@
 ---
 title: Gestión de inventario de un almacén
-description: 
+description: a
 ---
 # Gestión de inventario de un almacén
 

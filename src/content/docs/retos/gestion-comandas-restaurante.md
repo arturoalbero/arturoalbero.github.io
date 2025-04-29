@@ -1,6 +1,6 @@
 ---
 title: Gestión de comandas de un restaurante
-description: 
+description: a
 ---
 # Gestión de comandas de un restaurante
 

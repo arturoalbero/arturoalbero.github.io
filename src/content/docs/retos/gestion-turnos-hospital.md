@@ -1,6 +1,6 @@
 ---
 title: Gestión de turnos de un hospital
-description: 
+description: a
 ---
 # Gestión de comandas de un restaurante
 

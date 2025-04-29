@@ -1,6 +1,6 @@
 ---
 title: Gestión de matriculas y horarios de un conservatorio
-description: 
+description:  a
 ---
 # Gestión de matrículas y horarios de un conservatorio
 
