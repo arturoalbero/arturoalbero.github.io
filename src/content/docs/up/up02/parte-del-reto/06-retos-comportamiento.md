@@ -8,7 +8,8 @@ title: Retos de diagramas de comportamiento
 Para esta unidad de programación, la formación de los equipos se hará a través del método [*Dinámica de los colores*](https://drive.google.com/file/d/19V9e3BR_IXAjEKVoDU1BxUgsK0heF0S2/view).
 
 Observa la siguiente tabla de colores:
-![alt text](image.png)
+
+--- PLACEHOLDER ---
 
 ¿Con qué colores te identificas más? Escoge en la encuesta en FORMS tu primera y tu segunda opción. En base a ella, se crearán los equipos de la clase intentando tener representados todos los colores.
 
