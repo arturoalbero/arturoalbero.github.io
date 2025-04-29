@@ -1,7 +1,8 @@
 {
-  "name": "",
+  "name": "entornos",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "^pnpm@6.32.4",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
