@@ -1,3 +1,7 @@
+---
+title: Modelo de examen
+description: Pues eso
+---
 ## EXAMEN MODELO – PRUEBAS DE SOFTWARE
 
 ### PARTE A: 6 PUNTOS  
