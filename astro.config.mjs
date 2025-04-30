@@ -24,7 +24,7 @@ export default defineConfig({
 							{ label: 'El documento IEEE 830', slug: 'up/up02/pildoras/01-el-documento-ieee830'},
 							{ label: 'Casos de uso', slug: 'up/up02/pildoras/02-diagramas-cdu'},
 							{ label: 'Transición de estados', slug:'up/up02/pildoras/03-diagramas-dte'},
-							{ label: 'Actividad', slug: 'up/up02/pildoras/diagramas-act'},
+							{ label: 'Actividad', slug: 'up/up02/pildoras/04-diagramas-act'},
 							{ label: 'Interacción', slug: 'up/up02/pildoras/05-diagramas-interac'}
 						]},
 						{label: 'UP03', items:[]},
