@@ -2,10 +2,7 @@
   "name": "",
   "type": "module",
   "version": "0.0.1",
-<<<<<<< HEAD
   
-=======
->>>>>>> parent of f605329 (as)
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
