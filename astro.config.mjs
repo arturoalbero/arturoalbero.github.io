@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import remarkMermaid from 'astro-diagram/remark-mermaid';
 
 const LIVE_URL = "https://arturoalbero.github.io";
 
@@ -41,8 +40,4 @@ export default defineConfig({
 			],
 		}),
 	],
-	markdown: {
-		remarkPlugins: [remarkMermaid]
-
-	}
 });
